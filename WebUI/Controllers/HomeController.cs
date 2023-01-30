@@ -33,5 +33,11 @@ namespace WebUI.Controllers
         {
             return View();
         }
+
+
+        public IActionResult Dneme2()
+        {
+            return View();
+        }
     }
 }

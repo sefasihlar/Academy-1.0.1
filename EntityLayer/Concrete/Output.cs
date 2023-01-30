@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class Output
+    public class Output : BaseTable
     {
+        public string Name { get; set; }
+
+        public int UserId { get; set; }
+        public AppUser User { get; set; }
     }
 }
