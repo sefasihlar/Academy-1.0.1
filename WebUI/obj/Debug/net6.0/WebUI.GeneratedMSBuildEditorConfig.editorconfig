@@ -15,14 +15,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\ayyıldız\Desktop\MetaAkdeniz\SampleAcademy\Academy\WebUI
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/ayyıldız/Desktop/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Home/Dneme.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEbmVtZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ayyıldız/Desktop/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Home/Dneme2.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEbmVtZTIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/ayyıldız/Desktop/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

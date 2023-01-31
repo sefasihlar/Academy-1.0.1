@@ -29,15 +29,5 @@ namespace WebUI.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Dneme()
-        {
-            return View();
-        }
-
-
-        public IActionResult Dneme2()
-        {
-            return View();
-        }
     }
 }
