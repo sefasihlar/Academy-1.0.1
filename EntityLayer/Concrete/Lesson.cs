@@ -7,17 +7,19 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class Lesson : BaseTable
+    public class Lesson
     {
+        public int Id { get; set; }
         public String? Name { get; set; }
 
         public int SubjectId { get; set; }
-        public Subject? Subject { get; set; }
+        public virtual Subject Subject { get; set; }
 
         public int ClassId { get; set; }
-        public Class? Class { get; set; }
+        public virtual Class Class { get; set; }
 
         public int UserId { get; set; }
-        public AppUser? User { get; set; }
+        public virtual AppUser User { get; set; }
+
     }
 }

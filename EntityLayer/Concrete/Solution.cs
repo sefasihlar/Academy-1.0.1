@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class Solution : BaseTable
+    public class Solution
     {
+        public int Id { get; set; }
         public string Text { get; set; }
         public string ImageUrl { get; set; }
 
@@ -15,6 +16,6 @@ namespace EntityLayer.Concrete
         public Question Question { get; set; }
 
         public int UserId { get; set; }
-        public AppUser User { get; set; }
+        public virtual AppUser User { get; set; }
     }
 }

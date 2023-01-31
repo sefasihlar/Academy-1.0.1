@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class Cart:BaseTable
+    public class Cart
     {
         public int Id { get; set; }
         public string UserId { get; set; }
