@@ -1,11 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EntityLayer.Concrete
+﻿namespace EntityLayer.Concrete
 {
     public class Lesson
     {
@@ -19,7 +12,7 @@ namespace EntityLayer.Concrete
         public virtual Class Class { get; set; }
 
         public int UserId { get; set; }
-        public virtual AppUser User { get; set; }
+        public virtual AppUser? User { get; set; }
 
     }
 }

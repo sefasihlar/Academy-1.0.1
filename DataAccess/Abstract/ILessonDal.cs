@@ -1,14 +1,8 @@
-﻿using DataAccessLayer.GenericDal;
-using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EntityLayer.Concrete;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface ILessonDal:IGenericDal<Lesson>
+    public interface ILessonDal : IGenericDal<Lesson>
     {
     }
 }

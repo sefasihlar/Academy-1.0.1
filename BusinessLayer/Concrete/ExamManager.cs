@@ -1,11 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
@@ -35,7 +30,7 @@ namespace BusinessLayer.Concrete
 
         public Exam GetById(int id)
         {
-           return _examDal.GetById(id);
+            return _examDal.GetById(id);
         }
 
         public void Update(Exam entity)

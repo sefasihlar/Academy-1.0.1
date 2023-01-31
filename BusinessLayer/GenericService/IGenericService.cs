@@ -1,11 +1,4 @@
-﻿using DataAccessLayer.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BusinessLayer.GenericService
+﻿namespace BusinessLayer.GenericService
 {
     public interface IGenericService<T>
     {

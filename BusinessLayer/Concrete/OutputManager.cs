@@ -1,11 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
@@ -20,7 +15,7 @@ namespace BusinessLayer.Concrete
 
         public void Create(Output entity)
         {
-            _outputDal.Create(entity);  
+            _outputDal.Create(entity);
         }
 
         public void Delete(Output entity)

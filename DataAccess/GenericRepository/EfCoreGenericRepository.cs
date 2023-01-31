@@ -1,19 +1,12 @@
 ﻿using DataAccessLayer.Abstract;
-using Microsoft.AspNetCore.Razor.Language.Intermediate;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repository
 {
     public class EfCoreGenericRepository<T, TContext> : IGenericDal<T>
         where T : class
-        where TContext : DbContext,new()
+        where TContext : DbContext, new()
     {
         public virtual void Create(T entity)
         {
@@ -35,7 +28,7 @@ namespace DataAccessLayer.Repository
 
         public virtual IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null)
         {
-            using(var _context = new TContext())
+            using (var _context = new TContext())
             {
                 return filter == null
                     ? _context.Set<T>().ToList()
@@ -61,7 +54,7 @@ namespace DataAccessLayer.Repository
             }
         }
 
-        public  virtual void  Update(T entity)
+        public virtual void Update(T entity)
         {
             using (var _context = new TContext())
             {

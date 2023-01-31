@@ -1,11 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
@@ -35,7 +30,7 @@ namespace BusinessLayer.Concrete
 
         public Level GetById(int id)
         {
-           return  _levelDal.GetById(id);
+            return _levelDal.GetById(id);
         }
 
         public void Update(Level entity)
