@@ -1,0 +1,20 @@
+﻿@model WebUI.Models.QuestionListModel
+@{
+    ViewData["Title"] = "Index";
+}
+<div>
+    <h1>QuestionListModel Aktifleştirildi</h1>
+</div>
+@foreach (var item in Model.Questions)
+{
+    <p>adana @item.Id</p>
+    <p>mersin @item.Text</p>
+    <p>tokataı @item.ImageUrl</p>
+    <p>yersin @item.LevelId</p>
+    <p> @item.SubjectId</p>
+    <p> @item.OutputId</p>
+    <p> @item.UserId</p>
+
+    <h2>Model ogesi çalıştı</h2>
+}
+
