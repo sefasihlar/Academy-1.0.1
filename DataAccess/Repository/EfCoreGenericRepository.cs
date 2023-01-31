@@ -15,7 +15,7 @@ namespace DataAccessLayer.Repository
         where T : class
         where TContext : DbContext,new()
     {
-        public void Create(T entity)
+        public virtual void Create(T entity)
         {
             using (var _context = new TContext())
             {
@@ -24,7 +24,7 @@ namespace DataAccessLayer.Repository
             }
         }
 
-        public void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             using (var _context = new TContext())
             {
@@ -33,7 +33,7 @@ namespace DataAccessLayer.Repository
             }
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null)
+        public virtual IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null)
         {
             using(var _context = new TContext())
             {
@@ -44,7 +44,7 @@ namespace DataAccessLayer.Repository
             }
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             using (var _context = new TContext())
             {
@@ -53,7 +53,7 @@ namespace DataAccessLayer.Repository
 
         }
 
-        public T GetOne(Expression<Func<T, bool>> filter)
+        public virtual T GetOne(Expression<Func<T, bool>> filter)
         {
             using (var _context = new TContext())
             {
@@ -61,7 +61,7 @@ namespace DataAccessLayer.Repository
             }
         }
 
-        public void Update(T entity)
+        public  virtual void  Update(T entity)
         {
             using (var _context = new TContext())
             {
