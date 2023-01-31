@@ -1,4 +1,4 @@
-﻿using DataAccessLayer.GenericDal;
+﻿using BusinessLayer.GenericService;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Abstract
+namespace BusinessLayer.Abstract
 {
-    public interface IMessageDal:IGenericDal<Message>
+    public interface ICartService:IGenericService<Cart>
     {
     }
 }
