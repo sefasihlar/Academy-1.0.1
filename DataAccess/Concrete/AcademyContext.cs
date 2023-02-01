@@ -41,6 +41,13 @@ namespace DataAccessLayer.Concrete
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Question>()
+               .HasOne(q => q.Lesson)
+               .WithMany()
+               .HasForeignKey(q => q.LessonId)
+               .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<Question>()
                 .HasOne(q => q.User)
                 .WithMany()
                 .HasForeignKey(q => q.UserId)
@@ -53,11 +60,6 @@ namespace DataAccessLayer.Concrete
                   .HasForeignKey(q => q.ClassId)
                   .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Lesson>()
-                .HasOne(q => q.Subject)
-                .WithMany()
-                .HasForeignKey(q => q.SubjectId)
-                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Lesson>()
                 .HasOne(q => q.User)

@@ -1,0 +1,44 @@
+﻿@model WebUI.Models.ClassModel
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-controller="Class" asp-action="Update">
+
+
+    <div class="row">
+        <div class="d-flex">
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="card flex-fill col-sm-2">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Kategori özelliğini düzenle</h5>
+                        </div>
+                        <table class="table my-0 text-center">
+                            <thead>
+                                <tr>
+                                    <th class="d-none d-md-table-cell">Kategori türü</th>
+                                    <th>Düzenle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="d-none d-md-table-cell">@Model.Name</td>
+                                    <input type="hidden" asp-for="@Model.Id" value="@Model.Id"/>
+                                    <td class="d-none d-md-table-cell"><input asp-for="@Model.Name" placeholder="@Model.Name" class="form-control text-center" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="d-none d-md-table-cell">Aktiflik durumu</td>
+                                    <td><a><span class="badge bg-success">Aktif</span></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-sm btn-primary m-4">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

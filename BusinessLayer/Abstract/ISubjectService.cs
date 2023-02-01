@@ -3,7 +3,7 @@ using EntityLayer.Concrete;
 
 namespace BusinessLayer.Abstract
 {
-    internal interface ISubjectService : IGenericService<Subject>
+    public interface ISubjectService : IGenericService<Subject>
     {
     }
 }

@@ -21,13 +21,14 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult Create()
         {
             return View();
         }
 
+
         [HttpPost]
-        public IActionResult Add(ClassModel model)
+        public IActionResult Create(ClassModel model)
         {
             if (ModelState.IsValid)
             {
@@ -43,6 +44,7 @@ namespace WebUI.Controllers
             }
             return View(model);
         }
+
 
         [HttpPost]
         public IActionResult Delete(int id)
@@ -60,14 +62,35 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Detail(ClassModel model)
         {
-            Class values = _classManager.GetById(model.Id);
+            var values = _classManager.GetById(model.Id);
 
             if (values == null)
             {
                 return NotFound();
             }
 
-            return View(values);
+            return View(new ClassModel()
+            { 
+                Id = values.Id,
+                Name = values.Name,
+            });
+        }
+
+  
+
+        [HttpPost]
+        public IActionResult Update(ClassModel model)
+        {
+            var values = _classManager.GetById(model.Id);
+
+            if (values == null)
+            {
+                return NotFound();
+            }
+            values.Name = model.Name;
+
+            _classManager.Update(values);
+            return RedirectToAction("Index", "Class");
         }
 
     }

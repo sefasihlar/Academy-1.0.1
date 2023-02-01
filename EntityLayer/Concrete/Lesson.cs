@@ -5,9 +5,6 @@
         public int Id { get; set; }
         public String? Name { get; set; }
 
-        public int SubjectId { get; set; }
-        public virtual Subject Subject { get; set; }
-
         public int ClassId { get; set; }
         public virtual Class Class { get; set; }
 

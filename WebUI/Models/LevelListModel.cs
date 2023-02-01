@@ -4,6 +4,6 @@ namespace WebUI.Models
 {
     public class LevelListModel
     {
-        public List<Lesson> Lessons { get; set; }
+        public List<Level> Levels { get; set; }
     }
 }
