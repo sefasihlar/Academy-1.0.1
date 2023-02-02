@@ -73,7 +73,7 @@ namespace WebUI.Controllers
             });
         }
 
-
+        [HttpPost]
         public IActionResult Update(LevelModel model)
         {
             var values = _levelManager.GetById(model.Id);

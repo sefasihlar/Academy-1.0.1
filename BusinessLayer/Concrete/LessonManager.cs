@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _lessonDal.Delete(entity);
         }
 
+        public void DeleteFromLesson(int lessonId, int classId)
+        {
+            _lessonDal.DeleteFromLesson(lessonId, classId);
+        }
+
         public List<Lesson> GetAll()
         {
             return _lessonDal.GetAll().ToList();
@@ -31,6 +36,11 @@ namespace BusinessLayer.Concrete
         public Lesson GetById(int id)
         {
             return _lessonDal.GetById(id);
+        }
+
+        public List<Lesson> GetWithClassList()
+        {
+            return _lessonDal.GetWithClassList().ToList();
         }
 
         public void Update(Lesson entity)

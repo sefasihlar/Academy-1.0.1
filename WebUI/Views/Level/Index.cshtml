@@ -1,9 +1,76 @@
-﻿
+﻿@model WebUI.Models.LevelListModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h1 class="h3 mb-3"><strong>Yetkili</strong> dereceler sayfası</h1>
 
+<div class="row">
+    <div class="d-flex">
+        <div class="w-100">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col mt-0">
+                                    <h5 class="card-title">Derece ekle</h5>
+                                </div>
+                            </div>
+                            <form asp-controller="Level" asp-action="Create" method="post">
+                                <div class="input-group">
+                                    <input name="Name" class="form-control" placeholder="Bir sınıf girin" style="margin-right: 5px;border-radius: 20px;">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" style="border-radius:20px" type="submit">Ekle</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card flex-fill col-sm-9">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Dereceler</h5>
+                    </div>
+                    <table class="table my-0 text-center">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th class="d-none d-md-table-cell">Derece</th>
+                                <th class="d-none d-xl-table-cell">Ekleyen ve tarihi</th>
+                                <th class="d-none d-xl-table-cell">Değiştiren ve tarihi</th>
+                                <th>Aktiflik durumu</th>
+                                <th>Düzenle veya sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Levels)
+                            {
+                                <tr>
+                                    <td>1</td>
+                                    <td class="d-none d-md-table-cell">@item.Name</td>
+                                    <td class="d-none d-xl-table-cell">İsim-21/01/2021</td>
+                                    <td class="d-none d-xl-table-cell">İsim-31/06/2021</td>
+                                    <td><span class="badge bg-success">Aktif</span></td>
+                                    <td>
+                                        <a href="/Level/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
+                                        <form asp-controller="Level" asp-action="Delete" method="post" style="display:inline">
+                                            <input type="hidden" name="Id" value="@item.Id" />
+                                            <button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                          
+                   
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 

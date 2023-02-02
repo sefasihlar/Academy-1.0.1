@@ -1,8 +1,43 @@
-﻿
+﻿@model WebUI.Models.LevelModel
 @{
     ViewData["Title"] = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Detail</h1>
+<h1 class="h3 mb-3"><strong>Yetkili</strong> derece düzenleme sayfası</h1>
+<form asp-controller="Level" asp-action="Update" method="post">
+    <div class="row">
+        <div class="d-flex">
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="card flex-fill col-sm-2">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Derece özelliğini düzenle</h5>
+                        </div>
+                        <table class="table my-0 text-center">
+                            <thead>
+                                <tr>
+                                    <th class="d-none d-md-table-cell">Türü</th>
+                                    <th>Düzenle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="d-none d-md-table-cell">@Model.Name</td>
+                                    <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+                                    <td class="d-none d-md-table-cell"><input asp-for="@Model.Name" placeholder="@Model.Name" class="form-control text-center" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="d-none d-md-table-cell">Aktiflik durumu</td>
+                                    <td><a><span class="badge bg-success">Aktif</span></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-sm btn-primary m-4">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+</form>
