@@ -15,10 +15,10 @@
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
 
-        public int QuestionId { get; set; }
-        public Question Question { get; set; }
 
-        public int UserId { get; set; }
-        public AppUser? User { get; set; }
+        public List<Question> Questions { get; set; }
+
+
+
     }
 }

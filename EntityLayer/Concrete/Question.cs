@@ -23,9 +23,6 @@
         public int OutputId { get; set; }
         public Output Output { get; set; }
 
-        public int UserId { get; set; }
-        public AppUser? User { get; set; }
-
 
     }
 }

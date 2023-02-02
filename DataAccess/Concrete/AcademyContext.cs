@@ -47,11 +47,7 @@ namespace DataAccessLayer.Concrete
                .OnDelete(DeleteBehavior.Restrict);
 
 
-            modelBuilder.Entity<Question>()
-                .HasOne(q => q.User)
-                .WithMany()
-                .HasForeignKey(q => q.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+
 
             //Lesson Fluent Api
             modelBuilder.Entity<Lesson>()
@@ -61,11 +57,7 @@ namespace DataAccessLayer.Concrete
                   .OnDelete(DeleteBehavior.Restrict);
 
 
-            modelBuilder.Entity<Lesson>()
-                .HasOne(q => q.User)
-                .WithMany()
-                .HasForeignKey(q => q.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+
 
 
             //Exam Fluent Api
@@ -83,20 +75,11 @@ namespace DataAccessLayer.Concrete
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Exam>()
-                .HasOne(q => q.User)
-                .WithMany()
-                .HasForeignKey(q => q.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<Exam>()
                  .HasOne(q => q.Lesson)
                  .WithMany()
                  .HasForeignKey(q => q.LessonId)
                  .OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<Exam>()
-                 .HasOne(q => q.Question)
-                 .WithMany()
-                 .HasForeignKey(q => q.QuestionId)
-                 .OnDelete(DeleteBehavior.Restrict);
+           
 
             base.OnModelCreating(modelBuilder);
         }

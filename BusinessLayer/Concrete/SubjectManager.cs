@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
+using NuGet.Protocol.Core.Types;
 
 namespace BusinessLayer.Concrete
 {
@@ -23,6 +24,11 @@ namespace BusinessLayer.Concrete
             _subjectDal.Delete(entity);
         }
 
+        public void DeleteFromSubject(int subjectId, int lessonId)
+        {
+            _subjectDal.DeleteFromSubject(subjectId, lessonId);
+        }
+
         public List<Subject> GetAll()
         {
             return _subjectDal.GetAll().ToList();
@@ -31,6 +37,11 @@ namespace BusinessLayer.Concrete
         public Subject GetById(int id)
         {
             return _subjectDal.GetById(id);
+        }
+
+        public List<Subject> GetWithLessonList()
+        {
+            return _subjectDal.GetWithLessonList().ToList();
         }
 
         public void Update(Subject entity)

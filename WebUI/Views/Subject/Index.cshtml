@@ -1,0 +1,68 @@
+﻿@model WebUI.Models.SubjectListModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align:center">KONULAR</h1>
+<br />
+<div class="row">
+    <div class="d-flex">
+        <div class="w-100">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="card" style="border-radius:20px">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col mt-0">
+                                    <h5 class="card-title">Konu ekle</h5>
+                                </div>
+                            </div>
+                            @await Component.InvokeAsync("LessonList")
+                        </div>
+                    </div>
+                </div>
+           
+                <div class="card flex-fill col-sm-9">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Konular</h5>
+                    </div>
+                    
+                    <table class="table my-0 text-center" style="border-radius:20px">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th class="d-none d-md-table-cell">Konu</th>
+                                <th class="d-none d-md-table-cell">Ders</th>
+                                <th class="d-none d-xl-table-cell">Ekleyen ve tarihi</th>
+                                <th class="d-none d-xl-table-cell">Değiştiren ve tarihi</th>
+                                <th>Aktiflik durumu</th>
+                                <th>Düzenle veya sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Subjects)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td class="d-none d-md-table-cell">@item.Name</td>
+                                    <td class="d-none d-xl-table-cell">@item.Lesson.Name</td>
+                                    <td class="d-none d-xl-table-cell">İsim-01/01/2021</td>
+                                    <td class="d-none d-xl-table-cell">İsim-31/06/2021</td>
+                                    <td><span class="badge bg-danger">Pasif</span></td>
+                                    <td>
+                                        <a href="../yetkili_islem_düzenle/yetkili_konu_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+                                        <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -8,9 +8,6 @@
         public int LessonId { get; set; }
         public Lesson Lesson { get; set; }
 
-        public int UserId { get; set; }
-        public virtual AppUser? User { get; set; }
-
         public List<Question> Questions { get; set; }
 
     }
