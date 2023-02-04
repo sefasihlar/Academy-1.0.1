@@ -15,6 +15,11 @@
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
 
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime UpdatedDate { get; set; } = DateTime.Now;
+
+        public Boolean Condition { get; set; }
+
 
         public List<Question> Questions { get; set; }
 

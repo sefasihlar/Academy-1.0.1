@@ -9,7 +9,7 @@ namespace DataAccessLayer.Concrete
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=CODECYBER\\SQLEXPRESS;database=DbAcademy;integrated security=true");
+            optionsBuilder.UseSqlServer("server=CODER;database=DbAcademy;integrated security=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
