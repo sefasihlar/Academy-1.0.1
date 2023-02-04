@@ -81,15 +81,18 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Update(ClassModel model)
         {
-            var values = _classManager.GetById(model.Id);
+            if(ModelState.IsValid) { 
 
-            if (values == null)
-            {
-                return NotFound();
+                var values = _classManager.GetById(model.Id);
+
+                if (values == null)
+                {
+                    return NotFound();
+                }
+                values.Name = model.Name;
+
+                _classManager.Update(values);
             }
-            values.Name = model.Name;
-
-            _classManager.Update(values);
             return RedirectToAction("Index", "Class");
         }
 

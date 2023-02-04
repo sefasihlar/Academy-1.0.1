@@ -28,20 +28,22 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(OutputModel model)
         {
-            var values = new Output()
-            {
-                Name = model.Name,
-                Condition = model.Condition,
-                CreatedDate = model.CreatedDate,
-                UpdatedDate = model.UpdatedDate,
-            };
+            if (ModelState.IsValid) { 
 
-            if (values != null)
-            {
-                _outputManager.Create(values);
-                return RedirectToAction("Index", "Output");
+                var values = new Output()
+                {
+                    Name = model.Name,
+                    Condition = model.Condition,
+                    CreatedDate = model.CreatedDate,
+                    UpdatedDate = model.UpdatedDate,
+                };
+
+                if (values != null)
+                {
+                    _outputManager.Create(values);
+                    return RedirectToAction("Index", "Output");
+                }
             }
-
 
             return View(model);
         }
@@ -80,17 +82,18 @@ namespace WebUI.Controllers
 
         [HttpPost]
         public IActionResult Update(OutputModel model)
-        {
-            var values = _outputManager.GetById(model.Id);
-            if (values != null)
-            {
-                values.Name = model.Name;
-                values.Condition = model.Condition;
-                values.CreatedDate = model.CreatedDate;
-                values.UpdatedDate = model.UpdatedDate;
+        {   if(ModelState.IsValid) {
+                var values = _outputManager.GetById(model.Id);
+                if (values != null)
+                {
+                    values.Name = model.Name;
+                    values.Condition = model.Condition;
+                    values.CreatedDate = model.CreatedDate;
+                    values.UpdatedDate = model.UpdatedDate;
 
-                _outputManager.Update(values);
-                return RedirectToAction("Index", "Output");
+                    _outputManager.Update(values);
+                    return RedirectToAction("Index", "Output");
+                }
             }
             return NotFound(model);
         }

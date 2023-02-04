@@ -76,6 +76,8 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Update(LevelModel model)
         {
+            if (ModelState.IsValid) {
+
             var values = _levelManager.GetById(model.Id);
 
             if (values == null)
@@ -86,7 +88,7 @@ namespace WebUI.Controllers
             values.Name = model.Name;
             _levelManager.Update(values);
 
-
+            }
             return RedirectToAction("Index","Level");
         }
 

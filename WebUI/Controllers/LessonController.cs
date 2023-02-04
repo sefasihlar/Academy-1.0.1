@@ -56,20 +56,22 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(LessonModel model)
         {
-            var values = new Lesson()
-            {
-                Name = model.Name,
-                ClassId = model.ClassId,
-            };
+            if(ModelState.IsValid) { 
+                var values = new Lesson()
+                {
+                    Name = model.Name,
+                    ClassId = model.ClassId,
+                };
 
-            if (values != null)
-            {
-                _lessonManager.Create(values);
-                return RedirectToAction("Index", "Lesson");
+                if (values != null)
+                {
+                    _lessonManager.Create(values);
+                    return RedirectToAction("Index", "Lesson");
+                }
+
+                var classes = _classManager.GetAll();
+                ViewBag.classes = new SelectList(classes, "Id", "Name");
             }
-
-            var classes = _classManager.GetAll();
-            ViewBag.classes = new SelectList(classes, "Id", "Name");
 
             return View(model);
         }
@@ -114,19 +116,20 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Update(LessonModel model)
         {
-            var values = _lessonManager.GetById(model.Id);
+            if(ModelState.IsValid) {
 
-            if (values == null)
-            {
-                return NotFound();
+                var values = _lessonManager.GetById(model.Id);
+                if (values == null)
+                {
+                    return NotFound();
+                }
+
+                values.Name = model.Name;
+                values.ClassId = model.ClassId;
+                values.UpdatedDate = model.UpdatedDate;
+                values.CreatedDate = model.CreatedDate;
+                values.Condition = model.Condition;
             }
-
-            values.Name = model.Name;
-            values.ClassId = model.ClassId;
-            values.UpdatedDate = model.UpdatedDate;
-            values.CreatedDate = model.CreatedDate;
-            values.Condition = model.Condition;
-
             return RedirectToAction("Index","Lesson");
         }
     }

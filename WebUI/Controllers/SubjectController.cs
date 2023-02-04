@@ -26,6 +26,7 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+        
             var lesson = _lessonManager.GetAll();
             ViewBag.lessons = new SelectList(lesson,"Id","Name");
 
@@ -40,24 +41,32 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(SubjectModel model)
         {
+            if(ModelState.IsValid) {
+                var values = new Subject()
+                {
+                    Name = model.Name,
+                    LessonId = model.LessonId,
 
-            var values = new Subject()
-            {
-                Name = model.Name,
-                LessonId = model.LessonId,
+                };
 
-            };
+                if (values!=null)
+                {
+                    _subjectManager.Create(values);
+                    return RedirectToAction("Index", "Subject");
+                }
 
-            if (values!=null)
-            {
-                _subjectManager.Create(values);
-                return RedirectToAction("Index", "Subject");
-            }
-
-            var lesson = _lessonManager.GetAll();
-            ViewBag.lessons = new SelectList(lesson, "Id", "Name");
-
+                var lesson = _lessonManager.GetAll();
+                ViewBag.lessons = new SelectList(lesson, "Id", "Name");
+                }
             return View(model);
+
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int subjectId, int lessonId)
+        {
+            _subjectManager.DeleteFromSubject(subjectId, lessonId);
+            return RedirectToAction("Index", "Subject");
 
         }
 
@@ -82,30 +91,20 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Update(SubjectModel model)
         {
-            var values = _subjectManager.GetById(model.Id);
+            if (ModelState.IsValid) {
+                var values = _subjectManager.GetById(model.Id);
 
-            if (values == null)
-            {
-                return NotFound();
-            }
+                if (values == null)
+                {
+                    return NotFound();
+                }
 
-            values.Name = model.Name;
-            values.LessonId = model.LessonId;
+                values.Name = model.Name;
+                values.LessonId = model.LessonId;
   
-            _subjectManager.Update(values);
-
+                _subjectManager.Update(values);
+            }
             return View();
         }
-
-        [HttpPost]
-        public IActionResult Delete(int subjectId,int lessonId)
-        {
-            _subjectManager.DeleteFromSubject(subjectId, lessonId);
-            return RedirectToAction("Index", "Subject");
-
-        }
-
-
-
     }
 }
