@@ -20,10 +20,5 @@
 
         public Boolean Condition { get; set; }
 
-
-        public List<Question> Questions { get; set; }
-
-
-
     }
 }

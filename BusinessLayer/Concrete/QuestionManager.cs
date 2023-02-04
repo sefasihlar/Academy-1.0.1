@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _questionDal.Delete(entity);
         }
 
+        public void DeleteFromQuestion(int questionId, int outputId, int optionId, int subjectId, int lessonId)
+        {
+            _questionDal.DeleteFromQuestion(questionId, outputId, optionId, subjectId, lessonId);
+        }
+
         public List<Question> GetAll()
         {
             return _questionDal.GetAll().ToList();
@@ -31,6 +36,11 @@ namespace BusinessLayer.Concrete
         public Question GetById(int id)
         {
             return _questionDal.GetById(id);
+        }
+
+        public List<Question> GetWithList()
+        {
+            return _questionDal.GetWithList().ToList();
         }
 
         public void Update(Question entity)

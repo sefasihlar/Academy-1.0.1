@@ -410,9 +410,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ExamId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -439,8 +436,6 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ExamId");
 
                     b.HasIndex("LessonId");
 
@@ -680,10 +675,6 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Question", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.Exam", null)
-                        .WithMany("Questions")
-                        .HasForeignKey("ExamId");
-
                     b.HasOne("EntityLayer.Concrete.Lesson", "Lesson")
                         .WithMany()
                         .HasForeignKey("LessonId")
@@ -809,11 +800,6 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("EntityLayer.Concrete.Cart", b =>
                 {
                     b.Navigation("CartItems");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Exam", b =>
-                {
-                    b.Navigation("Questions");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Subject", b =>

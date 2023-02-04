@@ -380,17 +380,11 @@ namespace DataAccessLayer.Migrations
                     OptionId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Condition = table.Column<bool>(type: "bit", nullable: false),
-                    ExamId = table.Column<int>(type: "int", nullable: true)
+                    Condition = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Questions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Questions_Exams_ExamId",
-                        column: x => x.ExamId,
-                        principalTable: "Exams",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Questions_Lessons_LessonId",
                         column: x => x.LessonId,
@@ -519,11 +513,6 @@ namespace DataAccessLayer.Migrations
                 column: "ClassId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Questions_ExamId",
-                table: "Questions",
-                column: "ExamId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Questions_LessonId",
                 table: "Questions",
                 column: "LessonId");
@@ -585,6 +574,9 @@ namespace DataAccessLayer.Migrations
                 name: "CartItem");
 
             migrationBuilder.DropTable(
+                name: "Exams");
+
+            migrationBuilder.DropTable(
                 name: "Messages");
 
             migrationBuilder.DropTable(
@@ -601,9 +593,6 @@ namespace DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Questions");
-
-            migrationBuilder.DropTable(
-                name: "Exams");
 
             migrationBuilder.DropTable(
                 name: "Levels");

@@ -15,12 +15,14 @@ namespace WebUI.Models
         public int LevelId { get; set; }
         public Level Level { get; set; }
 
-
+        public int LessonId { get; set; }
+        public Lesson Lesson { get; set; }
 
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
 
-
+        public int OptionId { get; set; }
+        public Option Option { get; set; }
 
         public int OutputId { get; set; }
         public Output Output { get; set; }
