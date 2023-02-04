@@ -3,6 +3,7 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Principal;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -71,6 +72,62 @@ namespace WebUI.Controllers
             ViewBag.classes = new SelectList(classes, "Id", "Name");
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int lessonId, int classId)
+        {
+            if (lessonId == null || classId == null)
+            {
+
+                return NotFound();
+            }
+
+            _lessonManager.DeleteFromLesson(lessonId, classId);
+
+
+            return RedirectToAction("Index", "Lesson");
+
+        }
+
+        [HttpGet]
+        public IActionResult Detail(int id)
+        {
+            var values = _lessonManager.GetById(id);
+
+            if (values==null)
+            {
+                return NotFound();
+            }
+
+            return View(new LessonModel()
+            {
+                Id = values.Id,
+                Name = values.Name,
+                ClassId = values.ClassId,
+                UpdatedDate= values.UpdatedDate,
+                CreatedDate = values.CreatedDate,
+                Condition = values.Condition,
+            });
+        }
+
+        [HttpPost]
+        public IActionResult Update(LessonModel model)
+        {
+            var values = _lessonManager.GetById(model.Id);
+
+            if (values == null)
+            {
+                return NotFound();
+            }
+
+            values.Name = model.Name;
+            values.ClassId = model.ClassId;
+            values.UpdatedDate = model.UpdatedDate;
+            values.CreatedDate = model.CreatedDate;
+            values.Condition = model.Condition;
+
+            return RedirectToAction("Index","Lesson");
         }
     }
 }

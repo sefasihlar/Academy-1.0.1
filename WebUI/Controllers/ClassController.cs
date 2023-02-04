@@ -60,9 +60,9 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Detail(ClassModel model)
+        public IActionResult Detail(int id)
         {
-            var values = _classManager.GetById(model.Id);
+            var values = _classManager.GetById(id);
 
             if (values == null)
             {

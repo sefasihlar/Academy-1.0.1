@@ -23,6 +23,12 @@
         public int OutputId { get; set; }
         public Output Output { get; set; }
 
+
+        public int OptionId { get; set; }
+        public Option Option { get; set; }
+
+
+
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 

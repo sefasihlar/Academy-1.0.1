@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(AcademyContext))]
-    [Migration("20230204063356_datatimeMig")]
-    partial class datatimeMig
+    [Migration("20230204082728_AcademyDb")]
+    partial class AcademyDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -348,6 +348,30 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Option", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Condition")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Options");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Output", b =>
                 {
                     b.Property<int>("Id")
@@ -401,6 +425,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("LevelId")
                         .HasColumnType("int");
 
+                    b.Property<int>("OptionId")
+                        .HasColumnType("int");
+
                     b.Property<int>("OutputId")
                         .HasColumnType("int");
 
@@ -420,6 +447,8 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("LessonId");
 
                     b.HasIndex("LevelId");
+
+                    b.HasIndex("OptionId");
 
                     b.HasIndex("OutputId");
 
@@ -446,6 +475,9 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("OptionId")
+                        .HasColumnType("int");
+
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
 
@@ -457,6 +489,8 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OptionId");
 
                     b.HasIndex("QuestionId");
 
@@ -664,6 +698,12 @@ namespace DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("EntityLayer.Concrete.Option", "Option")
+                        .WithMany()
+                        .HasForeignKey("OptionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EntityLayer.Concrete.Output", "Output")
                         .WithMany()
                         .HasForeignKey("OutputId")
@@ -680,6 +720,8 @@ namespace DataAccessLayer.Migrations
 
                     b.Navigation("Level");
 
+                    b.Navigation("Option");
+
                     b.Navigation("Output");
 
                     b.Navigation("Subject");
@@ -687,11 +729,19 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Solution", b =>
                 {
+                    b.HasOne("EntityLayer.Concrete.Option", "Option")
+                        .WithMany()
+                        .HasForeignKey("OptionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("EntityLayer.Concrete.Question", "Question")
                         .WithMany()
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Option");
 
                     b.Navigation("Question");
                 });

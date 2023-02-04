@@ -79,7 +79,21 @@ namespace DataAccessLayer.Concrete
                  .WithMany()
                  .HasForeignKey(q => q.LessonId)
                  .OnDelete(DeleteBehavior.Restrict);
-           
+
+            //Solution Fluent Api
+    
+
+            modelBuilder.Entity<Solution>()
+                .HasOne(q => q.Question)
+                .WithMany()
+                .HasForeignKey(q => q.QuestionId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Solution>()
+                .HasOne(q => q.Option)
+                .WithMany()
+                .HasForeignKey(q => q.OptionId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
         }
@@ -94,6 +108,8 @@ namespace DataAccessLayer.Concrete
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Exam> Exams { get; set; }
+
+        public DbSet<Option> Options { get; set; }
 
 
     }
