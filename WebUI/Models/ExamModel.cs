@@ -27,5 +27,7 @@ namespace WebUI.Models
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
         public Boolean Condition { get; set; }
+
+        public List<Question> Questions { get; set; }
     }
 }

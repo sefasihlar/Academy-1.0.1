@@ -10,7 +10,7 @@ namespace WebUI.ViewComponents
     {
         LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
 
-        public IViewComponentResult Invoke(SubjectModel model)
+        public IViewComponentResult Invoke(LessonModel model)
         {
             var lesson = _lessonManager.GetAll();
             ViewBag.lessons = new SelectList(lesson, "Id", "Name");

@@ -3,13 +3,14 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Rewrite;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
     public class SubjectController : Controller
     {
-        LessonManager _lessonManager = new LessonManager( new EfCoreLessonRepository());
+        LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
         SubjectManager _subjectManager = new SubjectManager(new EfCoreSubjectRepository());
         public IActionResult Index()
         {
@@ -20,15 +21,15 @@ namespace WebUI.Controllers
 
             return View(values);
 
-      
+
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-        
-            var lesson = _lessonManager.GetAll();
-            ViewBag.lessons = new SelectList(lesson,"Id","Name");
+
+            //var lesson = _lessonManager.GetAll();
+            //ViewBag.lessons = new SelectList(lesson,"Id","Name");
 
             var values = new SubjectListModel()
             {
@@ -41,23 +42,27 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(SubjectModel model)
         {
-            if(ModelState.IsValid) {
-                var values = new Subject()
-                {
-                    Name = model.Name,
-                    LessonId = model.LessonId,
+            if (model.Name == null || model.LessonId == null)
+            {
+                return NotFound();
+            }
 
-                };
+            var values = new Subject()
+            {
+                Name = model.Name,
+                LessonId = model.LessonId,
 
-                if (values!=null)
-                {
-                    _subjectManager.Create(values);
-                    return RedirectToAction("Index", "Subject");
-                }
+            };
 
-                var lesson = _lessonManager.GetAll();
-                ViewBag.lessons = new SelectList(lesson, "Id", "Name");
-                }
+            if (values != null)
+            {
+                _subjectManager.Create(values);
+                return RedirectToAction("Index", "Subject");
+            }
+
+            var lesson = _lessonManager.GetAll();
+            ViewBag.lessons = new SelectList(lesson, "Id", "Name");
+
             return View(model);
 
         }
@@ -82,16 +87,17 @@ namespace WebUI.Controllers
 
             return View(new SubjectModel()
             {
-                Id = model.Id,  
+                Id = model.Id,
                 Name = model.Name,
-                LessonId=model.LessonId,
+                LessonId = model.LessonId,
             });
         }
 
         [HttpPost]
         public IActionResult Update(SubjectModel model)
         {
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
                 var values = _subjectManager.GetById(model.Id);
 
                 if (values == null)
@@ -101,7 +107,7 @@ namespace WebUI.Controllers
 
                 values.Name = model.Name;
                 values.LessonId = model.LessonId;
-  
+
                 _subjectManager.Update(values);
             }
             return View();

@@ -1,7 +1,10 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Options;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -9,7 +12,11 @@ namespace WebUI.Controllers
     public class QuestionController : Controller
     {
         QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
-
+        LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
+        LevelManager _levelManager = new LevelManager(new EfCoreLevelRepository());
+        SubjectManager _subjectManager = new SubjectManager(new EfCoreSubjectRepository());
+        OutputManager _outputManager = new OutputManager(new EfCoreOutputRepository());
+        OptionManager _optionManager = new OptionManager(new EfCoreOptionRepository());
         public IActionResult Index()
         {
 
@@ -25,7 +32,13 @@ namespace WebUI.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            
+
+            var values = new QuestionListModel()
+            {
+                Questions = _questionManager.GetWithList()
+            };
+            return View(values);
         }
 
 
@@ -53,11 +66,91 @@ namespace WebUI.Controllers
                     _questionManager.Create(values);
                     return RedirectToAction("Index","Question");
                 }
+                //eger bir validation ile karsilasirsa dropdownlarin tekara dolmasi icin tekrar ediyoruz
+
+                var lesson = _lessonManager.GetAll();
+                ViewBag.lessons = new SelectList(lesson, "Id", "Name");
+
+                var level = _levelManager.GetAll();
+                ViewBag.levels = new SelectList(level, "Id", "Name");
+
+                var subject = _subjectManager.GetAll();
+                ViewBag.subjects = new SelectList(subject, "Id", "Name");
+
+                var output = _outputManager.GetAll();
+                ViewBag.outputs = new SelectList(output, "Id", "Name");
+
+                var option = _optionManager.GetAll();
+                ViewBag.options = new SelectList(option, "Id", "Name");
             }
 
 
             return View(model);
         }
+
+        [HttpPost]
+        public IActionResult Delete(int questionId, int outputId, int optionId, int subjectId, int lessonId)
+        {
+            _questionManager.DeleteFromQuestion(questionId, outputId, optionId, subjectId, lessonId);
+            return RedirectToAction("Index", "Question");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var values = _questionManager.GetById(id);
+            if (values==null)
+            {
+                return NotFound();
+            }
+
+            return View(new QuestionModel()
+            {
+                Id =values.Id,
+                Text = values.Text,
+                ImageUrl = values.ImageUrl,
+                LessonId = values.LessonId,
+                LevelId = values.LevelId,
+                SubjectId = values.SubjectId,
+                OptionId = values.OptionId,
+                OutputId = values.OutputId,
+                CreatedDate = values.CreatedDate,
+                UpdatedDate = values.UpdatedDate,
+                Condition = values.Condition,
+            });
+        }
+
+        [HttpPost]
+        public IActionResult Update(QuestionModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+          
+                var values = _questionManager.GetById(model.Id);
+                if (values!=null)
+                {
+                    values.Text = model.Text;
+                    values.ImageUrl = model.ImageUrl;
+                    values.LessonId = model.LessonId;
+                    values.LevelId = model.LevelId;
+                    values.SubjectId = model.SubjectId;
+                    values.OptionId = model.OptionId;
+                    values.OutputId = model.OutputId;
+                    values.CreatedDate = model.CreatedDate;
+                    values.UpdatedDate = model.UpdatedDate;
+                    values.Condition = model.Condition;
+
+
+                    _questionManager.Update(values);
+                    return RedirectToAction("Index","Question");
+                }
+            }
+            return View(model);
+        
+        }
+
+
 
         
     }
