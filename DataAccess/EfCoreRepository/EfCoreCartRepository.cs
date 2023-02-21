@@ -31,7 +31,7 @@ namespace DataAccessLayer.EntityFreamwork
         {
             using (var context = new AcademyContext())
             {
-                var cmd = @"delete from CartItem where CartId=@p0 And ProductId=@p1";
+                var cmd = @"delete from CartItem where CartId=@p0 And examId=@p1";
                 context.Database.ExecuteSqlRaw(cmd, cartId, examId);
             }
         }

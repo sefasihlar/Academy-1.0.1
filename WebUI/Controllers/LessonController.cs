@@ -56,7 +56,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(LessonModel model)
         {
-            if(ModelState.IsValid) { 
+             
                 var values = new Lesson()
                 {
                     Name = model.Name,
@@ -71,8 +71,7 @@ namespace WebUI.Controllers
 
                 var classes = _classManager.GetAll();
                 ViewBag.classes = new SelectList(classes, "Id", "Name");
-            }
-
+         
             return View(model);
         }
 

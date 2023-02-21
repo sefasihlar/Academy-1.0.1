@@ -1,4 +1,6 @@
-﻿namespace WebUI.Models
+﻿using EntityLayer.Concrete;
+
+namespace WebUI.Models
 {
     public class ClassModel
     {
@@ -9,5 +11,7 @@
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
         public Boolean Condition { get; set; }
+
+     
     }
 }

@@ -46,19 +46,12 @@ namespace DataAccessLayer.Concrete
                .HasForeignKey(q => q.LessonId)
                .OnDelete(DeleteBehavior.Restrict);
 
-
-
-
             //Lesson Fluent Api
             modelBuilder.Entity<Lesson>()
                   .HasOne(q => q.Class)
                   .WithMany()
                   .HasForeignKey(q => q.ClassId)
                   .OnDelete(DeleteBehavior.Restrict);
-
-
-
-
 
             //Exam Fluent Api
 

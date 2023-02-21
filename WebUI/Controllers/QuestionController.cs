@@ -54,7 +54,7 @@ namespace WebUI.Controllers
                     LessonId = model.LessonId,
                     LevelId = model.LevelId,
                     SubjectId = model.SubjectId,
-                    OptionId = model.OptionId,
+                    Options = model.Options,
                     OutputId = model.OutputId,
                     CreatedDate = model.CreatedDate,
                     UpdatedDate = model.UpdatedDate,
@@ -112,8 +112,8 @@ namespace WebUI.Controllers
                 LessonId = values.LessonId,
                 LevelId = values.LevelId,
                 SubjectId = values.SubjectId,
-                OptionId = values.OptionId,
-                OutputId = values.OutputId,
+				Options = values.Options,
+				OutputId = values.OutputId,
                 CreatedDate = values.CreatedDate,
                 UpdatedDate = values.UpdatedDate,
                 Condition = values.Condition,
@@ -135,7 +135,7 @@ namespace WebUI.Controllers
                     values.LessonId = model.LessonId;
                     values.LevelId = model.LevelId;
                     values.SubjectId = model.SubjectId;
-                    values.OptionId = model.OptionId;
+                    values.Options = model.Options;
                     values.OutputId = model.OutputId;
                     values.CreatedDate = model.CreatedDate;
                     values.UpdatedDate = model.UpdatedDate;

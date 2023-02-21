@@ -1,4 +1,6 @@
 ﻿using EntityLayer.Concrete;
+using NuGet.Protocol.Core.Types;
+using System.Reflection.Metadata.Ecma335;
 
 namespace WebUI.Models
 {
@@ -21,8 +23,7 @@ namespace WebUI.Models
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
 
-        public int OptionId { get; set; }
-        public Option Option { get; set; }
+        public List<Option> Options { get; set; }
 
         public int OutputId { get; set; }
         public Output Output { get; set; }

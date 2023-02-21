@@ -366,11 +366,16 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
 
                     b.ToTable("Options");
                 });
@@ -425,9 +430,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("LevelId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OptionId")
-                        .HasColumnType("int");
-
                     b.Property<int>("OutputId")
                         .HasColumnType("int");
 
@@ -445,8 +447,6 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("LessonId");
 
                     b.HasIndex("LevelId");
-
-                    b.HasIndex("OptionId");
 
                     b.HasIndex("OutputId");
 
@@ -686,6 +686,13 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Class");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Option", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Question", null)
+                        .WithMany("Options")
+                        .HasForeignKey("QuestionId");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Question", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.Lesson", "Lesson")
@@ -698,12 +705,6 @@ namespace DataAccessLayer.Migrations
                         .WithMany()
                         .HasForeignKey("LevelId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("EntityLayer.Concrete.Option", "Option")
-                        .WithMany()
-                        .HasForeignKey("OptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.Output", "Output")
@@ -721,8 +722,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Lesson");
 
                     b.Navigation("Level");
-
-                    b.Navigation("Option");
 
                     b.Navigation("Output");
 
@@ -813,6 +812,11 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("EntityLayer.Concrete.Cart", b =>
                 {
                     b.Navigation("CartItems");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Question", b =>
+                {
+                    b.Navigation("Options");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Subject", b =>

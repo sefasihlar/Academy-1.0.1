@@ -1,10 +1,12 @@
 ﻿using EntityLayer.Concrete;
+using Microsoft.Build.Framework;
 
 namespace WebUI.Models
 {
     public class ExamModel
     {
         public int Id { get; set; }
+        [Required]
         public string? Title { get; set; }
         public String Description { get; set; }
 
@@ -29,5 +31,7 @@ namespace WebUI.Models
         public Boolean Condition { get; set; }
 
         public List<Question> Questions { get; set; }
+
+
     }
 }

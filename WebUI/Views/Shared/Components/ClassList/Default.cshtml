@@ -1,0 +1,14 @@
+﻿@model WebUI.Models.LessonModel
+
+<form asp-controller="Lesson" asp-action="Create" method="post">
+    <div class="input-group">
+        <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Bir Ders girin" style="margin-right: 10px;border-radius: 20px;">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary" style="border-radius:20px" type="">Ekle</button>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <select class="form-control" asp-for="ClassId" asp-items="ViewBag.classes" style="margin-top:10px;width:100px;border-radius:20px;margin-right:65px"></select>
+    </div>
+</form>
