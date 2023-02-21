@@ -103,7 +103,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<Exam> Exams { get; set; }
 
         public DbSet<Option> Options { get; set; }
-
+        public DbSet <Branch> Branches { get; set; }
 
     }
 }
