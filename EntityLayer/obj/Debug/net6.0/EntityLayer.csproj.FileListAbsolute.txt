@@ -34,3 +34,15 @@ C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\EntityLayer\obj\Debu
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\EntityLayer\obj\Debug\net6.0\refint\EntityLayer.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\EntityLayer\obj\Debug\net6.0\EntityLayer.pdb
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\EntityLayer\obj\Debug\net6.0\ref\EntityLayer.dll
+C:\Users\HP\Desktop\Academy\EntityLayer\bin\Debug\net6.0\EntityLayer.deps.json
+C:\Users\HP\Desktop\Academy\EntityLayer\bin\Debug\net6.0\EntityLayer.dll
+C:\Users\HP\Desktop\Academy\EntityLayer\bin\Debug\net6.0\EntityLayer.pdb
+C:\Users\HP\Desktop\Academy\EntityLayer\obj\Debug\net6.0\EntityLayer.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\Academy\EntityLayer\obj\Debug\net6.0\EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\Academy\EntityLayer\obj\Debug\net6.0\EntityLayer.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\Academy\EntityLayer\obj\Debug\net6.0\EntityLayer.AssemblyInfo.cs
+C:\Users\HP\Desktop\Academy\EntityLayer\obj\Debug\net6.0\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\Academy\EntityLayer\obj\Debug\net6.0\EntityLayer.dll
+C:\Users\HP\Desktop\Academy\EntityLayer\obj\Debug\net6.0\refint\EntityLayer.dll
+C:\Users\HP\Desktop\Academy\EntityLayer\obj\Debug\net6.0\EntityLayer.pdb
+C:\Users\HP\Desktop\Academy\EntityLayer\obj\Debug\net6.0\ref\EntityLayer.dll
