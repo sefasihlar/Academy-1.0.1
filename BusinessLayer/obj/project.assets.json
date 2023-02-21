@@ -10864,19 +10864,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sihla\\.nuget\\packages\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\BusinessLayer\\BusinessLayer.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Academy\\BusinessLayer\\BusinessLayer.csproj",
       "projectName": "BusinessLayer",
-      "projectPath": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\BusinessLayer\\BusinessLayer.csproj",
-      "packagesPath": "C:\\Users\\sihla\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\BusinessLayer\\obj\\",
+      "projectPath": "C:\\Users\\HP\\Desktop\\Academy\\BusinessLayer\\BusinessLayer.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\Academy\\BusinessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sihla\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10890,8 +10890,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\DataAccess\\DataAccessLayer.csproj": {
-              "projectPath": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\DataAccess\\DataAccessLayer.csproj"
+            "C:\\Users\\HP\\Desktop\\Academy\\DataAccess\\DataAccessLayer.csproj": {
+              "projectPath": "C:\\Users\\HP\\Desktop\\Academy\\DataAccess\\DataAccessLayer.csproj"
             }
           }
         }
