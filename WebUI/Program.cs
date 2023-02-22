@@ -1,3 +1,7 @@
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +16,21 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+
+	options.Lockout.AllowedForNewUsers = true;
+	options.User.RequireUniqueEmail = true;
+	options.SignIn.RequireConfirmedEmail = true;
+
+});
+
+builder.Services.AddDbContext<AcademyContext>();
+builder.Services.AddIdentity<AppUser, AppRole>()
+	.AddEntityFrameworkStores<AcademyContext>()
+	.AddDefaultTokenProviders();
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
