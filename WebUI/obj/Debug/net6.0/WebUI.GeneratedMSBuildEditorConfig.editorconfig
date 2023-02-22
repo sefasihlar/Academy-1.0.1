@@ -9,93 +9,101 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebUI
 build_property.RootNamespace = WebUI
-build_property.ProjectDir = C:\Users\HP\Desktop\Academy\WebUI\
+build_property.ProjectDir = C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\Users\HP\Desktop\Academy\WebUI
+build_property.MSBuildProjectDirectory = C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Branch/Index.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Branch/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Class/Detail.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Class/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Class/Index.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Class/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Home/Index.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Home/Privacy.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Lesson/Index.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Lesson/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVzc29uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Level/Detail.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Level/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGV2ZWxcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Level/Index.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Level/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGV2ZWxcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Option/Index.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Option/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3B0aW9uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Output/Index.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Output/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3V0cHV0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Question/Index.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Question/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Shared/Components/ClassList/Default.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Shared/Components/ClassList/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2xhc3NMaXN0XERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Shared/Components/LessonList/Default.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Shared/Components/LessonList/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTGVzc29uTGlzdFxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Shared/Components/SubjectList/Default.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Shared/Components/SubjectList/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU3ViamVjdExpc3RcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Shared/Error.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Subject/Detail.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Solution/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29sdXRpb25cRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Solution/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29sdXRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Subject/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdFxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Subject/Index.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Subject/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/_ViewImports.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/_ViewStart.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/Academy/WebUI/Views/Shared/_Layout.cshtml]
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-mv07mvknwk

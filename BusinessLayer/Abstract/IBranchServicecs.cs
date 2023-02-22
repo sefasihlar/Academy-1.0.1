@@ -10,7 +10,5 @@ namespace BusinessLayer.Abstract
 {
 	public interface IBranchService:IGenericService<Branch>
 	{
-		List<Branch> GetWithClassList();
-
 	}
 }

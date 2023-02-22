@@ -86,6 +86,7 @@ namespace WebUI.Controllers
 				{
 					return NotFound();
 				}
+
 				values.Name = model.Name;
 
 				_classManager.Update(values);

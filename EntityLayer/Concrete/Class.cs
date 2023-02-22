@@ -10,5 +10,7 @@
 
         public Boolean Condition { get; set; }
 
+        public List<ClassBranch> ClassBranches { get; set; }
+
     }
 }

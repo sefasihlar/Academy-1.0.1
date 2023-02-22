@@ -1,351 +1,351 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebUI.bundle.scp.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebUI.bundle.scp.css",
       "PackagePath": "staticwebassets\\WebUI.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\GüncelSunum.pptx",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\GüncelSunum.pptx",
       "PackagePath": "staticwebassets\\Template\\GüncelSunum.pptx"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\assets\\app.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\app.css",
       "PackagePath": "staticwebassets\\Template\\assets\\app.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\assets\\app.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\app.js",
       "PackagePath": "staticwebassets\\Template\\assets\\app.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\assets\\meta_logo_2.png",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\meta_logo_2.png",
       "PackagePath": "staticwebassets\\Template\\assets\\meta_logo_2.png"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\giris.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\giris.html",
       "PackagePath": "staticwebassets\\Template\\giris.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\kayit_ol.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\kayit_ol.html",
       "PackagePath": "staticwebassets\\Template\\kayit_ol.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\meta_logo.png",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\meta_logo.png",
       "PackagePath": "staticwebassets\\Template\\meta_logo.png"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_index.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_index.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_index.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_siniflar.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_siniflar.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_siniflar.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_zorluk.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_zorluk.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_zorluk.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_zorluk_düzenle.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_zorluk_düzenle.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_zorluk_düzenle.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_ders_düzenle.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_ders_düzenle.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_ders_düzenle.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_konu_düzenle.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_konu_düzenle.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_konu_düzenle.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_sinif_düzenle.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_sinif_düzenle.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_sinif_düzenle.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_zorluk_düzenle.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_zorluk_düzenle.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_zorluk_düzenle.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_konu.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_konu.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_konu.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_konu_düzenle.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_konu_düzenle.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_konu_düzenle.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_mesajlar.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_mesajlar.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_mesajlar.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_mesajlasma_sayfasi.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_mesajlasma_sayfasi.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_mesajlasma_sayfasi.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_profil_edit.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_profil_edit.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_profil_edit.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_index.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_index.html",
       "PackagePath": "staticwebassets\\Template\\öğrenci\\ogrenci_index.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_mesajlar.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_mesajlar.html",
       "PackagePath": "staticwebassets\\Template\\öğrenci\\ogrenci_mesajlar.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_mesajlasma_sayfasi.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_mesajlasma_sayfasi.html",
       "PackagePath": "staticwebassets\\Template\\öğrenci\\ogrenci_mesajlasma_sayfasi.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_profil_edit.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_profil_edit.html",
       "PackagePath": "staticwebassets\\Template\\öğrenci\\ogrenci_profil_edit.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_index.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_index.html",
       "PackagePath": "staticwebassets\\Template\\öğretmen\\ogretmen_index.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_mesajlar.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_mesajlar.html",
       "PackagePath": "staticwebassets\\Template\\öğretmen\\ogretmen_mesajlar.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_mesajlasma_sayfasi.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_mesajlasma_sayfasi.html",
       "PackagePath": "staticwebassets\\Template\\öğretmen\\ogretmen_mesajlasma_sayfasi.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_profil_edit.html",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_profil_edit.html",
       "PackagePath": "staticwebassets\\Template\\öğretmen\\ogretmen_profil_edit.html"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {

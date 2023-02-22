@@ -33,7 +33,12 @@ namespace BusinessLayer.Concrete
             return _solutionDal.GetById(id);
         }
 
-        public void Update(Solution entity)
+		public List<Solution> GetWithQuestionList()
+		{
+			return _solutionDal.GetWithQuestionList().ToList();
+		}
+
+		public void Update(Solution entity)
         {
             _solutionDal.Update(entity);
         }

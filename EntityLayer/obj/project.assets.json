@@ -1899,19 +1899,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {}
+    "C:\\Users\\sihla\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Academy\\EntityLayer\\EntityLayer.csproj",
+      "projectUniqueName": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\EntityLayer\\EntityLayer.csproj",
       "projectName": "EntityLayer",
-      "projectPath": "C:\\Users\\HP\\Desktop\\Academy\\EntityLayer\\EntityLayer.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\Academy\\EntityLayer\\obj\\",
+      "projectPath": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\EntityLayer\\EntityLayer.csproj",
+      "packagesPath": "C:\\Users\\sihla\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\EntityLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sihla\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

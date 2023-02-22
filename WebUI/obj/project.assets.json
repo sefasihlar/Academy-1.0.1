@@ -11272,19 +11272,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {}
+    "C:\\Users\\sihla\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\WebUI.csproj",
+      "projectUniqueName": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\WebUI.csproj",
       "projectName": "WebUI",
-      "projectPath": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\WebUI.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\Academy\\WebUI\\obj\\",
+      "projectPath": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\WebUI.csproj",
+      "packagesPath": "C:\\Users\\sihla\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sihla\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11298,8 +11298,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\HP\\Desktop\\Academy\\BusinessLayer\\BusinessLayer.csproj": {
-              "projectPath": "C:\\Users\\HP\\Desktop\\Academy\\BusinessLayer\\BusinessLayer.csproj"
+            "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\BusinessLayer\\BusinessLayer.csproj": {
+              "projectPath": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\BusinessLayer\\BusinessLayer.csproj"
             }
           }
         }

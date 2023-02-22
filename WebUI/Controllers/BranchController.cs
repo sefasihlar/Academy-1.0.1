@@ -8,14 +8,14 @@ namespace WebUI.Controllers
 {
 	public class BranchController : Controller
 	{
-		BranchManager _branchManager  = new BranchManager(new EfCoreBranchRepository());
+		BranchManager _branchManager = new BranchManager(new EfCoreBranchRepository());
 		public IActionResult Index()
 		{
 			return View(new BranchListModel()
 			{
-				Branches = _branchManager.GetWithClassList().ToList()
+				Branches = _branchManager.GetAll().ToList()
 			});
-					
+
 		}
 		[HttpGet]
 		public IActionResult Create()
@@ -25,31 +25,32 @@ namespace WebUI.Controllers
 
 		}
 
-        [HttpPost]
-        public IActionResult Create(BranchModel model)
-        {
-			var values = new Branch { 
-			
-			Name= model.Name,
-			ClassId= model.ClassId,
+		[HttpPost]
+		public IActionResult Create(BranchModel model)
+		{
+			var values = new Branch
+			{
+
+				Name = model.Name,
+				CreatedDate= model.CreatedDate,
 			};
-			if (values==null)
+			if (values == null)
 			{
 				return NotFound(model);
 			}
 			_branchManager.Create(values);
-            return View();
+			return View();
 
-        }
+		}
 
 		[HttpPost]
 		public IActionResult Delete(int id)
 		{
 			var values = _branchManager.GetById(id);
-			if (values !=null) 
+			if (values != null)
 			{
 
-			_branchManager.Delete(values);
+				_branchManager.Delete(values);
 				return View();
 			}
 			return View();
@@ -60,35 +61,34 @@ namespace WebUI.Controllers
 		{
 			var values = _branchManager.GetById(id);
 
-			if (values ==null) 
+			if (values == null)
 			{
-				
+
 				return NotFound();
 			}
 
 			return View(new BranchModel()
 			{
-				Id= values.Id,
-				Name= values.Name,
-				ClassId= values.ClassId,
+				Id = values.Id,
+				Name = values.Name,
 
 			});
 		}
-		[HttpPost]
-		public IActionResult Upgrade(BranchModel model)
+	[HttpPost]
+	public IActionResult Update(BranchModel model)
+	{
+		if (ModelState.IsValid)
 		{
-			if (ModelState.IsValid)
+			var values = _branchManager.GetById(model.Id);
+			if (values != null)
 			{
-				var values = _branchManager.GetById(model.Id);
-				if (values !=null)
-				{
-					return NotFound();
-				}
-				_branchManager.Update(values);
+				return NotFound();
 			}
-			return View();
+			_branchManager.Update(values);
 		}
+		return View();
+	}
 
 
-    }
+}
 }

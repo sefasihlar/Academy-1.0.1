@@ -15,14 +15,18 @@ namespace DataAccessLayer.Concrete
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            //modelBuilder.Entity<Lesson>()
-            // .HasOne(l => l.Subject)
-            // .WithMany(s => s.Lessons)
-            // .HasForeignKey(l => l.SubjectId)
-            // .OnDelete(DeleteBehavior.NoAction);
+			//modelBuilder.Entity<Lesson>()
+			// .HasOne(l => l.Subject)
+			// .WithMany(s => s.Lessons)
+			// .HasForeignKey(l => l.SubjectId)
+			// .OnDelete(DeleteBehavior.NoAction);
 
-            //Question FluentApi
-            modelBuilder.Entity<Question>()
+			//Question FluentApi
+			modelBuilder.Entity<ClassBranch>()
+			   .HasKey(c => new { c.ClassId, c.BranchId });
+			base.OnModelCreating(modelBuilder);
+
+			modelBuilder.Entity<Question>()
                 .HasOne(q => q.Level)
                 .WithMany()
                 .HasForeignKey(q => q.LevelId)
@@ -101,8 +105,8 @@ namespace DataAccessLayer.Concrete
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Exam> Exams { get; set; }
-
         public DbSet<Option> Options { get; set; }
+        public DbSet<ClassBranch> ClassBranches { get; set; }
         public DbSet <Branch> Branches { get; set; }
 
     }

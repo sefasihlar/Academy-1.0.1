@@ -5,5 +5,6 @@ namespace BusinessLayer.Abstract
 {
     public interface ISolutionService : IGenericService<Solution>
     {
-    }
+		List<Solution> GetWithQuestionList();
+	}
 }

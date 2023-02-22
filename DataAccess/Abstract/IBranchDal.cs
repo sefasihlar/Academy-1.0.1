@@ -9,6 +9,5 @@ namespace DataAccessLayer.Abstract
 {
 	public  interface IBranchDal:IGenericDal<Branch>
 	{
-		List<Branch> GetWithClassList();
 	}
 }
