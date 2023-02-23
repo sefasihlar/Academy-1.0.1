@@ -17,20 +17,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-builder.Services.Configure<IdentityOptions>(options =>
-{
-
-	options.Lockout.AllowedForNewUsers = true;
-	options.User.RequireUniqueEmail = true;
-	options.SignIn.RequireConfirmedEmail = true;
-
-});
-
-builder.Services.AddDbContext<AcademyContext>();
-builder.Services.AddIdentity<AppUser, AppRole>()
-	.AddEntityFrameworkStores<AcademyContext>()
-	.AddDefaultTokenProviders();
-
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
