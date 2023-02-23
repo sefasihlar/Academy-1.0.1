@@ -29,7 +29,7 @@ namespace BusinessLayer.Concrete
                     });
                 }
 
-               
+          
                 _cartDal.Update(cart);
             }
         }

@@ -16,6 +16,7 @@ namespace WebUI.Controllers
 		AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
 		ClassManager _classManager = new ClassManager(new EfCoreClassRepository());
 		BranchManager _branchManager = new BranchManager(new EfCoreBranchRepository());
+		CartManager _cartManager = new CartManager(new EfCoreCartRepository());
 		private readonly UserManager<AppUser> _userManager;
 		private readonly SignInManager<AppUser> _signInManager;
 
@@ -23,6 +24,7 @@ namespace WebUI.Controllers
 		{
 			return View(new AppUserListModel()
 			{
+				//async metod oldugu icin hata alabiriz ! 
 				Users = _appUserManager.ListTogether().ToList()
 			});
 		}
@@ -178,7 +180,7 @@ namespace WebUI.Controllers
 				if (result.Succeeded)
 				{
 					//onaylama islemi basarili ise kullaniciya kart tanimlansin
-
+					_cartManager.InitializeCart(Convert.ToString(user.Id));
 
 					return RedirectToAction("Login","Account");
 				}
