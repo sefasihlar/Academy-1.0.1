@@ -12,7 +12,7 @@ namespace WebUI.ViewComponents
 
 		public IViewComponentResult Invoke(ClassModel model)
 		{
-			var classes = _classManager.GetAll();
+			var classes = _classManager.GetAll().ToList();
 			//ikinci virgülden sonraki kısım Listede görünecek kısım
 			ViewBag.classes = new SelectList(classes, "Id", "Name");
 			return View(model);
