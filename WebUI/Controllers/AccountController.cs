@@ -56,8 +56,6 @@ namespace WebUI.Controllers
 		public async Task<IActionResult> Register(RegisterModel model)
 		{
 			
-
-
 			if (ModelState.IsValid)
 			{
 				AppUser user = new AppUser()

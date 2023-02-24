@@ -2,6 +2,7 @@
 using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
@@ -43,14 +44,19 @@ namespace WebUI.Controllers
 
 
         [HttpPost]
-        public IActionResult Create(QuestionModel model)
+        public async Task<IActionResult> Create(QuestionModel model,IFormFile file)
         {
             if (ModelState.IsValid)
             {
+
+                if (file==null)
+                {
+                    return NotFound();
+                }
                 var values = new Question()
                 {
                     Text = model.Text,
-                    ImageUrl = model.ImageUrl,
+                    ImageUrl = file.FileName,
                     LessonId = model.LessonId,
                     LevelId = model.LevelId,
                     SubjectId = model.SubjectId,
@@ -59,13 +65,21 @@ namespace WebUI.Controllers
                     CreatedDate = model.CreatedDate,
                     UpdatedDate = model.UpdatedDate,
                     Condition = model.Condition,
+                    
                 };
+
+                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Theme\\img\\questions", file.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
 
                 if (values!=null)
                 {
                     _questionManager.Create(values);
                     return RedirectToAction("Index","Question");
                 }
+
                 //eger bir validation ile karsilasirsa dropdownlarin tekara dolmasi icin tekrar ediyoruz
 
                 var lesson = _lessonManager.GetAll();
