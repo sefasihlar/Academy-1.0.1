@@ -33,6 +33,7 @@ namespace WebUI.Controllers
 			var values = new Class
 			{
 				Name = model.Name,
+				Condition= model.Condition,
 			};
 
 			_classManager.Create(values);
@@ -69,6 +70,7 @@ namespace WebUI.Controllers
 			{
 				Id = values.Id,
 				Name = values.Name,
+				Condition= values.Condition,
 			});
 		}
 
@@ -88,6 +90,8 @@ namespace WebUI.Controllers
 				}
 
 				values.Name = model.Name;
+				values.Condition = model.Condition;
+				values.UpdatedDate = model.UpdatedDate;
 
 				_classManager.Update(values);
 			}

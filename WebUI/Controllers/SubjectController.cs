@@ -35,7 +35,7 @@ namespace WebUI.Controllers
             {
                 Subjects = _subjectManager.GetWithLessonList()
             };
-            return View(values);
+            return View();
         }
 
 

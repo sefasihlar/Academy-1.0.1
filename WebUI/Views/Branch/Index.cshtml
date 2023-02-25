@@ -1,8 +1,111 @@
-﻿
+﻿@model WebUI.Models.BranchListModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<main class="content">
+    <div class="container-fluid p-0">
+
+        <h1 class="h3 mb-3"><strong>Yetkili</strong> Şubeler Sayfası</h1>
+
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
+
+                        <div class="card flex-fill col-sm-9" style="border-radius: 25px;box-shadow: 0 0 0 4px white, 0 4px 4px black;">
+
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Şubeler</h5>
+                            </div>
+                            <table class="table my-0 text-center">
+                                <thead>
+
+                                    <button id="myBtn" class="rapor_button" style="position:relative;left:86%; width:10%;overflow: hidden;">
+                                        <strong style="width:50%;">Yeni Şube Ekle </strong>
+
+                                    </button>
+                                    <tr>
+                                        <th class="d-none d-md-table-cell">ID</th>
+                                        <th>Şube</th>
+                                        <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
+                                        <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+                                        <th>Aktiflik durumu</th>
+                                        <th>Düzenle veya sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model.Branches)
+                                    {
+                                        <tr>
+                                            <td class="d-none d-md-table-cell">@item.Id</td>
+                                            <td>@item.Name</td>
+                                            <td class="d-none d-md-table-cell">Ayşe-@item.CreatedDate</td>
+                                            <td class="d-none d-md-table-cell">Ayşe-@item.UpdatedDate</td>
+                                            @if (item.Condition == true)
+                                            {
+                                                <td><span class="badge bg-success">Aktif</span></td>
+                                            }
+                                            else
+                                            {
+                                                <td><span class="badge bg-danger">Pasif</span></td>
+                                            }
+
+                                            <td>
+                                                <a href="/Branch/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
+                                                <form asp-controller="Branch" asp-action="Delete" method="post" style="display:inline">
+                                                    <input type="hidden" name="Id" value="@item.Id" />
+                                                    <button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <div class="modal-content" id="small-modal">
+                <span class="close">&times;</span>
+                <h2 class="modal-title text-center"><strong> Şube Ekle</strong></h2>
+                <form asp-controller="Branch" asp-action="Create" method="post">
+                    <div class="row text-center mt-5 ">
+                        <div class="col-12 text-center ">
+                            <div class="form-group row d-flex">
+                                <label name="Name" class="col-sm-2 col-form-label">Şube Adı</label>
+
+                                <div class="col-sm-10">
+                                    <input name="Name" placeholder="Örneğin:B" class="form-dropdown text-center">
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Durum</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown" name="Condition">
+                                        <option value="True">Aktif</option>
+                                        <option value="False">Pasif</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <td>
+                        <button type="submit" id="cls_btn" class="rapor_button">
+                            <strong>Kaydet </strong>
+                        </button><br>
+                    </td>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</main>
 

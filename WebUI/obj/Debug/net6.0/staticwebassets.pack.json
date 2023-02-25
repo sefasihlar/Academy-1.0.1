@@ -5,8 +5,12 @@
       "PackagePath": "staticwebassets\\WebUI.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\GüncelSunum.pptx",
-      "PackagePath": "staticwebassets\\Template\\GüncelSunum.pptx"
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\.vscode\\launch.json",
+      "PackagePath": "staticwebassets\\Template\\.vscode\\launch.json"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\README.md",
+      "PackagePath": "staticwebassets\\Template\\README.md"
     },
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\app.css",
@@ -15,6 +19,130 @@
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\app.js",
       "PackagePath": "staticwebassets\\Template\\assets\\app.js"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\css\\custom.css",
+      "PackagePath": "staticwebassets\\Template\\assets\\css\\custom.css"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\Montserrat-Italic-VariableFont_wght.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\Montserrat-Italic-VariableFont_wght.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\Montserrat-VariableFont_wght.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\Montserrat-VariableFont_wght.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\Montserrat.zip",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\Montserrat.zip"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\OFL.txt",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\OFL.txt"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\README.txt",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\README.txt"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-Black.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-Black.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-BlackItalic.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-BlackItalic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-Bold.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-Bold.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-BoldItalic.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-BoldItalic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-ExtraBold.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-ExtraBold.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-ExtraBoldItalic.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-ExtraBoldItalic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-ExtraLight.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-ExtraLight.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-ExtraLightItalic.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-ExtraLightItalic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-Italic.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-Italic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-Light.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-Light.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-LightItalic.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-LightItalic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-Medium.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-Medium.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-MediumItalic.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-MediumItalic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-Regular.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-Regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-SemiBold.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-SemiBold.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-SemiBoldItalic.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-SemiBoldItalic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-Thin.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-Thin.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\fonts\\static\\Montserrat-ThinItalic.ttf",
+      "PackagePath": "staticwebassets\\Template\\assets\\fonts\\static\\Montserrat-ThinItalic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\images\\example-logo.png",
+      "PackagePath": "staticwebassets\\Template\\assets\\images\\example-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\images\\example-logo.svg",
+      "PackagePath": "staticwebassets\\Template\\assets\\images\\example-logo.svg"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\images\\logo-usr.png",
+      "PackagePath": "staticwebassets\\Template\\assets\\images\\logo-usr.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\images\\logo-usr.svg",
+      "PackagePath": "staticwebassets\\Template\\assets\\images\\logo-usr.svg"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\images\\logo.png",
+      "PackagePath": "staticwebassets\\Template\\assets\\images\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\images\\text-logo.png",
+      "PackagePath": "staticwebassets\\Template\\assets\\images\\text-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\js\\custom.js",
+      "PackagePath": "staticwebassets\\Template\\assets\\js\\custom.js"
     },
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\assets\\meta_logo_2.png",
@@ -33,20 +161,76 @@
       "PackagePath": "staticwebassets\\Template\\meta_logo.png"
     },
     {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\Rol_düzenleme.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\Rol_düzenleme.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\görevli_düzenleme.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\görevli_düzenleme.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\ögrenci_düzenleme.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\ögrenci_düzenleme.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlari\\Roller.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\Ayarlar\\kullanici_ayarlari\\Roller.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlari\\görevli.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\Ayarlar\\kullanici_ayarlari\\görevli.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlari\\ögrenci.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\Ayarlar\\kullanici_ayarlari\\ögrenci.html"
+    },
+    {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_index.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_index.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_analiz.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_analiz.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_dereceler.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_dereceler.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_dersler.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_dersler.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_konular.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_konular.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_kullanıcılar.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_kullanıcılar.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_sinav_sorulari.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_sinav_sorulari.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_sinavlar.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_sinavlar.html"
     },
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_siniflar.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_siniflar.html"
     },
     {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_zorluk.html",
-      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_zorluk.html"
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_soru.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_soru.html"
     },
     {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_zorluk_düzenle.html",
-      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_zorluk_düzenle.html"
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem\\yetkili_subeler.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem\\yetkili_subeler.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_derece_düzenle.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_derece_düzenle.html"
     },
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_ders_düzenle.html",
@@ -57,20 +241,16 @@
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_konu_düzenle.html"
     },
     {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_sinav_düzenle.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_sinav_düzenle.html"
+    },
+    {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_sinif_düzenle.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_sinif_düzenle.html"
     },
     {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_zorluk_düzenle.html",
-      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_zorluk_düzenle.html"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_konu.html",
-      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_konu.html"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_konu_düzenle.html",
-      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_konu_düzenle.html"
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_soru_düzenle.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_islem_düzenle\\yetkili_soru_düzenle.html"
     },
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_mesajlar.html",
@@ -83,38 +263,6 @@
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_profil_edit.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\yetkili_profil_edit.html"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_index.html",
-      "PackagePath": "staticwebassets\\Template\\öğrenci\\ogrenci_index.html"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_mesajlar.html",
-      "PackagePath": "staticwebassets\\Template\\öğrenci\\ogrenci_mesajlar.html"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_mesajlasma_sayfasi.html",
-      "PackagePath": "staticwebassets\\Template\\öğrenci\\ogrenci_mesajlasma_sayfasi.html"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğrenci\\ogrenci_profil_edit.html",
-      "PackagePath": "staticwebassets\\Template\\öğrenci\\ogrenci_profil_edit.html"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_index.html",
-      "PackagePath": "staticwebassets\\Template\\öğretmen\\ogretmen_index.html"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_mesajlar.html",
-      "PackagePath": "staticwebassets\\Template\\öğretmen\\ogretmen_mesajlar.html"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_mesajlasma_sayfasi.html",
-      "PackagePath": "staticwebassets\\Template\\öğretmen\\ogretmen_mesajlasma_sayfasi.html"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\öğretmen\\ogretmen_profil_edit.html",
-      "PackagePath": "staticwebassets\\Template\\öğretmen\\ogretmen_profil_edit.html"
     },
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\favicon.ico",

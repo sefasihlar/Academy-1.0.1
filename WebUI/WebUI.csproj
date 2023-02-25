@@ -7,6 +7,39 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\Template\.vscode\launch.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Template\.git\config" />
+    <None Include="wwwroot\Template\.git\description" />
+    <None Include="wwwroot\Template\.git\HEAD" />
+    <None Include="wwwroot\Template\.git\hooks\applypatch-msg.sample" />
+    <None Include="wwwroot\Template\.git\hooks\commit-msg.sample" />
+    <None Include="wwwroot\Template\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="wwwroot\Template\.git\hooks\post-update.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-applypatch.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-commit.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-merge-commit.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-push.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-rebase.sample" />
+    <None Include="wwwroot\Template\.git\hooks\pre-receive.sample" />
+    <None Include="wwwroot\Template\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="wwwroot\Template\.git\hooks\push-to-checkout.sample" />
+    <None Include="wwwroot\Template\.git\hooks\update.sample" />
+    <None Include="wwwroot\Template\.git\index" />
+    <None Include="wwwroot\Template\.git\info\exclude" />
+    <None Include="wwwroot\Template\.git\logs\HEAD" />
+    <None Include="wwwroot\Template\.git\logs\refs\heads\master" />
+    <None Include="wwwroot\Template\.git\logs\refs\remotes\origin\HEAD" />
+    <None Include="wwwroot\Template\.git\objects\pack\pack-6c866c271be49b202d69e4da19ce964c4fb24dfe.idx" />
+    <None Include="wwwroot\Template\.git\objects\pack\pack-6c866c271be49b202d69e4da19ce964c4fb24dfe.pack" />
+    <None Include="wwwroot\Template\.git\packed-refs" />
+    <None Include="wwwroot\Template\.git\refs\heads\master" />
+    <None Include="wwwroot\Template\.git\refs\remotes\origin\HEAD" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.12" />
@@ -31,7 +64,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Template\questions\" />
+    <Folder Include="Views\Shared\NewFolder\" />
+    <Folder Include="wwwroot\Template\.git\objects\info\" />
+    <Folder Include="wwwroot\Template\.git\refs\tags\" />
   </ItemGroup>
 
 </Project>

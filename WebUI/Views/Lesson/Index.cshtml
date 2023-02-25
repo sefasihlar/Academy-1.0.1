@@ -4,66 +4,117 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Dersler</h1>
-<div class="row">
-	<div class="d-flex">
-		<div class="w-100">
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="card">
-						<div class="card-body">
-							<div class="row">
-								<div class="col mt-0">
-									<h5 class="card-title">Ders ekle</h5>
-								</div>
-							</div>
-							<div>
-								@await Component.InvokeAsync("ClassList")
-							</div>
-						</div>
-					</div>
-				</div>
+<main class="content">
+    <div class="container-fluid p-0">
 
-				<div class="card flex-fill col-sm-9">
-					<div class="card-header">
-						<h5 class="card-title mb-0">Dersler</h5>
-					</div>
-					<table class="table my-0 text-center">
-						<thead>
-						
-							<tr>
-								<th class="d-none d-md-table-cell">ID</th>
-								<th>Ders</th>
-								<th>Sınıf</th>
-								<th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
-								<th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
-								<th>Aktiflik durumu</th>
-								<th>Düzenle veya sil</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach (var item in Model.Lessons)
-							{
-								<tr>
-									<td class="d-none d-md-table-cell">@item.Id</td>
-									<td>@item.Name</td>
-									<td>@item.Class.Name</td>
-									<td class="d-none d-md-table-cell">İsim-31/06/2021</td>
-									<td class="d-none d-md-table-cell">İsim-21/01/2021</td>
-									<td><span class="badge bg-success">Aktif</span></td>
-									<td>
-										<a href="../yetkili_islem_düzenle/yetkili_ders_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-										<a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-									</td>
-								</tr>
-							}
-					
-					
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+        <h1 class="h3 mb-3"><strong>Yetkili</strong> Dersler Sayfası</h1>
+
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
+
+                        <div class="card flex-fill col-sm-9" style="border-radius: 25px;box-shadow: 0 0 0 4px white, 0 4px 4px black;">
+
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Dersler</h5>
+                            </div>
+                            <table class="table my-0 text-center">
+                                <thead>
+
+                                    <button id="myBtn" class="rapor_button" style="position:relative;left:86%; width:10%;overflow: hidden;">
+                                        <strong style="width:50%;">Yeni Ders Ekle </strong>
+
+                                    </button>
+                                    <tr>
+                                        <th class="d-none d-md-table-cell">ID</th>
+                                        <th>Ders</th>
+                                        <th>Sınıf</th>
+                                        <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
+                                        <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+                                        <th>Aktiflik durumu</th>
+                                        <th>Düzenle veya sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Lessons)
+                                    {
+                                        <tr>
+                                            <td class="d-none d-md-table-cell">@item.Id</td>
+                                            <td class="d-none d-md-table-cell">@item.Name</td>
+                                            <td class="d-none d-md-table-cell">@item.Class.Name</td>
+                                            <td class="d-none d-md-table-cell">Ahmet - @item.CreatedDate</td>
+                                            <td class="d-none d-md-table-cell">Mehmet - @item.UpdatedDate</td>
+                                            @if (item.Condition == true)
+                                            {
+                                                <td><span class="badge bg-success">Aktif</span></td>
+                                            }
+                                            else
+                                            {
+                                                <td><span class="badge bg-danger">Pasif</span></td>
+                                            }
+                                            <td>
+                                                <a href="/Lesson/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
+                                                <form asp-controller="Lesson" asp-action="Delete" method="post" style="display:inline">
+                                                    <input type="hidden" name="LessonId" value="@item.Id" />
+                                                    <input type="hidden" name="ClassId" value="@item.ClassId" />
+                                                    <button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <div id="small-modal" class="modal-content">
+                <span class="close">&times;</span>
+                <h2 class="modal-title text-center"><strong> Ders Ekle</strong></h2>
+                <form asp-controller="Lesson" asp-action="Create" method="post">
+
+                    <div class="row text-center mt-5 ">
+                        <div class="col-12 text-center ">
+                            <div class="form-group row d-flex">
+                                <label for="Ders" class="col-sm-2 col-form-label">Ders Adı</label>
+
+                                <div class="col-sm-10">
+                                    <input placeholder="Örneğin:Matematik" name="Name" class="form-dropdown" />
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Sınıflar</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("ClassList")
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Durum</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown" name="Condition">
+                                        <option value="True">Aktif</option>
+                                        <option value="False">Pasif</option>
+
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <tr>
+                        <td>
+                            <button id="cls_btn" class="rapor_button">
+                                <strong>Kaydet </strong>
+                            </button><br>
+                        </td>
+                    </tr>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</main>
 

@@ -66,7 +66,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Detail(int id)
         {
             var values = _optionManager.GetById(id);
 

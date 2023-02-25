@@ -25,21 +25,6 @@
   text-decoration: none;
 }
 
-.sidebar-dropdown {
-
-  position: absolute;
-  background-image: linear-gradient(to right, #A26BBD, #4C8BCD);
-  display: none;
-  top: 100%;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-}
-
-.sidebar-item.active .sidebar-dropdown {
-  display: block;
-}
-
 
 
 :root {
@@ -4591,7 +4576,7 @@ fieldset:disabled .btn {
 .navbar-collapse {
     align-items: center;
     flex-basis: 100%;
-    flex-grow: 1
+    flex-grow: none;
 }
 
 .navbar-toggler {
@@ -5126,7 +5111,7 @@ fieldset:disabled .btn {
 
 .card-body {
     flex: 1 1 auto;
-    padding: 1.25rem
+    padding: 3rem
 }
 
 .card-title {
@@ -13440,6 +13425,7 @@ fieldset:disabled .btn {
 }
 
 .dropdown .dropdown-menu.show {
+    
     -webkit-animation-duration: .25s;
     animation-duration: .25s;
     -webkit-animation-fill-mode: forwards;
@@ -13508,6 +13494,7 @@ fieldset:disabled .btn {
 
 .dropdown .list-group .list-group-item:hover {
     background: #f8f9fa
+    
 }
 
 .dropdown-menu-header {
@@ -13811,7 +13798,8 @@ a.sidebar-link {
     padding: .625rem 1.625rem;
     position: relative;
     text-decoration: none;
-    transition: background .1s ease-in-out
+    transition: background .1s ease-in-out;
+
 }
 
 .sidebar-link i,
@@ -13819,7 +13807,8 @@ a.sidebar-link {
 a.sidebar-link i,
 a.sidebar-link svg {
     color: rgba(233, 236, 239, .5);
-    margin-right: .75rem
+    margin-right: .75rem;
+
 }
 
 .sidebar-link:focus {
@@ -13833,22 +13822,38 @@ a.sidebar-link svg {
 .sidebar-link:hover,
 .sidebar-link:hover i,
 .sidebar-link:hover svg {
-    color: rgba(233, 236, 239, .75)
+    color: rgba(233, 236, 239, .75);
+    transition: 0.2s;
+    transform:scale(1.2);
+
 }
 
 .sidebar-item.active .sidebar-link:hover,
 .sidebar-item.active>.sidebar-link {
+
     background: linear-gradient(90deg, #4C8BCD,  50%, transparent);
     border-left-color: white;
     color: #e9ecef;
+
+    
+    
+    
 }
 
 .sidebar-item.active .sidebar-link:hover i,
 .sidebar-item.active .sidebar-link:hover svg,
 .sidebar-item.active>.sidebar-link i,
-.sidebar-item.active>.sidebar-link svg {
-    color: #e9ecef
+.sidebar-item.active>.sidebar-link svg 
+{
+    transition: 0.5s;
+    transform:scale(1.3);
+    color: #e9ecef;
+
+    
 }
+
+
+
 
 .sidebar-brand {
     color: #f8f9fa;
@@ -13861,6 +13866,7 @@ a.sidebar-link svg {
 .sidebar-brand:hover {
     color: #f8f9fa;
     text-decoration: none
+
 }
 
 .sidebar-brand:focus {
@@ -15265,4 +15271,148 @@ span.flatpickr-weekday {
     width: 260px
 }
 
-/*# sourceMappingURL=app.css.map*/
+ .raporlar
+{
+    float:left;
+    background-clip: border-box;
+    background-color: #fff;
+    border: 0 solid transparent;
+    border-radius: 15px;
+    min-width: 0;
+    max-height: 200px;
+    width: 30%;
+    height: 100%;
+    position:relative;
+    /* display: inline-block; */
+    margin-right: 3.5%;
+    margin-bottom: 5%; 
+	background: white;
+	box-shadow: 0 0 0 4px white, 0 4px 4px black;
+}
+
+
+
+
+.rapor_yazi
+{
+    margin: 25px;
+    padding: 25px;
+}
+.rapor_baslik
+{
+    padding: 11px;
+}
+.rapor_button
+{
+    color: white;
+    height:11%;
+    background-image: linear-gradient(#A26BBD, #4C8BCD);
+    border-style: none;
+    border-radius: 0.2cm;
+    
+      
+    
+} 
+
+input[type=checkbox]+label{
+    display: block;
+    margin: 3px;
+}
+input[type=checkbox]{
+    display: block;
+    color: blue;
+    border-radius: 15px;
+    width: 150px;
+}
+
+
+@media (min-width:1px) and (max-width:991.98px) {
+    .raporlar
+    {
+        width: 85%;
+        margin-right:15% ;
+    
+    }
+    
+    .rapor_yazi
+    {
+        width: 75%;
+      
+    }
+    .istatistikler
+    {
+        width: 85%;
+        margin-right:15% ;
+
+    }
+    .istatistik_yazi
+    {
+        width: 75%;
+    }
+
+
+
+}
+
+
+
+ .istatistikler{
+    position: relative;
+    background-clip: border-box;
+    background-color: #fff;
+    border: 0 solid transparent;
+    border-radius: 15px;
+    min-width: 0;
+    height:90%;
+    width: 30%;
+    display: inline-block;
+    background: white;
+	box-shadow:  0px 0px 2px white,2px 2px 3px black;
+    box-shadow:  0px 0px 2px white,2px 2px 3px black;
+
+
+
+}
+.istatistik_baslik
+{
+    padding: 11px;
+}
+.istatistik_yazi
+{   
+     margin: 30px; 
+    padding: 20px;
+
+} 
+
+.sorular{
+    position: relative;
+    background-clip: border-box;
+    background-color: #fff;
+    border: 0 solid transparent;
+    border-radius: 15px;
+    min-width: 0;
+    height:90%;
+    width: 30%;
+    display: inline-block;
+    background: white;
+}
+.soru_icerik
+{
+    margin: 30px; 
+    padding: 20px;
+
+}
+.cevap_button
+{
+
+    width: 35px;
+    border-radius: 50%;
+    border-color: white;
+    background-color: white;
+
+}
+.cevaplar
+{
+    float:left;
+    
+}

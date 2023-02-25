@@ -52,6 +52,7 @@ namespace WebUI.Controllers
 			return View(values);
 		}
 
+
 		[HttpPost]
 		public async Task<IActionResult> Register(RegisterModel model)
 		{
@@ -69,8 +70,6 @@ namespace WebUI.Controllers
 					Email = model.Email,
 
 				};
-
-
 
 				var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -122,6 +121,7 @@ namespace WebUI.Controllers
 				return View(model);
 			}
 
+			//email e göre değil tc ye göre giriş yapılacak
 			var user = await _userManager.FindByEmailAsync(model.Email);
 
 

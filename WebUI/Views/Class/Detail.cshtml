@@ -4,41 +4,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form method="post" asp-controller="Class" asp-action="Update">
-
-
-    <div class="row">
-        <div class="d-flex">
-            <div class="col-md-7">
-                <div class="row">
-                    <div class="card flex-fill col-sm-2">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Kategori özelliğini düzenle</h5>
+<main class="content">
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3"><strong>Sınıf</strong> Düzenleme Sayfası</h1>
+        <div class="row">
+            <div class="edit-table text-center">
+                <form asp-action="Update" asp-controller="Class" method="post">
+                    <div class="form-group row d-flex">
+                        <label for="name" class="col-sm-4 col-form-label">İsmi</label>
+                        <div class="col-sm-8">
+                            <input class="form-dropdown text-center" type="hidden" name="Id" value="@Model.Id" placeholder="@Model.Name">
+                            <input class="form-dropdown text-center" type="text" name="Name" value="@Model.Name" placeholder="@Model.Name">
                         </div>
-                        <table class="table my-0 text-center">
-                            <thead>
-                                <tr>
-                                    <th class="d-none d-md-table-cell">Kategori türü</th>
-                                    <th>Düzenle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="d-none d-md-table-cell">@Model.Name</td>
-                                    <input type="hidden" asp-for="@Model.Id" value="@Model.Id"/>
-                                    <td class="d-none d-md-table-cell"><input asp-for="@Model.Name" placeholder="@Model.Name" class="form-control text-center" /></td>
-                                </tr>
-                                <tr>
-                                    <td class="d-none d-md-table-cell">Aktiflik durumu</td>
-                                    <td><a><span class="badge bg-success">Aktif</span></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <button type="submit" class="btn btn-sm btn-primary m-4">Kaydet</button>
+                        <label for="Ders" class="col-sm-4 col-form-label">Durum</label>
+                        <div class="col-sm-8">
+                            <select class="form-dropdown" name="condition">
+                                @if (Model.Condition == true)
+                                {
+                                    <option value="True" selected>Aktif</option>
+                                    <option value="False" >Pasif</option>
+                                }
+                                else if(Model.Condition ==false)
+                                {
+                                    <option value="False" selected>Pasif</option>
+                                    <option value="True">Aktif</option>
+                                }
+                               
+                            </select>
+                        </div>
                     </div>
-                </div>
+                    <div>
+                        <button id="cls_btn" class="upper_btn " type="submit">
+                            <strong>Kaydet </strong><br>
+                        </button>
+                    </div>
+                </form>
+
+
             </div>
+
         </div>
     </div>
 
-</form>
+</main>

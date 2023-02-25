@@ -62,6 +62,8 @@ namespace WebUI.Controllers
 			{
 				Name = model.Name,
 				ClassId = model.ClassId,
+				Condition = model.Condition,
+				CreatedDate = model.CreatedDate
 			};
 
 			if (values != null)
@@ -125,8 +127,8 @@ namespace WebUI.Controllers
 
 			values.Name = model.Name;
 			values.ClassId = model.ClassId;
+			values.Condition= model.Condition;
 			values.UpdatedDate = model.UpdatedDate;
-			values.CreatedDate = model.CreatedDate;
 			values.Condition = model.Condition;
 
 			_lessonManager.Update(values);

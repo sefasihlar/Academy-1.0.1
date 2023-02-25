@@ -10,162 +10,172 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    public class QuestionController : Controller
-    {
-        QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
-        LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
-        LevelManager _levelManager = new LevelManager(new EfCoreLevelRepository());
-        SubjectManager _subjectManager = new SubjectManager(new EfCoreSubjectRepository());
-        OutputManager _outputManager = new OutputManager(new EfCoreOutputRepository());
-        OptionManager _optionManager = new OptionManager(new EfCoreOptionRepository());
-        public IActionResult Index()
-        {
+	public class QuestionController : Controller
+	{
+		QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
+		LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
+		LevelManager _levelManager = new LevelManager(new EfCoreLevelRepository());
+		SubjectManager _subjectManager = new SubjectManager(new EfCoreSubjectRepository());
+		OutputManager _outputManager = new OutputManager(new EfCoreOutputRepository());
+		OptionManager _optionManager = new OptionManager(new EfCoreOptionRepository());
+		public IActionResult Index()
+		{
 
-            return View(new QuestionListModel()
-            {
-                //where(x=> x.solution).ToList() Expression oldugu icin filtreleme yapabiliriz
-                Questions = _questionManager.GetWithList().ToList()
-            });
-        }
-
-
-        [HttpGet]
-
-        public IActionResult Create()
-        {
-            
-
-            var values = new QuestionListModel()
-            {
-                Questions = _questionManager.GetWithList()
-            };
-            return View(values);
-        }
+			return View(new QuestionListModel()
+			{
+				//where(x=> x.solution).ToList() Expression oldugu icin filtreleme yapabiliriz
+				Questions = _questionManager.GetWithList().ToList()
+			});
+		}
 
 
-        [HttpPost]
-        public async Task<IActionResult> Create(QuestionModel model,IFormFile file)
-        {
-            if (ModelState.IsValid)
-            {
+		[HttpGet]
 
-                if (file==null)
-                {
-                    return NotFound();
-                }
-                var values = new Question()
-                {
-                    Text = model.Text,
-                    ImageUrl = file.FileName,
-                    LessonId = model.LessonId,
-                    LevelId = model.LevelId,
-                    SubjectId = model.SubjectId,
-                    Options = model.Options,
-                    OutputId = model.OutputId,
-                    CreatedDate = model.CreatedDate,
-                    UpdatedDate = model.UpdatedDate,
-                    Condition = model.Condition,
-                    
-                };
+		public IActionResult Create()
+		{
+			return View(new QuestionModel()
+			{
 
-                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Theme\\img\\questions", file.FileName);
-                using (var stream = new FileStream(path, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-
-                if (values!=null)
-                {
-                    _questionManager.Create(values);
-                    return RedirectToAction("Index","Question");
-                }
-
-                //eger bir validation ile karsilasirsa dropdownlarin tekara dolmasi icin tekrar ediyoruz
-
-                var lesson = _lessonManager.GetAll();
-                ViewBag.lessons = new SelectList(lesson, "Id", "Name");
-
-                var level = _levelManager.GetAll();
-                ViewBag.levels = new SelectList(level, "Id", "Name");
-
-                var subject = _subjectManager.GetAll();
-                ViewBag.subjects = new SelectList(subject, "Id", "Name");
-
-                var output = _outputManager.GetAll();
-                ViewBag.outputs = new SelectList(output, "Id", "Name");
-
-                var option = _optionManager.GetAll();
-                ViewBag.options = new SelectList(option, "Id", "Name");
-            }
+			});
+		}
 
 
-            return View(model);
-        }
+		[HttpPost]
+		public async Task<IActionResult> Create(QuestionModel model, IFormFile file)
+		{
+			if (ModelState.IsValid)
+			{
 
-        [HttpPost]
-        public IActionResult Delete(int questionId, int outputId, int optionId, int subjectId, int lessonId)
-        {
-            _questionManager.DeleteFromQuestion(questionId, outputId, optionId, subjectId, lessonId);
-            return RedirectToAction("Index", "Question");
-        }
+				if (file == null)
+				{
+					return NotFound();
+				}
+				var values = new Question();
 
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            var values = _questionManager.GetById(id);
-            if (values==null)
-            {
-                return NotFound();
-            }
+				values.Id = model.Id;
+				values.Text = model.Text;
+				values.ImageUrl = file.FileName;
+				values.LessonId = model.LessonId;
+				values.LevelId = model.LevelId;
+				values.SubjectId = model.SubjectId;
+				//Burada sıkıntı var seçenekleri ekleyecekmi bilmiyoruz
+				foreach (var item in model.Options)
+				{
+					var optionValue = new Option()
+					{
+						Name = item.Name,
+						Text = item.Text,
+						Condition=item.Condition,
+						QuestionId = item.QuestionId,
+					};
+					values.Options.Add(optionValue);
+				}
+				//
+				values.OutputId = model.OutputId;
+				values.CreatedDate = model.CreatedDate;
+				values.UpdatedDate = model.UpdatedDate;
+				values.Condition = model.Condition;
 
-            return View(new QuestionModel()
-            {
-                Id =values.Id,
-                Text = values.Text,
-                ImageUrl = values.ImageUrl,
-                LessonId = values.LessonId,
-                LevelId = values.LevelId,
-                SubjectId = values.SubjectId,
+
+
+				var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Theme\\img\\questions", file.FileName);
+				using (var stream = new FileStream(path, FileMode.Create))
+				{
+					await file.CopyToAsync(stream);
+				}
+
+				if (values != null)
+				{
+					_questionManager.Create(values);
+					return RedirectToAction("Index", "Question");
+				}
+
+				//eger bir validation ile karsilasirsa dropdownlarin tekara dolmasi icin tekrar ediyoruz
+
+				var lesson = _lessonManager.GetAll();
+				ViewBag.lessons = new SelectList(lesson, "Id", "Name");
+
+				var level = _levelManager.GetAll();
+				ViewBag.levels = new SelectList(level, "Id", "Name");
+
+				var subject = _subjectManager.GetAll();
+				ViewBag.subjects = new SelectList(subject, "Id", "Name");
+
+				var output = _outputManager.GetAll();
+				ViewBag.outputs = new SelectList(output, "Id", "Name");
+
+				var option = _optionManager.GetAll();
+				ViewBag.options = new SelectList(option, "Id", "Name");
+			}
+
+
+			return View(model);
+		}
+
+		[HttpPost]
+		public IActionResult Delete(int questionId, int outputId, int optionId, int subjectId, int lessonId)
+		{
+			_questionManager.DeleteFromQuestion(questionId, outputId, optionId, subjectId, lessonId);
+			return RedirectToAction("Index", "Question");
+		}
+
+		[HttpGet]
+		public IActionResult Detail(int id)
+		{
+			var values = _questionManager.GetById(id);
+			if (values == null)
+			{
+				return NotFound();
+			}
+
+			return View(new QuestionModel()
+			{
+				Id = values.Id,
+				Text = values.Text,
+				ImageUrl = values.ImageUrl,
+				LessonId = values.LessonId,
+				LevelId = values.LevelId,
+				SubjectId = values.SubjectId,
 				Options = values.Options,
 				OutputId = values.OutputId,
-                CreatedDate = values.CreatedDate,
-                UpdatedDate = values.UpdatedDate,
-                Condition = values.Condition,
-            });
-        }
+				CreatedDate = values.CreatedDate,
+				UpdatedDate = values.UpdatedDate,
+				Condition = values.Condition,
+			});
+		}
 
-        [HttpPost]
-        public IActionResult Update(QuestionModel model)
-        {
-            if (ModelState.IsValid)
-            {
-
-          
-                var values = _questionManager.GetById(model.Id);
-                if (values!=null)
-                {
-                    values.Text = model.Text;
-                    values.ImageUrl = model.ImageUrl;
-                    values.LessonId = model.LessonId;
-                    values.LevelId = model.LevelId;
-                    values.SubjectId = model.SubjectId;
-                    values.Options = model.Options;
-                    values.OutputId = model.OutputId;
-                    values.CreatedDate = model.CreatedDate;
-                    values.UpdatedDate = model.UpdatedDate;
-                    values.Condition = model.Condition;
+		[HttpPost]
+		public IActionResult Update(QuestionModel model)
+		{
+			if (ModelState.IsValid)
+			{
 
 
-                    _questionManager.Update(values);
-                    return RedirectToAction("Index","Question");
-                }
-            }
-            return View(model);
-        
-        }
+				var values = _questionManager.GetById(model.Id);
+				if (values != null)
+				{
+					values.Text = model.Text;
+					values.ImageUrl = model.ImageUrl;
+					values.LessonId = model.LessonId;
+					values.LevelId = model.LevelId;
+					values.SubjectId = model.SubjectId;
+					values.Options = model.Options;
+					values.OutputId = model.OutputId;
+					values.CreatedDate = model.CreatedDate;
+					values.UpdatedDate = model.UpdatedDate;
+					values.Condition = model.Condition;
+
+
+					_questionManager.Update(values);
+					return RedirectToAction("Index", "Question");
+				}
+			}
+			return View(model);
+
+		}
 
 
 
-        
-    }
+
+	}
 }

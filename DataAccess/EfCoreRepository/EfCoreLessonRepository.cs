@@ -13,7 +13,7 @@ namespace DataAccessLayer.EntityFreamwork
         {
             using (var _context = new AcademyContext())
             {
-                var cmd = @"delete from Lessons where @LessonId=@p0 @ClassId=@p1";
+                var cmd = @"delete from Lessons where Id=@p0 And ClassId=@p1";
                 _context.Database.ExecuteSqlRaw(cmd, lessonId, classId);
             }
         }
