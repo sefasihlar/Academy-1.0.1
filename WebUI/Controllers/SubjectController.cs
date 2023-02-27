@@ -51,6 +51,8 @@ namespace WebUI.Controllers
             {
                 Name = model.Name,
                 LessonId = model.LessonId,
+                Condition = model.Condition,
+                CreatedDate = model.CreatedDate,
 
             };
 
@@ -87,30 +89,30 @@ namespace WebUI.Controllers
 
             return View(new SubjectModel()
             {
-                Id = model.Id,
-                Name = model.Name,
-                LessonId = model.LessonId,
+                Id = values.Id,
+                Name = values.Name,
+                LessonId = values.LessonId,
+                Condition= values.Condition,
             });
         }
 
         [HttpPost]
         public IActionResult Update(SubjectModel model)
         {
-            if (ModelState.IsValid)
+            var values = _subjectManager.GetById(model.Id);
+
+            if (values == null)
             {
-                var values = _subjectManager.GetById(model.Id);
-
-                if (values == null)
-                {
-                    return NotFound();
-                }
-
-                values.Name = model.Name;
-                values.LessonId = model.LessonId;
-
-                _subjectManager.Update(values);
+                return NotFound();
             }
-            return View();
+
+            values.Name = model.Name;
+            values.LessonId = model.LessonId;
+            values.Condition = model.Condition;
+            values.UpdatedDate = model.UpdatedDate;
+
+            _subjectManager.Update(values);
+            return RedirectToAction("Index","Subject");
         }
     }
 }

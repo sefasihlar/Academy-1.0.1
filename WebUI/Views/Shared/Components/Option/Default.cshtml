@@ -1,0 +1,54 @@
+﻿@model WebUI.Models.QuestionModel
+
+<div class="modal-content2" id="modal-content2">
+    <span class="close"></span>
+
+    <h2><strong> Soru Cevabı Ekleme Alanı</strong></h2>
+    <div class="modal-form-container">
+        <div>
+
+            <td>
+                <strong>A</strong><input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="A" asp-for="@Model.Options[0].Name" type="hidden">
+                <input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="A" asp-for="@Model.Options[0].Text" type="text">
+                <input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="True" asp-for="@Model.Options[0].Condition" type="hidden">
+                <input itemtype="" placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="@Model.Id" asp-for="@Model.Options[0].QuestionId" type="hidden">
+                <br>
+            </td>
+            <td>
+                <strong>B</strong><input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="B" asp-for="@Model.Options[1].Name" type="hidden">
+                <input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center"  asp-for="@Model.Options[1].Text" type="text">
+                <input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="True" asp-for="@Model.Options[1].Condition" type="hidden">
+                <input itemtype="" placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center"  value="@Model.Id" asp-for="@Model.Options[1].QuestionId" type="hidden">
+                <br>
+            </td>
+            <td>
+                <strong>C</strong><input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="C" asp-for="@Model.Options[2].Name" type="hidden">
+                <input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center"  asp-for="@Model.Options[2].Text" type="text">
+                <input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="True" asp-for="@Model.Options[2].Condition" type="hidden">
+                <input itemtype="" placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="@Model.Id" asp-for="@Model.Options[2].QuestionId" type="hidden">
+                <br>
+            </td>
+            <td>
+                <strong>D</strong><input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="D" asp-for="@Model.Options[3].Name" type="hidden">
+                <input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center"  asp-for="@Model.Options[3].Text" type="text">
+                <input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="True" asp-for="@Model.Options[3].Condition" type="hidden">
+                <input itemtype="" placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="@Model.Id" asp-for="@Model.Options[3].QuestionId" type="hidden">
+                <br>
+            </td>
+            <td>
+                <strong>E</strong><input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="E" asp-for="@Model.Options[4].Name" type="hidden">
+                <input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center"  asp-for="@Model.Options[4].Text" type="text">
+                <input placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="True" asp-for="@Model.Options[4].Condition" type="hidden">
+                <input itemtype="" placeholder="A Şıkkını Giriniz..." class="form-dropdown text-center" value="@Model.Id" asp-for="@Model.Options[4].QuestionId" type="hidden">
+                <br>
+            </td>
+            <br>
+        </div>
+    </div>
+    <a id="lower_btn" class="upper_btn" type="btn">
+        <strong>Geri Dön</strong>
+    </a>
+    <button id="cls_btn" class="upper_btn " type="submit">
+        <strong>Kaydet </strong>
+    </button>
+</div>

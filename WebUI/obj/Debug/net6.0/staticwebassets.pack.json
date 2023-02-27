@@ -161,6 +161,26 @@
       "PackagePath": "staticwebassets\\Template\\meta_logo.png"
     },
     {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\63946e6586b2451b4c6dc94e.webp",
+      "PackagePath": "staticwebassets\\Template\\questions\\63946e6586b2451b4c6dc94e.webp"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\Ekran Görüntüsü (1).png",
+      "PackagePath": "staticwebassets\\Template\\questions\\Ekran Görüntüsü (1).png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\Screenshot_20230204_071418.png",
+      "PackagePath": "staticwebassets\\Template\\questions\\Screenshot_20230204_071418.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\Screenshot_20230204_071441.png",
+      "PackagePath": "staticwebassets\\Template\\questions\\Screenshot_20230204_071441.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\Screenshot_20230204_071501.png",
+      "PackagePath": "staticwebassets\\Template\\questions\\Screenshot_20230204_071501.png"
+    },
+    {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\Rol_düzenleme.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\Rol_düzenleme.html"
     },

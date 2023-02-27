@@ -12,8 +12,8 @@ namespace WebUI.ViewComponents
 
         public IViewComponentResult Invoke(SubjectModel model)
         {
-            var subject = _lessonManager.GetAll();
-            ViewBag.subject = new SelectList(subject, "Id", "Name");
+            var subjects = _lessonManager.GetAll();
+            ViewBag.subjects = new SelectList(subjects, "Id", "Name");
             return View(model);
         }
     }

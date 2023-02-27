@@ -14,8 +14,8 @@
 				<div class="w-100">
 					<div class="row">
 
-						<div class="card flex-fill col-sm-9" style="border-radius: 25px;
-																				box-shadow: 0 0 0 4px white, 0 4px 4px black;">
+						<div class="card flex-fill col-sm-9" style="border-radius: 25px;box-shadow: 0 0 0 4px white, 0 4px 4px black;">
+																				
 							<div class="card-header">
 								<h5 class="card-title mb-0">Dereceler</h5>
 							</div>
@@ -36,29 +36,31 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td class="d-none d-md-table-cell">1</td>
-										<td>9</td>
-										<td class="d-none d-md-table-cell">İsim-21/01/2021</td>
-										<td class="d-none d-md-table-cell">İsim-31/06/2021</td>
-										<td><span class="badge bg-success">Aktif</span></td>
-										<td>
-											<a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-											<a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-										</td>
-									</tr>
-									<tr>
-										<td class="d-none d-md-table-cell">2</td>
-										<td>10</td>
-										<td class="d-none d-md-table-cell">İsim-01/01/2021</td>
-										<td class="d-none d-md-table-cell">İsim-31/06/2021</td>
-										<td><span class="badge bg-danger">Pasif</span></td>
-										<td>
-											<a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-											<a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-										</td>
-									</tr>
+									@foreach (var item in Model.Levels)
+									{
+										<tr>
+											<td class="d-none d-md-table-cell">@item.Id</td>
+											<td>@item.Name</td>
+											<td class="d-none d-md-table-cell">@item.CreatedDate</td>
+											<td class="d-none d-md-table-cell">@item.UpdatedDate</td>
+											@if (item.Condition==true)
+											{
+												<td><span class="badge bg-success">Aktif</span></td>
+											}
+											else
+											{
+												<td><span class="badge bg-danger">Pasif</span></td>
+											}
 
+											<td>
+												<a href="/Level/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
+												<form asp-controller="Level" asp-action="Delete" method="post" style="display:inline">
+													<input type="hidden" name="Id" value="@item.Id" />
+													<button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
+												</form>
+											</td>
+										</tr>
+									}
 								</tbody>
 							</table>
 						</div>
@@ -72,7 +74,7 @@
 			<div id="small-modal" class="modal-content">
 				<span class="close">&times;</span>
 				<h2 class="modal-title text-center"><strong> Seviye Ekle</strong></h2>
-				<form>
+				<form asp-controller="Level" asp-action="Create" method="post">
 
 					<div class="row text-center mt-5 ">
 						<div class="col-12 text-center ">
@@ -80,27 +82,25 @@
 								<label for="Ders" class="col-sm-2 col-form-label">Seviye Adı</label>
 
 								<div class="col-sm-10">
-									<input placeholder="Örneğin:Kolay" class="form-dropdown" />
+									<input placeholder="Örneğin:Kolay" class="form-dropdown" name="Name" />
 								</div>
 								<label for="Ders" class="col-sm-2 col-form-label">Durum</label>
 								<div class="col-sm-10">
-									<select class="form-dropdown">
-										<option value="">Aktif</option>
-										<option value="">Pasif</option>
-
+									<select class="form-dropdown" name="Condition">
+										<option value="True">Aktif</option>
+										<option value="False">Pasif</option>
 									</select>
 								</div>
 							</div>
 						</div>
 					</div>
+					<td>
+						<button id="cls_btn" class="rapor_button" type="submit">
+							<strong>Kaydet </strong>
+						</button><br>
+					</td>
 				</form>
-				<td>
-					<button id="cls_btn" class="rapor_button">
-						<strong>Kaydet </strong>
-					</button><br>
-				</td>
 			</div>
-
 		</div>
 	</div>
 </main>

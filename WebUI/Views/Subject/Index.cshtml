@@ -6,104 +6,119 @@
 }
 
 <main class="content">
-	<div class="container-fluid p-0">
+    <div class="container-fluid p-0">
 
-		<h1 class="h3 mb-3"><strong>Yetkili</strong> Konular Sayfası</h1>
+        <h1 class="h3 mb-3"><strong>Yetkili</strong> Konular Sayfası</h1>
 
-		<div class="row">
-			<div class="d-flex">
-				<div class="w-100">
-					<div class="row">
+        <div class="row">
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="row">
 
-						<div class="card flex-fill col-sm-9" style="border-radius: 25px;
+                        <div class="card flex-fill col-sm-9" style="border-radius: 25px;
 																				box-shadow: 0 0 0 4px white, 0 4px 4px black;">
-							<div class="card-header">
-								<h5 class="card-title mb-0">Konular</h5>
-							</div>
-							<table class="table my-0 text-center">
-								<thead>
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Konular</h5>
+                            </div>
+                            <table class="table my-0 text-center">
+                                <thead>
 
-									<button id="myBtn" class="rapor_button" style="position:relative;left:86%; width:10%;overflow: hidden;">
-										<strong style="width:50%;">Yeni Konu Ekle </strong>
+                                    <button id="myBtn" class="rapor_button" style="position:relative;left:86%; width:10%;overflow: hidden;">
+                                        <strong style="width:50%;">Yeni Konu Ekle </strong>
+                                    </button>
+                                    <tr>
+                                        <th class="d-none d-md-table-cell">ID</th>
+                                        <th>Konu</th>
+                                        <th>Ders</th>
+                                        <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
+                                        <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+                                        <th>Aktiflik durumu</th>
+                                        <th>Düzenle veya sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Subjects)
+                                    {
+                                        <tr>
+                                            <td class="d-none d-md-table-cell">@item.Id</td>
+                                            <td class="d-none d-md-table-cell">@item.Name</td>
+                                            <td class="d-none d-md-table-cell">@item.Lesson.Name</td>
+                                            <td class="d-none d-md-table-cell">@item.CreatedDate</td>
+                                            <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
+                                            @if (item.Condition==true)
+                                            {
+                                                <td><span class="badge bg-success">@item.Condition</span></td>
+                                            }
+                                            else
+                                            {
+                                                <td><span class="badge bg-danger">@item.Condition</span></td>
+                                            }
+                                            
+                                            <td>
+                                                <a href="/Subject/Detail/@item.Id"><i class="align-middle" data-feather="edit"></i></a>
+                                                 <form asp-controller="Subject" asp-action="Delete" method="post" style="display:inline">
+                                                    <input type="hidden" name="subjectId" value="@item.Id" />
+                                                    <input type="hidden" name="lessonId" value="@item.LessonId" />
+                                                    <button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
+                                                </form>
+                                                
+                                            </td>
+                                        </tr>
+                                    }
+                          
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-									</button>
-									<tr>
-										<th class="d-none d-md-table-cell">ID</th>
-										<th>Konu</th>
-										<th>Ders</th>
-										<th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
-										<th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
-										<th>Aktiflik durumu</th>
-										<th>Düzenle veya sil</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="d-none d-md-table-cell">1</td>
-										<td class="d-none d-md-table-cell">Üslü Sayılar</td>
-										<td class="d-none d-md-table-cell">Matematik</td>
-										<td class="d-none d-md-table-cell">İsim-21/01/2021</td>
-										<td class="d-none d-md-table-cell">İsim-31/06/2021</td>
-										<td><span class="badge bg-success">Aktif</span></td>
-										<td>
-											<a href="../yetkili_islem_düzenle/yetkili_konu_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-											<a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="popup">
-		<div id="myModal" class="modal">
-			<div id="small-modal" class="modal-content">
-				<span class="close">&times;</span>
-				<h2 class="modal-title text-center"><strong> Konu Ekle</strong></h2>
-				<form>
+    <div class="popup">
+        <div id="myModal" class="modal">
+            <div id="small-modal" class="modal-content">
+                <span class="close">&times;</span>
+                <h2 class="modal-title text-center"><strong> Konu Ekle</strong></h2>
+                <form asp-controller="Subject" asp-action="Create">
 
-					<div class="row text-center mt-5 ">
-						<div class="col-12 text-center ">
-							<div class="form-group row d-flex">
-								<label for="Ders" class="col-sm-2 col-form-label">Konu Adı</label>
+                    <div class="row text-center mt-5 ">
+                        <div class="col-12 text-center ">
+                            <div class="form-group row d-flex">
+                                <label for="Ders" class="col-sm-2 col-form-label">Konu Adı</label>
 
-								<div class="col-sm-10">
-									<input placeholder="Örneğin:Köklü Sayılar" class="form-dropdown" />
-								</div>
+                                <div class="col-sm-10">
+                                    <input placeholder="Örneğin:Köklü Sayılar" name="Name" class="form-dropdown text-center" />
+                                </div>
 
-								<label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
-								<div class="col-sm-10">
-									<select class="form-dropdown">
-										<option value="">Matematik</option>
-										<option value="">Coğrafya</option>
-									</select>
-								</div>
-								<label for="Ders" class="col-sm-2 col-form-label">Durum</label>
-								<div class="col-sm-10">
-									<select class="form-dropdown">
-										<option value="">Aktif</option>
-										<option value="">Pasif</option>
+                                <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("LessonList")
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Durum</label>
+                                <div class="col-sm-10">
+                                    <select class="form-dropdown" name="Condition">
+                                        <option value="True">Aktif</option>
+                                        <option value="False">Pasif</option>
 
-									</select>
-								</div>
+                                    </select>
+                                </div>
 
-							</div>
-						</div>
-					</div>
-				</form>
-				<tr>
-					<td>
-						<button id="cls_btn" class="rapor_button">
-							<strong>Kaydet </strong>
-						</button><br>
-					</td>
-				</tr>
-			</div>
+                            </div>
+                        </div>
+                    </div>
+                    <tr>
+                        <td>
+                            <button id="cls_btn" class="rapor_button" type="submit">
+                                <strong>Kaydet </strong>
+                            </button><br>
+                        </td>
+                    </tr>
+                </form>
+           
+            </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
 </main>
 

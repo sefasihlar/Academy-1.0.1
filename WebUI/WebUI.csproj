@@ -64,9 +64,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Shared\NewFolder\" />
     <Folder Include="wwwroot\Template\.git\objects\info\" />
     <Folder Include="wwwroot\Template\.git\refs\tags\" />
+    <Folder Include="wwwroot\Template\questions\" />
   </ItemGroup>
 
 </Project>

@@ -32,6 +32,8 @@ namespace WebUI.Controllers
                 var values = new Level()
                 {
                     Name = model.Name,
+                    Condition= model.Condition,
+                    CreatedDate = model.CreatedDate,
                 };
 
                 _levelManager.Create(values);
@@ -70,6 +72,7 @@ namespace WebUI.Controllers
             {
                 Id = values.Id,
                 Name = values.Name,
+                Condition = values.Condition,
             });
         }
 
@@ -86,6 +89,8 @@ namespace WebUI.Controllers
             }
 
             values.Name = model.Name;
+            values.Condition = model.Condition;
+            values.UpdatedDate = model.UpdatedDate;
             _levelManager.Update(values);
 
             }

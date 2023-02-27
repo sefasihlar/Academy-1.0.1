@@ -1,4 +1,4 @@
-﻿
+﻿@model WebUI.Models.AppUserListModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -38,32 +38,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="d-none d-md-table-cell">1</td>
-                                        <td class="d-none d-md-table-cell">Ahmet Çatık</td>
-                                        <td class="d-none d-md-table-cell">9</td>
-                                        <td class="d-none d-md-table-cell">A</td>
-                                        <td class="d-none d-md-table-cell">İsim-21/01/2021</td>
-                                        <td class="d-none d-md-table-cell">İsim-31/06/2021</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                        <td>
-                                            <a href="../kullanici_ayarlar_duzenlemeler/ögrenci_düzenleme.html"><i class="align-middle" data-feather="edit"></i></a>
-                                            <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="d-none d-md-table-cell">2</td>
-                                        <td class="d-none d-md-table-cell">Serap Aslan</td>
-                                        <td class="d-none d-md-table-cell">12</td>
-                                        <td class="d-none d-md-table-cell">F</td>
-                                        <td class="d-none d-md-table-cell">İsim-21/01/2021</td>
-                                        <td class="d-none d-md-table-cell">İsim-31/06/2021</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                        <td>
-                                            <a href="../kullanici_ayarlar_duzenlemeler/ögrenci_düzenleme.html"><i class="align-middle" data-feather="edit"></i></a>
-                                            <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach (var item in Model.Users)
+                                    {
+                                        <tr>
+                                            <td class="d-none d-md-table-cell">@item.Id</td>
+                                            <td class="d-none d-md-table-cell">@item.Name</td>
+                                            <td class="d-none d-md-table-cell">@item.Class.Name</td>
+                                            <td class="d-none d-md-table-cell">@item.Branch.Name</td>
+                                            <td class="d-none d-md-table-cell">@item.CreatedDate</td>
+                                            <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
+                                            <td><span class="badge bg-success">@item.Condition</span></td>
+                                            <td>
+                                                <a href="../kullanici_ayarlar_duzenlemeler/ögrenci_düzenleme.html"><i class="align-middle" data-feather="edit"></i></a>
+                                                <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -73,12 +65,12 @@
         </div>
         <div class="popup">
             <div id="myModal" class="modal">
-                <div class="modal-content" id="small-modal">
+                <div class="modal-content" id="medium-modal">
                     <span class="close">&times;</span>
                     <h2 class="modal-title text-center"><strong> Öğrenci Ekle</strong></h2>
                     <form>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-6 d-flex">
                                 <div class="form-group row d-flex">
                                     <label for="name" class="col-sm-2 col-form-label">İsmi</label>
                                     <div class="col-sm-9">
@@ -89,6 +81,10 @@
                                         <input class="form-dropdown text-center" type="text" placeholder="Örneğin:Yılmaz">
                                     </div>
                                     <label for="tc" class="col-sm-2 col-form-label">TC Kimlik:</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-dropdown" type="text">
+                                    </div>
+                                    <label for="tc" class="col-sm-2 col-form-label">Email:</label>
                                     <div class="col-sm-9">
                                         <input class="form-dropdown" type="text">
                                     </div>
@@ -107,6 +103,14 @@
                                             <option value="">A</option>
                                             <option value="">B</option>
                                         </select>
+                                    </div>
+                                    <label for="tc" class="col-sm-2 col-form-label">Şifre:</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-dropdown" type="text">
+                                    </div>
+                                    <label for="tc" class="col-sm-2 col-form-label">Şifre Tekrar:</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-dropdown" type="text">
                                     </div>
                                 </div>
                             </div>
