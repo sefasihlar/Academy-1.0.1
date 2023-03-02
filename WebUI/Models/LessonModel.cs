@@ -5,7 +5,7 @@ namespace WebUI.Models
     public class LessonModel
     {
         public int Id { get; set; }
-        public String? Name { get; set; }
+        public string? Name { get; set; }
 
         public int SubjectId { get; set; }
         public virtual Subject Subject { get; set; }
@@ -19,6 +19,6 @@ namespace WebUI.Models
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
-        public Boolean Condition { get; set; }
+        public bool Condition { get; set; }
     }
 }

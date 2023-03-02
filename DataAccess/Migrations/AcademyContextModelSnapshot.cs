@@ -330,6 +330,95 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Exams");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.ExamAnswers", b =>
+                {
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OptionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExamId", "QuestionId", "UserId", "OptionId");
+
+                    b.HasIndex("OptionId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ExamAnswers");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.ExamQuestions", b =>
+                {
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExamId", "QuestionId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("ExamQuestions");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Guardian", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Condition")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Phone2")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SurName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SurName2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Guardians");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Lesson", b =>
                 {
                     b.Property<int>("Id")
@@ -535,10 +624,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("OptionId")
                         .HasColumnType("int");
 
@@ -551,6 +636,10 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("VideoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -779,6 +868,71 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Subject");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.ExamAnswers", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Exam", "Exam")
+                        .WithMany("ExamAnswers")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.Option", "Option")
+                        .WithMany("ExamAnswers")
+                        .HasForeignKey("OptionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.Question", "Question")
+                        .WithMany("ExamAnswers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.AppUser", "User")
+                        .WithMany("ExamAnswers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Exam");
+
+                    b.Navigation("Option");
+
+                    b.Navigation("Question");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.ExamQuestions", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Exam", "Exam")
+                        .WithMany()
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.Question", "Question")
+                        .WithMany()
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Exam");
+
+                    b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Guardian", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Lesson", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.Class", "Class")
@@ -917,6 +1071,11 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.AppUser", b =>
+                {
+                    b.Navigation("ExamAnswers");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Branch", b =>
                 {
                     b.Navigation("ClassBranches");
@@ -932,8 +1091,20 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("ClassBranches");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Exam", b =>
+                {
+                    b.Navigation("ExamAnswers");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Option", b =>
+                {
+                    b.Navigation("ExamAnswers");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Question", b =>
                 {
+                    b.Navigation("ExamAnswers");
+
                     b.Navigation("Options");
                 });
 

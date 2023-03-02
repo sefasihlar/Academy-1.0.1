@@ -18,6 +18,7 @@ namespace WebUI.Controllers
         SubjectManager _subjectManager = new SubjectManager(new EfCoreSubjectRepository());
         OutputManager _outputManager = new OutputManager(new EfCoreOutputRepository());
         OptionManager _optionManager = new OptionManager(new EfCoreOptionRepository());
+        SolutionManager _solutionManager = new SolutionManager(new EfCoreSolutionRepository());
         public IActionResult Index()
         {
 
@@ -41,7 +42,7 @@ namespace WebUI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Create(QuestionModel model, IFormFile file, OptionModel options)
+        public async Task<IActionResult> Create(QuestionModel model, IFormFile file,SolutionModel solutionModel)
         {
 
             var questionOptions = new List<Option>(); // yeni bir liste oluştur
@@ -95,7 +96,29 @@ namespace WebUI.Controllers
                 _optionManager.Create(item);
             }
 
-            
+            //optionIds bulma alanı
+            var optionIds = new Option()
+            {
+                Id = solutionModel.OptionId
+            };
+
+            //Soru çözümü ekleme alanı
+            var solution = new Solution()
+            {
+                Text = solutionModel.Text,
+                VideoUrl = solutionModel.VideoUrl,
+                QuestionId = values.Id,
+                OptionId = solutionModel.OptionId,
+                CreatedDate = solutionModel.CreatedDate,
+                UpdatedDate = solutionModel.UpdatedDate,
+                Condition = solutionModel.Condition,
+            };
+
+            if (solution!=null)
+            {
+                _solutionManager.Create(solution);
+            }
+ 
             //eger bir validation ile karsilasirsa dropdownlarin tekara dolmasi icin tekrar ediyoruz
 
             var lesson = _lessonManager.GetAll();

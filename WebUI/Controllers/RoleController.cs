@@ -5,7 +5,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	public class RoleController : Controller
+    public class RoleController : Controller
 	{
 		private readonly RoleManager<AppRole> _roleManager;
 

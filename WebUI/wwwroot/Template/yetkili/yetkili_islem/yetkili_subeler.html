@@ -19,109 +19,278 @@
 
 	<link rel="stylesheet" href="../../assets/css/custom.css">
 </head>
+<div class="wrapper">
+    <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar"style="background-image: linear-gradient(#A26BBD, #4C8BCD);">
+            <a class="sidebar-brand" href="../yetkili_index.html">
+            <span style="font-size:25px" class="align-middle"><img src="../../assets/meta_logo_2.png"width="75px"height="75px"> LOGO</span>
+        </a>
 
-<main class="content">
-    <div class="container-fluid p-0">
+            <ul class="sidebar-nav">
+                <li class="sidebar-item ">
+                    <a class="sidebar-link" href="../yetkili_index.html">
+        <i class="align-middle" data-feather="home"></i> <span class="align-middle">Anasayfa</span>
+        </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="../yetkili_profil_edit.html">
+        <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profil</span>
+        </a>
+                </li>
 
-        <h1 class="h3 mb-3"><strong>Yetkili</strong> Sınıflar Sayfası</h1>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="../yetkili_mesajlar.html">
+        <i class="align-middle" data-feather="message-square"></i> <span class="align-middle">Mesajlar</span>
+        </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="">
+        <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Ayarlar</span>
+        </a>
+        <li class="sidebar-item ">
+            <a class="sidebar-link" href="#">
+            <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Yetkili işlemleri</span>
+            <i class="align-middle" data-feather="chevron-down"></i>
+            </a>
+            <ul class="sidebar-dropdown list-unstyled">
+            <li class="sidebar-item ">
+                <a class="sidebar-link" href="yetkili_siniflar.html">
+                <i class="align-middle" data-feather="users"></i> <span class="align-middle">Sınıflar</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="yetkili_dersler.html">
+                <i class="align-middle" data-feather="book"></i> <span class="align-middle">Dersler</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="yetkili_konular.html">
+                <i class="align-middle" data-feather="server"></i> <span class="align-middle">Konular</span>
+                </a>
+            </li>
+        
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="yetkili_dereceler.html">
+                <i class="align-middle" data-feather="list"></i> <span class="align-middle">Dereceler</span>
+                </a>
+            </li>
+            
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="yetkili_sinavlar.html">
+            <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Sınavlar</span>
+            </a>
+                    </li>
+        
+                    <li class="sidebar-item">
+                <a class="sidebar-link" href="yetkili_soru.html">
+            <i class="align-middle" data-feather="plus-circle"></i> <span class="align-middle">Sorular</span>
+            </a>
+                    </li>
+            </ul>
+        </li>
+                </li>
 
-        <div class="row">
-            <div class="d-flex">
-                <div class="w-100">
-                    <div class="row">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="">
+        <i class="align-middle" data-feather="info"></i> <span class="align-middle">S.S.S</span>
+        </a>
+                </li>
+            </ul>
+        </div>
 
-                        <div class="card flex-fill col-sm-9" style="border-radius: 25px;
-                                                                    box-shadow: 0 0 0 4px white, 0 4px 4px black;">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Şubeler</h5>
+    </nav>
+
+    <div class="main" style="background-color: #E9F2FF;">
+        <nav class="navbar navbar-expand navbar-light navbar-bg d-block">
+            <div class="navbar-top justify-content-between d-flex align-items-center w-100">
+                <a class="sidebar-toggle js-sidebar-toggle">
+                    <i class="hamburger align-self-center"></i>
+                </a>
+                <div class="navbar-mid">
+                    <div class="navbar-searchbar-container d-flex align-items-center">
+                        <a href="#" class="searchbar-button">
+                            <i class="bi-search bold searchbar-icon"></i>
+                        </a>
+                        <label for="searchbar-input" class="searchbar-input-container">
+                            <input type="text" id="searchbar-input" class=" searchbar-input" placeholder="Ne Aramıştınız ?">
+                        </label>
                     </div>
-                    <table class="table my-0 text-center">
-                        <thead>
-                            
-                                <button id="myBtn"class="rapor_button" style="position:relative;left:86%; width:10%;overflow: hidden;">
-                                    <strong style="width:50%;" >Yeni Şube Ekle </strong>
-                                
-                                </button>
-                            <tr>
-                                <th class="d-none d-md-table-cell">ID</th>
-                                <th>Sınıf</th>
-                                <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
-                                <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
-                                <th>Aktiflik durumu</th>
-                                <th>Düzenle veya sil</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="d-none d-md-table-cell">1</td>
-                                <td>9</td>
-                                <td class="d-none d-md-table-cell">İsim-21/01/2021</td>
-                                <td class="d-none d-md-table-cell">İsim-31/06/2021</td>
-                                <td><span class="badge bg-success">Aktif</span></td>
-                                <td><a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-                                <a><i class="align-middle m-2" data-feather="trash-2"style="color: red;"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="d-none d-md-table-cell">2</td>
-                                <td>10</td>
-                                <td class="d-none d-md-table-cell">İsim-01/01/2021</td>
-                                <td class="d-none d-md-table-cell">İsim-31/06/2021</td>
-                                <td><span class="badge bg-danger">Pasif</span></td>
-                                <td><a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-                                <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a></td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
                 </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav navbar-align">
+                        <li class="nav-item dropdown">
+                            <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown"
+                                data-bs-toggle="dropdown">
+                                <div class="position-relative">
+                                    <i class="align-middle" data-feather="bell"></i>
+                                    <span class="indicator">1</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+                                aria-labelledby="alertsDropdown">
+                                <div class="dropdown-menu-header">
+                                    1 Yeni bildirim
+                                </div>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-2">
+                                                <i class="text-warning" data-feather="bell"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="text-dark">Bildirim başlığı</div>
+                                                <div class="text-muted small mt-1">Bildirim metni</div>
+                                                <div class="text-muted small mt-1">1 dakika önce</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown-menu-footer">
+                                    <a href="#" class="text-muted">Tüm bildirimleri temizle</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-icon dropdown-toggle" href="../yetkili_mesajlar.html" id="messagesButton">
+                                <div class="position-relative">
+                                    <i class="align-middle" data-feather="message-circle"></i>
+                                    <span class="indicator">1</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
+                                data-bs-toggle="dropdown"></a>
+
+                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
+                                data-bs-toggle="dropdown">
+                                <img src="../../assets/meta_logo_2.png" class="avatar img-fluid rounded me-1"
+                                    alt="profil resmi" /> <span class="text-dark">Yetkili ismi</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="../yetkili_profil_edit.html"><i
+                                        class="align-middle me-1" data-feather="user"></i> Profil</a>
+                                <a class="dropdown-item" href="../yetkili_index.html"><i class="align-middle me-1"
+                                        data-feather="settings"></i>Ayarlar</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../../giris.html">Çıkış</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-bottom">
+                <div class="personel-container d-flex align-items-center">
+                    <div class="personel-photo-container overflow-hidden d-flex align-items-center">
+                        <img src="../../assets/images/logo-usr.svg" alt="" class="w-100">
+                    </div>
+                    <div class="personel-info-container">
+                        <div class="personel-status">Admin</div>
+                        <div class="personel-name">Özlem Özkaya Ceylan</div>
+                    </div>
+                </div>
+            </div>
+
+        </nav>
+    <main class="content">
+        <div class="container-fluid p-0">
+
+            <h1 class="h3 mb-3"><strong>Yetkili</strong> Şubeler Sayfası</h1>
+
+            <div class="row">
+                <div class="d-flex">
+                    <div class="w-100">
+                        <div class="row">
+
+                            <div class="card flex-fill col-sm-9" style="border-radius: 25px;
+                                                                        box-shadow: 0 0 0 4px white, 0 4px 4px black;">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Sınıflar</h5>
+                        </div>
+                        <table class="table my-0 text-center">
+                            <thead>
+                                
+                                    <button id="myBtn"class="rapor_button" style="position:relative;left:86%; width:10%;overflow: hidden;">
+                                        <strong style="width:50%;" >Yeni Şube Ekle </strong>
+                                    
+                                    </button>
+                                <tr>
+                                    <th class="d-none d-md-table-cell">ID</th>
+                                    <th class="d-none d-md-table-cell">ADI</th>
+
+                                    <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
+                                    <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+                                    <th>Aktiflik durumu</th>
+                                    <th>Düzenle veya sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="d-none d-md-table-cell">1</td>
+                                    <td class="d-none d-md-table-cell">A</td>
+
+                                    <td class="d-none d-md-table-cell">İsim-21/01/2021</td>
+                                    <td class="d-none d-md-table-cell">İsim-31/06/2021</td>
+                                    <td><span class="badge bg-success">Aktif</span></td>
+                                    <td><a href="../yetkili_islem_düzenle/yetkili_sube_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+                                    <a><i class="align-middle m-2" data-feather="trash-2"style="color: red;"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td class="d-none d-md-table-cell">2</td>
+                                    <td class="d-none d-md-table-cell">B</td>
+                                    <td class="d-none d-md-table-cell">İsim-01/01/2021</td>
+                                    <td class="d-none d-md-table-cell">İsim-31/06/2021</td>
+                                    <td><span class="badge bg-danger">Pasif</span></td>
+                                    <td><a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+                                    <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="popup">
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2><strong> Şube Düzenleme Alanı</strong></h2>
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th>Türü</th>
-                            <th>Düzenle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Sınıf</td>
-                            <td>Şube</td>
-                            <td><input type="text" placeholder="Örneğin:9. Sınıf" class="form-control text-center"></input></td>
-                        </tr>
-                        <tr>
-                            <td>Aktiflik durumu</td>
-                            <td><form>
-                                <select id="secili">
-                                 <option class="badge bg-success" value="Aktif">Aktif</option>
-                                 <option class="badge bg-danger" value="Pasif">Pasif</option>
-                                </select>
-                                </form>
-                            </td>
-                        </tr>
+        <div class="popup">
+            <div id="myModal" class="modal">
+                <div class="modal-content" id="small-modal">
+                    <span class="close">&times;</span>
+                    <h2 class="modal-title text-center"><strong> Şube Ekle</strong></h2>
+                    <form>
 
-                    </tbody>
-                </table>
-                <tr>
+                            <div class="row text-center mt-5 " >
+                                <div class="col-12 text-center ">
+                                        <div class="form-group row d-flex">
+                                        <label for="Ders" class="col-sm-2 col-form-label">Şube Adı</label>
+
+                                        <div class="col-sm-10">
+                                            <input  placeholder="" class="form-dropdown text-center"/>
+                                        </div>
+                                        <label for="Ders" class="col-sm-2 col-form-label">Durum</label>
+                                        <div class="col-sm-10">
+                                            <select  class="form-dropdown">
+                                                <option  value="">Aktif</option>
+                                                <option  value="">Pasif</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
                     <td>
-                        <button id="cls_btn" class="rapor_button" style="position:relative;left:60%;width:15%;overflow: hidden;">
+                        <button id="cls_btn" class="rapor_button">
                             <strong >Kaydet </strong>
                         </button><br>
                     </td>
-                </tr>
+                </div>
+                
             </div>
-            
         </div>
-    </div>
-</main>
-<script src="../../assets/app.js">
+    </main>
+    <script src="../../assets/app.js">
 
-</script>
+    </script>
+</div>

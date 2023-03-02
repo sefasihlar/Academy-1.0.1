@@ -7,7 +7,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	public class ClassController : Controller
+    public class ClassController : Controller
 	{
 		ClassManager _classManager = new ClassManager(new EfCoreClassRepository());
 

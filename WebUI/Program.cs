@@ -91,6 +91,16 @@ app.UseMvc(Route =>
 		template: "cart",
 		defaults: new { controller = "Cart", action = "Index" }
 		);
+    Route.MapRoute(
+        name: "exam",
+        template: "exam",
+        defaults: new { controller = "Exam", action = "Exam" }
+        );
+    Route.MapRoute(
+       name: "result",
+       template: "result",
+       defaults: new { controller = "Result", action = "Index" }
+       );
 });
 
 app.Run();

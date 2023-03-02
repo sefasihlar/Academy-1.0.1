@@ -8,7 +8,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	public class LessonController : Controller
+    public class LessonController : Controller
 	{
 		LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
 		ClassManager _classManager = new ClassManager(new EfCoreClassRepository());

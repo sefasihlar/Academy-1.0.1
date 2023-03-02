@@ -1,0 +1,95 @@
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EfCoreRepository;
+using DataAccessLayer.EntityFreamwork;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Mvc;
+using WebUI.Models;
+
+namespace WebUI.Controllers
+{
+	public class ExamQuestionController : Controller
+	{
+
+		QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
+		ExamQuestionManager _examQuestionManager = new ExamQuestionManager(new EfCoreExamQuestionRepository());
+
+
+		public IActionResult Index(int lessonId,int subjectId)
+		{
+
+			var values = new QuestionListModel()
+			{
+				Questions = _questionManager.GetWithList().Where(x=>x.LessonId==lessonId).Where(x=>x.SubjectId==subjectId).ToList(),
+			};
+
+			return View(values);
+		}
+
+
+		[HttpGet]
+		public IActionResult Create()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Create(ExamQuestions model, int[] questionIds)
+		{
+			if (model!=null & questionIds!=null)
+			{
+				_examQuestionManager.Create(model, questionIds);
+				return RedirectToAction("Index","Exam");
+			}
+
+			return View(model);
+		}
+
+
+
+		//burası silmeyecek alan  arasında yer alabilir. ilişkileri silmemiz gerekiyor 
+		[HttpPost]
+		public IActionResult Delete(int examId,int[] questionsId)
+		{
+			var values = _examQuestionManager.GetById(examId);
+
+			if (examId!=null & questionsId!=null)
+			{
+				
+				_examQuestionManager.DeleteFormExamQuestion(values,questionsId);
+				return RedirectToAction("Index", "Exam");
+				
+			}
+
+			return NotFound();
+		}
+
+
+		//şu an için kullanılmayacak
+		[HttpGet]
+		public IActionResult Detail(int id)
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Update(ExamQuestions model,int[] questionIds)
+		{
+			var values = _examQuestionManager.GetById(model.ExamId);
+
+
+			if (model!=null & questionIds!=null)
+			{
+				foreach (var item in questionIds)
+				{
+					values.QuestionId=item;
+				}
+
+				_examQuestionManager.Update(values);
+				return RedirectToAction("Index","Exam");
+			}
+
+			return View(model);
+		}
+
+	}
+}

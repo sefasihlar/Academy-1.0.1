@@ -43341,8 +43341,14 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 var clsBtn = document.getElementById("cls_btn");
+
 var upperBtn = document.getElementById("upper");
+
+var TwoBtn = document.getElementById("two");
+var LwrTwoBtn = document.getElementById("lowertwo");
+
 var lowerBtn = document.getElementById("lower_btn");
+
 btn.onclick = function () {
   modal.style.display = "flex";
   modalContent1.style.display="block"
@@ -43365,6 +43371,7 @@ clsBtn.onclick = function () {
   modal.style.display = "none";
   modalContent1.style.display="none";
   modalContent2.style.display="none";
+  modalContent3.style.display="none";
 
 };
 upperBtn.onclick = function () {
@@ -43375,6 +43382,16 @@ upperBtn.onclick = function () {
 lowerBtn.onclick = function () {
   modalContent1.style.display="block";
   modalContent2.style.display="none";
+}
+
+TwoBtn.onclick = function () {
+  modalContent2.style.display="none";
+  modalContent3.style.display="block";
+
+};
+LwrTwoBtn.onclick =function()
+{  modalContent3.style.display="none";
+  modalContent2.style.display="block";
 }//# sourceMappingURL=app.js.map
 
 //checkbox change property
@@ -43393,4 +43410,18 @@ function changeProp(checkbox) {
     div.style.webkitBoxShadow="6px 6px 25px -4px rgba(0,0,0,0.45)"
     div.style.mozBoxShadow="6px 6px 25px -4px rgba(0,0,0,0.45)"
   }
-  }
+}
+//Student exam page question change
+
+var exambtn = document.getElementById("StudentExamButton");
+var studentExam =document.getElementById("studentExam");
+var studentExam2 =document.getElementById("studentExam2");
+
+exambtn.onclick = function () {
+  studentExam.style.display="none";
+  studentExam2.style.display="block";
+}
+
+
+/// Şimdi soru geçişleri için ileri tuşuna fonksiyon yazıp 2 soru için ileri geri yapacağız 
+//sonra dolu boş sorular içinde if else kullanabiliriz checked kontrolü ile

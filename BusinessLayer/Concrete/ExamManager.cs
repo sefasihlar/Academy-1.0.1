@@ -23,7 +23,12 @@ namespace BusinessLayer.Concrete
             _examDal.Delete(entity);
         }
 
-        public List<Exam> GetAll()
+		public void DeleteFromExam(int examId, int classId, int lessonId, int subjectId)
+		{
+			_examDal.DeleteFromExam(examId, classId, lessonId, subjectId);
+		}
+
+		public List<Exam> GetAll()
         {
             return _examDal.GetAll().ToList();
         }
@@ -33,7 +38,12 @@ namespace BusinessLayer.Concrete
             return _examDal.GetById(id);
         }
 
-        public void Update(Exam entity)
+		public List<Exam> GetWithList()
+		{
+			return _examDal.GetWithList().ToList();
+		}
+
+		public void Update(Exam entity)
         {
             _examDal.Update(entity);
         }

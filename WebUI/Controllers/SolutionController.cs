@@ -8,7 +8,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	public class SolutionController : Controller
+    public class SolutionController : Controller
 	{
 		SolutionManager _solutionManager = new SolutionManager(new EfCoreSolutionRepository());
 		OptionManager _optionManager = new OptionManager(new EfCoreOptionRepository());
@@ -42,7 +42,7 @@ namespace WebUI.Controllers
 			var values = new Solution()
 			{
 				Text = model.Text,
-				ImageUrl = model.ImageUrl,
+				VideoUrl = model.VideoUrl,
 				QuestionId = model.QuestionId,
 				OptionId = model.OptionId,
 
@@ -72,7 +72,7 @@ namespace WebUI.Controllers
 			{
 				Id= values.Id,
 				Text= values.Text,
-				ImageUrl = values.ImageUrl,
+				VideoUrl = values.VideoUrl,
 				QuestionId = values.QuestionId,
 				OptionId = values.OptionId,
 				Condition= values.Condition,
@@ -91,13 +91,18 @@ namespace WebUI.Controllers
 			}
 
 			model.Text = values.Text;
-		    model.ImageUrl= values.ImageUrl;
+		    model.VideoUrl= values.VideoUrl;
 			model.QuestionId = values.QuestionId;
 			model.OptionId = values.OptionId;
 			model.Condition= values.Condition;
 
 
 			return RedirectToAction("Index","Solution");
+		}
+
+		public IActionResult Questions()
+		{
+			return View();
 		}
 
 	}

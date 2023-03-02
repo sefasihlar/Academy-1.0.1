@@ -11,7 +11,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	public class AccountController : Controller
+    public class AccountController : Controller
 	{
 		AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
 		ClassManager _classManager = new ClassManager(new EfCoreClassRepository());
@@ -258,16 +258,6 @@ namespace WebUI.Controllers
 
 			return View(model);
 		}
-
-
-
-
-
-
-
-
-
-
 
 	}
 }

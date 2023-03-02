@@ -16,7 +16,9 @@ namespace EntityLayer.Concrete
         public int QuestionId { get; set; }
         public Question Question { get; set; }
 
-        public Boolean Condition { get; set; }
+		public List<ExamAnswers> ExamAnswers { get; set; }
+
+		public Boolean Condition { get; set; }
 
     }
 }

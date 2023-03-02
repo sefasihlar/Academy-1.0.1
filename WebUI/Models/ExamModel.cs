@@ -8,7 +8,7 @@ namespace WebUI.Models
         public int Id { get; set; }
         [Required]
         public string? Title { get; set; }
-        public String Description { get; set; }
+        public string Description { get; set; }
 
         public int ClassId { get; set; }
         public Class Class { get; set; }
@@ -28,7 +28,7 @@ namespace WebUI.Models
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
-        public Boolean Condition { get; set; }
+        public bool Condition { get; set; }
 
         public List<Question> Questions { get; set; }
 

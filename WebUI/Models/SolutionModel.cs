@@ -6,7 +6,7 @@ namespace WebUI.Models
     {
         public int Id { get; set; }
         public string Text { get; set; }
-        public string ImageUrl { get; set; }
+        public string VideoUrl { get; set; }
 
         public int QuestionId { get; set; }
         public Question Question { get; set; }
@@ -17,6 +17,6 @@ namespace WebUI.Models
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
-        public Boolean Condition { get; set; }
+        public bool Condition { get; set; }
     }
 }

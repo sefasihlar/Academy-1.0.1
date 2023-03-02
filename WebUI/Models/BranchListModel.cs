@@ -2,8 +2,8 @@
 
 namespace WebUI.Models
 {
-	public class BranchListModel
-	{
-		public List<Branch> Branches { get; set; }
-	}
+    public class BranchListModel
+    {
+        public List<Branch> Branches { get; set; }
+    }
 }

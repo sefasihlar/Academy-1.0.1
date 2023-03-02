@@ -14,7 +14,9 @@ namespace EntityLayer.Concrete
         public int BranchId { get; set; }
         public Branch Branch { get; set; }
 
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+		public List<ExamAnswers> ExamAnswers { get; set; }
+
+		public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
         public Boolean Condition { get; set; }

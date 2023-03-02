@@ -123,7 +123,6 @@
   margin-bottom: 5px;
 }
 .custom-card-info {
-
 }
 .custom-card-info-title {
   font-weight: bold;
@@ -146,10 +145,11 @@
   color: white;
   font-size: medium;
   border-radius: 15px;
-  transition: 300ms;
+  transition: 200ms;
 }
 .custom-card-button:hover {
-  color: black;
+  transition: 0.5s;
+  transform: scale(2);
   text-decoration: none;
 }
 .custom-card-icon-container {
@@ -293,6 +293,7 @@ display: none;
 
 /* İçerik / Kutu */
 .modal-content {
+  overflow: auto;
   position: relative;
   border-radius: 30px;
   background-color: #fefefe;
@@ -323,19 +324,24 @@ display: none;
 
 .modal-content3{
   display: none;
-  border-radius: 11px;
+  overflow: auto;
+  position: relative;
+  border-radius: 30px;
   background-color: #fefefe;
-  margin: 15% auto; 
+  margin-left: 20%;
+  margin-top: 8%; 
   padding: 20px;
   border: 1px solid #888;
-  width: 65%;
-  height: 50%;
-
+  width: 60%;
+  height: 55%;
+  -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
 } 
 
 /* Kapat Düğmesi */
 .close {
-  transition: 0.5s;
+  transition: 0.2s;
   color: #aaa;
   float: right;
   font-size: 28px;
@@ -355,13 +361,14 @@ display: none;
   display:flex;
   float:left;
   clear:both;
-
+  overflow: hidden;
 }
 .modal-title
 {
-  padding: 0.2%;
+  padding: 1% 3% 0% 3%;
   margin-bottom: 4%;
-  width: 30%;
+  width: max-content;
+  height:10%;
   border-radius: 25px;
  color: white;
  background-image: linear-gradient(#A26BBD, #4C8BCD);
@@ -369,9 +376,26 @@ display: none;
 .form-dropdown
 {
   margin-left: 5px;
-  width: 250px;
-  height: 30px;
-  margin-bottom: 20px;
+  width: 75%;
+  height: 70%;
+  margin-bottom: 5%;
+  border-radius: 15px;
+}
+.edit-form-dropdown
+{
+  margin-left: 5px;
+  width: 40%;
+  height: 70%;
+  margin-bottom: 5%;
+  border-radius: 15px;
+}
+.answer-place
+{
+  background-color: white;
+  margin-left: 5px;
+  width: 200%;
+  height: 86%; 
+  margin-bottom: 13%;
   border-radius: 15px;
 }
 
@@ -382,18 +406,38 @@ display: none;
 }
 .big-text
 {
+  padding-top: 1%;
+  padding-left: 5%;
   width: 100%;
   height: 175px;
   border-radius: 20px;
   margin-bottom: 10px;
 
 }
+.small-text
+{
+  padding-top: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 3%;
+  overflow-x: scroll;
+  margin-left: 1%;
+  width: 75%;
+  border-radius: 20px;
+  margin-bottom: 10px; 
+}
 #small-modal
 {
   position: relative;
   left: 15%;
-  width: 40%;
+  width: 35%;
+  height: 40%;
 }
+#medium-modal
+{  position: relative;
+  left: 15%;
+  width: 35%;
+  height: 50%;}
 #big-text
 {
   padding-top: 0.2%;
@@ -414,16 +458,19 @@ display: none;
 }
 .question-text
 {
-  width: 37%;
-  max-height:230px;
+  padding-bottom: 45px;
+  overflow: hidden;
+  margin-right: 1.3%;
+  width: 100%;
+  height: 220px;
   overflow-y: scroll;
-  margin-bottom: 5px;
+  cursor:move;
 
 }
 .upper_btn
 {
+  position: relative;
   color: white;
-  width: 30%;
   height:11%;
   background-image: linear-gradient(#A26BBD, #4C8BCD);
   border-style: none;
@@ -432,20 +479,51 @@ display: none;
   width:10%;
   overflow: hidden;
 }
-#lower_btn
-{
-  width: max-content;
-}
-#fileUpload
+.lower_btn
 {
   color: white;
-  width: 50%;
+  height:11%;
   background-image: linear-gradient(#A26BBD, #4C8BCD);
   border-style: none;
   border-radius: 0.2cm;
-  
-  
+  position:relative;
+  width:10%;
+  overflow: hidden;
+  position: relative;
+  left: 0%;
+  width: max-content;
 }
+#upper
+{
+  position: relative;
+  left: 85%;
+  margin-top: 1.2%;
+  color: white;
+  height:11%;
+  background-image: linear-gradient(#A26BBD, #4C8BCD);
+  border-style: none;
+  border-radius: 0.2cm;
+  position:relative;
+  width:10%;
+  overflow: hidden;
+}
+#two
+{
+  margin-top: 2%;
+  width: 20%;
+  position: relative;
+  left: 60%;
+
+
+}
+
+#design-btn
+{
+  position: relative;
+  left:15%;
+  margin-bottom: 2%;
+}
+
 /* Pop-up Finish */
 
 /* Edit Page Begin */
@@ -455,6 +533,12 @@ display: none;
   padding-bottom: 2%;
   background-color:white;
   border-radius: 25px;
+}
+.edit-question-image
+{
+  width: 90%;
+  height: 95%;
+  border: solid rgb(199, 195, 195);
 }
 /* Edit Page Finish */
 
@@ -466,13 +550,34 @@ display: none;
   border-radius: 15px;
   background-color: white;
   font-size: medium;
-  display: inline;
 
 }
 .question-content
 {
+  margin-right: 1.5%;
+  padding-bottom: 1.4%;
   cursor: pointer;
   border: none;
+  border-radius: 15px;
+  margin-left: 6%;
+  float:left;
+  margin-top: 1.5%;
+  margin-bottom: 1.7%;
+  padding: 0.5%;
+  padding-top: 1%;
+  width:25%;
+  height:220px;
+  background-color: white;
+  font-size: medium;
+  overflow-x:scroll;
+  border-left: #B5A8F0 20px solid;
+  -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+}
+.question-content-empty
+{
+  cursor: pointer;
   border-radius: 15px;
   margin-left: 4%;
   float:left;
@@ -490,7 +595,13 @@ display: none;
   -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
   box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
   
+ 
+  
 
+}
+.question-empty
+{
+  filter: blur(4px);
 }
 ::-webkit-scrollbar {
   display: none;
@@ -517,27 +628,39 @@ display: none;
   display: inline-block;
   position: relative;
 }
+.toggle-content
+{
+  width: 15%;
+}
 .toggle-button:hover,
 .toggle-button:focus {
  
-  transition:1s;
+  transition:0.5s;
   transform: scale(1.2);
 }
 .toggle-content::-webkit-scrollbar{
   
 }
-.checkbox-container
+#editfileUpload
+{
+  margin-left:35%;
+  margin-bottom: 1.5%;
+  width: 15%;
+  height: 35px;
+}
+/* .checkbox-container
 {
   border-radius: 15px;
   display: inline-block;
   position: relative;
   left: 65%;
-}
+} */
 .question-image
 {
   overflow: hidden;
   width: 90%;
-  height: 45%;
+  height: 65%;
+  object-fit: fill;
 }
 #question-review-icon
 {
@@ -545,6 +668,162 @@ display: none;
   left:75%;
   width:40%;
   height: 40%;
+}
+.true-answer-select
+{
+  top:150%;
+  left: 150%;
+}
+.exam-btn
+{
+  position: absolute;
+
+  right: -25px;
+
+  width: 500px;
+}
+
+
+
+/* student-exam-page begin */
+.studentExamPageContainer
+{
+  display: flex;
+  overflow-y: scroll;
+  padding-left: 3%;
+  position: relative;
+  margin-top: 0.5%;
+  height: 55ch;
+  background-color: white;
+  border-radius: 15px;
+  margin-bottom: 0px;
+
+}
+.student-exam-page-contents
+{
+  margin-right: 6%;
+  height:max-content ;
+  width: 120%;
+  transition: 5s;
+  position: relative;
+}
+
+
+
+.student-exam-page-top
+{
+
+  padding-top: 1.3%;
+  padding-bottom: 1.3%;
+  width: 98%;
+  top: 1.5%;
+
+  background-color: white;
+}
+.student-exam-page-question-title
+{
+  transition: 5s;
+  font-size: large;
+  width: 15%;
+  height: 5%;
+  margin-bottom: 0;
+}
+.student-exam-page-question-content
+{
+  margin-right: 1%;
+  display: inline-block;
+  width: 98%;
+  height: 5%;
+  overflow-y: scroll;
+  font-size: medium;
+
+}
+
+.student-exam-page-answers
+{
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  position: relative;
+  font-size: large;
+
+}
+.answer-check
+{
+  width: 15%;
+  
+}
+#studen-exam-page-button
+{
+  position: relative;
+  left: 85%;
+  margin-top: 1.2%;
+  color: white;
+  height:11%;
+  background-image: linear-gradient(#A26BBD, #4C8BCD);
+  border-style: none;
+  border-radius: 0.2cm;
+  position:relative;
+  width:10%;
+  overflow: hidden;
+}
+.student-exam-page-question-number-container
+{
+  display: flex;
+
+}
+.question-time
+{
+  color: white;
+  background-image: linear-gradient(#A26BBD, #4C8BCD);
+  padding-top: 0.1%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-radius: 15px;
+  border:solid;
+}
+.student-exam-page-question-number
+{
+  /* min-width: 2%;
+  min-height: 45%; */
+  margin-top: 1%;
+  margin-left: 1%;
+  width: 3%;
+  height: 45%;
+  border:solid;
+}
+.analyc
+{
+  padding-bottom: 35px;
+  height: 200px;
+}
+/* .student-exam-page-question-number-active
+{
+  margin-left: 1%;
+  position: relative;
+  margin-top: 3%;
+  left: 7%;
+  transform: scale(1.5);
+  width: 150px;
+  height: 150px;
+  border:solid; 
+}
+.student-exam-page-question-number-filled
+{
+  cursor: pointer;
+  background-color:#888;
+  margin-left: 1%;
+  position: relative;
+  margin-top: 3%;
+  left: 7%;
+  width: 150px;
+  height: 15%px;
+  border:solid;
+} */
+
+.answer-radio
+{
+  width: 15px;
+  height: 15px;
 }
 /* index/statictic border edit */
 
@@ -580,3 +859,201 @@ display: none;
   box-sizing: content-box;
 
 }
+@media screen and (max-width=450px) {
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    float:left;
+    clear:both;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+/* İçerik / Kutu */
+.modal-content {
+  position: relative;
+  border-radius: 30px;
+  background-color: #fefefe;
+  margin-left: 20%;
+  margin-top: 8%; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%;
+  height: 55%;
+  -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+
+}
+.modal-content2 {
+  display: none;
+  position: relative;
+  left: 15%;
+  border-radius: 30px;
+  background-color: #fefefe;
+  margin-left: 20%;
+  margin-top: 8%; 
+  padding: 20px;
+  border: 1px solid #888;
+  width:30%;
+  height: 65%;
+}
+
+.modal-content3{
+  display: none;
+  position: relative;
+  border-radius: 30px;
+  background-color: #fefefe;
+  margin-left: 20%;
+  margin-top: 8%; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%;
+  height: 55%;
+  -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+
+} 
+
+  
+}
+#answerfileUpload
+{
+  margin-top: 3%;
+  color: white;
+  width: 75%;
+  background-image: linear-gradient(#A26BBD, #4C8BCD);
+  border-style: none;
+  border-radius: 0.2cm;
+
+}
+.solution-open
+{
+  display: flex;
+  position: relative;
+}
+.student-exam-result-container
+{
+}
+.student-exam-result-content
+{
+
+  padding-bottom: 1.4%;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  margin-left: 6%;
+  float:left;
+  margin-top: 1.5%;
+  margin-bottom: 1.7%;
+  padding: 0.5%;
+  padding-top: 1%;
+  width:300px;
+  height:200px;
+  background-color: white;
+  font-size: medium;
+  overflow: hidden;
+  border-left: #B5A8F0 20px solid;
+  -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+}
+.student-exam-result-content-info 
+{
+  margin-top: 10%;
+  font-size: large;
+}
+.student-exam-result-content-score
+{
+  margin-top: 10%;
+}
+.student-exam-result-content-eye
+{
+  margin-top: 15px;
+  color: black;
+  font-size: larger;
+} 
+.student-exam-result-content-question-link-container
+{
+  position: relative;
+  text-decoration: none;
+  margin-left: 85%;
+
+}
+.student-exam-result-content-question-link
+{
+  margin-top: 10%;
+  color: white;
+  height:12%;
+  background-image: linear-gradient(#A26BBD, #4C8BCD);
+  border-style: none;
+  border-radius: 0.2cm;
+  position:relative;
+  width:20%;
+  padding: 15%;
+  overflow: hidden;
+}
+.student-question-content-true
+{
+  border: solid;
+  border-radius:20px ;
+  padding: 2%;
+  margin-right: 2%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  width: 45%;
+  border-color: #00FF2B;
+}
+.student-question-content-error
+{
+  border: solid;
+  border-radius:20px ;
+  padding: 2%;
+  margin-right: 2%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  width: 45%;
+  border-color: #FF000D;
+}
+.student-questions-container
+{
+  border-radius: 15px;
+  overflow: scroll;
+  padding: 1.5%;
+  background-color: white;
+
+}
+.student-true-answers
+{
+  margin-top: 1.4%;
+  font-size: large;
+}
+.student-question-solution-page
+{
+  border-radius: 15px;
+  padding: 1.3%;
+  background-color: white;
+}
+.carousel-control-prev
+{
+
+  margin-top:2%;
+  position: relative; 
+  top: 1%;
+   width:15%;
+  height:36px;
+  background-image: linear-gradient(#A26BBD, #4C8BCD);
+
+}
+
+
+

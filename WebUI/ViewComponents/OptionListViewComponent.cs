@@ -2,8 +2,8 @@
 using DataAccessLayer.EntityFreamwork;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
-using WebUI.Models;
 using DataAccessLayer.EfCoreRepository;
+using WebUI.Models;
 
 namespace WebUI.ViewComponents
 {

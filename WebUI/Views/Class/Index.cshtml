@@ -1,4 +1,4 @@
-﻿@model WebUI.Models.ClassListModel
+﻿@model ClassListModel
 
 @{
     ViewData["Title"] = "Index";
@@ -74,7 +74,7 @@
     </div>
     <div class="popup">
         <div id="myModal" class="modal">
-            <div class="modal-content" id="small-modal">
+            <div class="modal-content" id="">
                 <span class="close">&times;</span>
                 <h2 class="modal-title text-center"><strong> Sınıf Ekle</strong></h2>
                 <form asp-controller="Class" asp-action="Create" method="post">
