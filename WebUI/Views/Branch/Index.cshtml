@@ -14,36 +14,42 @@
                 <div class="w-100">
                     <div class="row">
 
-                        <div class="card flex-fill col-sm-9" style="border-radius: 25px;box-shadow: 0 0 0 4px white, 0 4px 4px black;">
+                        <div class="card flex-fill col-12 " style="border-radius: 25px;
+                                                                        box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+                            <div class="row">
+                                <div class="card-header col-10">
+                                    <h5 class="card-title mb-0">Şubeler</h5>
+                                </div>
+                                <div class="yetkili_btn col-2">
 
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Şubeler</h5>
+                                    <a style="color:white" id="myBtn">
+                                        <strong>Yeni Şube Ekle </strong>
+
+                                    </a>
+                                </div>
                             </div>
+
                             <table class="table my-0 text-center">
                                 <thead>
 
-                                    <button id="myBtn" class="rapor_button" style="position:relative;left:86%; width:10%;overflow: hidden;">
-                                        <strong style="width:50%;">Yeni Şube Ekle </strong>
-
-                                    </button>
                                     <tr>
-                                        <th class="d-none d-md-table-cell">ID</th>
-                                        <th>Şube</th>
-                                        <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
-                                        <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+                                        <th>ID</th>
+                                        <th>İsmi</th>
+                                        <th>Ekleyen ve tarihi</th>
+                                        <th>Değiştiren ve tarihi</th>
                                         <th>Aktiflik durumu</th>
                                         <th>Düzenle veya sil</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     @foreach (var item in Model.Branches)
                                     {
                                         <tr>
-                                            <td class="d-none d-md-table-cell">@item.Id</td>
+                                            <td>@item.Id</td>
                                             <td>@item.Name</td>
-                                            <td class="d-none d-md-table-cell">Ayşe-@item.CreatedDate</td>
-                                            <td class="d-none d-md-table-cell">Ayşe-@item.UpdatedDate</td>
+                                            <td>ahmet-@item.CreatedDate</td>
+                                            <td>mehmet-@item.UpdatedDate</td>
+                                            <td><span class="badge bg-success">Aktif</span></td>
                                             @if (item.Condition == true)
                                             {
                                                 <td><span class="badge bg-success">Aktif</span></td>
@@ -62,7 +68,7 @@
                                             </td>
                                         </tr>
                                     }
-
+                                   
                                 </tbody>
                             </table>
                         </div>
@@ -102,10 +108,8 @@
                         </button><br>
                     </td>
                 </form>
-
             </div>
 
         </div>
     </div>
 </main>
-

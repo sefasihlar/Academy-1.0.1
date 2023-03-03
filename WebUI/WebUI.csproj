@@ -38,6 +38,8 @@
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\Template\.git\objects\info\" />
     <Folder Include="wwwroot\Template\.git\refs\tags\" />
+    <Folder Include="wwwroot\Template\video\" />
+    <Folder Include="wwwroot\Template\questions\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,10 +64,8 @@
     <None Include="wwwroot\Template\.git\logs\HEAD" />
     <None Include="wwwroot\Template\.git\logs\refs\heads\master" />
     <None Include="wwwroot\Template\.git\logs\refs\remotes\origin\HEAD" />
-    <None Include="wwwroot\Template\.git\objects\pack\pack-1e74d623079777386276ee8718389c751fa1c573.idx" />
-    <None Include="wwwroot\Template\.git\objects\pack\pack-1e74d623079777386276ee8718389c751fa1c573.pack" />
-    <None Include="wwwroot\Template\.git\objects\pack\pack-85b0bb5e1ced7cb1f0b82d6921e130760cc7efdc.idx" />
-    <None Include="wwwroot\Template\.git\objects\pack\pack-85b0bb5e1ced7cb1f0b82d6921e130760cc7efdc.pack" />
+    <None Include="wwwroot\Template\.git\objects\pack\pack-08701abc072e5a1d3f9cf8387c8fa761ced00b73.idx" />
+    <None Include="wwwroot\Template\.git\objects\pack\pack-08701abc072e5a1d3f9cf8387c8fa761ced00b73.pack" />
     <None Include="wwwroot\Template\.git\packed-refs" />
     <None Include="wwwroot\Template\.git\refs\heads\master" />
     <None Include="wwwroot\Template\.git\refs\remotes\origin\HEAD" />

@@ -201,43 +201,60 @@
 						<div class="d-flex">
 							<div class="w-100">
 								<div class="row">
-
-									<div class="card flex-fill col-sm-9" style="border-radius: 25px;
-																				box-shadow: 0 0 0 4px white, 0 4px 4px black;">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Konular</h5>
-								</div>
-								<table class="table my-0 text-center">
-									<thead>
+									
+									<div class="card flex-fill col-12 " style="border-radius: 25px;
+																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+										<div class="row">
+											<div class="card-header col-10">
+												<h5 class="card-title mb-0">Dersler</h5>
+											</div>
+											<div  class="yetkili_btn col-2">
+												
+												<a  style="color:white"id="myBtn">
+													<strong  >Yeni Ders Ekle </strong>
+												
+												</a>
+											</div>
+										</div>
 										
-											<button id="myBtn"class="rapor_button" style="position:relative;left:86%; width:10%;overflow: hidden;">
-												<strong style="width:50%;" >Yeni Konu Ekle </strong>
-											
-											</button>
-										<tr>
-											<th class="d-none d-md-table-cell">ID</th>
-											<th>Konu</th>
-											<th>Ders</th>
-											<th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
-											<th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
-											<th>Aktiflik durumu</th>
-											<th>Düzenle veya sil</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td class="d-none d-md-table-cell">1</td>
-											<td class="d-none d-md-table-cell">Üslü Sayılar</td>
-											<td class="d-none d-md-table-cell">Matematik</td>
-											<td class="d-none d-md-table-cell">İsim-21/01/2021</td>
-											<td class="d-none d-md-table-cell">İsim-31/06/2021</td>
-											<td><span class="badge bg-success">Aktif</span></td>
-											<td><a href="../yetkili_islem_düzenle/yetkili_konu_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-											<a><i class="align-middle m-2" data-feather="trash-2"style="color: red;"></i></a></td>
-										</tr>		
-									</tbody>
-								</table>
-							</div>
+										<table class="table my-0 text-center">
+											<thead>
+												
+												<tr>
+													<th class="d-none d-md-table-cell">ID</th>
+													<th>İsmi</th>
+													<th>Ders</th>
+													<th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
+													<th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+													<th>Aktiflik durumu</th>
+													<th>Düzenle veya sil</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="d-none d-md-table-cell">1</td>
+													<td>Üslü Sayılar</td>
+													<td>Matematik</td>
+													<td class="d-none d-md-table-cell">İsim-21/01/2021</td>
+													<td class="d-none d-md-table-cell">İsim-31/06/2021</td>
+													<td><span class="badge bg-success">Aktif</span></td>
+													<td><a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+													<a><i class="align-middle m-2" data-feather="trash-2"style="color: red;"></i></a></td>
+												</tr>
+												<tr>
+													<td class="d-none d-md-table-cell">2</td>
+													<td>Köklü Sayılar</td>
+													<td>Matematik</td>
+													<td class="d-none d-md-table-cell">İsim-01/01/2021</td>
+													<td class="d-none d-md-table-cell">İsim-31/06/2021</td>
+													<td><span class="badge bg-danger">Pasif</span></td>
+													<td><a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+													<a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a></td>
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -281,9 +298,9 @@
 							</form>
 							<tr>
 								<td>
-									<button id="cls_btn" class="rapor_button">
-										<strong >Kaydet </strong>
-									</button><br>
+									<button id="design-yetkili-btn" class="yetkili_btn">
+										<strong >Kaydet </strong><br>
+									</button>
 								</td>
 							</tr>
 						</div>

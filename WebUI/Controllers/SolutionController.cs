@@ -12,45 +12,80 @@ namespace WebUI.Controllers
 	{
 		SolutionManager _solutionManager = new SolutionManager(new EfCoreSolutionRepository());
 		OptionManager _optionManager = new OptionManager(new EfCoreOptionRepository());
-		public IActionResult Index()
+		QuestionManager _quesitonManager = new QuestionManager(new EfCoreQuestionRepository());
+		public IActionResult Index(int id)
 		{
-			var values = new SolutionListModel()
+			var values = _quesitonManager.GetById(id);
+
+			if (values == null)
 			{
-				Solutions = _solutionManager.GetWithQuestionList().ToList(),
-			};
-			return View(values);
+				return NotFound();
+			}
+
+			var options = _optionManager.GetAll().Where(x=>x.QuestionId==values.Id);
+			ViewBag.options = new SelectList(options, "Id", "Text");
+
+			return View(new QuestionModel()
+			{
+				Id = values.Id,
+				Text = values.Text,
+				ImageUrl = values.ImageUrl,
+				QuestionText = values.QuestionText,
+				LessonId = values.LessonId,
+				LevelId = values.LevelId,
+				SubjectId = values.SubjectId,
+				OutputId = values.OutputId,
+				Condition = values.Condition,
+				SolutionCondition = values.SolutionCondition,
+			});
 		}
 
 		[HttpGet]
 		public IActionResult Create()
 		{
-			var options = _optionManager.GetAll();
-			ViewBag.options = new SelectList(options, "Id", "Name");
-
-			var values = new SolutionListModel()
-			{
-				Solutions = _solutionManager.GetWithQuestionList()
-			};
-
-			return View(values);
+			return View();
 		}
 
 
 		[HttpPost]
-		public IActionResult Create(SolutionModel model)
+		public async Task< IActionResult> Create(SolutionModel model,IFormFile file,QuestionModel questionModel)
 		{
+			
 			var values = new Solution()
 			{
+				Id = model.Id,
 				Text = model.Text,
-				VideoUrl = model.VideoUrl,
+				VideoUrl = file.FileName,
 				QuestionId = model.QuestionId,
 				OptionId = model.OptionId,
-
+				CreatedDate = model.CreatedDate,
+				UpdatedDate = model.UpdatedDate,
+				Condition  = model.Condition,
 			};
-			if (values!=null)
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Template\\video", file.FileName);
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+			//Question tablosundaki solution condition durumunu güncelle
+			
+			var  questionId = _quesitonManager.GetById(model.QuestionId);
+
+            if (questionId!=null)
+			{
+				questionId.SolutionCondition = questionModel.SolutionCondition; 
+            }
+
+			
+
+            if (values!=null)
 			{
 				_solutionManager.Create(values);
-				return RedirectToAction("Index", "Solution");
+				_quesitonManager.Update(questionId);
+                return RedirectToAction("Questions", "Solution");
+
 			}
 
 			var options = _optionManager.GetAll();
@@ -74,7 +109,7 @@ namespace WebUI.Controllers
 				Text= values.Text,
 				VideoUrl = values.VideoUrl,
 				QuestionId = values.QuestionId,
-				OptionId = values.OptionId,
+				Option = values.Option,
 				Condition= values.Condition,
 			});
 		}
@@ -102,7 +137,11 @@ namespace WebUI.Controllers
 
 		public IActionResult Questions()
 		{
-			return View();
+			var values = new QuestionListModel()
+			{
+				Questions = _quesitonManager.GetWithList().ToList()
+			};
+			return View(values);
 		}
 
 	}

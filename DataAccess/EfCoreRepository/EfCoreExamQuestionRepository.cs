@@ -12,14 +12,15 @@ namespace DataAccessLayer.EfCoreRepository
 {
 	public class EfCoreExamQuestionRepository : EfCoreGenericRepository<ExamQuestions, AcademyContext>, IExamQuestionDal
 	{
-		public void Create(ExamQuestions entity, int[] questionId)
+		public void Create(ExamQuestions entity, int questionId)
 		{
 			throw new NotImplementedException();
 		}
 
-		public void DeleteFromExamQuestion(ExamQuestions entity, int[] questionId)
+		public void DeleteFromExamQuestion(ExamQuestions entity, int questionId)
 		{
 			throw new NotImplementedException();
 		}
+
 	}
 }

@@ -35,10 +35,17 @@ namespace WebUI.Controllers
 		[HttpPost]
 		public IActionResult Create(ExamQuestions model, int[] questionIds)
 		{
-			if (model!=null & questionIds!=null)
+
+            if (model!=null & questionIds!=null)
 			{
-				_examQuestionManager.Create(model, questionIds);
-				return RedirectToAction("Index","Exam");
+				foreach (var item in questionIds)
+				{
+					_examQuestionManager.Create(model, item);
+					
+				};
+
+				return RedirectToAction("Index", "Exam");
+
 			}
 
 			return View(model);
@@ -54,8 +61,11 @@ namespace WebUI.Controllers
 
 			if (examId!=null & questionsId!=null)
 			{
+				foreach (var item in questionsId)
+				{
+					_examQuestionManager.DeleteFormExamQuestion(values, item);
+				}
 				
-				_examQuestionManager.DeleteFormExamQuestion(values,questionsId);
 				return RedirectToAction("Index", "Exam");
 				
 			}
@@ -65,11 +75,14 @@ namespace WebUI.Controllers
 
 
 		//şu an için kullanılmayacak
+		//sınavın sorularını farklı bir sayfada sıralayıp listeleyebiliz
+		//güncelleme işlemlerinide kolaylarştır
 		[HttpGet]
 		public IActionResult Detail(int id)
 		{
 			return View();
 		}
+		
 
 		[HttpPost]
 		public IActionResult Update(ExamQuestions model,int[] questionIds)

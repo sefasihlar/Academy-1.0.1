@@ -200,51 +200,71 @@
 						<div class="d-flex">
 							<div class="w-100">
 								<div class="row">
-
-									<div class="card flex-fill col-sm-9" style="border-radius: 25px;
-																				box-shadow: 0 0 0 4px white, 0 4px 4px black;">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Sınavlar</h5>
-								</div>
-								<table class="table my-0 text-center">
-									<thead>
+									
+									<div class="card flex-fill col-12 " style="border-radius: 25px;
+																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+										<div class="row">
+											<div class="card-header col-10">
+												<h5 class="card-title mb-0">Sınavlar</h5>
+											</div>
+											<div  class="yetkili_btn col-2">
+												
+												<a  style="color:white"id="myBtn">
+													<strong  >Yeni Sınav Ekle </strong>
+												
+												</a>
+											</div>
+										</div>
 										
-											<button id="myBtn"class="rapor_button" style="position:relative;left:86%; width:10%;overflow: hidden;">
-												<strong style="width:50%;" >Yeni Sınav Ekle </strong>
-											
-											</button>
-										<tr>
-											<th class="d-none d-md-table-cell">ID</th>
-											<th>Sınav</th>
-											<th>Ders</th>
-											<th>Sınıf</th>
-											<th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
-											<th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
-											<th class="d-none d-md-table-cell">Sorular</th>
-											<th>Aktiflik durumu</th>
-											<th>Düzenle veya sil</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td class="d-none d-md-table-cell">1</td>
-											<td class="d-none d-md-table-cell">Üslü Sayılar</td>
-											<td class="d-none d-md-table-cell">Matematik</td>
-											<td class="d-none d-md-table-cell">9.Sınıf</td>
-											<td class="d-none d-md-table-cell">İsim-21/01/2021</td>
-											<td class="d-none d-md-table-cell">İsim-31/06/2021</td>
-											<td class="d-none d-md-table-cell"><a href="../yetkili_islem/yetkili_sinav_sorulari.html">Sorular</a></td>
-											<td><span class="badge bg-success">Aktif</span></td>
-											<td><a href="../yetkili_islem_düzenle/yetkili_sinav_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-											<a><i class="align-middle m-2" data-feather="trash-2"style="color: red;"></i></a></td>
-										</tr>		
-									</tbody>
-								</table>
-							</div>
+										<table class="table my-0 text-center">
+											<thead>
+												
+												<tr>
+													<th >ID</th>
+													<th>İsmi</th>
+													<th>Konu</th>
+													<th>Ders</th>
+													<th>Sınıf</th>
+													<th >Ekleyen ve tarihi</th>
+													<th >Değiştiren ve tarihi</th>
+													<th>Aktiflik durumu</th>
+													<th>Düzenle veya sil</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td >1</td>
+													<td>1.Ara Dönem Sınavı</td>
+													<td>Üslü Sayılar</td>
+													<td>Matematik</td>
+													<td>9</td>
+													<td >İsim-21/01/2021</td>
+													<td >İsim-31/06/2021</td>
+													<td><span class="badge bg-success">Aktif</span></td>
+													<td><a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+													<a><i class="align-middle m-2" data-feather="trash-2"style="color: red;"></i></a></td>
+												</tr>
+												<tr>
+													<td >2</td>
+													<td>3.Ara Dönem Sınavı</td>
+													<td>Köklü Sayılar</td>
+													<td>Türkçe</td>
+													<td>10</td>
+													<td >İsim-21/01/2021</td>
+													<td >İsim-31/06/2021</td>
+													<td><span class="badge bg-success">Aktif</span></td>
+													<td><a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+													<a><i class="align-middle m-2" data-feather="trash-2"style="color: red;"></i></a></td>
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 				</div>
 				<div class="popup">
 					<div id="myModal" class="modal">
@@ -252,61 +272,49 @@
 							<span class="close">&times;</span>
 							<h3 class="modal-title text-center"><strong> Sınav Ekle</strong></h3>
 							<form>
-
-									<div class="row text-center mt-5 " >
-										<div class="col-12 text-center ">
-												<div class="form-group row d-flex">
-												<label for="Ders" class="col-sm-2 col-form-label">Sınav Adı</label>
-
-												<div class="col-sm-10">
-													<input  placeholder="Örneğin:Köklü Sayılar" class="form-dropdown"/>
-												</div>										
-												<label for="Ders" class="col-sm-2 col-form-label">Sınav Açıklaması</label>
-
-												<div class="col-sm-10">
-													<input  placeholder="Örneğin:Köklü Sayılar" class="form-dropdown"/>
-												</div>
-												<label for="Ders" class="col-sm-2 col-form-label">Sınıflar</label>
-												<div class="col-sm-10">
-													<select  class="form-dropdown">
-														<option  value="">9.Sınıf</option>
-														<option  value="">10.Sınıf</option>
-													</select>						
-												</div>	
-												<label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
-												<div class="col-sm-10">
-													<select  class="form-dropdown">
-														<option  value="">Matematik</option>
-														<option  value="">Coğrafya</option>
-													</select>						
-												</div>
-												<label for="Ders" class="col-sm-2 col-form-label">Konular</label>
-												<div class="col-sm-10">
-													<select  class="form-dropdown">
-														<option  value="">Üslü</option>
-														<option  value="">Köklü</option>
-													</select>						
-												</div>
-												<label for="Ders" class="col-sm-2 col-form-label">Durum</label>
-												<div class="col-sm-10">
-													<select  class="form-dropdown">
-														<option  value="">Aktif</option>
-														<option  value="">Pasif</option>
-
-													</select>
-												</div>
-
+								<div class="row">
+									<div class="col-md-6">
+										<label for="Ders" class="col-sm-3 col-form-label">İsim</label>
+											<div class="col-sm-12">
+												<input  placeholder="Örneğin:Matematik" class="form-dropdown"/>
 											</div>
+										<label for="Ders" class="col-sm-3 col-form-label">Konu</label>
+										<div class="col-sm-12">
+											<select  class="form-dropdown">
+												<option  value="">Köklü Sayılar</option>
+												<option  value="">Türev</option>
+												<option  value="">Üslü Sayılar</option>
+											</select>						
 										</div>
+										<label for="Ders" class="col-sm-3 col-form-label">Ders</label>
+										<div class="col-sm-12">
+											<select  class="form-dropdown">
+												<option  value="">Matematik</option>
+												<option  value="">Coğrafya</option>
+
+											</select>						
+										</div>
+										<label for="Ders" class="col-sm-3 col-form-label">Durumu</label>
+										<div class="col-sm-12">
+											<select  class="form-dropdown">
+												<option  value="">Aktif</option>
+												<option  value="">Pasif</option>
+											</select>						
+										</div>
+									</div>		
+									<div class="col-md-6">
+											<h5><strong>Soru Metini:</strong> </h5>
+											<textarea class=" big-text"type="text" placeholder="Cevap İçeriğini giriniz"></textarea>
+											<div class="true-answer-select ">
+											</div>
 									</div>
+									<div class="yetkili_btn">
+										<a style="text-decoration: none; color: white;" href=""><strong>Kaydet</strong></a>
+									</div>	
+								</div>
+												 
+							</div>
 							</form>
-							<tr>
-								<td>
-									<button id="cls_btn" class="rapor_button">
-										<strong >Kaydet </strong>
-									</button><br>
-								</td>
-							</tr>
 						</div>
 						
 					</div>

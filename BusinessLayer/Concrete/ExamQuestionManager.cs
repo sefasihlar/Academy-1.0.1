@@ -23,7 +23,7 @@ namespace BusinessLayer.Concrete
 			_examQuestionDal.Create(entity);
 		}
 
-		public void Create(ExamQuestions entity, int[] questionId)
+		public void Create(ExamQuestions entity, int questionId)
 		{
 			_examQuestionDal.Create(entity, questionId);
 		}
@@ -33,10 +33,11 @@ namespace BusinessLayer.Concrete
 			_examQuestionDal.Delete(entity);
 		}
 
-		public void DeleteFormExamQuestion(ExamQuestions entity, int[] questionId)
+		public void DeleteFormExamQuestion(ExamQuestions entity, int questionId)
 		{
-			_examQuestionDal.DeleteFromExamQuestion(entity, questionId);
+			_examQuestionDal.DeleteFromExamQuestion(entity,questionId);
 		}
+
 
 		public List<ExamQuestions> GetAll()
 		{

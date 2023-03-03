@@ -101,6 +101,11 @@ app.UseMvc(Route =>
        template: "result",
        defaults: new { controller = "Result", action = "Index" }
        );
+    Route.MapRoute(
+     name: "sulution",
+     template: "solution",
+     defaults: new { controller = "Solution", action = "Questions" }
+     );
 });
 
 app.Run();

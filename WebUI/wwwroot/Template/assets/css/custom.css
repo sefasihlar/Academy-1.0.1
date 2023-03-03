@@ -293,6 +293,7 @@ display: none;
 
 /* İçerik / Kutu */
 .modal-content {
+
   overflow: auto;
   position: relative;
   border-radius: 30px;
@@ -302,7 +303,7 @@ display: none;
   padding: 20px;
   border: 1px solid #888;
   width: 60%;
-  height: 55%;
+  height: max-content;
   -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
   -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
   box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
@@ -365,10 +366,9 @@ display: none;
 }
 .modal-title
 {
-  padding: 1% 3% 0% 3%;
+  padding: 0% 3% 0% 3%;
   margin-bottom: 4%;
   width: max-content;
-  height:10%;
   border-radius: 25px;
  color: white;
  background-image: linear-gradient(#A26BBD, #4C8BCD);
@@ -377,9 +377,10 @@ display: none;
 {
   margin-left: 5px;
   width: 75%;
-  height: 70%;
+  height: 35px;
   margin-bottom: 5%;
   border-radius: 15px;
+  border: groove;
 }
 .edit-form-dropdown
 {
@@ -428,10 +429,10 @@ display: none;
 }
 #small-modal
 {
-  position: relative;
-  left: 15%;
-  width: 35%;
-  height: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  height: max-content;
 }
 #medium-modal
 {  position: relative;
@@ -517,11 +518,16 @@ display: none;
 
 }
 
-#design-btn
+#design-yetkili-btn
 {
+  padding: 0.7%;
   position: relative;
-  left:15%;
-  margin-bottom: 2%;
+  margin-right: auto;
+  margin-left: 18%;
+  margin-bottom: auto;
+  margin-top: auto;
+  width: max-content;
+  height: max-content;
 }
 
 /* Pop-up Finish */
@@ -536,8 +542,8 @@ display: none;
 }
 .edit-question-image
 {
-  width: 90%;
-  height: 95%;
+  width: 50%;
+  height: 55%;
   border: solid rgb(199, 195, 195);
 }
 /* Edit Page Finish */
@@ -559,14 +565,15 @@ display: none;
   cursor: pointer;
   border: none;
   border-radius: 15px;
-  margin-left: 6%;
+  margin-left: 3%;
+  margin-right: 1%;
   float:left;
   margin-top: 1.5%;
   margin-bottom: 1.7%;
   padding: 0.5%;
   padding-top: 1%;
-  width:25%;
-  height:220px;
+  width:320px;
+  height:370px;
   background-color: white;
   font-size: medium;
   overflow-x:scroll;
@@ -618,25 +625,27 @@ display: none;
 .page-search
 {
   border-radius: 15px;
-  width: 100%;
   background-color: white;
 }
 .search-place
 {
   margin-left: 2%;
-  top: 40%;
-  display: inline-block;
-  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .toggle-content
 {
   width: 15%;
 }
+#toggle-button-r
+{
+  margin-right: 4%;
+}
 .toggle-button:hover,
 .toggle-button:focus {
  
   transition:0.5s;
-  transform: scale(1.2);
+  transform: scale(1.3);
 }
 .toggle-content::-webkit-scrollbar{
   
@@ -659,7 +668,7 @@ display: none;
 {
   overflow: hidden;
   width: 90%;
-  height: 65%;
+  height: auto;
   object-fit: fill;
 }
 #question-review-icon
@@ -684,6 +693,69 @@ display: none;
 }
 
 
+
+/* index/statictic border edit */
+
+
+
+
+
+
+
+/* message page */
+.messages-container
+{
+  width: 25%;
+  height: 100%;
+  position:relative;
+}
+.messages-category
+{
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding: 10px;
+  min-height:200px ;
+  max-width: 100%;
+  position:relative;
+  font-size: medium;
+  background-color: white;
+}
+.message-category-info
+{
+  padding-right:40%;
+  
+  border-bottom-style: groove;
+  box-sizing: content-box;
+
+}
+
+/*Tamamlanmadı 
+
+/* message page */
+
+
+
+
+
+
+
+#answerfileUpload
+{
+  margin-top: 3%;
+  color: white;
+  width: 75%;
+  background-image: linear-gradient(#A26BBD, #4C8BCD);
+  border-style: none;
+  border-radius: 0.2cm;
+
+}
+.solution-open
+{
+  display: flex;
+  position: relative;
+}
+
+/* Student-Exam-Page */
 
 /* student-exam-page begin */
 .studentExamPageContainer
@@ -781,169 +853,18 @@ display: none;
   border-radius: 15px;
   border:solid;
 }
-.student-exam-page-question-number
-{
-  /* min-width: 2%;
-  min-height: 45%; */
-  margin-top: 1%;
-  margin-left: 1%;
-  width: 3%;
-  height: 45%;
-  border:solid;
-}
 .analyc
 {
   padding-bottom: 35px;
   height: 200px;
 }
-/* .student-exam-page-question-number-active
-{
-  margin-left: 1%;
-  position: relative;
-  margin-top: 3%;
-  left: 7%;
-  transform: scale(1.5);
-  width: 150px;
-  height: 150px;
-  border:solid; 
-}
-.student-exam-page-question-number-filled
-{
-  cursor: pointer;
-  background-color:#888;
-  margin-left: 1%;
-  position: relative;
-  margin-top: 3%;
-  left: 7%;
-  width: 150px;
-  height: 15%px;
-  border:solid;
-} */
-
 .answer-radio
 {
   width: 15px;
   height: 15px;
 }
-/* index/statictic border edit */
 
-
-
-
-
-
-
-/* message page */
-.messages-container
-{
-  width: 25%;
-  height: 100%;
-  position:relative;
-}
-.messages-category
-{
-  border-radius: 15px;
-  box-sizing: border-box;
-  padding: 10px;
-  min-height:200px ;
-  max-width: 100%;
-  position:relative;
-  font-size: medium;
-  background-color: white;
-}
-.message-category-info
-{
-  padding-right:40%;
-  
-  border-bottom-style: groove;
-  box-sizing: content-box;
-
-}
-@media screen and (max-width=450px) {
-  .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
-    float:left;
-    clear:both;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-}
-
-/* İçerik / Kutu */
-.modal-content {
-  position: relative;
-  border-radius: 30px;
-  background-color: #fefefe;
-  margin-left: 20%;
-  margin-top: 8%; 
-  padding: 20px;
-  border: 1px solid #888;
-  width: 100%;
-  height: 55%;
-  -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
-  -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
-  box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
-
-}
-.modal-content2 {
-  display: none;
-  position: relative;
-  left: 15%;
-  border-radius: 30px;
-  background-color: #fefefe;
-  margin-left: 20%;
-  margin-top: 8%; 
-  padding: 20px;
-  border: 1px solid #888;
-  width:30%;
-  height: 65%;
-}
-
-.modal-content3{
-  display: none;
-  position: relative;
-  border-radius: 30px;
-  background-color: #fefefe;
-  margin-left: 20%;
-  margin-top: 8%; 
-  padding: 20px;
-  border: 1px solid #888;
-  width: 100%;
-  height: 55%;
-  -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
-  -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
-  box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
-
-} 
-
-  
-}
-#answerfileUpload
-{
-  margin-top: 3%;
-  color: white;
-  width: 75%;
-  background-image: linear-gradient(#A26BBD, #4C8BCD);
-  border-style: none;
-  border-radius: 0.2cm;
-
-}
-.solution-open
-{
-  display: flex;
-  position: relative;
-}
-.student-exam-result-container
-{
-}
+/* Student-exam-result-page */
 .student-exam-result-content
 {
 
@@ -1043,17 +964,50 @@ display: none;
   padding: 1.3%;
   background-color: white;
 }
-.carousel-control-prev
+/* student-exam-page finish */
+
+.yetkili_btn
 {
-
-  margin-top:2%;
-  position: relative; 
-  top: 1%;
-   width:15%;
-  height:36px;
-  background-image: linear-gradient(#A26BBD, #4C8BCD);
-
+    margin-top: 15px;
+    color: white;
+    width: max-content;
+    height:25px;
+    background-image: linear-gradient(#A26BBD, #4C8BCD);
+    border-style: none;
+    border-radius: 0.2cm;
 }
 
+@media  screen and (max-width:430px) {  
+  #small-modal
+{
+  margin-top: 15%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: auto;
+  width:90%;
+  height: 55%;
+}
+#design-yetkili-btn
+{
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 2%;
+  width: max-content;
+  height: max-content;
+}
+.modal-content
+{
+  overflow-y: scroll;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#cls_button
+{
+  left: 0;
+}
+  
+}
 
 

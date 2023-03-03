@@ -11,63 +11,56 @@
                 <div class="w-100">
                     <div class="row">
                         <div class="page-search">
-                            <div class="search-place">
-                                <button class="toggle-button dropdown" data-feather="arrow-left"></button>
-                                <span class="toggle-content"><strong>Matematik</strong></span>
-                                <button class="toggle-button" data-feather="arrow-right"></button>
-                            </div>
-                            <div class="search-place">
-                                <button data-feather="arrow-left"></button>
-                                <span><strong>Üslü Sayılar</strong></span>
-                                <button data-feather="arrow-right"></button>
-                                <button id="myBtn" class="rapor_button">
-                                    <strong>Yeni Soru Ekle </strong>
-
-                                </button>
-                            </div>
-                            <h1 class="text-center">Matematik Soruları</h1>
-                        </div>
-
-                        <div class="questions-container">
-                            @foreach (var item in Model.Questions)
-                            {
-                                <div class="question-content">
-                                    <input type="checkbox" onclick="changeProp(this)">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h4><strong>Soru-@item.Id</strong></h4>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="" id="question-review-icon">
-                                                <i class="bi bi-pencil-square">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                    </svg>
-                                                </i>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <img src="/Template/questions/@item.ImageUrl"/>
-                                     <span>@item.Text</span>
-                                    <span class="question-info"><strong>@item.QuestionText?</strong></span>
-                                    <div class="question-answer-list">
-                                        @foreach (var option in item.Options.Where(x=>x.QuestionId==item.Id).ToList())
-                                        {
-                                            <span><strong>@option.Name)</strong> @option.Text</span>
-
-                                            <br>
-                                        }    
-                                   
-                                    </div>
+                            <div class="row col-12">
+                                <div class="text-center col-10">
+                                    <h1>Matematik Soruları</h1>
                                 </div>
-                            }    
-                            
+                                <div class="col-2">
+                                    <button style="margin-top: 6px;" id="myBtn" class="yetkili_btn">
+                                        <strong>Yeni Soru Ekle </strong>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="questions-container">
 
-                
+                        @foreach (var item in Model.Questions)
+                        {
+                            <div class="question-content">
+                                <input type="checkbox" onclick="changeProp(this)">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4><strong>Soru-@item.Id</strong></h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="" id="question-review-icon">
+                                            <i class="bi bi-pencil-square">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                </svg>
+                                            </i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
+                                <input type="hidden" name="Condition" value="True" />
+                                <span>@item.Text</span>
+                                <span class="question-info"><strong>@item.QuestionText?</strong></span>
+                                <div class="question-answer-list">
+                                    @foreach (var option in item.Options.Where(x => x.QuestionId == item.Id).ToList())
+                                    {
+                                        <span><strong>@option.Name)</strong> @option.Text</span>
+
+                                        <br>
+                                    }
+
+                                </div>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,14 +70,14 @@
             <div id="myModal" class="modal">
                 <div class="modal-content" id="modal-content1">
                     <span class="close">&times;</span>
-                    <h2 class="modal-title text-center"><strong> Soru Ekle</strong></h2>
+                    <h3 class="modal-title text-center"><strong> Soru Ekle</strong></h3>
 
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group row d-flex">
                                 <label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
                                 <div class="col-sm-10">
-                                    <input class="form-dropdown text-center" type="text" name="QuestionText" placeholder="Aşagıdakiler hangisi doğrudur?">
+                                    <textarea class="small-text" name="Text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
                                 </div>
                                 <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
                                 <div class="col-sm-10">
@@ -106,130 +99,27 @@
                         </div>
                         <div class="col-6">
                             <div class="big-text d-flex ">
-                                <h5>
-                                    <strong>Soru Metini:</strong> </h4><br>
+                                <h4>
+                                    <strong>Soru Metini:</strong>
+                                </h4><br>
 
-                                    <textarea id="big-text" class="input" name="Text"></textarea>
+                                <textarea id="big-text" class="input" name="QuestionText"></textarea>
                             </div>
-                            <input type="file" id="fileUpload" name="file">
+                            <input type="file" name="file" id="answerfileUpload">
                         </div>
                     </div>
 
-                    <a type="btn" id="upper" class="upper_btn">
+                    <a id="upper" class="upper_btn">
                         <strong>İlerle </strong>
                     </a>
                 </div>
                 @await Component.InvokeAsync("Option")
+            </div>
         </form>
-        <!-- </div>
-        <div class="modal-content3" id="modal-content3">
-            <span class="close">&times;</span>
-            <h2><strong> Soru Çözüm Ekleme Alanı</strong></h2>
-
-                <thead>
-
-                </thead>
-                <tbody>
-                    <div class="modal-form-container">
-                        <div class="question-text">
-                            Tukididis, Klasik Yunan döneminde milattan önce beşinci
-                                yüzyılda yaşamış bir tarihçi ve aynı
-                               zamanda bir askerdir. Atina’da doğmuştur.
-                               Tukididis, Atina ve Sparta arasındaki Peloponnes
-                               Savaşı boyunca (M.Ö. 431 – 404)
-                               Trakya’daki Amfipolis şehrini korumakla görevlendirilen
-                               donanmanın komutanıydı.
-                               Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
-                               general Brasidas’ın eline
-                               geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
-                               zorunda kaldı. Bu sürgün,
-                                Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
-                               Peloponnes Savaşı’nın
-                               Tarihi adlı çalışması için araştırma yapma imkânı verdi.
-                                                                           Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
-                               general Brasidas’ın eline
-                               geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
-                               zorunda kaldı. Bu sürgün,
-                                Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
-                               Peloponnes Savaşı’nın
-                               Tarihi adlı çalışması için araştırma yapma imkânı verdi.
-                        </div>
-                        <div class="big-text d-flex">
-                            <h5><strong>Çözüm Metini:</strong> </h4><br>
-                            <input class="big-text"type="text" placeholder="Soru İçeriğini giriniz">
-                        </div>
 
 
-                    </div>
-                    <td>
-                        <button id="" class="upper_btn" >
-                            <strong >İlerle </strong>
-                        </button><br>
-                    </td>
-
-
-                </tbody>
-
-
-
-        </div> -->
-    </div>
     </div>
 
-    <!-- </div>
-    <div class="modal-content3" id="modal-content3">
-        <span class="close">&times;</span>
-        <h2><strong> Soru Çözüm Ekleme Alanı</strong></h2>
-
-            <thead>
-
-            </thead>
-            <tbody>
-                <div class="modal-form-container">
-                    <div class="question-text">
-                        Tukididis, Klasik Yunan döneminde milattan önce beşinci
-                            yüzyılda yaşamış bir tarihçi ve aynı
-                           zamanda bir askerdir. Atina’da doğmuştur.
-                           Tukididis, Atina ve Sparta arasındaki Peloponnes
-                           Savaşı boyunca (M.Ö. 431 – 404)
-                           Trakya’daki Amfipolis şehrini korumakla görevlendirilen
-                           donanmanın komutanıydı.
-                           Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
-                           general Brasidas’ın eline
-                           geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
-                           zorunda kaldı. Bu sürgün,
-                            Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
-                           Peloponnes Savaşı’nın
-                           Tarihi adlı çalışması için araştırma yapma imkânı verdi.
-                                                                       Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
-                           general Brasidas’ın eline
-                           geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
-                           zorunda kaldı. Bu sürgün,
-                            Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
-                           Peloponnes Savaşı’nın
-                           Tarihi adlı çalışması için araştırma yapma imkânı verdi.
-                    </div>
-                    <div class="big-text d-flex">
-                        <h5><strong>Çözüm Metini:</strong> </h4><br>
-                        <input class="big-text"type="text" placeholder="Soru İçeriğini giriniz">
-                    </div>
-
-
-                </div>
-                <td>
-                    <button id="" class="upper_btn" >
-                        <strong >İlerle </strong>
-                    </button><br>
-                </td>
-
-
-            </tbody>
-
-
-
-    </div> -->
-    </div>
-    </div>
 </main>
 
 

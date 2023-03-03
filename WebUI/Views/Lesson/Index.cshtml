@@ -3,7 +3,6 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <main class="content">
     <div class="container-fluid p-0">
 
@@ -14,24 +13,30 @@
                 <div class="w-100">
                     <div class="row">
 
-                        <div class="card flex-fill col-sm-9" style="border-radius: 25px;box-shadow: 0 0 0 4px white, 0 4px 4px black;">
+                        <div class="card flex-fill col-12 " style="border-radius: 25px;
+																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+                            <div class="row">
+                                <div class="card-header col-10">
+                                    <h5 class="card-title mb-0">Dersler</h5>
+                                </div>
+                                <div class="yetkili_btn col-2">
 
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Dersler</h5>
+                                    <a style="color:white" id="myBtn">
+                                        <strong>Yeni Ders Ekle </strong>
+
+                                    </a>
+                                </div>
                             </div>
+
                             <table class="table my-0 text-center">
                                 <thead>
 
-                                    <button id="myBtn" class="rapor_button" style="position:relative;left:86%; width:10%;overflow: hidden;">
-                                        <strong style="width:50%;">Yeni Ders Ekle </strong>
-
-                                    </button>
                                     <tr>
-                                        <th class="d-none d-md-table-cell">ID</th>
-                                        <th>Ders</th>
+                                        <th>ID</th>
+                                        <th>İsmi</th>
                                         <th>Sınıf</th>
-                                        <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
-                                        <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+                                        <th>Ekleyen ve tarihi</th>
+                                        <th>Değiştiren ve tarihi</th>
                                         <th>Aktiflik durumu</th>
                                         <th>Düzenle veya sil</th>
                                     </tr>
@@ -76,7 +81,7 @@
         <div id="myModal" class="modal">
             <div id="small-modal" class="modal-content">
                 <span class="close">&times;</span>
-                <h2 class="modal-title text-center"><strong> Ders Ekle</strong></h2>
+                <h3 class="modal-title text-center"><strong> Ders Ekle</strong></h3>
                 <form asp-controller="Lesson" asp-action="Create" method="post">
 
                     <div class="row text-center mt-5 ">
@@ -111,7 +116,6 @@
                         </td>
                     </tr>
                 </form>
-
             </div>
 
         </div>

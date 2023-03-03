@@ -42,7 +42,7 @@ namespace WebUI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Create(QuestionModel model, IFormFile file,SolutionModel solutionModel)
+        public async Task<IActionResult> Create(QuestionModel model, IFormFile? file)
         {
 
             var questionOptions = new List<Option>(); // yeni bir liste oluştur
@@ -83,7 +83,7 @@ namespace WebUI.Controllers
             if (values != null)
             {
                 _questionManager.Create(values);
-                return RedirectToAction("Index", "Question");
+                return RedirectToAction("Questions", "Solution");
             }
 
             // Question nesnesinin Id özelliğini al
@@ -97,27 +97,30 @@ namespace WebUI.Controllers
             }
 
             //optionIds bulma alanı
-            var optionIds = new Option()
-            {
-                Id = solutionModel.OptionId
-            };
+            //var optionIds = new Option()
+            //{
+            //    Id = solutionModel.OptionId
+            //};
 
-            //Soru çözümü ekleme alanı
-            var solution = new Solution()
-            {
-                Text = solutionModel.Text,
-                VideoUrl = solutionModel.VideoUrl,
-                QuestionId = values.Id,
-                OptionId = solutionModel.OptionId,
-                CreatedDate = solutionModel.CreatedDate,
-                UpdatedDate = solutionModel.UpdatedDate,
-                Condition = solutionModel.Condition,
-            };
 
-            if (solution!=null)
-            {
-                _solutionManager.Create(solution);
-            }
+            
+
+            ////Soru çözümü ekleme alanı
+            //var solution = new Solution()
+            //{
+            //    Text = solutionModel.Text,
+            //    VideoUrl = solutionModel.VideoUrl,
+            //    QuestionId = values.Id,
+            //    OptionId = solutionModel.OptionId,
+            //    CreatedDate = solutionModel.CreatedDate,
+            //    UpdatedDate = solutionModel.UpdatedDate,
+            //    Condition = solutionModel.Condition,
+            //};
+
+            //if (solution!=null)
+            //{
+            //    _solutionManager.Create(solution);
+            //}
  
             //eger bir validation ile karsilasirsa dropdownlarin tekara dolmasi icin tekrar ediyoruz
 

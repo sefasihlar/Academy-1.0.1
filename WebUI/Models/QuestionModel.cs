@@ -37,5 +37,6 @@ namespace WebUI.Models
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
         public bool Condition { get; set; }
+        public bool SolutionCondition { get; set; }
     }
 }

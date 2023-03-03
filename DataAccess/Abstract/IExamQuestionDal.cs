@@ -9,7 +9,7 @@ namespace DataAccessLayer.Abstract
 {
 	public interface IExamQuestionDal:IGenericDal<ExamQuestions>
 	{
-		void Create(ExamQuestions entity, int[] questionId);
-		void DeleteFromExamQuestion(ExamQuestions entity, int[] questionId);
+		void Create(ExamQuestions entity, int questionId);
+		void DeleteFromExamQuestion(ExamQuestions entity, int questionId);
 	}
 }
