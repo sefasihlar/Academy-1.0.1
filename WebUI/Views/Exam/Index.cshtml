@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ExamListModel
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -45,35 +46,38 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>1.Ara Dönem Sınavı</td>
-                                        <td>Üslü Sayılar</td>
-                                        <td>Matematik</td>
-                                        <td>9</td>
-                                        <td><a asp-controller="Question" asp-action="Index"></a></td>
-                                        <td>İsim-21/01/2021</td>
-                                        <td>İsim-31/06/2021</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                        <td>
-                                            <a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-                                            <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>3.Ara Dönem Sınavı</td>
-                                        <td>Köklü Sayılar</td>
-                                        <td>Türkçe</td>
-                                        <td>10</td>
-                                        <td>İsim-21/01/2021</td>
-                                        <td>İsim-31/06/2021</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                        <td>
-                                            <a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-                                            <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach (var item in Model.Exams)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.Title</td>
+                                            <td>@item.Subject.Name</td>
+                                            <td>@item.Lesson.Name</td>
+                                            <td>@item.Class.Name</td>
+                                            <td>
+                                                
+                                                <form asp-controller="ExamQuestion" asp-action="Index" method="post" style="display:inline">
+                                                    <button class="btn btn-primary" type="submit">Sorular</button>
+                                                    <input type="hidden" name="Id" value="@item.Id" />
+                                                    <input type="hidden" name="lessonId" value="@item.LessonId" />
+                                                    <input type="hidden" name="subjectId" value="@item.SubjectId" />
+                                                    <input type="hidden" name="classId" value="@item.ClassId" />
+                                                </form>
+                                            </td>
+                                            <td>İsim-@item.CreatedDate</td>
+                                            <td>İsim-@item.UpdatedDate</td>
+                                            <td><span class="badge bg-success">Aktif</span></td>
+                                            <td>
+                                                <a href="/Exam/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
+                                                <form asp-controller="Class" asp-action="Delete" method="post" style="display:inline">
+                                                    <input type="hidden" name="lessonId" value="@item.LessonId" />
+                                                    <input type="hidden" name="subjectId" value="@item.SubjectId" />
+                                                    <input type="hidden" name="classId" value="@item.ClassId" />
+                                                    <button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
 
                                 </tbody>
                             </table>
@@ -88,46 +92,48 @@
             <div id="lesson-modal" class="modal-content">
                 <span class="close">&times;</span>
                 <h3 class="modal-title text-center"><strong> Sınav Ekle</strong></h3>
-                <form>
+                <form asp-controller="Exam" asp-action="Create" method="post">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="Ders" class="col-sm-3 col-form-label">İsim</label>
+                            <label for="Ders" class="col-sm-3 col-form-label">Başlık</label>
                             <div class="col-sm-12">
-                                <input placeholder="Örneğin:Matematik" class="form-dropdown" />
+                                <input placeholder="Örneğin:Matematik Sınavı" name="Title" class="form-dropdown" />
                             </div>
+                            
                             <label for="Ders" class="col-sm-3 col-form-label">Konu</label>
                             <div class="col-sm-12">
-                                <select class="form-dropdown">
-                                    <option value="">Köklü Sayılar</option>
-                                    <option value="">Türev</option>
-                                    <option value="">Üslü Sayılar</option>
-                                </select>
+                                @await Component.InvokeAsync("SubjectList")
                             </div>
                             <label for="Ders" class="col-sm-3 col-form-label">Ders</label>
                             <div class="col-sm-12">
-                                <select class="form-dropdown">
-                                    <option value="">Matematik</option>
-                                    <option value="">Coğrafya</option>
-
-                                </select>
+                                @await Component.InvokeAsync("LessonList")
+                            </div>
+                            <label for="Ders" class="col-sm-3 col-form-label">Sınıf</label>
+                            <div class="col-sm-12">
+                                @await Component.InvokeAsync("ClassList")
                             </div>
                             <label for="Ders" class="col-sm-3 col-form-label">Durumu</label>
                             <div class="col-sm-12">
-                                <select class="form-dropdown">
-                                    <option value="">Aktif</option>
-                                    <option value="">Pasif</option>
+                                <select class="form-dropdown" name="condition">
+                                    <option value="True">Aktif</option>
+                                    <option value="False">Pasif</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h5><strong>Soru Metini:</strong> </h5>
-                            <textarea class=" big-text" type="text" placeholder="Cevap İçeriğini giriniz"></textarea>
+                            <h5><strong>Sınav Açıklaması:</strong> </h5>
+                            <textarea class=" big-text" type="text" name="Description" placeholder="Cevap İçeriğini giriniz"></textarea>
                             <div class="true-answer-select ">
                             </div>
+                            <label for="Ders" class="col-sm-3 col-form-label">Sınav Tarihi</label>
+                            <div class="col-sm-12">
+                                <input placeholder="Örneğin: 11:30 12/04/2023" name="ExamDate" class="form-dropdown" />
+                            </div>
+                            <div>
+                                <button class="btn btn-primary" type="submit"><strong>Kaydet</strong></button>
+                            </div>
                         </div>
-                        <div class="yetkili_btn">
-                            <a style="text-decoration: none; color: white;" href=""><strong>Kaydet</strong></a>
-                        </div>
+                      
                     </div>
                 </form>
             </div>

@@ -9,6 +9,7 @@ namespace WebUI.Models
         [Required]
         public string? Title { get; set; }
         public string Description { get; set; }
+        public string ExamDate { get; set; }
 
         public int ClassId { get; set; }
         public Class Class { get; set; }

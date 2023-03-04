@@ -14,13 +14,18 @@ namespace WebUI.Controllers
 		ExamQuestionManager _examQuestionManager = new ExamQuestionManager(new EfCoreExamQuestionRepository());
 
 
-		public IActionResult Index(int lessonId,int subjectId)
+		public IActionResult Index(ExamModel model)
 		{
 
 			var values = new QuestionListModel()
 			{
-				Questions = _questionManager.GetWithList().Where(x=>x.LessonId==lessonId).Where(x=>x.SubjectId==subjectId).ToList(),
+				Questions = _questionManager.GetWithList()
+				.Where(x=>x.LessonId==model.LessonId)
+				.Where(x=>x.SubjectId==model.SubjectId)
+				.ToList(),
 			};
+
+			ViewBag.ExamId = model.Id;
 
 			return View(values);
 		}

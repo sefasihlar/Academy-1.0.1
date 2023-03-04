@@ -6,6 +6,8 @@
         public string? Title { get; set; }
         public String Description { get; set; }
 
+        public string? ExamDate { get; set; }
+
         public int ClassId { get; set; }
         public Class Class { get; set; }
 
@@ -16,8 +18,9 @@
         public Subject Subject { get; set; }
 
 		public List<ExamAnswers> ExamAnswers { get; set; }
+        public List<ExamQuestions> ExamQuestions { get; set; }
 
-		public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
         public Boolean Condition { get; set; }

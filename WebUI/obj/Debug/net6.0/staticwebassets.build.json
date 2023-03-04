@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HosRAB6TmDW56ciem2S2JyTdLATrt9ZUBeKIjOnNt4E=",
+  "Hash": "f2v4XbqhYDpEzoCAM/32uJZ810lGDIchVbmsDreC/bg=",
   "Source": "WebUI",
   "BasePath": "_content/WebUI",
   "Mode": "Default",
@@ -2038,6 +2038,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Template\\README.md"
+    },
+    {
+      "Identity": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\video\\10 Dakika'da Temel Matematik _ Sıfırdan Başlangıç (1).mp4",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "Template/video/10 Dakika'da Temel Matematik _ Sıfırdan Başlangıç (1).mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Template\\video\\10 Dakika'da Temel Matematik _ Sıfırdan Başlangıç (1).mp4"
     },
     {
       "Identity": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\görevli_düzenleme.html",

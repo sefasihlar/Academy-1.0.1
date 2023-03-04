@@ -27,13 +27,28 @@
 
                         @foreach (var item in Model.Questions)
                         {
+
                             <div class="question-content">
-                                <input type="checkbox" onclick="changeProp(this)">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <h4><strong>Soru-@item.Id</strong></h4>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        @if (item.Level.Name=="Kolay")
+                                        {
+                                            <h5 class="text-center" style="background-color:yellowgreen;border-radius:10px"><strong  style="color:white">Kolay</strong></h5>
+                                        }
+                                        else if (item.Level.Name == "Orta")
+                                        {
+                                            <h5 class="text-center" style="background-color:orange;border-radius:10px"><strong style="color:white">Orta</strong></h5>
+                                        }
+                                        else
+                                        {
+                                            <h5 class="text-center" style="background-color:red;border-radius:10px"><strong style="color:white">Zor</strong></h5>
+                                        }
+                                        <h4><strong></strong></h4>
+                                    </div>
+                                    <div class="col-md-4">
                                         <a href="" id="question-review-icon">
                                             <i class="bi bi-pencil-square">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

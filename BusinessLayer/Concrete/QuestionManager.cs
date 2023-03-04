@@ -38,6 +38,11 @@ namespace BusinessLayer.Concrete
             return _questionDal.GetById(id);
         }
 
+        public List<Question> GetQuestionsByExam(int id)
+        {
+           return _questionDal.GetQuestionsByExamList(id).ToList();
+        }
+
         public List<Question> GetWithList()
         {
             return _questionDal.GetWithList().ToList();

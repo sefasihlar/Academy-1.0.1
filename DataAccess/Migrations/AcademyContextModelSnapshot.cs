@@ -307,6 +307,9 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ExamDate")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("LessonId")
                         .HasColumnType("int");
 

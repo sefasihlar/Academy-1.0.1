@@ -39,5 +39,24 @@ namespace DataAccessLayer.EntityFreamwork
                     .Include(x => x.Options).ToList();
             }
         }
+
+        public List<Question> GetQuestionsByExamList(int id)
+        {
+            using (var _context = new AcademyContext())
+            {
+                var questions = _context.Questions.AsQueryable();
+
+                if (id != null)
+                {
+                    questions = questions
+                        .Include(x => x.ExamQuestions)
+                        .ThenInclude(a => a.Exam)
+                        .Where(x => x.ExamQuestions.Any(x => x.Exam.Id == id));
+
+                }
+
+                return questions.ToList();
+            }
+        }
     }
 }

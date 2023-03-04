@@ -8,33 +8,33 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthentication(
    )
-	.AddCookie(option =>
-	{
-		option.LoginPath = "Account/Login";
+    .AddCookie(option =>
+    {
+        option.LoginPath = "Account/Login";
 
-		option.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-		option.Cookie = new CookieBuilder
-		{
-			HttpOnly = true,
-			Name = "Academy cookies",
-			SameSite = SameSiteMode.Strict
-		};
+        option.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+        option.Cookie = new CookieBuilder
+        {
+            HttpOnly = true,
+            Name = "Academy cookies",
+            SameSite = SameSiteMode.Strict
+        };
 
-	});
+    });
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
-	options.Lockout.AllowedForNewUsers = true;
-	options.User.RequireUniqueEmail = true;
-	options.SignIn.RequireConfirmedEmail = true;
+    options.Lockout.AllowedForNewUsers = true;
+    options.User.RequireUniqueEmail = true;
+    options.SignIn.RequireConfirmedEmail = true;
 });
 
 Assembly.GetExecutingAssembly();
 
 builder.Services.AddDbContext<AcademyContext>();
 builder.Services.AddIdentity<AppUser, AppRole>()
-	.AddEntityFrameworkStores<AcademyContext>()
-	.AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<AcademyContext>()
+    .AddDefaultTokenProviders();
 
 
 // Add services to the container.
@@ -43,21 +43,21 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-	options.LoginPath = "/Account/Login";
-	options.SlidingExpiration = true;
-	options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    options.LoginPath = "/Account/Login";
+    options.SlidingExpiration = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
 
-	options.Cookie = new CookieBuilder()
-	{
-		HttpOnly = true,
-		Name = "Academy.Security.Cookie"
-	};
+    options.Cookie = new CookieBuilder()
+    {
+        HttpOnly = true,
+        Name = "Academy.Security.Cookie"
+    };
 });
 
 builder.Services.AddMvc();
 builder.Services.AddMvc(options =>
 {
-	options.EnableEndpointRouting = false;
+    options.EnableEndpointRouting = false;
 
 });
 
@@ -81,16 +81,16 @@ app.UseAuthorization();
 
 app.UseMvc(Route =>
 {
-	Route.MapRoute(
-	  name: "default",
-	  template: "{controller=Home}/{action=Index}/{id?}"
-	  );
+    Route.MapRoute(
+      name: "default",
+      template: "{controller=Home}/{action=Index}/{id?}"
+      );
 
-	Route.MapRoute(
-		name: "cart",
-		template: "cart",
-		defaults: new { controller = "Cart", action = "Index" }
-		);
+    Route.MapRoute(
+        name: "cart",
+        template: "cart",
+        defaults: new { controller = "Cart", action = "Index" }
+        );
     Route.MapRoute(
         name: "exam",
         template: "exam",
@@ -105,6 +105,11 @@ app.UseMvc(Route =>
      name: "sulution",
      template: "solution",
      defaults: new { controller = "Solution", action = "Questions" }
+     );
+    Route.MapRoute(
+     name: "questions",
+     template: "MyExam/{id?}",
+     defaults: new { controller = "Exam", action = "Exam" }
      );
 });
 

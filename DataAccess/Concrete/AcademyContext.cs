@@ -28,19 +28,11 @@ namespace DataAccessLayer.Concrete
 		public DbSet<Branch> Branches { get; set; }
 		public DbSet<ExamAnswers> ExamAnswers { get; set; }
 		public DbSet<ExamQuestions> ExamQuestions { get; set; }
-
         public DbSet<Guardian> Guardians { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-			//modelBuilder.Entity<Lesson>()
-			// .HasOne(l => l.Subject)
-			// .WithMany(s => s.Lessons)
-			// .HasForeignKey(l => l.SubjectId)
-			// .OnDelete(DeleteBehavior.NoAction);
-
-			//Question FluentApi
+            //fluenAPI
 
 			modelBuilder.Entity<ExamAnswers>()
                 .HasKey(e => new { e.ExamId, e.UserId, e.QuestionId, e.OptionId });
@@ -138,7 +130,6 @@ namespace DataAccessLayer.Concrete
                  .OnDelete(DeleteBehavior.Restrict);
 
             //Solution Fluent Api
-    
 
             modelBuilder.Entity<Solution>()
                 .HasOne(q => q.Question)

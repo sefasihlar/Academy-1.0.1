@@ -1,4 +1,5 @@
-﻿@{
+﻿@model QuestionListModel
+@{
     ViewData["Title"] = "Exam";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -20,8 +21,6 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div id="studentExam" class="studentExamPageContainer">
-
-
                                 <div id="studentExamContent" class="student-exam-page-contents">
                                     <div class="student-exam-page-question-title">
                                         <strong>1.Soru</strong>
@@ -55,83 +54,34 @@
                             </div>
 
                         </div>
+                        @foreach (var item in Model.Questions)
+                        {
+                            <div class="carousel-item">
+                                <div id="studentExam" class="studentExamPageContainer">
 
-                        <div class="carousel-item">
-                            <div id="studentExam" class="studentExamPageContainer">
-
-                                <div id="studentExamContent" class="student-exam-page-contents">
-                                    <div class="student-exam-page-question-title">
-                                        <strong>1.Soru</strong>
-                                    </div>
-                                    <div class="student-exam-page-question-content">
-                                        Bir inşaat firması Erzurum’daki bir fabrikadan 50 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç paketi
-                                        12 liradan, Rize’deki bir fabrikadan ise 25 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç 7 liradan satın
-                                        alabilmektedir.
-                                        İnşaat firmasının alacağı çimentoyu şantiyesine getirmek için Erzurum’dan alması durumunda 1200 TL, Rize’den alması durumunda ise 700 TL nakliye ücreti ödemesi gerekmektedir.
-                                        Bu fiyatlara göre inşaat firması almayı düşündüğü çimento miktarı için toplam ödeyeceği ücretin iki fabrikadan da alması durumunda aynı olacağını hesaplıyor.
-                                        Bir inşaat firması Erzurum’daki bir fabrikadan 50 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç paketi
-                                        12 liradan, Rize’deki bir fabrikadan ise 25 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç 7 liradan satın
-                                        alabilmektedir.
-                                        İnşaat firmasının alacağı çimentoyu şantiyesine getirmek için Erzurum’dan alması durumunda 1200 TL, Rize’den alması durumunda ise 700 TL nakliye ücreti ödemesi gerekmektedir.
-                                        Bu fiyatlara göre inşaat firması almayı düşündüğü çimento miktarı için toplam ödeyeceği ücretin iki fabrikadan da alması durumunda aynı olacağını hesaplıyor.
-                                        Bir inşaat firması Erzurum’daki bir fabrikadan 50 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç paketi
-                                        12 liradan, Rize’deki bir fabrikadan ise 25 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç 7 liradan satın
-                                        alabilmektedir.
-                                        İnşaat firmasının alacağı çimentoyu şantiyesine getirmek için Erzurum’dan alması durumunda 1200 TL, Rize’den alması durumunda ise 700 TL nakliye ücreti ödemesi gerekmektedir.
-                                        Bu fiyatlara göre inşaat firması almayı düşündüğü çimento miktarı için toplam ödeyeceği ücretin iki fabrikadan da alması durumunda aynı olacağını hesaplıyor.
-                                    </div>
-                                    <div class="student-exam-page-answers">
-                                        <span><input type="radio" class="answer-radio"><strong> </strong> 32</span>
-                                        <span><input type="radio" class="answer-radio"><strong> </strong> 43</span>
-                                        <span><input type="radio" class="answer-radio"><strong> </strong> 23</span>
-                                        <span><input type="radio" class="answer-radio"><strong> </strong> 36</span>
-                                        <span><input type="radio" class="answer-radio"><strong> </strong> 42</span>
-                                    </div>
+                                    <div id="studentExamContent" class="student-exam-page-contents">
+                                        <div class="student-exam-page-question-title">
+                                            <strong>@item.Id Soru</strong>
+                                        </div>
+                                        <div class="student-exam-page-question-content">
+                                           @item.QuestionText
+                                        </div>
+                                        <div class="student-exam-page-answers">
+                                            <span><input type="radio" class="answer-radio"><strong> </strong> 32</span>
+                                            <span><input type="radio" class="answer-radio"><strong> </strong> 43</span>
+                                            <span><input type="radio" class="answer-radio"><strong> </strong> 23</span>
+                                            <span><input type="radio" class="answer-radio"><strong> </strong> 36</span>
+                                            <span><input type="radio" class="answer-radio"><strong> </strong> 42</span>
+                                        </div>
 
 
 
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div id="studentExam" class="studentExamPageContainer">
-
-
-                                <div id="studentExamContent" class="student-exam-page-contents">
-                                    <div class="student-exam-page-question-title">
-                                        <strong>1.Soru</strong>
-                                    </div>
-                                    <div class="student-exam-page-question-content">
-                                        Bir inşaat firması Erzurum’daki bir fabrikadan 50 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç paketi
-                                        12 liradan, Rize’deki bir fabrikadan ise 25 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç 7 liradan satın
-                                        alabilmektedir.
-                                        İnşaat firmasının alacağı çimentoyu şantiyesine getirmek için Erzurum’dan alması durumunda 1200 TL, Rize’den alması durumunda ise 700 TL nakliye ücreti ödemesi gerekmektedir.
-                                        Bu fiyatlara göre inşaat firması almayı düşündüğü çimento miktarı için toplam ödeyeceği ücretin iki fabrikadan da alması durumunda aynı olacağını hesaplıyor.
-                                        Bir inşaat firması Erzurum’daki bir fabrikadan 50 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç paketi
-                                        12 liradan, Rize’deki bir fabrikadan ise 25 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç 7 liradan satın
-                                        alabilmektedir.
-                                        İnşaat firmasının alacağı çimentoyu şantiyesine getirmek için Erzurum’dan alması durumunda 1200 TL, Rize’den alması durumunda ise 700 TL nakliye ücreti ödemesi gerekmektedir.
-                                        Bu fiyatlara göre inşaat firması almayı düşündüğü çimento miktarı için toplam ödeyeceği ücretin iki fabrikadan da alması durumunda aynı olacağını hesaplıyor.
-                                        Bir inşaat firması Erzurum’daki bir fabrikadan 50 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç paketi
-                                        12 liradan, Rize’deki bir fabrikadan ise 25 kilogramlık paketler hâlinde satılan çimentoyu nakliye hariç 7 liradan satın
-                                        alabilmektedir.
-                                        İnşaat firmasının alacağı çimentoyu şantiyesine getirmek için Erzurum’dan alması durumunda 1200 TL, Rize’den alması durumunda ise 700 TL nakliye ücreti ödemesi gerekmektedir.
-                                        Bu fiyatlara göre inşaat firması almayı düşündüğü çimento miktarı için toplam ödeyeceği ücretin iki fabrikadan da alması durumunda aynı olacağını hesaplıyor.
-                                    </div>
-                                    <div class="student-exam-page-answers">
-                                        <span><input type="radio" class="answer-radio"><strong> </strong> 32</span>
-                                        <span><input type="radio" class="answer-radio"><strong> </strong> 43</span>
-                                        <span><input type="radio" class="answer-radio"><strong> </strong> 23</span>
-                                        <span><input type="radio" class="answer-radio"><strong> </strong> 36</span>
-                                        <span><input type="radio" class="answer-radio"><strong> </strong> 42</span>
                                     </div>
                                 </div>
-
-
-
                             </div>
-                        </div>
+                        }
+                        
                     </div>
 
                 </div>
@@ -148,6 +98,4 @@
         </main>
     </div>
 </div>
-
-
 
