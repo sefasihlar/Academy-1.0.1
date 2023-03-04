@@ -139,7 +139,8 @@ namespace WebUI.Controllers
 		{
 			var values = new QuestionListModel()
 			{
-				Questions = _quesitonManager.GetWithList().ToList()
+				Questions = _quesitonManager.GetWithList().OrderByDescending(q => q.Id).ToList()
+
 			};
 			return View(values);
 		}

@@ -34,9 +34,9 @@
                                         <h4><strong>Soru-@item.Id</strong></h4>
                                     </div>
                                     <div class="col-md-4">
-                                        @if (item.Level.Name=="Kolay")
+                                        @if (item.Level.Name == "Kolay")
                                         {
-                                            <h5 class="text-center" style="background-color:yellowgreen;border-radius:10px"><strong  style="color:white">Kolay</strong></h5>
+                                            <h5 class="text-center" style="background-color:yellowgreen;border-radius:10px"><strong style="color:white">Kolay</strong></h5>
                                         }
                                         else if (item.Level.Name == "Orta")
                                         {
@@ -49,7 +49,7 @@
                                         <h4><strong></strong></h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="" id="question-review-icon">
+                                        <a href="Question/Detail/@item.Id" id="question-review-icon">
                                             <i class="bi bi-pencil-square">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -62,7 +62,7 @@
 
                                 <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
                                 <input type="hidden" name="Condition" value="True" />
-                                <span>@item.Text</span>
+                                <span>@item.Text</span><br>
                                 <span class="question-info"><strong>@item.QuestionText?</strong></span>
                                 <div class="question-answer-list">
                                     @foreach (var option in item.Options.Where(x => x.QuestionId == item.Id).ToList())
@@ -81,8 +81,8 @@
         </div>
     </div>
     <div class="popup">
-        <form asp-controller="Question" asp-action="Create" method="post" enctype="multipart/form-data">
-            <div id="myModal" class="modal">
+        <div id="myModal" class="modal">
+            <form asp-controller="Question" asp-action="Create" enctype="multipart/form-data">
                 <div class="modal-content" id="modal-content1">
                     <span class="close">&times;</span>
                     <h3 class="modal-title text-center"><strong> Soru Ekle</strong></h3>
@@ -90,10 +90,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group row d-flex">
-                                <label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
-                                <div class="col-sm-10">
-                                    <textarea class="small-text" name="Text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
-                                </div>
+
                                 <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
                                 <div class="col-sm-10">
                                     @await Component.InvokeAsync("LessonList")
@@ -110,30 +107,212 @@
                                 <div class="col-sm-10">
                                     @await Component.InvokeAsync("OutputList")
                                 </div>
+                                <label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
+                                <div class="col-sm-10">
+                                    <textarea class="small-text" name="Text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="big-text d-flex ">
-                                <h4>
-                                    <strong>Soru Metini:</strong>
-                                </h4><br>
+                        <div class="col-6" style="margin-top:0px">
 
-                                <textarea id="big-text" class="input" name="QuestionText"></textarea>
-                            </div>
+                            <textarea id="big-text" placeholder="Soru Metnini giriniz..." class="input" name="QuestionText"></textarea>
+
                             <input type="file" name="file" id="answerfileUpload">
                         </div>
                     </div>
+
 
                     <a id="upper" class="upper_btn">
                         <strong>İlerle </strong>
                     </a>
                 </div>
                 @await Component.InvokeAsync("Option")
+            </form>
+            <div class="modal-content3" id="modal-content3">
+                <span class="close"></span>
+                <h2><strong> Soru Çözüm Ekleme Alanı</strong></h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5><strong> Soru Metini:</strong> </h5>
+                        <div class="question-text">
+                            Tukididis, Klasik Yunan döneminde milattan önce beşinci
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+                            Tukididis, Klasik Yunan döneminde milattan önce beşinci
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+
+                            Tukididis, Klasik Yunan döneminde milattan önce beşinci
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+                            yüzyılda yaşamış bir tarihçi ve aynı
+                            zamanda bir askerdir. Atina’da doğmuştur.
+                            Tukididis, Atina ve Sparta arasındaki Peloponnes
+                            Savaşı boyunca (M.Ö. 431 – 404)
+
+
+                        </div>
+                        <button id="lowertwo" class="lower_btn" style="top:15%; height:12%; width: 25%;">
+                            <strong>Geri Dön</strong>
+                        </button>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h5><strong>Çözüm Metini:</strong> </h5>
+                        <textarea class=" big-text" type="text" placeholder="Cevap İçeriğini giriniz"></textarea>
+                        <div class="true-answer-select ">
+                            <label for="">Doğru Şıkkı Seçiniz:</label>
+                            <select name="" id="">
+                                <option value="">A</option>
+                                <option value="">B</option>
+                                <option value="">C</option>
+                                <option value="">D</option>
+                                <option value="">E</option>
+
+                            </select>
+                            <input type="file" id="answerfileUpload">
+                        </div>
+
+
+
+                    </div>
+                    <div class="col-md-4 ">
+                        <h5><strong>Video:</strong> </h5>
+                        <video width="250" height="150" src="../../assets/Canın Ders Çalışmak İstemediğinde İzle.mp4" controls></video>
+
+                    </div>
+
+
+
+                    <button id="cls_btn" style="left: 90%; height:33px; width: 10%;" class="upper_btn">
+                        <strong>Kaydet </strong>
+                    </button>
+                </div>
             </div>
-        </form>
 
 
+            <!-- </div>
+            <div class="modal-content3" id="modal-content3">
+                <span class="close">&times;</span>
+                <h2><strong> Soru Çözüm Ekleme Alanı</strong></h2>
+
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        <div class="modal-form-container">
+                            <div class="question-text">
+                                Tukididis, Klasik Yunan döneminde milattan önce beşinci
+                                    yüzyılda yaşamış bir tarihçi ve aynı
+                                   zamanda bir askerdir. Atina’da doğmuştur.
+                                   Tukididis, Atina ve Sparta arasındaki Peloponnes
+                                   Savaşı boyunca (M.Ö. 431 – 404)
+                                   Trakya’daki Amfipolis şehrini korumakla görevlendirilen
+                                   donanmanın komutanıydı.
+                                   Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
+                                   general Brasidas’ın eline
+                                   geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
+                                   zorunda kaldı. Bu sürgün,
+                                    Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
+                                   Peloponnes Savaşı’nın
+                                   Tarihi adlı çalışması için araştırma yapma imkânı verdi.
+                                                                               Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
+                                   general Brasidas’ın eline
+                                   geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
+                                   zorunda kaldı. Bu sürgün,
+                                    Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
+                                   Peloponnes Savaşı’nın
+                                   Tarihi adlı çalışması için araştırma yapma imkânı verdi.
+                            </div>
+                            <div class="big-text d-flex">
+                                <h5><strong>Çözüm Metini:</strong> </h4><br>
+                                <input class="big-text"type="text" placeholder="Soru İçeriğini giriniz">
+                            </div>
+
+
+                        </div>
+                        <td>
+                            <button id="" class="upper_btn" >
+                                <strong >İlerle </strong>
+                            </button><br>
+                        </td>
+
+
+                    </tbody>
+
+
+
+            </div> -->
+        </div>
     </div>
+    @* <div class="popup">
+    <form asp-controller="Question" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div id="myModal" class="modal">
+    <div class="modal-content" id="modal-content1">
+    <span class="close">&times;</span>
+    <h3 class="modal-title text-center"><strong> Soru Ekle</strong></h3>
+
+    <div class="row">
+    <div class="col-6">
+    <div class="form-group row d-flex">
+    <label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
+    <div class="col-sm-10">
+    <textarea class="small-text" name="Text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
+    </div>
+    <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
+    <div class="col-sm-10">
+    @await Component.InvokeAsync("LessonList")
+    </div>
+    <label for="Ders" class="col-sm-2 col-form-label">Konular</label>
+    <div class="col-sm-10">
+    @await Component.InvokeAsync("SubjectList")
+    </div>
+    <label for="Ders" class="col-sm-2 col-form-label">Seviye</label>
+    <div class="col-sm-10">
+    @await Component.InvokeAsync("LevelList")
+    </div>
+    <label for="Ders" class="col-sm-2 col-form-label">Çıktı</label>
+    <div class="col-sm-10">
+    @await Component.InvokeAsync("OutputList")
+    </div>
+    </div>
+    </div>
+    <div class="col-6">
+    <div class="big-text d-flex ">
+    <h4>
+    <strong>Soru Metini:</strong>
+    </h4><br>
+
+    <textarea id="big-text" class="input" name="QuestionText"></textarea>
+    </div>
+    <input type="file" name="file" id="answerfileUpload">
+    </div>
+    </div>
+
+    <a id="upper" class="upper_btn">
+    <strong>İlerle </strong>
+    </a>
+    </div>
+    @await Component.InvokeAsync("Option")
+    </div>
+    </form>
+
+
+    </div>*@
 
 </main>
 

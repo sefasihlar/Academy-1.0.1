@@ -63,7 +63,7 @@ namespace WebUI.Controllers
             {
                 Text = model.Text,
                 QuestionText = model.QuestionText,
-                ImageUrl = file.FileName,
+                ImageUrl = file != null ? file.FileName : null,
                 LessonId = model.LessonId,
                 LevelId = model.LevelId,
                 SubjectId = model.SubjectId,
@@ -74,11 +74,15 @@ namespace WebUI.Controllers
             };
 
             // Question nesnesini veritabanına ekle
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Template\\questions", file.FileName);
-            using (var stream = new FileStream(path, FileMode.Create))
+            if (file!=null)
             {
-                await file.CopyToAsync(stream);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Template\\questions", file.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
             }
+           
 
             if (values != null)
             {
@@ -176,24 +180,30 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(QuestionModel model)
+        public async Task<IActionResult> Update(QuestionModel model,IFormFile file)
         {
-            if (ModelState.IsValid)
-            {
-
-
+      
                 var values = _questionManager.GetById(model.Id);
                 if (values != null)
                 {
                     values.Text = model.Text;
                     values.QuestionText = model.QuestionText;
-                    values.ImageUrl = model.ImageUrl;
+                if (file != null)
+                {
+                    values.ImageUrl = file.FileName;
+
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Template\\questions", file.FileName);
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    };
+
+                }
                     values.LessonId = model.LessonId;
                     values.LevelId = model.LevelId;
                     values.SubjectId = model.SubjectId;
                     values.Options = model.Options;
                     values.OutputId = model.OutputId;
-                    values.CreatedDate = model.CreatedDate;
                     values.UpdatedDate = model.UpdatedDate;
                     values.Condition = model.Condition;
 
@@ -201,13 +211,9 @@ namespace WebUI.Controllers
                     _questionManager.Update(values);
                     return RedirectToAction("Index", "Question");
                 }
-            }
+
             return View(model);
 
         }
-
-
-
-
     }
 }
