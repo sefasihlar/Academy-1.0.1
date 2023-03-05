@@ -139,7 +139,10 @@ namespace WebUI.Controllers
             var values = new QuestionListModel()
             {
                 Questions = _questionManager.GetQuestionsByExam(id)
+                
             };
+
+            ViewBag.ExamId = id;
 
             return View(values);
         }

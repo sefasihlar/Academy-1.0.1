@@ -35,11 +35,17 @@ namespace DataAccessLayer.Concrete
             //fluenAPI
 
 			modelBuilder.Entity<ExamAnswers>()
-                .HasKey(e => new { e.ExamId, e.UserId, e.QuestionId, e.OptionId });
-			base.OnModelCreating(modelBuilder);
+                .HasKey(e => new { e.ExamId, e.UserId, e.QuestionId });
+            base.OnModelCreating(modelBuilder);
 
-			// Relationships
-			modelBuilder.Entity<ExamAnswers>()                
+            modelBuilder.Entity<ExamAnswers>()
+               .HasOne(e => e.Option)
+               .WithMany()
+               .HasForeignKey(e => e.OptionId);
+            base.OnModelCreating(modelBuilder);
+
+            // Relationships
+            modelBuilder.Entity<ExamAnswers>()                
                 .HasOne(e => e.Exam)
 				.WithMany(e => e.ExamAnswers)
 				.HasForeignKey(e => e.ExamId)
@@ -57,16 +63,17 @@ namespace DataAccessLayer.Concrete
 				.HasForeignKey(e => e.QuestionId)
 				.OnDelete(DeleteBehavior.Restrict);
 
-			modelBuilder.Entity<ExamAnswers>()
-				.HasOne(e => e.Option)
-				.WithMany(o => o.ExamAnswers)
-				.HasForeignKey(e => e.OptionId)
-				.OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<ExamAnswers>()
+                .HasOne(e => e.Option)
+                .WithMany(o => o.ExamAnswers)
+                .HasForeignKey(e => e.OptionId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
 
 
 
 
-			modelBuilder.Entity<ClassBranch>()
+            modelBuilder.Entity<ClassBranch>()
 			   .HasKey(c => new { c.ClassId, c.BranchId });
 			base.OnModelCreating(modelBuilder);
 
@@ -75,7 +82,7 @@ namespace DataAccessLayer.Concrete
 			base.OnModelCreating(modelBuilder);
 
 			modelBuilder.Entity<ExamAnswers>()
-		        .HasKey(c => new { c.ExamId, c.QuestionId ,c.UserId,c.OptionId});
+		        .HasKey(c => new { c.ExamId, c.QuestionId ,c.UserId});
 			base.OnModelCreating(modelBuilder);
 
 			modelBuilder.Entity<Question>()

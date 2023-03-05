@@ -23,13 +23,13 @@ namespace DataAccessLayer.EntityFreamwork
             using (var _context = new AcademyContext())
             {
                 var cmd = @"delete from Question where QuestionId=@p0 And OptionId=@p1 And SubjectId=@p2 And LessonId=@p3";
-                _context.Database.ExecuteSqlRaw(cmd,questionId,outputId,optionId,lessonId);
+                _context.Database.ExecuteSqlRaw(cmd, questionId, outputId, optionId, lessonId);
             }
         }
 
         public List<Question> GetWithList()
         {
-            using(var _context = new AcademyContext())
+            using (var _context = new AcademyContext())
             {
                 return _context.Questions
                     .Include(x => x.Lesson)
@@ -49,6 +49,11 @@ namespace DataAccessLayer.EntityFreamwork
                 if (id != null)
                 {
                     questions = questions
+                        .Include(x => x.Lesson)
+                        .Include(x => x.Level)
+                        .Include(x => x.Subject)
+                        .Include(x => x.Output)
+                        .Include(x => x.Options)
                         .Include(x => x.ExamQuestions)
                         .ThenInclude(a => a.Exam)
                         .Where(x => x.ExamQuestions.Any(x => x.Exam.Id == id));

@@ -10,5 +10,6 @@ namespace BusinessLayer.Abstract
 {
 	public interface IExamAnswerService:IGenericService<ExamAnswers>
 	{
-	}
+        void Create(ExamAnswers entity, int questionId, int? optionId);
+    }
 }

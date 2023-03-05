@@ -344,10 +344,10 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OptionId")
+                    b.Property<int?>("OptionId")
                         .HasColumnType("int");
 
-                    b.HasKey("ExamId", "QuestionId", "UserId", "OptionId");
+                    b.HasKey("ExamId", "QuestionId", "UserId");
 
                     b.HasIndex("OptionId");
 
@@ -882,8 +882,7 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("EntityLayer.Concrete.Option", "Option")
                         .WithMany("ExamAnswers")
                         .HasForeignKey("OptionId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("EntityLayer.Concrete.Question", "Question")
                         .WithMany("ExamAnswers")
@@ -909,13 +908,13 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("EntityLayer.Concrete.ExamQuestions", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.Exam", "Exam")
-                        .WithMany()
+                        .WithMany("ExamQuestions")
                         .HasForeignKey("ExamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.Question", "Question")
-                        .WithMany()
+                        .WithMany("ExamQuestions")
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1097,6 +1096,8 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("EntityLayer.Concrete.Exam", b =>
                 {
                     b.Navigation("ExamAnswers");
+
+                    b.Navigation("ExamQuestions");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Option", b =>
@@ -1107,6 +1108,8 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("EntityLayer.Concrete.Question", b =>
                 {
                     b.Navigation("ExamAnswers");
+
+                    b.Navigation("ExamQuestions");
 
                     b.Navigation("Options");
                 });

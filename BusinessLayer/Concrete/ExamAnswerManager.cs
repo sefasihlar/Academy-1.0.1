@@ -23,7 +23,12 @@ namespace BusinessLayer.Concrete
 			_examAnswerDal.Create(entity);	
 		}
 
-		public void Delete(ExamAnswers entity)
+        public void Create(ExamAnswers entity, int questionId, int? optionIds)
+        {
+           _examAnswerDal.Create(entity, questionId, optionIds);
+        }
+
+        public void Delete(ExamAnswers entity)
 		{
 			_examAnswerDal.Delete(entity);
 		}

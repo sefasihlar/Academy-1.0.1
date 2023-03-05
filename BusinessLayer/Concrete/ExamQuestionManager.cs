@@ -49,7 +49,12 @@ namespace BusinessLayer.Concrete
 			return _examQuestionDal.GetById(id);
 		}
 
-		public void Update(ExamQuestions entity)
+        public List<ExamQuestions> GetQuestionsList()
+        {
+            return _examQuestionDal.GetQuestionsList().ToList();
+        }
+
+        public void Update(ExamQuestions entity)
 		{
 			_examQuestionDal.Update(entity);
 		}

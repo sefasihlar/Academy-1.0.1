@@ -31,5 +31,16 @@ namespace DataAccessLayer.EfCoreRepository
 			throw new NotImplementedException();
 		}
 
-	}
+        public List<ExamQuestions> GetQuestionsList()
+        {
+            using (var _context = new AcademyContext())
+            {
+                return _context.ExamQuestions
+                    .Include(x=>x.Question)
+                    .ThenInclude(x=>x.Options)
+                    .Include(x=>x.Exam)
+                    .ToList();
+            }
+        }
+    }
 }

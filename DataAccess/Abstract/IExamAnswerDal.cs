@@ -9,6 +9,6 @@ namespace DataAccessLayer.Abstract
 {
 	public interface IExamAnswerDal:IGenericDal<ExamAnswers>
 	{
-
-	}
+        void Create(ExamAnswers entity, int questionId, int? optionIds);
+    }
 }

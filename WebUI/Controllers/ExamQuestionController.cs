@@ -43,8 +43,11 @@ namespace WebUI.Controllers
 
             if (model!=null & questionIds!=null)
 			{
+				
+
 				foreach (var item in questionIds)
 				{
+					//buraya userId eklenecek
 					_examQuestionManager.Create(model, item);
 					
 				};
