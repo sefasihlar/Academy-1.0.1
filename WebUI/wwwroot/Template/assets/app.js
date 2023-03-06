@@ -43332,6 +43332,8 @@ var modalContent1 = document.getElementById("modal-content1");
 
 var smallmodal = document.getElementById("small-modal")
 
+var mediumModal = document.getElementById("medium-modal")
+
 var modalContent2 = document.getElementById("modal-content2");
 
 var modalContent3 = document.getElementById("modal-content3")

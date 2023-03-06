@@ -17,8 +17,10 @@ namespace WebUI.Controllers
 		ClassManager _classManager = new ClassManager(new EfCoreClassRepository());
 		BranchManager _branchManager = new BranchManager(new EfCoreBranchRepository());
 		CartManager _cartManager = new CartManager(new EfCoreCartRepository());
+		GuardianManager _guardianManager = new GuardianManager(new EfCoreGuardianRepository());
 		private readonly UserManager<AppUser> _userManager;
 		private readonly SignInManager<AppUser> _signInManager;
+
 
 		public IActionResult Index()
 		{
@@ -52,15 +54,17 @@ namespace WebUI.Controllers
 			return View(values);
 		}
 
+		//Kullanıcı verli bilgileride burada ekleniyor aynı anda kayıt işlemi için
 
 		[HttpPost]
-		public async Task<IActionResult> Register(RegisterModel model)
+		public async Task<IActionResult> Register(RegisterModel model,GuardianModel guardian)
 		{
 			
 			if (ModelState.IsValid)
 			{
 				AppUser user = new AppUser()
 				{
+					Id = model.Id,
 					Tc = model.Tc,
 					Name = model.Name,
 					SurName = model.SurName,
@@ -72,6 +76,27 @@ namespace WebUI.Controllers
 				};
 
 				var result = await _userManager.CreateAsync(user, model.Password);
+
+
+				Guardian _guardian = new Guardian()
+				{
+					Id = guardian.Id,
+					Name = guardian.Name,
+					Name2 = guardian.Name2,
+					SurName = guardian.SurName,
+					SurName2 = guardian.SurName2,
+					Phone = guardian.Phone,
+					Phone2 = guardian.Phone2,
+					UserId = user.Id,
+					Condition = guardian.Condition,
+					CreatedDate = guardian.CreatedDate,
+					UpdatedDate = guardian.UpdatedDate,
+				};
+
+				if (_guardian!=null)
+				{
+					_guardianManager.Create(_guardian);
+				}
 
 				if (result.Succeeded)
 				{

@@ -6,6 +6,7 @@ namespace WebUI.Models
 {
     public class RegisterModel
     {
+        public int Id { get; set; }
         [Required]
         public int Tc { get; set; }
         [Required]

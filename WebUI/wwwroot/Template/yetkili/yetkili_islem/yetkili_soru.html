@@ -450,43 +450,55 @@
 							<h3 class="modal-title text-center"><strong> Soru Ekle</strong></h3>
 							<form>
 								<div class="row">
-									<div class="col-6">
-											<div class="form-group row d-flex">
-												<label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
+									<div class="col-6 d-flex">
+										<div class="form-group row ">
+												<div class="row">
+													<label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
+													<div class="col-sm-10">
+														<textarea class="small-text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
+													</div>	
+												</div>
+											<div class="row">
+												<label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
 												<div class="col-sm-10">
-													<textarea class="small-text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
-												</div>	
-											<label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
-											<div class="col-sm-10">
-												<select class="form-dropdown">
-													<option  value="">Matematik</option>
-													<option  value="">Coğrafya</option>
-													<option  value="">Tarih</option>
-												</select>
-											</div>											
-											<label for="Ders" class="col-sm-2 col-form-label">Konular</label>
-											<div class="col-sm-10">
-												<select  class="form-dropdown">
-													<option  value="">Üslü Sayılar</option>
-													<option  value="">Akdeniz</option>
-													<option  value="">Kurtuluş Savaşı</option>
-												</select>						
+													<select  class="form-dropdown">
+														<option  value="">Matematik</option>
+														<option  value="">Coğrafya</option>
+														<option  value="">Tarih</option>
+													</select>
+												</div>
 											</div>
-											<label for="Ders" class="col-sm-2 col-form-label">Seviye</label>
-											<div class="col-sm-10">
-												<select  class="form-dropdown">
-													<option  value="">Kolay</option>
-													<option  value="">Orta</option>
-													<option  value="">Zor</option>
-												</select>
+											<div class="row">
+												<label for="Ders" class="col-sm-2 col-form-label">Konular</label>
+												<div class="col-sm-10">
+													<select  class="form-dropdown">
+														<option  value="">Üslü Sayılar</option>
+														<option  value="">Akdeniz</option>
+														<option  value="">Kurtuluş Savaşı</option>
+													</select>						
+												</div>
 											</div>
-											<label for="Ders" class="col-sm-2 col-form-label">Çıktı</label>
-											<div class="col-sm-10">
-												<select  class="form-dropdown">
-													<option  value="">Ders Çıktısı-1</option>
-													<option  value="">Ders Çıktısı-2</option>
-												</select>
+													
+											<div class="row">
+												<label for="Ders" class="col-sm-2 col-form-label">Seviye</label>
+												<div class="col-sm-10">
+													<select  class="form-dropdown">
+														<option  value="">Kolay</option>
+														<option  value="">Orta</option>
+														<option  value="">Zor</option>
+													</select>
+												</div>		
 											</div>
+											<div class="row">
+												<label for="Ders" class="col-sm-2 col-form-label">Çıktı</label>
+												<div class="col-sm-10">
+													<select  class="form-dropdown">
+														<option  value="">Ders Çıktısı-1</option>
+														<option  value="">Ders Çıktısı-2</option>
+													</select>
+												</div>
+											</div>
+
 										</div>
 									</div>
 									<div class="col-6">										
@@ -506,35 +518,42 @@
 						 <div class="modal-content2" id="modal-content2">
 							<span class="close"></span>
 							<h2><strong> Soru Cevabı Ekleme Alanı</strong></h2>
-							<form>
-								<div class="row">
-									<div class="col-6">
-											<div class="form-group row d-flex">
-												<label for="Ders" class="col-sm-2 col-form-label ">A:</label>
-												<div class="col-sm-10">
-													<input class="answer-place text-center"type="text" placeholder="Örneğin:1"><br>
-												</div>	
-												<label for="Ders" class="col-sm-2 col-form-label ">B:</label>
-												<div class="col-sm-10">
-													<input class="answer-place text-center"type="text" placeholder="Örneğin:1"><br>
-												</div>											
-												<label for="Ders" class="col-sm-2 col-form-label ">C:</label>
-												<div class="col-sm-10">
-													<input class="answer-place text-center"type="text" placeholder="Örneğin:1">
-												</div>	
-												<label for="Ders" class="col-sm-2 col-form-label ">D:</label>
-												<div class="col-sm-10">
-													<input class="answer-place text-center"type="text" placeholder="Örneğin:1">
-												</div>	
-												<label for="Ders" class="col-sm-2 col-form-label ">E:</label>
-												<div class="col-sm-10">
-													<input class="answer-place text-center"type="text" placeholder="Örneğin:1">
-												</div>	
-										</div>
+							<div class="col-12">
+								<form>
+									<div class="answer-change-place row">
+										<label for="Ders" class="col-sm-1 col-form-label ">A:</label>
+										<div class="col-sm-11">
+											<input id="answer-change"class="text-center"type="text" placeholder="Örneğin:1"><br>
+										</div>	
 									</div>
-								</div>
-							</form>						
-									<button id="lower_btn" class="lower_btn">
+									<div class="answer-change-place row">
+										<label for="Ders" class="col-sm-1 col-form-label ">B:</label>
+										<div class="col-sm-11">
+											<input id="answer-change"class=" text-center"type="text" placeholder="Örneğin:1"><br>
+										</div>	
+									</div>
+									<div class="answer-change-place row">
+										<label for="Ders" class="col-sm-1 col-form-label ">C:</label>
+										<div class="col-sm-11">
+											<input id="answer-change"class=" text-center"type="text" placeholder="Örneğin:1"><br>
+										</div>	
+									</div>
+									<div class="answer-change-place row">
+										<label for="Ders" class="col-sm-1 col-form-label ">D:</label>
+										<div class="col-sm-11">
+											<input id="answer-change"class="text-center"type="text" placeholder="Örneğin:1"><br>
+										</div>	
+									</div>
+									<div class="answer-change-place row">
+										<label for="Ders" class="col-sm-1 col-form-label ">E:</label>
+										<div class="col-sm-11">
+											<input id="answer-change"class=" text-center"type="text" placeholder="Örneğin:1"><br>
+										</div>	
+									</div>
+								</form>		
+							</div>
+											
+								<button id="lower_btn" class="lower_btn">
 										<strong >Geri Dön</strong>
 									</button>
 									<button id="two" class="upper_btn ">

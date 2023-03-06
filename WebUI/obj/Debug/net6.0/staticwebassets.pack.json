@@ -5,10 +5,6 @@
       "PackagePath": "staticwebassets\\WebUI.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\.vscode\\launch.json",
-      "PackagePath": "staticwebassets\\Template\\.vscode\\launch.json"
-    },
-    {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\README.md",
       "PackagePath": "staticwebassets\\Template\\README.md"
     },
@@ -183,62 +179,6 @@
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\ogrenci\\ogrenci_sonuclarim.html",
       "PackagePath": "staticwebassets\\Template\\ogrenci\\ogrenci_sonuclarim.html"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\10 Dakika'da Temel Matematik _ Sıfırdan Başlangıç (1).mp4",
-      "PackagePath": "staticwebassets\\Template\\questions\\10 Dakika'da Temel Matematik _ Sıfırdan Başlangıç (1).mp4"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\2019-tyt-cografya-2.jpg",
-      "PackagePath": "staticwebassets\\Template\\questions\\2019-tyt-cografya-2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\2022-subat-matematik-ornek-sorular-3.webp",
-      "PackagePath": "staticwebassets\\Template\\questions\\2022-subat-matematik-ornek-sorular-3.webp"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\2022-subat-matematik-sorulari-10_2.webp",
-      "PackagePath": "staticwebassets\\Template\\questions\\2022-subat-matematik-sorulari-10_2.webp"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\Screenshot (3).png",
-      "PackagePath": "staticwebassets\\Template\\questions\\Screenshot (3).png"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\image001.gif",
-      "PackagePath": "staticwebassets\\Template\\questions\\image001.gif"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\images (1).png",
-      "PackagePath": "staticwebassets\\Template\\questions\\images (1).png"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\images (3).jpeg",
-      "PackagePath": "staticwebassets\\Template\\questions\\images (3).jpeg"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\images (5).jpeg",
-      "PackagePath": "staticwebassets\\Template\\questions\\images (5).jpeg"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\images (6).jpeg",
-      "PackagePath": "staticwebassets\\Template\\questions\\images (6).jpeg"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\images (7).jpeg",
-      "PackagePath": "staticwebassets\\Template\\questions\\images (7).jpeg"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\mart-2022-matematik-ornek-sorular-cozum-2.webp",
-      "PackagePath": "staticwebassets\\Template\\questions\\mart-2022-matematik-ornek-sorular-cozum-2.webp"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\video\\10 Dakika'da Temel Matematik _ Sıfırdan Başlangıç (1).mp4",
-      "PackagePath": "staticwebassets\\Template\\video\\10 Dakika'da Temel Matematik _ Sıfırdan Başlangıç (1).mp4"
-    },
-    {
-      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\video\\image001.gif",
-      "PackagePath": "staticwebassets\\Template\\video\\image001.gif"
     },
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\Rol_düzenleme.html",

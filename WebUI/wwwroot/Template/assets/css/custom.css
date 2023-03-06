@@ -311,15 +311,19 @@ display: none;
 }
 .modal-content2 {
   display: none;
-  position: relative;
-  left: 15%;
+  overflow: auto;
   border-radius: 30px;
   background-color: #fefefe;
   margin-left: 20%;
   margin-top: 8%; 
   padding: 20px;
   border: 1px solid #888;
-  width:30%;
+  -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  position: relative;
+  left: 15%;
+  width: 35%;
   height: 50%;
 }
 
@@ -394,19 +398,29 @@ display: none;
 {
   background-color: white;
   margin-left: 5px;
-  width: 200%;
-  height: 86%; 
-  margin-bottom: 13%;
+  width: 95%;
+  height: 30px; 
+  margin-bottom: 2%;
   border-radius: 15px;
 }
 
 #cls_btn
 {
-  margin-top: 1.2%;
-  width: 25%;
+  color: white;
+  width:75px;
+  height: 34px;
+  background-image: linear-gradient(#A26BBD, #4C8BCD);
+  border-style: none;
+  border-radius: 0.2cm;
+  position:relative;
+  overflow: hidden;
+  position: relative;
+  left: 0%;
+
 }
 .big-text
 {
+  padding-top: 1%;
   padding-left: 5%;
   width: 100%;
   height: 175px;
@@ -433,11 +447,23 @@ display: none;
   width: 350px;
   height: max-content;
 }
-#medium-modal
-{  position: relative;
+.medium-modal
+{ 
+  overflow: auto;
+  border-radius: 30px;
+  background-color: #fefefe;
+  margin-left: 20%;
+  margin-top: 8%; 
+  padding: 20px;
+  border: 1px solid #888;
+  -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  position: relative;
   left: 15%;
   width: 35%;
-  height: 50%;}
+  height: 50%;
+}
 #big-text
 {
   padding-top: 0.2%;
@@ -471,27 +497,27 @@ display: none;
 {
   position: relative;
   color: white;
-  height:11%;
+  height:34px;
   background-image: linear-gradient(#A26BBD, #4C8BCD);
   border-style: none;
   border-radius: 0.2cm;
   position:relative;
-  width:10%;
+  width: 75px;
   overflow: hidden;
 }
 .lower_btn
 {
   color: white;
-  height:11%;
+  width:75px;
+  height: 34px;
   background-image: linear-gradient(#A26BBD, #4C8BCD);
   border-style: none;
   border-radius: 0.2cm;
   position:relative;
-  width:10%;
   overflow: hidden;
   position: relative;
   left: 0%;
-  width: max-content;
+
 }
 #upper
 {
@@ -510,7 +536,6 @@ display: none;
 #two
 {
   margin-top: 2%;
-  width: 20%;
   position: relative;
   left: 60%;
 
@@ -541,8 +566,8 @@ display: none;
 }
 .edit-question-image
 {
-  width: 50%;
-  height: 55%;
+  width: 90%;
+  height: 95%;
   border: solid rgb(199, 195, 195);
 }
 /* Edit Page Finish */
@@ -564,15 +589,14 @@ display: none;
   cursor: pointer;
   border: none;
   border-radius: 15px;
-  margin-left: 3%;
-  margin-right: 1%;
+  margin-left: 6%;
   float:left;
   margin-top: 1.5%;
   margin-bottom: 1.7%;
   padding: 0.5%;
   padding-top: 1%;
-  width:320px;
-  height:370px;
+  width:300px;
+  height:220px;
   background-color: white;
   font-size: medium;
   overflow-x:scroll;
@@ -580,6 +604,17 @@ display: none;
   -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
   -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
   box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+}
+.answer-change-place
+{
+  margin-bottom: 2%;
+}
+#answer-change
+{
+  width:75%;
+  height: 100%;
+  border-radius: 15px;
+
 }
 .question-content-empty
 {
@@ -604,6 +639,10 @@ display: none;
  
   
 
+}
+.custom-input-place
+{
+  width:150px;
 }
 .question-empty
 {
@@ -667,7 +706,7 @@ display: none;
 {
   overflow: hidden;
   width: 90%;
-  height: auto;
+  height: 65%;
   object-fit: fill;
 }
 #question-review-icon
@@ -871,17 +910,17 @@ display: none;
   cursor: pointer;
   border: none;
   border-radius: 15px;
-  margin-left: 6%;
   float:left;
   margin-top: 1.5%;
   margin-bottom: 1.7%;
+  margin-right: 4%;
   padding: 0.5%;
   padding-top: 1%;
   width:300px;
   height:200px;
   background-color: white;
   font-size: medium;
-  overflow: hidden;
+  overflow-y: scroll;
   border-left: #B5A8F0 20px solid;
   -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
   -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
@@ -889,12 +928,13 @@ display: none;
 }
 .student-exam-result-content-info 
 {
-  margin-top: 10%;
-  font-size: large;
+  margin-top: 3%;
+  font-size: medium;
 }
 .student-exam-result-content-score
 {
-  margin-top: 10%;
+  margin-top: 3%;
+  font-size: small;
 }
 .student-exam-result-content-eye
 {
@@ -906,19 +946,16 @@ display: none;
 {
   position: relative;
   text-decoration: none;
-  margin-left: 85%;
+  margin-top: 140%;
 
 }
 .student-exam-result-content-question-link
 {
-  margin-top: 10%;
   color: white;
-  height:12%;
   background-image: linear-gradient(#A26BBD, #4C8BCD);
   border-style: none;
   border-radius: 0.2cm;
   position:relative;
-  width:20%;
   padding: 15%;
   overflow: hidden;
 }
@@ -975,6 +1012,9 @@ display: none;
     border-style: none;
     border-radius: 0.2cm;
 }
+tr:nth-child(even){
+  background-color: #f2f2f2
+}
 
 @media  screen and (max-width:430px) {  
   #small-modal
@@ -986,6 +1026,53 @@ display: none;
   width:90%;
   height: 55%;
 }
+#medium-modal
+{
+  left: 0;
+  margin-top: 15%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: auto;
+  width:90%;
+  height: 55%;
+}
+#large-modal
+{
+  width:100%;
+  height: 55%;
+  overflow-y: scroll;
+}
+.medium-modal
+{
+  left: 0;
+  margin-top: 15%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: auto;
+  width:90%;
+  height: 55%;
+}
+.modal-content2
+{
+  left: 0;
+  margin-top: 15%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: auto;
+  width:90%;
+  height: 55%;
+}
+.modal-content
+{
+  left: 0;
+  margin-top: 15%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: auto;
+  width:85%;
+  height: 55%;
+}
+
 #design-yetkili-btn
 {
   position: relative;
@@ -998,7 +1085,7 @@ display: none;
 .modal-content
 {
   overflow-y: scroll;
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1006,7 +1093,34 @@ display: none;
 {
   left: 0;
 }
+.student-question-content-true
+{
+  border: solid;
+  border-radius:20px ;
+  padding: 2%;
+  margin-right: 2%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  width: 100%;
+  border-color: #00FF2B;
+}
+.student-question-content-error
+{
+  border: solid;
+  border-radius:20px ;
+  padding: 2%;
+  margin-right: 2%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  width: 100%;
+  border-color: #FF000D;
+}
   
+}
+#question-design-item
+{
+  width: 100%;
+
 }
 
 

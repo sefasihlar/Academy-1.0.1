@@ -75,17 +75,19 @@
 					</li>
 
 					<li class="sidebar-item sidebar-dropdown-item">
-						<a class="sidebar-link" asp-controller="Exam" asp-action="Index">
-							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Sınavlar</span>
-						</a>
-					</li>
-					<li class="sidebar-item sidebar-dropdown-item">
 						<a class="sidebar-link" asp-controller="Solution" asp-action="Questions">
 							<i class="align-middle" data-feather="underline"></i> <span class="align-middle">
 								Soru Çözümleri
 							</span>
 						</a>
 					</li>
+
+					<li class="sidebar-item sidebar-dropdown-item">
+						<a class="sidebar-link" asp-controller="Exam" asp-action="Index">
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Sınavlar</span>
+						</a>
+					</li>
+					
 				</ul>
 			</li>
 			<li class="sidebar-item sidebar-item">
@@ -102,15 +104,16 @@
 						</a>
 					</li>
 					<li class="sidebar-item sidebar-dropdown-item">
-						<a class="sidebar-link" asp-controller="Role" asp-action="Index">
-							<i class="align-middle" data-feather="users"></i> <span class="align-middle">Görevliler</span>
+						<a class="sidebar-link" asp-controller="Role" asp-action="Officer">
+							<i class="align-middle" data-feather="award"></i> <span class="align-middle">Görevliler</span>
 						</a>
 					</li>
 					<li class="sidebar-item sidebar-dropdown-item">
-						<a class="sidebar-link" href="../yetkili/Ayarlar/kullanici_ayarlari/Roller.html">
-							<i class="align-middle" data-feather="award"></i> <span class="align-middle">Görevlendirmeler</span>
+						<a class="sidebar-link" asp-controller="Role" asp-action="Index">
+							<i class="align-middle" data-feather="users"></i> <span class="align-middle">Roller</span>
 						</a>
 					</li>
+					
 				</ul>
 			</li>
 

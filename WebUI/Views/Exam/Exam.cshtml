@@ -23,7 +23,7 @@
                     <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
 
                         <div class="carousel-inner">
-                            <input name="ExamId" value="@id" type="hidden"/>
+                            <input name="ExamId" value="@id" type="hidden" />
                             <div class="carousel-item active">
                                 <div id="studentExam" class="studentExamPageContainer">
                                     <div id="studentExamContent" class="student-exam-page-contents">
@@ -51,10 +51,10 @@
 
                             </div>
 
-                     
+
                             @foreach (var item in Model.Questions)
                             {
-                              
+
                                 counter++;
                                 <div class="carousel-item">
                                     <div id="studentExam" class="studentExamPageContainer">
@@ -91,7 +91,6 @@
                             }
 
                         </div>
-
                     </div>
                     <div class="student-exam-page-question-number-container">
                         <a class="carousel-control-prev" style=" margin-top:2%;position: relative; top: 1%; width:15%;height:36px;background-image: linear-gradient(#A26BBD, #4C8BCD);" href="#carouselExampleIndicators" role="button" data-slide="prev">
