@@ -15,7 +15,7 @@ namespace BusinessLayer.Concrete
 
 		public GuardianManager(IGuardianDal guardianDal)
 		{
-			guardianDal = guardianDal;
+			_guardianDal = guardianDal;
 		}
 
 		public void Create(Guardian entity)

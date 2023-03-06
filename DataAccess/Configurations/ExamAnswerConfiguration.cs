@@ -25,10 +25,7 @@ namespace DataAccessLayer.Configurations
 				.HasForeignKey(e => e.ExamId)
 				.OnDelete(DeleteBehavior.Restrict);
 
-			builder.HasOne(e => e.User)
-				.WithMany(u => u.ExamAnswers)
-				.HasForeignKey(e => e.UserId)
-				.OnDelete(DeleteBehavior.Restrict);
+		
 
 			builder.HasOne(e => e.Question)
 				.WithMany(q => q.ExamAnswers)

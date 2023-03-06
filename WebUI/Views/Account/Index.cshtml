@@ -46,38 +46,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>921412</td>
-                                        <td>Ahmet</td>
-                                        <td>Çıtak</td>
-                                        <td>9</td>
-                                        <td>B</td>
-                                        <td>05348384</td>
-                                        <td>İsim-21/01/2021</td>
-                                        <td>İsim-31/06/2021</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                        <td>
-                                            <a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-                                            <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>12421</td>
-                                        <td>Ece</td>
-                                        <td>Sah</td>
-                                        <td>10</td>
-                                        <td>F</td>
-                                        <td>0214384</td>
-                                        <td>İsim-21/01/2021</td>
-                                        <td>İsim-31/06/2021</td>
-                                        <td><span class="badge bg-success">Aktif</span></td>
-                                        <td>
-                                            <a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-                                            <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach (var item in Model.Users)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.Tc</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.SurName</td>
+                                            <td>@item.Class.Name</td>
+                                            <td>@item.Branch.Name</td>
+                                            <td>@item.PhoneNumber</td>
+                                            <td>İsim-@item.CreatedDate</td>
+                                            <td>İsim-@item.UpdatedDate</td>
+                                            <td><span class="badge bg-success">Aktif</span></td>
+                                            <td>
+                                                <a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+                                                <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+
+
 
                                 </tbody>
                             </table>
@@ -87,116 +76,132 @@
             </div>
         </div>
     </div>
+    <form asp-controller="Account" asp-action="Register" method="post">
     <div class="popup">
         <div id="myModal" class="modal">
             <div class="medium-modal" id="modal-content1">
-                <span class="close">&times;</span>
-                <h2 class="modal-title text-center"><strong> Öğrenci Ekle</strong></h2>
-                <form>
+               
+                   <input  name="Password" value="Sefa.123" type="hidden"/>
+
+                    <span class="close">&times;</span>
+                    <h2 class="modal-title text-center"><strong> Öğrenci Ekle</strong></h2>
+
                     <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">İsmi</label>
+                        <label for="name" class="col-sm-3 col-form-label">Ad</label>
                         <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text" placeholder="Örneğin:Ahmet">
+                            <input class="answer-place text-center"  name="Name" type="text" placeholder="Örneğin:Ahmet">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">Soyİsmi</label>
+                        <label for="name" class="col-sm-3 col-form-label">Soyad</label>
                         <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text" placeholder="Örneğin:Yılmaz">
+                            <input class="answer-place text-center" name="SurName" type="text" placeholder="Örneğin:Yılmaz">
                         </div>
                     </div>
                     <div class="row">
                         <label for="name" class="col-sm-3 col-form-label">Tc Kimlik</label>
                         <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text">
+                            <input class="answer-place text-center" name="Tc" type="text">
                         </div>
                     </div>
                     <div class="row">
                         <label for="tc" class="col-sm-3 col-form-label">Telefon</label>
                         <div class="col-sm-9">
-                            <input class="answer-place" type="text">
+                            <input class="answer-place" name="Phone" type="text">
                         </div>
 
                     </div>
                     <div class="row">
                         <label for="Ders" class="col-sm-3 col-form-label">Sınıf</label>
                         <div class="col-sm-9">
-                            <select class="answer-place">
-                                <option value="">9</option>
-                                <option value="">10</option>
-                                <option value="">11</option>
-                            </select>
+                            @await Component.InvokeAsync("ClassList")
                         </div>
                     </div>
                     <div class="row">
                         <label for="Ders" class="col-sm-3 col-form-label">Şube</label>
                         <div class="col-sm-9">
-                            <select class="answer-place">
-                                <option value="">A</option>
-                                <option value="">B</option>
-                            </select>
+                            @await Component.InvokeAsync("BranchList")
                         </div>
                     </div>
-                </form>
-                <button id="upper" class="upper_btn">
-                    <strong>İleri </strong>
-                </button>
 
+                    <a id="upper" class="upper_btn">
+                        <strong>İleri </strong>
+                    </a>
+             
             </div>
+           
             <div class="modal-content2" id="modal-content2">
                 <span class="close"></span>
                 <h2 class="modal-title text-center"><strong> Öğrenci Veli Ekle</strong></h2>
-                <form>
-                    <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">Veli İsmi</label>
-                        <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text" placeholder="Örneğin:Ahmet">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">Veli Soyİsmi</label>
-                        <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text" placeholder="Örneğin:Yılmaz">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">Veli Tc Kimlik</label>
-                        <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="tc" class="col-sm-3 col-form-label">Veli Telefon</label>
-                        <div class="col-sm-9">
-                            <input class="answer-place" type="text">
-                        </div>
 
+                <div class="row">
+                    <label for="name" class="col-sm-3 col-form-label">Veli Ad</label>
+                    <div class="col-sm-9">
+                        <input class="answer-place text-center" name="GuardianName" type="text" placeholder="Örneğin:Ahmet">
                     </div>
+                </div>
                     <div class="row">
-                        <label for="tc" class="col-sm-3 col-form-label">Veli Telefon 2</label>
+                        <label for="name" class="col-sm-3 col-form-label">Veli Soyad</label>
                         <div class="col-sm-9">
-                            <input class="answer-place" type="text">
+                            <input class="answer-place text-center" name="GuardianSurName" type="text" placeholder="Örneğin:Yılmaz">
                         </div>
-
+                    </div>
+                <div class="row">
+                    <label for="name" class="col-sm-3 col-form-label">Veli Ad2</label>
+                    <div class="col-sm-9">
+                            <input class="answer-place text-center" name="GuardianName2" type="text" placeholder="Örneğin:Ahmet">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <label for="name" class="col-sm-3 col-form-label">Veli Soyad2</label>
+                    <div class="col-sm-9">
+                            <input class="answer-place text-center" name="GuardianSurName2" type="text" placeholder="Örneğin:Yılmaz">
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="tc" class="col-sm-3 col-form-label">Veli Telefon</label>
+                    <div class="col-sm-9">
+                            <input class="answer-place" name="GuardianPhone" type="text">
                     </div>
 
-                </form>
+                </div>
+                <div class="row">
+                    <label for="tc" class="col-sm-3 col-form-label">Veli Telefon2</label>
+                    <div class="col-sm-9">
+                            <input class="answer-place" name="GuardianPhone2" type="text">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <label for="tc" class="col-sm-3 col-form-label">Condition</label>
+                    <div class="col-sm-9 ">
+                    <select>
+                        <option value="True">Aktif</option>
+                        <option value="False">Pasif</option>
+                    </select>
+                   </div>
+                </div>
+
                 <div class="row">
                     <div class="col-9">
-                        <button class="lower_btn" id="lower_btn">
+                        <a class="lower_btn" id="lower_btn">
                             <strong>Geri Dön</strong>
-                        </button>
+                        </a>
                     </div>
                     <div class="col-3">
-                        <button id="cls_btn">
+                        <button id="cls_btn" type="submit">
                             <strong>Kaydet</strong>
                         </button>
 
                     </div>
                 </div>
 
-            </div>
-        </div>
 
+            </div>
+
+        </div>
     </div>
+    </form>
 </main>

@@ -27,6 +27,35 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Lockout.AllowedForNewUsers = true;
     options.User.RequireUniqueEmail = true;
     options.SignIn.RequireConfirmedEmail = true;
+    //Aþaðýdaki alanlar isteðe göre aktifleþtirlebilir
+
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.AllowedForNewUsers = true;
+
+    options.User.RequireUniqueEmail = true;
+
+    options.SignIn.RequireConfirmedEmail = false;
+    options.SignIn.RequireConfirmedPhoneNumber = false;
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login";
+    options.SlidingExpiration = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+
+    options.Cookie = new CookieBuilder()
+    {
+        HttpOnly = true,
+        Name = "Academy.Security.Cookie"
+    };
 });
 
 Assembly.GetExecutingAssembly();
@@ -41,18 +70,7 @@ builder.Services.AddIdentity<AppUser, AppRole>()
 builder.Services.AddControllersWithViews();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.LoginPath = "/Account/Login";
-    options.SlidingExpiration = true;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
 
-    options.Cookie = new CookieBuilder()
-    {
-        HttpOnly = true,
-        Name = "Academy.Security.Cookie"
-    };
-});
 
 builder.Services.AddMvc();
 builder.Services.AddMvc(options =>
@@ -78,7 +96,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseAuthentication();
 app.UseMvc(Route =>
 {
     Route.MapRoute(

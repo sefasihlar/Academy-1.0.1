@@ -181,6 +181,10 @@
       "PackagePath": "staticwebassets\\Template\\ogrenci\\ogrenci_sonuclarim.html"
     },
     {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\images (5).jpeg",
+      "PackagePath": "staticwebassets\\Template\\questions\\images (5).jpeg"
+    },
+    {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\Rol_düzenleme.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\Rol_düzenleme.html"
     },

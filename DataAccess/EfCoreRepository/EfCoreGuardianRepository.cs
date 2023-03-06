@@ -12,5 +12,6 @@ namespace DataAccessLayer.EfCoreRepository
 {
 	public class EfCoreGuardianRepository:EfCoreGenericRepository<Guardian,AcademyContext>,IGuardianDal
 	{
+		
 	}
 }

@@ -12,278 +12,307 @@ using WebUI.Models;
 namespace WebUI.Controllers
 {
     public class AccountController : Controller
-	{
-		AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
-		ClassManager _classManager = new ClassManager(new EfCoreClassRepository());
-		BranchManager _branchManager = new BranchManager(new EfCoreBranchRepository());
-		CartManager _cartManager = new CartManager(new EfCoreCartRepository());
-		GuardianManager _guardianManager = new GuardianManager(new EfCoreGuardianRepository());
-		private readonly UserManager<AppUser> _userManager;
-		private readonly SignInManager<AppUser> _signInManager;
-
-
-		public IActionResult Index()
-		{
-			return View(new AppUserListModel()
-			{
-				//async metod oldugu icin hata alabiriz ! 
-				Users = _appUserManager.ListTogether().ToList()
-			});
-		}
-
-		[HttpGet]
-		public IActionResult Register()
-		{
-			var classes = _classManager.GetAll();
-			ViewBag.classes = new SelectList(classes, "Id", "Name");
-
-			var brances = _branchManager.GetAll();
-			ViewBag.brances = new SelectList(brances, "Id", "Name");
-
-			if (classes == null || brances == null)
-			{
-				return NotFound();
-			}
-
-
-			var values = new AppUserListModel()
-			{
-				Users = _appUserManager.ListTogether()
-			};
-
-			return View(values);
-		}
-
-		//Kullanıcı verli bilgileride burada ekleniyor aynı anda kayıt işlemi için
-
-		[HttpPost]
-		public async Task<IActionResult> Register(RegisterModel model,GuardianModel guardian)
-		{
-			
-			if (ModelState.IsValid)
-			{
-				AppUser user = new AppUser()
-				{
-					Id = model.Id,
-					Tc = model.Tc,
-					Name = model.Name,
-					SurName = model.SurName,
-					ClassId = model.ClassId,
-					BranchId = model.BranchId,
-					PhoneNumber = model.Phone,
-					Email = model.Email,
-
-				};
-
-				var result = await _userManager.CreateAsync(user, model.Password);
-
-
-				Guardian _guardian = new Guardian()
-				{
-					Id = guardian.Id,
-					Name = guardian.Name,
-					Name2 = guardian.Name2,
-					SurName = guardian.SurName,
-					SurName2 = guardian.SurName2,
-					Phone = guardian.Phone,
-					Phone2 = guardian.Phone2,
-					UserId = user.Id,
-					Condition = guardian.Condition,
-					CreatedDate = guardian.CreatedDate,
-					UpdatedDate = guardian.UpdatedDate,
-				};
-
-				if (_guardian!=null)
-				{
-					_guardianManager.Create(_guardian);
-				}
-
-				if (result.Succeeded)
-				{
-					var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-
-					var callbackUrl = Url.Action("ConfirmEmail", "Account", new
-					{
-						userId = user.Id,
-						Token = code,
-					});
-
-					//Burası email gönderme kısmı(send Email)
-
-					//Kullanıcı oluştuldu mesajı eklenecek tempdate ile 
-					return View();
-				}
-			}
-			ModelState.AddModelError("", "Kullanıcı oluşturlamadı! Lütfen bilgileri tekrar gözden geçiriniz");
+    {
+        AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
+        ClassManager _classManager = new ClassManager(new EfCoreClassRepository());
+        BranchManager _branchManager = new BranchManager(new EfCoreBranchRepository());
+        CartManager _cartManager = new CartManager(new EfCoreCartRepository());
+        GuardianManager _guardianManager = new GuardianManager(new EfCoreGuardianRepository());
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
+
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
+
+        public IActionResult Index()
+        {
+            return View(new AppUserListModel()
+            {
+                //async metod oldugu icin hata alabiriz ! 
+                Users = _appUserManager.ListTogether().ToList()
+            });
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            var classes = _classManager.GetAll();
+            ViewBag.classes = new SelectList(classes, "Id", "Name");
+
+            var brances = _branchManager.GetAll();
+            ViewBag.brances = new SelectList(brances, "Id", "Name");
+
+            if (classes == null || brances == null)
+            {
+                return NotFound();
+            }
+
+
+            var values = new AppUserListModel()
+            {
+                Users = _appUserManager.ListTogether()
+            };
+
+            return View(values);
+        }
+
+        //Kullanıcı verli bilgileride burada ekleniyor aynı anda kayıt işlemi için
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterModel model, GuardianModel guardian)
+        {
+
+
+            AppUser user = new AppUser()
+            {
+
+                Tc = 234234233,
+                Name = model.Name,
+                SurName = model.SurName,
+                ClassId = model.ClassId,
+                BranchId = model.BranchId,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
+                Condition = true,
+                UserName = "Sefa.123",
+                Email = "sihlarsefa7@gmail.com",
+                NormalizedEmail = "sihlarsefa7@gmail.com",
+                PhoneNumber = model.Phone,
+                PhoneNumberConfirmed = false,
+                TwoFactorEnabled = false,
+                LockoutEnd = DateTime.UtcNow,
+                LockoutEnabled = false,
+                AccessFailedCount = 3,
+                EmailConfirmed = false,
+              
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                // kullanıcı başarıyla kaydedildi
+                Guardian _guardian = new Guardian()
+                {
+                    Id = guardian.Id,
+                    GuardianName = guardian.GuardianName,
+                    GuardianName2 = guardian.GuardianName2,
+                    GuardianSurName = guardian.GuardianSurName,
+                    GuardianSurName2 = guardian.GuardianSurName2,
+                    GuardianPhone = guardian.GuardianPhone,
+                    GuardianPhone2 = guardian.GuardianPhone2,
+                    UserId = user.Id,
+                    GuardianCondition = guardian.GuardianCondition,
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                };
+
+                if (_guardian != null)
+                {
+                    _guardianManager.Create(_guardian);
+                }
+               
+            }
 
-			var classes = _classManager.GetAll();
-			ViewBag.classes = new SelectList(classes, "Id", "Name");
+            else
+            {
+                // kayıt işlemi başarısız oldu, hata mesajını göster
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(model);
+            }
 
-			var brances = _branchManager.GetAll();
-			ViewBag.brances = new SelectList(brances, "Id", "Name");
+            if (result.Succeeded)
+            {
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-			if (classes == null || brances == null)
-			{
-				return NotFound();
-			}
+                var callbackUrl = Url.Action("ConfirmEmail", "Account", new
+                {
+                    userId = user.Id,
+                    Token = code,
+                });
 
-			return View(model);
-		}
-
+                //Burası email gönderme kısmı(send Email)
 
-		[HttpGet]
-		public IActionResult Login()
-		{
-			return View(new LoginModel());
-		}
+                //Kullanıcı oluştuldu mesajı eklenecek tempdate ile 
+                return RedirectToAction("Index","Account");
+            }
 
-		[HttpPost]
-		public async Task<IActionResult> Login(LoginModel model)
-		{
+            //ModelState.AddModelError("", "Kullanıcı oluşturlamadı! Lütfen bilgileri tekrar gözden geçiriniz");
 
-			if (!ModelState.IsValid)
-			{
-				return View(model);
-			}
+            var classes = _classManager.GetAll();
+            ViewBag.classes = new SelectList(classes, "Id", "Name");
+
+            var brances = _branchManager.GetAll();
+            ViewBag.brances = new SelectList(brances, "Id", "Name");
+
+            if (classes == null || brances == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
 
-			//email e göre değil tc ye göre giriş yapılacak
-			var user = await _userManager.FindByEmailAsync(model.Email);
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View(new LoginModel());
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginModel model)
+        {
 
-			if (user == null)
-			{
-				ModelState.AddModelError("","Bu Tc ile bir hesap oluşturlmamış");
-				return View(model);
-			}
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-			if (!await _userManager.IsEmailConfirmedAsync(user))
-			{
+            //email e göre değil tc ye göre giriş yapılacak
+            var user = await _userManager.FindByEmailAsync(model.Email);
 
-			    // Email eklenmediği zaman Email oluşturma sayfasına yönlendirilecek
-				return RedirectToAction("CreateEmail","Account");
-			}
 
-			var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Bu Tc ile bir hesap oluşturlmamış");
+                return View(model);
+            }
 
+            if (!await _userManager.IsEmailConfirmedAsync(user))
+            {
 
-			//Kullanıcınin hesabi başarıyla onlaylandı ise giriş yapabilecek 
-			if (result.Succeeded)
-			{
-				return RedirectToAction("Index","Home");
-			}
-			//diğer durumda hesap onaylanmadan giriş yapamacak
-			ModelState.AddModelError("", "Tc yada Parola yanlış");
+                // Email eklenmediği zaman Email oluşturma sayfasına yönlendirilecek
+                return RedirectToAction("CreateEmail", "Account");
+            }
 
+            var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
 
-			return View(model);
-		}
 
-		public async Task<IActionResult> Logout()
-		{
-			await _signInManager.SignOutAsync();
-			//Buraya çıkış yaptına dair mesaj gelicek
+            //Kullanıcınin hesabi başarıyla onlaylandı ise giriş yapabilecek 
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            //diğer durumda hesap onaylanmadan giriş yapamacak
+            ModelState.AddModelError("", "Tc yada Parola yanlış");
 
 
-			return RedirectToAction("Login","Account");
-		}
+            return View(model);
+        }
 
-		public async Task<IActionResult> ConfirmEmail(string userId,string token)
-		{
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            //Buraya çıkış yaptına dair mesaj gelicek
 
-			if (userId==null || token == null)
-			{
-				//tempdata "Hesap onayi icin bilgileriniz yanlis"
-				return View();
-			}
 
-			var user = await _userManager.FindByIdAsync(userId);
-			if (user != null)
-			{
-				var result = await _userManager.ConfirmEmailAsync(user, token);
-				if (result.Succeeded)
-				{
-					//onaylama islemi basarili ise kullaniciya kart tanimlansin
-					_cartManager.InitializeCart(Convert.ToString(user.Id));
+            return RedirectToAction("Login", "Account");
+        }
 
-					return RedirectToAction("Login","Account");
-				}
-			}
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
 
-			//tempdata ile hata mesaji goster
-			return View();
-		}
+            if (userId == null || token == null)
+            {
+                //tempdata "Hesap onayi icin bilgileriniz yanlis"
+                return View();
+            }
 
-		public async Task<IActionResult> ForgotPassword(string Email)
-		{
-			if (string.IsNullOrEmpty(Email))
-			{
-				//hata mesaji 
-				return View();
-			}
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                var result = await _userManager.ConfirmEmailAsync(user, token);
+                if (result.Succeeded)
+                {
+                    //onaylama islemi basarili ise kullaniciya kart tanimlansin
+                    _cartManager.InitializeCart(Convert.ToString(user.Id));
 
-			var user = await _userManager.FindByEmailAsync(Email);
+                    return RedirectToAction("Login", "Account");
+                }
+            }
 
-			if (user == null)
-			{
-				//kullanici bulunamadi hatasi
-				return View();
-					 
-			}
+            //tempdata ile hata mesaji goster
+            return View();
+        }
 
-			var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+        public async Task<IActionResult> ForgotPassword(string Email)
+        {
+            if (string.IsNullOrEmpty(Email))
+            {
+                //hata mesaji 
+                return View();
+            }
 
-			var callbackUrl = Url.Action("ResetPassword", "Account", new
-			{
+            var user = await _userManager.FindByEmailAsync(Email);
 
-				Token = code
+            if (user == null)
+            {
+                //kullanici bulunamadi hatasi
+                return View();
 
-			});
+            }
 
-			//Send Email ResetPassword
-			//tempdata ile uyari mesaji gonder
+            var code = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-			return RedirectToAction("Login", "Account");
-		}
+            var callbackUrl = Url.Action("ResetPassword", "Account", new
+            {
 
-		public IActionResult ResetPassword(string token)
-		{
-			if (token == null)
-			{
-				return RedirectToAction("Index", "Home");
-			}
+                Token = code
 
-			var model = new ResetPasswordModel { Token = token };
+            });
 
-			return View(model);
+            //Send Email ResetPassword
+            //tempdata ile uyari mesaji gonder
 
-		}
+            return RedirectToAction("Login", "Account");
+        }
 
-		[HttpPost]
+        public IActionResult ResetPassword(string token)
+        {
+            if (token == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
-		public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
-		{
-			if (!ModelState.IsValid)
-			{
-				return View();
-			}
+            var model = new ResetPasswordModel { Token = token };
 
-			var user = await _userManager.FindByEmailAsync(model.Email);
+            return View(model);
 
-			if (user == null)
-			{
-				return RedirectToAction("Home","Index");
-			}
+        }
 
-			var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+        [HttpPost]
 
-			if (result.Succeeded)
-			{
-				return RedirectToAction("Login","Home");
-			}
+        public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
 
-			return View(model);
-		}
+            var user = await _userManager.FindByEmailAsync(model.Email);
 
-	}
+            if (user == null)
+            {
+                return RedirectToAction("Home", "Index");
+            }
+
+            var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+            return View(model);
+        }
+
+    }
 }
 

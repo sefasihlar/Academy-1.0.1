@@ -23,35 +23,25 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ExamAnswers model, int[] questionIds, Dictionary<int,int> optionIds)
+        public IActionResult Create(ExamAnswers model, int[] questionIds, Dictionary<int, int> optionIds)
         {
-            //yarın bu algoritmanın açıklamasını yaz
-
-            var optionCount = optionIds.Count();
-          
-            if (model != null & questionIds != null)
+            if (model != null && questionIds != null && optionIds != null)
             {
                 model.UserId = 1;
                 foreach (var item in questionIds)
                 {
-
-                    foreach (var option in optionIds)
+                    //TryGetValue değeri kontrol edip varsa atama yapar yoksa değeri null yaparak geçer
+                    if (optionIds.TryGetValue(item, out int option))
                     {
-                        if (optionCount!=0)
-                        {
-                            _examAnswerManager.Create(model, item, option.Value);
-                            optionCount--;
-                        }
-                        else
-                        {
-                            _examAnswerManager.Create(model, item, null);
-                        }
-                       
+                        _examAnswerManager.Create(model, item, option);
                     }
-                };
+                    else
+                    {
+                        _examAnswerManager.Create(model, item, null);
+                    }
+                }
 
                 return RedirectToAction("Index", "Exam");
-
             }
 
             return View(model);

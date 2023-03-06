@@ -34,6 +34,8 @@
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\Template\.git\objects\info\" />
     <Folder Include="wwwroot\Template\.git\refs\tags\" />
+    <Folder Include="wwwroot\Template\video\" />
+    <Folder Include="wwwroot\Template\questions\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,19 +4,19 @@ namespace WebUI.Models
 {
 	public class GuardianModel
 	{
-		public int Id { get; set; }
-		public string Name { get; set; }
-		public string? Name2 { get; set; }
-		public string SurName { get; set; }
-		public string? SurName2 { get; set; }
-		public string Phone { get; set; }
-		public string? Phone2 { get; set; }
+        public int Id { get; set; }
+        public string GuardianName { get; set; }
+        public string? GuardianName2 { get; set; }
+        public string GuardianSurName { get; set; }
+        public string? GuardianSurName2 { get; set; }
+        public string GuardianPhone { get; set; }
+        public string? GuardianPhone2 { get; set; }
 
-		public int UserId { get; set; }
-		public AppUser User { get; set; }
+        public int UserId { get; set; }
+        public AppUser User { get; set; }
 
-		public bool Condition { get; set; }
-		public DateTime CreatedDate { get; set; } = DateTime.Now;
-		public DateTime UpdatedDate { get; set; } = DateTime.Now;
-	}
+        public bool GuardianCondition { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime UpdatedDate { get; set; } = DateTime.Now;
+    }
 }

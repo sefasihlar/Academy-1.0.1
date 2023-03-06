@@ -59,17 +59,20 @@
                                         </a>
                                     </div>
                                 </div>
-
-                                <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
+                                @if (item.ImageUrl!=null)
+                                {
+                                    <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
+                                }
+                               
                                 <input type="hidden" name="Condition" value="True" />
-                                <span>@item.Text</span><br>
-                                <span class="question-info"><strong>@item.QuestionText?</strong></span>
+                                <span class="question-info"><span>@item.QuestionText</span></span><br>
+                                <strong>@item.Text</strong><br>
+                                
                                 <div class="question-answer-list">
                                     @foreach (var option in item.Options.Where(x => x.QuestionId == item.Id).ToList())
                                     {
-                                        <span><strong>@option.Name)</strong> @option.Text</span>
+                                        <span><strong>@option.Name)</strong> @option.Text</span>  <br>
 
-                                        <br>
                                     }
 
                                 </div>

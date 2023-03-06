@@ -1,4 +1,4 @@
-﻿
+﻿@model AppRoleListModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -41,28 +41,29 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td>Öğretmen</td>
-										<td>İsim-21/01/2021</td>
-										<td>İsim-31/06/2021</td>
-										<td><span class="badge bg-success">Aktif</span></td>
-										<td>
-											<a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-											<a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-										</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>Sekreter</td>
-										<td>İsim-21/01/2021</td>
-										<td>İsim-31/06/2021</td>
-										<td><span class="badge bg-success">Aktif</span></td>
-										<td>
-											<a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
-											<a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-										</td>
-									</tr>
+									@foreach (var item in Model.Roles)
+									{
+										<tr>
+											<td>@item.Id</td>
+											<td>@item.Name</td>
+											<td>İsim-@item.CreatedDate</td>
+											<td>İsim-@item.UpdatedDate</td>
+											@if (item.Condition == true)
+											{
+												<td><span class="badge bg-success">Aktif</span></td>
+											}
+											else
+											{
+												<td><span class="badge bg-danger">Pasif</span></td>
+											}
+											<td>
+												<a href="../yetkili_islem_düzenle/yetkili_sinif_düzenle.html"><i class="align-middle" data-feather="edit"></i></a>
+												<a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
+											</td>
+										</tr>
+									}
+								
+									
 								</tbody>
 							</table>
 						</div>
@@ -76,20 +77,30 @@
 			<div style="height:max-content" class="modal-content" id="small-modal">
 				<span class="close">&times;</span>
 				<h2 class="modal-title text-center"><strong>Ekle</strong></h2>
-				<form>
+				<form asp-controller="Role" asp-action="Create" method="post">
 					<div class="row">
 						<div class="col-12">
 							<div class="form-group row d-flex">
 								<label for="name" class="col-sm-3 col-form-label">İsmi</label>
 								<div class="col-sm-9">
-									<input class="answer-place text-center" type="text" placeholder="Örneğin:Sekreter">
+									<input class="answer-place text-center" name="Name" type="text" placeholder="Örneğin:Sekreter">
 								</div>
 							</div>
 						</div>
 
-
+						<div class="col-12">
+							<div class="form-group row d-flex">
+								<label for="Ders" class="col-sm-3 col-form-label">Durum</label>
+								<div class="col-sm-9">
+									<select class="form-dropdown" name="Condition">
+										<option value="True">Aktif</option>
+										<option value="False">Pasif</option>
+									</select>
+								</div>
+							</div>
+						</div>
 					</div>
-					<button id="cls_btn" class="upper_btn">
+					<button id="cls_btn" class="upper_btn" type="submit">
 						<strong>Kaydet </strong>
 					</button>
 				</form>
