@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Xml;
@@ -12,7 +13,6 @@ namespace DataAccessLayer.Concrete
         {
             optionsBuilder.UseSqlServer("server=CODER;database=DbAcademy;integrated security=true");
         }
-
 		public DbSet<Cart> Carts { get; set; }
 		public DbSet<Subject> Subjects { get; set; }
 		public DbSet<Class> Classes { get; set; }

@@ -1,0 +1,124 @@
+﻿@model AuthortyListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="content d-flex flex-wrap justify-content-between">
+	<div class="container-fluid p-0">
+
+		<h1 class="h3 mb-3"><strong>Yetkili</strong> Görevliler Sayfası</h1>
+
+		<div class="row">
+			<div class="d-flex">
+				<div class="w-100">
+					<div class="row">
+
+						<div class="card flex-fill col-12 " style="border-radius: 25px;
+																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+							<div class="row">
+								<div class="card-header col-10">
+									<h5 class="card-title mb-0">Görevliler</h5>
+								</div>
+								<div class="yetkili_btn col-2">
+
+									<a style="color:white" id="myBtn">
+										<strong>Yeni Görevli Ekle </strong>
+
+									</a>
+								</div>
+							</div>
+
+							<table class="table my-0 text-center">
+								<thead>
+									<tr>
+										<th class="d-none d-md-table-cell">ID</th>
+										<th>TC Kimlik</th>
+										<th>AdSoyad</th>
+										<th>Soyad</th>
+										<th>Telefon</th>
+										<th>Görev</th>
+										<th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
+										<th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+										<th>Aktiflik durumu</th>
+										<th>Düzenle veya sil</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var item in Model.Users)
+									{
+										<tr>
+											<td>@item.Id</td>
+											<td>@item.Tc</td>
+											<td>@item.Name</td>
+											<td>@item.SurName</td>
+											<td>@item.PhoneNumber</td>
+											<td><a href="/Authority/AssignRole/@item.Id">Görev Ata</a></td>
+											<td>İsim-@item.CreatedDate</td>
+											<td>İsim-@item.UpdatedDate</td>
+											<td><span class="badge bg-success">Aktif</span></td>
+											<td>
+												<a href="/Authority/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
+												<form asp-controller="Authority" asp-action="Delete" method="post" style="display:inline">
+													<input type="hidden" name="Id" value="@item.Id" />
+													<button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
+												</form>
+											</td>
+										</tr>
+									}
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<form asp-controller="Authority" asp-action="Register" method="post">
+	<div class="popup">
+		<div id="myModal" class="modal">
+			<div class="modal-content" id="small-modal">
+				<span class="close">&times;</span>
+				<h2 class="modal-title text-center"><strong> Görevli Ekle</strong></h2>
+				
+					<div class="row">
+						<div class="col-12">
+							<div class="form-group row d-flex">
+								<label for="name" class="col-sm-3 col-form-label">Ad</label>
+								<div class="col-sm-9">
+									<input class="answer-place text-center" name="Name" type="text" placeholder="Örneğin:Ahmet">
+								</div>
+								<label for="name" class="col-sm-3 col-form-label">Soyad</label>
+								<div class="col-sm-9">
+									<input class="answer-place text-center" type="text" name="SurName" placeholder="Örneğin:Yılmaz">
+								</div>
+								<label for="name" class="col-sm-3 col-form-label">Tc</label>
+								<div class="col-sm-9">
+									<input class="answer-place text-center" type="text" name="Tc" placeholder="Örneğin:31036925814">
+								</div>
+								<label for="name" class="col-sm-3 col-form-label">Telefon</label>
+								<div class="col-sm-9">
+									<input class="answer-place text-center" type="text" name="Phone" placeholder="Örneğin:055252525">
+								</div>
+
+								<input type="hidden" name="Authority" value="True"/>
+								<input type="hidden" name="Password" value="Sefa.123"/>
+
+							</div>
+						</div>
+
+
+					</div>
+					<button id="cls_btn" class="upper_btn" type="submit">
+						<strong>Kaydet </strong>
+					</button>
+			
+
+			</div>
+		</div>
+
+	</div>
+	</form>
+</main>
+

@@ -25,11 +25,12 @@ builder.Services.AddAuthentication(
 builder.Services.Configure<IdentityOptions>(options =>
 {
     options.Lockout.AllowedForNewUsers = true;
-    options.User.RequireUniqueEmail = true;
+    options.User.RequireUniqueEmail = false;
     options.SignIn.RequireConfirmedEmail = true;
-    //Aþaðýdaki alanlar isteðe göre aktifleþtirlebilir
 
-    options.Password.RequireDigit = true;
+	//Aþaðýdaki alanlar isteðe göre aktifleþtirlebilir
+
+	options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;
     options.Password.RequiredLength = 6;
     options.Password.RequireUppercase = true;
@@ -39,7 +40,7 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
     options.Lockout.AllowedForNewUsers = true;
 
-    options.User.RequireUniqueEmail = true;
+    options.User.RequireUniqueEmail = false;
 
     options.SignIn.RequireConfirmedEmail = false;
     options.SignIn.RequireConfirmedPhoneNumber = false;

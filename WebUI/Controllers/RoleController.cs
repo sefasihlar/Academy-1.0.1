@@ -123,6 +123,7 @@ namespace WebUI.Controllers
 
         public IActionResult Officer()
         {
+            
             return View();
         }
 

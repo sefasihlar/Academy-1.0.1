@@ -21,18 +21,19 @@ namespace WebUI.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-        }
+		public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+		{
+			_userManager = userManager;
+			_signInManager = signInManager;
+	
+		}
 
-        public IActionResult Index()
+		public IActionResult Index()
         {
             return View(new AppUserListModel()
             {
                 //async metod oldugu icin hata alabiriz ! 
-                Users = _appUserManager.ListTogether().ToList()
+                Users = _appUserManager.ListTogether().Where(x=>x.Authority==false).ToList(),
             });
         }
 
@@ -74,21 +75,13 @@ namespace WebUI.Controllers
                 SurName = model.SurName,
                 ClassId = model.ClassId,
                 BranchId = model.BranchId,
-                CreatedDate = DateTime.Now,
-                UpdatedDate = DateTime.Now,
                 Condition = true,
-                UserName = "Sefa.123",
-                Email = "sihlarsefa7@gmail.com",
+                UserName =Convert.ToString( model.Tc),
                 NormalizedEmail = "sihlarsefa7@gmail.com",
                 PhoneNumber = model.Phone,
-                PhoneNumberConfirmed = false,
-                TwoFactorEnabled = false,
-                LockoutEnd = DateTime.UtcNow,
-                LockoutEnabled = false,
-                AccessFailedCount = 3,
-                EmailConfirmed = false,
-              
+
             };
+
 
             var result = await _userManager.CreateAsync(user, model.Password);
 
