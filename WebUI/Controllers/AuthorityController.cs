@@ -9,7 +9,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    [Authorize(Roles = "Müdür")]
+    //[Authorize(Roles = "Müdür")]
     public class AuthorityController : Controller
 	{
 		private readonly UserManager<AppUser> _userManager;

@@ -7,8 +7,9 @@ namespace WebUI.Models
     public class RegisterModel
     {
         public int Id { get; set; }
+        [StringLength(11,MinimumLength =11,ErrorMessage ="Tc Numarası 11 karakter olmalıdır")]
         [Required]
-        public string TcNumber { get; set; }
+        public int TcNumber { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
@@ -27,7 +28,7 @@ namespace WebUI.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Compare("Password")]
+        [Compare("Password",ErrorMessage ="Şifreler uyuşmuyor")]
         [DataType(DataType.Password)]
         [Required]
         public string RePassword { get; set; }

@@ -11,6 +11,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class AccountController : Controller
     {
         AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
@@ -21,19 +22,19 @@ namespace WebUI.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
 
-		public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
-		{
-			_userManager = userManager;
-			_signInManager = signInManager;
-	
-		}
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
 
-		public IActionResult Index()
+        }
+
+        public IActionResult Index()
         {
             return View(new AppUserListModel()
             {
                 //async metod oldugu icin hata alabiriz ! 
-                Users = _appUserManager.ListTogether().Where(x=>x.Authority==false).ToList(),
+                Users = _appUserManager.ListTogether().Where(x => x.Authority == false).ToList(),
             });
         }
 
@@ -65,77 +66,77 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model, GuardianModel guardian)
         {
-
-
-            AppUser user = new AppUser()
-            {
-
-                Tc = 234234233,
-                Name = model.Name,
-                SurName = model.SurName,
-                
-                ClassId = model.ClassId,
-                BranchId = model.BranchId,
-                Condition = true,
-                UserName =Convert.ToString( model.TcNumber),
-                NormalizedEmail = "sihlarsefa7@gmail.com",
-                PhoneNumber = model.Phone,
-
-            };
-
-
-            var result = await _userManager.CreateAsync(user, model.Password);
-
-            if (result.Succeeded)
-            {
-                // kullanıcı başarıyla kaydedildi
-                Guardian _guardian = new Guardian()
+          
+                AppUser user = new AppUser()
                 {
-                    Id = guardian.Id,
-                    GuardianName = guardian.GuardianName,
-                    GuardianName2 = guardian.GuardianName2,
-                    GuardianSurName = guardian.GuardianSurName,
-                    GuardianSurName2 = guardian.GuardianSurName2,
-                    GuardianPhone = guardian.GuardianPhone,
-                    GuardianPhone2 = guardian.GuardianPhone2,
-                    UserId = user.Id,
-                    GuardianCondition = guardian.GuardianCondition,
-                    CreatedDate = DateTime.Now,
-                    UpdatedDate = DateTime.Now,
+
+                    Tc =   model.TcNumber,
+                    Name = model.Name,
+                    SurName = model.SurName,
+                    ClassId = model.ClassId,
+                    BranchId = model.BranchId,
+                    PasswordHash = model.Password,
+                    Condition = true,
+                    UserName = Convert.ToString(model.TcNumber),
+                    NormalizedEmail = "",
+                    PhoneNumber = model.Phone,
+
                 };
 
-                if (_guardian != null)
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
                 {
-                    _guardianManager.Create(_guardian);
+                    // kullanıcı başarıyla kaydedildi
+                    Guardian _guardian = new Guardian()
+                    {
+                        Id = guardian.Id,
+                        GuardianName = guardian.GuardianName,
+                        GuardianName2 = guardian.GuardianName2,
+                        GuardianSurName = guardian.GuardianSurName,
+                        GuardianSurName2 = guardian.GuardianSurName2,
+                        GuardianPhone = guardian.GuardianPhone,
+                        GuardianPhone2 = guardian.GuardianPhone2,
+                        UserId = user.Id,
+                        GuardianCondition = guardian.GuardianCondition,
+                        CreatedDate = DateTime.Now,
+                        UpdatedDate = DateTime.Now,
+                    };
+
+                    if (_guardian != null)
+                    {
+                        _guardianManager.Create(_guardian);
+                    }
+
                 }
-               
-            }
 
-            else
-            {
-                // kayıt işlemi başarısız oldu, hata mesajını göster
-                foreach (var error in result.Errors)
+                else
                 {
-                    ModelState.AddModelError("", error.Description);
+                    // kayıt işlemi başarısız oldu, hata mesajını göster
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View(model);
                 }
-                return View(model);
-            }
 
-            if (result.Succeeded)
-            {
-                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-
-                var callbackUrl = Url.Action("ConfirmEmail", "Account", new
+                if (result.Succeeded)
                 {
-                    userId = user.Id,
-                    Token = code,
-                });
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                //Burası email gönderme kısmı(send Email)
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new
+                    {
+                        userId = user.Id,
+                        Token = code,
+                    });
 
-                //Kullanıcı oluştuldu mesajı eklenecek tempdate ile 
-                return RedirectToAction("Index","Account");
-            }
+                    //Burası email gönderme kısmı(send Email)
+
+                    //Kullanıcı oluştuldu mesajı eklenecek tempdate ile 
+                    return RedirectToAction("Index", "Account");
+                }
+
 
             //ModelState.AddModelError("", "Kullanıcı oluşturlamadı! Lütfen bilgileri tekrar gözden geçiriniz");
 
@@ -150,9 +151,10 @@ namespace WebUI.Controllers
                 return NotFound();
             }
 
+
+
             return View(model);
         }
-
 
         [HttpGet]
         public IActionResult Login()
@@ -186,7 +188,7 @@ namespace WebUI.Controllers
                 return RedirectToAction("CreateEmail", "Account");
             }
 
-            var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+            var result = await _signInManager.PasswordSignInAsync(user, model.Password, true, false);
 
 
             //Kullanıcınin hesabi başarıyla onlaylandı ise giriş yapabilecek 
@@ -216,10 +218,19 @@ namespace WebUI.Controllers
             if (userId == null || token == null)
             {
                 //tempdata "Hesap onayi icin bilgileriniz yanlis"
+                TempData["message"] = "Geçersiz token";
                 return View();
             }
 
             var user = await _userManager.FindByIdAsync(userId);
+
+
+            if (user == null)
+            {
+                TempData["message"] = "böyle bir kullanıcı yok";
+                return View();
+            }
+
             if (user != null)
             {
                 var result = await _userManager.ConfirmEmailAsync(user, token);
@@ -227,15 +238,26 @@ namespace WebUI.Controllers
                 {
                     //onaylama islemi basarili ise kullaniciya kart tanimlansin
                     _cartManager.InitializeCart(Convert.ToString(user.Id));
-
-                    return RedirectToAction("Login", "Account");
+                    TempData["message"] = "Hesabının onaylandı";
+                    return RedirectToAction("ConfirmEmail", "Account");
                 }
             }
 
+            TempData["message"] = "Hesabının Onaylanmadı";
+            return View();
+
             //tempdata ile hata mesaji goster
+        }
+
+        [HttpGet]
+
+        public IActionResult ForgotPassword()
+        {
             return View();
         }
 
+
+        [HttpPost]
         public async Task<IActionResult> ForgotPassword(string Email)
         {
             if (string.IsNullOrEmpty(Email))
@@ -265,9 +287,9 @@ namespace WebUI.Controllers
             //Send Email ResetPassword
             //tempdata ile uyari mesaji gonder
 
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("ResetPassword", "Account");
         }
-
+        [HttpGet]
         public IActionResult ResetPassword(string token)
         {
             if (token == null)
@@ -301,7 +323,7 @@ namespace WebUI.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Login", "Home");
+                return RedirectToAction("Login", "Account");
             }
 
             return View(model);

@@ -1,4 +1,5 @@
-﻿@model AppUserListModel
+﻿@using static System.Collections.Specialized.BitVector32;
+@model AppUserListModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -73,6 +74,11 @@
             </div>
         </div>
     </div>
+    @section  Scripts{
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    }
+    <form asp-controller="Account" asp-action="Register" method="post">
     <div class="popup">
         <div id="myModal" class="modal">
             <div class="medium-modal" id="modal-content1">
@@ -86,109 +92,116 @@
 
 
                 </div>
-                <form>
+
                     <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">İsmi</label>
+                        <label  class="col-sm-3 col-form-label">İsmi</label>
                         <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text" placeholder="Örneğin:Ahmet">
+                            <input class="answer-place text-center"  name="Name" type="text" placeholder="Örneğin:Ahmet">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">Soyİsmi</label>
+                        <label  class="col-sm-3 col-form-label">Soyİsmi</label>
                         <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text" placeholder="Örneğin:Yılmaz">
+                            <input class="answer-place text-center" name="SurName" type="text" placeholder="Örneğin:Yılmaz">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">Tc Kimlik</label>
+                        <label  class="col-sm-3 col-form-label">Tc Kimlik</label>
                         <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text">
+                            <input class="answer-place text-center" name="TcNumber" type="text">
                         </div>
                     </div>
                     <div class="row">
                         <label for="tc" class="col-sm-3 col-form-label">Telefon</label>
                         <div class="col-sm-9">
-                            <input class="answer-place" type="text">
+                            <input class="answer-place" type="text" name="Phone">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <label for="tc" class="col-sm-3 col-form-label">Şifre</label>
+                        <div class="col-sm-9">
+                            <input class="answer-place" type="text" name="Password">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <label for="tc" class="col-sm-3 col-form-label">Şifre Tekrar</label>
+                        <div class="col-sm-9">
+                            <input class="answer-place" type="text" name="RePassword">
                         </div>
 
                     </div>
                     <div class="row">
                         <label for="Ders" class="col-sm-3 col-form-label">Sınıf</label>
                         <div class="col-sm-9">
-                            <select class="answer-place">
-                                <option value="">9</option>
-                                <option value="">10</option>
-                                <option value="">11</option>
-                            </select>
+                            @await Component.InvokeAsync("ClassList")
                         </div>
                     </div>
                     <div class="row">
                         <label for="Ders" class="col-sm-3 col-form-label">Şube</label>
                         <div class="col-sm-9">
-                            <select class="answer-place">
-                                <option value="">A</option>
-                                <option value="">B</option>
-                            </select>
+                            @await Component.InvokeAsync("BranchList")
                         </div>
                     </div>
-                </form>
-                <button id="upper" class="upper_btn">
+             
+                <a id="upper" class="upper_btn">
                     <strong>İleri </strong>
-                </button>
+                </a>
 
             </div>
             <div class="modal-content2" id="modal-content2">
                 <span class="close"></span>
                 <h2 class="modal-title text-center"><strong> Öğrenci Veli Ekle</strong></h2>
-                <form>
+       
                     <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">Veli İsmi</label>
+                        <label  class="col-sm-3 col-form-label">Veli İsmi</label>
                         <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text" placeholder="Örneğin:Ahmet">
+                            <input class="answer-place text-center" name="GuardianName" type="text" placeholder="Örneğin:Ahmet">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">Veli Soyismi</label>
+                        <label  class="col-sm-3 col-form-label">Veli Soyismi</label>
                         <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text" placeholder="Örneğin:Ahmet">
+                            <input class="answer-place text-center" name="GuardianSurName" type="text" placeholder="Örneğin:Ahmet">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">Veli İsmi-2</label>
+                        <label  class="col-sm-3 col-form-label">Veli İsmi-2</label>
                         <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text" placeholder="Örneğin:Ahmet">
+                            <input class="answer-place text-center" name="GuardianName2" type="text" placeholder="Örneğin:Ahmet">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="name" class="col-sm-3 col-form-label">Veli Soyİsmi-2</label>
+                        <label  class="col-sm-3 col-form-label">Veli Soyİsmi-2</label>
                         <div class="col-sm-9">
-                            <input class="answer-place text-center" type="text" placeholder="Örneğin:Yılmaz">
+                            <input class="answer-place text-center" name="GuardianSurName2" type="text" placeholder="Örneğin:Yılmaz">
                         </div>
                     </div>
                     <div class="row">
                         <label for="tc" class="col-sm-3 col-form-label">Veli Telefon</label>
                         <div class="col-sm-9">
-                            <input class="answer-place" type="text">
+                            <input class="answer-place" name="GuardianPhone" type="text">
                         </div>
 
                     </div>
                     <div class="row">
                         <label for="tc" class="col-sm-3 col-form-label">Veli Telefon 2</label>
                         <div class="col-sm-9">
-                            <input class="answer-place" type="text">
+                            <input class="answer-place" name="GuardianPhone2" type="text">
                         </div>
 
                     </div>
 
-                </form>
+
                 <div class="row">
                     <div class="col-9">
-                        <button style="top:2%;padding:0%;" class="lower_btn" id="lower_btn">
+                        <a style="top:2%;padding:0%;" class="lower_btn" id="lower_btn">
                             <strong>Geri Dön</strong>
-                        </button>
+                        </a>
                     </div>
                     <div class="col-3">
-                        <button id="cls_btn">
+                        <button id="cls_btn" type="submit">
                             <strong>Kaydet</strong>
                         </button>
 
@@ -199,5 +212,6 @@
         </div>
 
     </div>
+    </form>
 </main>
 

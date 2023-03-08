@@ -1,4 +1,5 @@
-﻿<nav class="navbar navbar-expand navbar-light navbar-bg d-block">
+﻿
+<nav class="navbar navbar-expand navbar-light navbar-bg d-block">
     <div class="navbar-top justify-content-between d-flex align-items-center w-100">
         <a class="sidebar-toggle js-sidebar-toggle">
             <i class="hamburger align-self-center"></i>
@@ -85,8 +86,12 @@
                 <img src="/Template/assets/images/logo-usr.svg" alt="" class="w-100">
             </div>
             <div class="personel-info-container">
-                <div class="personel-status">Admin</div>
-                <div class="personel-name">Özlem Özkaya Ceylan</div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="personel-status">Admin</div>
+                    <div class="personel-name">@User.Identity.Name </div>
+                }
+       
             </div>
         </div>
     </div>
