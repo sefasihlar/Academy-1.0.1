@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,7 +9,8 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	public class AuthorityController : Controller
+    [Authorize(Roles = "Müdür")]
+    public class AuthorityController : Controller
 	{
 		private readonly UserManager<AppUser> _userManager;
 		private readonly RoleManager<AppRole> _roleManager;
@@ -20,7 +22,7 @@ namespace WebUI.Controllers
             _roleManager = roleManager;
             _signInManager = signInManager;
         }
-
+	
         public IActionResult Index()
 		{
 			var values = new AuthortyListModel()
@@ -49,10 +51,10 @@ namespace WebUI.Controllers
 
 			AppUser user = new AppUser()
 			{
-				UserName = Convert.ToString( model.Tc),
+				UserName = Convert.ToString(model.TcNumber),
 				Name = model.Name,
 				SurName = model.SurName,
-				Tc = model.Tc,
+				Tc =Convert.ToInt32( model.TcNumber),
 				Authority = model.Authority,
 				PhoneNumber = model.Phone,
 			};

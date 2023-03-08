@@ -59,20 +59,17 @@
                                         </a>
                                     </div>
                                 </div>
-                                @if (item.ImageUrl!=null)
-                                {
-                                    <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
-                                }
-                               
+
+                                <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
                                 <input type="hidden" name="Condition" value="True" />
-                                <span class="question-info"><span>@item.QuestionText</span></span><br>
-                                <strong>@item.Text</strong><br>
-                                
+                                <span>@item.Text</span><br>
+                                <span class="question-info"><strong>@item.QuestionText?</strong></span>
                                 <div class="question-answer-list">
                                     @foreach (var option in item.Options.Where(x => x.QuestionId == item.Id).ToList())
                                     {
-                                        <span><strong>@option.Name)</strong> @option.Text</span>  <br>
+                                        <span><strong>@option.Name)</strong> @option.Text</span>
 
+                                        <br>
                                     }
 
                                 </div>
@@ -87,8 +84,16 @@
         <div id="myModal" class="modal">
             <form asp-controller="Question" asp-action="Create" enctype="multipart/form-data">
                 <div class="modal-content" id="modal-content1">
-                    <span class="close">&times;</span>
-                    <h3 class="modal-title text-center"><strong> Soru Ekle</strong></h3>
+                    <div class="row d-flex">
+                        <div class="col-10">
+                            <h3 class="modal-title col-10"><strong> Soru Ekle</strong></h3>
+                        </div>
+                        <div class="col-2">
+                            <span class="close">&times;</span>
+                        </div>
+
+
+                    </div>
 
                     <div class="row">
                         <div class="col-6">
@@ -131,81 +136,7 @@
                 </div>
                 @await Component.InvokeAsync("Option")
             </form>
-            <div class="modal-content3" id="modal-content3">
-                <span class="close"></span>
-                <h2><strong> Soru Çözüm Ekleme Alanı</strong></h2>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h5><strong> Soru Metini:</strong> </h5>
-                        <div class="question-text">
-                            Tukididis, Klasik Yunan döneminde milattan önce beşinci
-                            yüzyılda yaşamış bir tarihçi ve aynı
-                            zamanda bir askerdir. Atina’da doğmuştur.
-                            Tukididis, Atina ve Sparta arasındaki Peloponnes
-                            Savaşı boyunca (M.Ö. 431 – 404)
-                            yüzyılda yaşamış bir tarihçi ve aynı
-                            zamanda bir askerdir. Atina’da doğmuştur.
-                            Tukididis, Atina ve Sparta arasındaki Peloponnes
-                            Savaşı boyunca (M.Ö. 431 – 404)
-                            Tukididis, Klasik Yunan döneminde milattan önce beşinci
-                            yüzyılda yaşamış bir tarihçi ve aynı
-                            zamanda bir askerdir. Atina’da doğmuştur.
-                            Tukididis, Atina ve Sparta arasındaki Peloponnes
-                            Savaşı boyunca (M.Ö. 431 – 404)
-                            yüzyılda yaşamış bir tarihçi ve aynı
-                            zamanda bir askerdir. Atina’da doğmuştur.
-                            Tukididis, Atina ve Sparta arasındaki Peloponnes
-                            Savaşı boyunca (M.Ö. 431 – 404)
 
-                            Tukididis, Klasik Yunan döneminde milattan önce beşinci
-                            yüzyılda yaşamış bir tarihçi ve aynı
-                            zamanda bir askerdir. Atina’da doğmuştur.
-                            Tukididis, Atina ve Sparta arasındaki Peloponnes
-                            Savaşı boyunca (M.Ö. 431 – 404)
-                            yüzyılda yaşamış bir tarihçi ve aynı
-                            zamanda bir askerdir. Atina’da doğmuştur.
-                            Tukididis, Atina ve Sparta arasındaki Peloponnes
-                            Savaşı boyunca (M.Ö. 431 – 404)
-
-
-                        </div>
-                        <button id="lowertwo" class="lower_btn" style="top:15%; height:12%; width: 25%;">
-                            <strong>Geri Dön</strong>
-                        </button>
-
-                    </div>
-                    <div class="col-md-4">
-                        <h5><strong>Çözüm Metini:</strong> </h5>
-                        <textarea class=" big-text" type="text" placeholder="Cevap İçeriğini giriniz"></textarea>
-                        <div class="true-answer-select ">
-                            <label for="">Doğru Şıkkı Seçiniz:</label>
-                            <select name="" id="">
-                                <option value="">A</option>
-                                <option value="">B</option>
-                                <option value="">C</option>
-                                <option value="">D</option>
-                                <option value="">E</option>
-
-                            </select>
-                            <input type="file" id="answerfileUpload">
-                        </div>
-
-
-
-                    </div>
-                    <div class="col-md-4 ">
-                        <h5><strong>Video:</strong> </h5>
-                        <video width="250" height="150" src="../../assets/Canın Ders Çalışmak İstemediğinde İzle.mp4" controls></video>
-
-                    </div>
-
-
-
-                    <button id="cls_btn" style="left: 90%; height:33px; width: 10%;" class="upper_btn">
-                        <strong>Kaydet </strong>
-                    </button>
-                </div>
-            </div>
 
 
             <!-- </div>

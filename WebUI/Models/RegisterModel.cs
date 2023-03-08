@@ -8,7 +8,7 @@ namespace WebUI.Models
     {
         public int Id { get; set; }
         [Required]
-        public int Tc { get; set; }
+        public string TcNumber { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

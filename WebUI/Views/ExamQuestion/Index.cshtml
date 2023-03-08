@@ -23,7 +23,7 @@
                         </div>
                         <form asp-controller="ExamQuestion" asp-action="Create" method="post">
                             <div class="text-center">
-                                <button class="btn btn-primary" type="submit" style="margin-top:10px">Soruları Ekle</button>
+                                <button class="yetkili_btn" type="submit"><strong>Soruları Ekle</strong></button>
                             </div>
                             <div class="questions-container">
 
@@ -89,8 +89,16 @@
     <div class="popup">
         <div id="myModal" class="modal">
             <div class="modal-content" id="modal-content1">
-                <span class="close">&times;</span>
-                <h3 class="modal-title text-center"><strong> Soru Ekle</strong></h3>
+                <div class="row d-flex">
+                    <div class="col-10">
+                        <h3 class="modal-title col-10"><strong> Soru Ekle</strong></h3>
+                    </div>
+                    <div class="col-2">
+                        <span class="close">&times;</span>
+                    </div>
+
+
+                </div>
                 <form>
                     <div class="row">
                         <div class="col-6">

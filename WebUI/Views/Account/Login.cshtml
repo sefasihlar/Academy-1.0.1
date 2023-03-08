@@ -1,4 +1,4 @@
-﻿
+﻿@model LoginModel
 @{
     Layout = null;
 }
@@ -40,17 +40,21 @@
 									<img src="/Template/assets/images/text-logo.png" class="w-100">
 								</div>
 								<div class="m-sm-4">
-									<form>
+									@if (ViewBag.ErrorMessage !=null)
+									{
+										
+									}
+									<form asp-controller="Account" asp-action="Login" method="post">
 										<strong>
 											<div class="mb-3">
 												<label class="form-label">TC Kimlik Numarası:</label>
-												<input class="form-control form-control-lg" type="email" name="email"
+												<input class="form-control form-control-lg"  name="UserName"
 													   placeholder="TC Kimlik Numaranızı Giriniz:" />
 											</div>
 											<div class="mb-3">
 												<label class="form-label"><strong>Şifre:</strong></label>
 												<input class="form-control form-control-lg text-light text-opacity-75"
-													   type="password" name="password" placeholder="Şifrenizi giriniz" />
+													   type="password" name="Password" placeholder="Şifrenizi giriniz" />
 											</div>
 											<div class="">
 												<label class="form-check d-flex p-0 text-muted user-select-none"
@@ -62,8 +66,8 @@
 											</div>
 										</strong>
 										<div class="text-center mb-3">
-											<a href="Home/Index" class="btn btn-lg btn-primary  w-100"
-											   target="_self">Giriş yap</a>
+											<button href="Home/Index" class="btn btn-lg btn-primary  w-100"
+											   target="_self" type="submit">Giriş yap</button>
 											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
 										</div>
 										<div class="mb-3 d-flex justify-content-end">

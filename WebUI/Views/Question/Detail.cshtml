@@ -9,57 +9,57 @@
         <h1 class="h3 mb-3"><strong>Soru</strong> Düzenleme Sayfası</h1>
         <div class="row">
             <form asp-controller="Question" asp-action="Update" method="post" enctype="multipart/form-data">
-            <div class="edit-table text-center">
-                <div class="form-group row d-flex">
-                    <label for="name" class="col-sm-4 col-form-label">Resim</label>
-                    <input type="hidden" name="Id" value="@Model.Id" />
-                    <div class="col-sm-8">
-                        <input type="hidden" name="ImageUrl" value="@Model.ImageUrl" />
-                        <img src="/Template/questions/@Model.ImageUrl" value="@Model.ImageUrl" style="width:50%;height:auto" />
-                        <br />
-                        <input type="file" name="file" id="answerfileUpload" style="margin:30px 0px 30px 0px">
+                <div class="edit-table text-center">
+                    <div class="form-group row d-flex">
+                        <label for="name" class="col-sm-4 col-form-label">Resim</label>
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <div class="col-sm-8">
+                            <input type="hidden" name="ImageUrl" value="@Model.ImageUrl" />
+                            <img src="/Template/questions/@Model.ImageUrl" value="@Model.ImageUrl" style="width:50%;height:auto" />
+                            <br />
+                            <input type="file" name="file" id="answerfileUpload" style="margin:30px 0px 30px 0px">
+                        </div>
+                        <label for="name" class="col-sm-4 col-form-label">Soru</label>
+                        <div class="col-sm-8">
+                            <textarea type="input" asp-for="@Model.Text" class="small-text">@Model.Text</textarea>
+                        </div>
+                        <label for="name" class="col-sm-4 col-form-label">Soru Metini</label>
+                        <div class="col-sm-6" style="margin-left:42%">
+                            <textarea type="input" asp-for="@Model.QuestionText" class="big-text">@Model.QuestionText</textarea>
+                        </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Ders</label>
+                        <div class="col-sm-8">
+                            @await Component.InvokeAsync("LessonList")
+                        </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Konu</label>
+                        <div class="col-sm-8">
+                            @await Component.InvokeAsync("SubjectList")
+                        </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Seviye</label>
+                        <div class="col-sm-8">
+                            @await Component.InvokeAsync("LevelList")
+                        </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Çıktı</label>
+                        <div class="col-sm-8">
+                            @await Component.InvokeAsync("OutputList")
+                        </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Durum</label>
+                        <div class="col-sm-8">
+                            <select class="form-dropdown">
+                                <option value="True">Aktif</option>
+                                <option value="False">Pasif</option>
+                            </select>
+                        </div>
+
                     </div>
-                    <label for="name" class="col-sm-4 col-form-label">Soru</label>
-                    <div class="col-sm-8">
-                        <textarea type="input" asp-for="@Model.Text" class="small-text">@Model.Text</textarea>
+                    <div>
+                        <button id="edit-design-btn" class="upper_btn" type="submit">
+                            <strong>Kaydet </strong><br>
+                        </button>
                     </div>
-                    <label for="name" class="col-sm-4 col-form-label">Soru Metini</label>
-                    <div class="col-sm-6" style="margin-left:42%">
-                        <textarea type="input" asp-for="@Model.QuestionText" class="big-text">@Model.QuestionText</textarea>
-                    </div>
-                    <label for="Ders" class="col-sm-4 col-form-label">Ders</label>
-                    <div class="col-sm-8">
-                        @await Component.InvokeAsync("LessonList")
-                    </div>
-                    <label for="Ders" class="col-sm-4 col-form-label">Konu</label>
-                    <div class="col-sm-8">
-                       @await Component.InvokeAsync("SubjectList")
-                    </div>
-                    <label for="Ders" class="col-sm-4 col-form-label">Seviye</label>
-                    <div class="col-sm-8">
-                       @await Component.InvokeAsync("LevelList")
-                    </div>
-                    <label for="Ders" class="col-sm-4 col-form-label">Çıktı</label>
-                    <div class="col-sm-8">
-                       @await Component.InvokeAsync("OutputList")
-                    </div>
-                    <label for="Ders" class="col-sm-4 col-form-label">Durum</label>
-                    <div class="col-sm-8">
-                        <select class="form-dropdown">
-                            <option value="True">Aktif</option>
-                            <option value="False">Pasif</option>
-                        </select>
-                    </div>
-                   
-                </div>
-                <div>
-                    <button id="edit-design-btn" class="upper_btn" type="submit">
-                        <strong>Kaydet </strong><br>
-                    </button>
-                </div>
 
 
-            </div>
+                </div>
             </form>
         </div>
     </div>

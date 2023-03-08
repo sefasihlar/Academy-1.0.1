@@ -73,10 +73,11 @@ namespace WebUI.Controllers
                 Tc = 234234233,
                 Name = model.Name,
                 SurName = model.SurName,
+                
                 ClassId = model.ClassId,
                 BranchId = model.BranchId,
                 Condition = true,
-                UserName =Convert.ToString( model.Tc),
+                UserName =Convert.ToString( model.TcNumber),
                 NormalizedEmail = "sihlarsefa7@gmail.com",
                 PhoneNumber = model.Phone,
 
@@ -169,7 +170,7 @@ namespace WebUI.Controllers
             }
 
             //email e göre değil tc ye göre giriş yapılacak
-            var user = await _userManager.FindByEmailAsync(model.Email);
+            var user = await _userManager.FindByNameAsync(model.UserName);
 
 
             if (user == null)
