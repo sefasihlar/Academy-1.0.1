@@ -2297,3 +2297,4 @@ C:\Users\HP\Desktop\Academy\WebUI\obj\Debug\net6.0\WebUI.pdb
 C:\Users\HP\Desktop\Academy\WebUI\obj\Debug\net6.0\WebUI.genruntimeconfig.cache
 C:\Users\HP\Desktop\Academy\WebUI\obj\Debug\net6.0\ref\WebUI.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\obj\Debug\net6.0\WebUI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\libman.json

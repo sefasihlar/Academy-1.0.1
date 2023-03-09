@@ -9,8 +9,8 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    //[Authorize(Roles = "Müdür")]
-    public class AuthorityController : Controller
+	[Authorize(Roles = "Müdür")]
+	public class AuthorityController : Controller
 	{
 		private readonly UserManager<AppUser> _userManager;
 		private readonly RoleManager<AppRole> _roleManager;
@@ -54,7 +54,7 @@ namespace WebUI.Controllers
 				UserName = Convert.ToString(model.TcNumber),
 				Name = model.Name,
 				SurName = model.SurName,
-				Tc =Convert.ToInt32( model.TcNumber),
+				Tc = model.TcNumber,
 				Authority = model.Authority,
 				PhoneNumber = model.Phone,
 			};

@@ -2,15 +2,18 @@
 using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
+using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    public class QuestionController : Controller
+	[Authorize(Roles = "Öğretmen")]
+	public class QuestionController : Controller
     {
         QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
         LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());

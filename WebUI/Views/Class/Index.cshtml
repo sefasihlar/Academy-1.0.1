@@ -5,6 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section Scripts{
+
+        <script src="~/jquery/jquery/jquery.min.js"></script>
+
+        <script src="~/jquery/jquery-validate/jquery.validate.min.js"></script>
+        <script src="~/jquery/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
 <main class="content">
     <div class="container-fluid p-0">
 
@@ -36,8 +44,12 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Sınıf</th>
-                                        <th>Ekleyen ve tarihi</th>
-                                        <th>Değiştiren ve tarihi</th>
+                                        @if (User.IsInRole("Müdür"))
+                                        {
+                                            <th>Ekleyen ve tarihi</th>
+                                            <th>Değiştiren ve tarihi</th>
+                                        }
+                                  
                                         <th>Aktiflik durumu</th>
                                         <th>Düzenle veya sil</th>
                                     </tr>
@@ -48,8 +60,13 @@
                                         <tr>
                                             <td class="d-none d-md-table-cell">@item.Id</td>
                                             <td>@item.Name</td>
-                                            <td class="d-none d-md-table-cell">Ayşe-@item.CreatedDate</td>
-                                            <td class="d-none d-md-table-cell">Sefa-@item.UpdatedDate</td>
+                                     
+                                            @if (User.IsInRole("Müdür"))
+                                            {
+                                                <td class="d-none d-md-table-cell">Ayşe-@item.CreatedDate</td>
+                                                <td class="d-none d-md-table-cell">Sefa-@item.UpdatedDate</td>
+                                            }
+                                     
                                             @if (item.Condition == true)
                                             {
                                                 <td><span class="badge bg-success">Aktif</span></td>
@@ -80,53 +97,8 @@
             </div>
         </div>
     </div>
-    <div class="popup">
-        <div id="myModal" class="modal">
-            <div class="col-sm-12 ">
-                <div class="modal-content " id="small-modal">
-                    <div class="row d-flex">
-                        <div class="col-10">
-                            <h3 class="modal-title col-10"><strong> Sınıf Ekle</strong></h3>
-                        </div>
-                        <div class="col-2">
-                            <span class="close">&times;</span>
-                        </div>
-
-
-                    </div>
-
-                    <form asp-controller="Class" asp-action="Create" method="post">
-                        <div class="row text-center mt-5 ">
-                            <div class="col-12 text-center ">
-                                <div class="form-group row d-flex">
-                                    <label name="Name" class="col-sm-2 col-form-label">Sınıf Adı</label>
-
-                                    <div class="col-sm-10">
-                                        <input name="Name" placeholder="Örneğin:Matematik" class="form-dropdown text-center">
-                                    </div>
-                                    <label for="Ders" class="col-sm-2 col-form-label">Durum</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-dropdown" name="condition">
-                                            <option value="True">Aktif</option>
-                                            <option value="False">Pasif</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <td>
-                            <button type="submit" id="cls_btn" class="rapor_button">
-                                <strong>Kaydet </strong>
-                            </button><br>
-                        </td>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
+ 
+    @await Component.InvokeAsync("ClassForm")
 </main>
 
 

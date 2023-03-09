@@ -30,8 +30,12 @@
                                         <th class="d-none d-md-table-cell">ID</th>
                                         <th>Konu</th>
                                         <th>Ders</th>
-                                        <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
-                                        <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+                                        @if (User.IsInRole("Müdür"))
+                                        {
+                                            <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
+                                            <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+                                        }
+                                     
                                         <th>Aktiflik durumu</th>
                                         <th>Düzenle veya sil</th>
                                     </tr>
@@ -43,8 +47,12 @@
                                             <td class="d-none d-md-table-cell">@item.Id</td>
                                             <td class="d-none d-md-table-cell">@item.Name</td>
                                             <td class="d-none d-md-table-cell">@item.Lesson.Name</td>
-                                            <td class="d-none d-md-table-cell">@item.CreatedDate</td>
-                                            <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
+                                            @if (User.IsInRole("Müdür"))
+                                            {
+                                                <td class="d-none d-md-table-cell">@item.CreatedDate</td>
+                                                <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
+                                            }
+                                     
                                             @if (item.Condition==true)
                                             {
                                                 <td><span class="badge bg-success">@item.Condition</span></td>

@@ -35,8 +35,12 @@
                                         <th>ID</th>
                                         <th>İsmi</th>
                                         <th>Sınıf</th>
-                                        <th>Ekleyen ve tarihi</th>
-                                        <th>Değiştiren ve tarihi</th>
+                                        @if (User.IsInRole("Müdür"))
+                                        {
+                                            <th>Ekleyen ve tarihi</th>
+                                            <th>Değiştiren ve tarihi</th>
+                                        }
+                                     
                                         <th>Aktiflik durumu</th>
                                         <th>Düzenle veya sil</th>
                                     </tr>
@@ -48,8 +52,12 @@
                                             <td class="d-none d-md-table-cell">@item.Id</td>
                                             <td class="d-none d-md-table-cell">@item.Name</td>
                                             <td class="d-none d-md-table-cell">@item.Class.Name</td>
-                                            <td class="d-none d-md-table-cell">Ahmet - @item.CreatedDate</td>
-                                            <td class="d-none d-md-table-cell">Mehmet - @item.UpdatedDate</td>
+                                            @if (User.IsInRole("Müdür"))
+                                            {
+                                                <td class="d-none d-md-table-cell">Ahmet - @item.CreatedDate</td>
+                                                <td class="d-none d-md-table-cell">Mehmet - @item.UpdatedDate</td>
+                                            }
+                                     
                                             @if (item.Condition == true)
                                             {
                                                 <td><span class="badge bg-success">Aktif</span></td>

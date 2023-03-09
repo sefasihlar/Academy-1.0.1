@@ -1,12 +1,15 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    public class OutputController : Controller
+	[Authorize(Roles = "Öğretmen")]
+	public class OutputController : Controller
     {
         OutputManager _outputManager = new OutputManager(new EfCoreOutputRepository());
         public IActionResult Index()

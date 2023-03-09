@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace WebUI.Controllers
 {
-    public class ResultController : Controller
+	[Authorize(Roles = "Öğretmen")]
+	public class ResultController : Controller
     {
         public IActionResult Index()
         {

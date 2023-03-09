@@ -1,12 +1,15 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EfCoreRepository;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    public class OptionController : Controller
+	[Authorize(Roles = "Öğretmen")]
+	public class OptionController : Controller
     {
         OptionManager _optionManager = new OptionManager(new EfCoreOptionRepository());
         public IActionResult Index()

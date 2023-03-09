@@ -1,11 +1,14 @@
 ﻿using BusinessLayer.Concrete;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
+	[Authorize(Roles = "Müdür")]
 	public class UserController : Controller
 	{
 		private readonly UserManager<AppUser> _userManager;

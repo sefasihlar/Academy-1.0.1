@@ -3,10 +3,12 @@ using BusinessLayer.Concrete;
 using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NuGet.Common;
+using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -28,7 +30,7 @@ namespace WebUI.Controllers
             _signInManager = signInManager;
 
         }
-
+        [Authorize(Roles ="Müdür")]
         public IActionResult Index()
         {
             return View(new AppUserListModel()
@@ -37,8 +39,8 @@ namespace WebUI.Controllers
                 Users = _appUserManager.ListTogether().Where(x => x.Authority == false).ToList(),
             });
         }
-
-        [HttpGet]
+		[Authorize(Roles = "Öğretmen")]
+		[HttpGet]
         public IActionResult Register()
         {
             var classes = _classManager.GetAll();
@@ -49,7 +51,7 @@ namespace WebUI.Controllers
 
             if (classes == null || brances == null)
             {
-                return NotFound();
+                return RedirectToAction("404","Error");
             }
 
 
@@ -61,23 +63,24 @@ namespace WebUI.Controllers
             return View(values);
         }
 
-        //Kullanıcı verli bilgileride burada ekleniyor aynı anda kayıt işlemi için
-
-        [HttpPost]
+		//Kullanıcı verli bilgileride burada ekleniyor aynı anda kayıt işlemi için
+		[Authorize(Roles = "Öğretmen")]
+		[HttpPost]
         public async Task<IActionResult> Register(RegisterModel model, GuardianModel guardian)
         {
-          
+            if (ModelState.IsValid)
+            {
                 AppUser user = new AppUser()
                 {
 
-                    Tc =   model.TcNumber,
+                    Tc = model.TcNumber,
                     Name = model.Name,
                     SurName = model.SurName,
                     ClassId = model.ClassId,
                     BranchId = model.BranchId,
                     PasswordHash = model.Password,
                     Condition = true,
-                    UserName = Convert.ToString(model.TcNumber),
+                    UserName =Convert.ToString( model.TcNumber),
                     NormalizedEmail = "",
                     PhoneNumber = model.Phone,
 
@@ -110,17 +113,6 @@ namespace WebUI.Controllers
                     }
 
                 }
-
-                else
-                {
-                    // kayıt işlemi başarısız oldu, hata mesajını göster
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error.Description);
-                    }
-                    return View(model);
-                }
-
                 if (result.Succeeded)
                 {
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -136,7 +128,7 @@ namespace WebUI.Controllers
                     //Kullanıcı oluştuldu mesajı eklenecek tempdate ile 
                     return RedirectToAction("Index", "Account");
                 }
-
+            }
 
             //ModelState.AddModelError("", "Kullanıcı oluşturlamadı! Lütfen bilgileri tekrar gözden geçiriniz");
 
@@ -148,12 +140,12 @@ namespace WebUI.Controllers
 
             if (classes == null || brances == null)
             {
-                return NotFound();
+                return RedirectToAction("404", "Error");
             }
 
 
 
-            return View(model);
+            return RedirectToAction("Index","Account",model);
         }
 
         [HttpGet]
@@ -174,6 +166,14 @@ namespace WebUI.Controllers
             //email e göre değil tc ye göre giriş yapılacak
             var user = await _userManager.FindByNameAsync(model.UserName);
 
+            var userValues = new AppUserModel()
+            {
+                Name= user.Name,
+                SurName = user.SurName,
+            };
+
+
+            ViewBag.userValues = userValues;
 
             if (user == null)
             {
@@ -181,11 +181,13 @@ namespace WebUI.Controllers
                 return View(model);
             }
 
+            
+
             if (!await _userManager.IsEmailConfirmedAsync(user))
             {
 
                 // Email eklenmediği zaman Email oluşturma sayfasına yönlendirilecek
-                return RedirectToAction("CreateEmail", "Account");
+                return RedirectToAction("CreateEmail", "Account",model);
             }
 
             var result = await _signInManager.PasswordSignInAsync(user, model.Password, true, false);
@@ -194,7 +196,7 @@ namespace WebUI.Controllers
             //Kullanıcınin hesabi başarıyla onlaylandı ise giriş yapabilecek 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home",userValues);
             }
             //diğer durumda hesap onaylanmadan giriş yapamacak
             ModelState.AddModelError("", "Tc yada Parola yanlış");
@@ -223,7 +225,6 @@ namespace WebUI.Controllers
             }
 
             var user = await _userManager.FindByIdAsync(userId);
-
 
             if (user == null)
             {
@@ -326,6 +327,40 @@ namespace WebUI.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult CreateEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task< IActionResult> CreateEmail(AppUserModel model)
+        {
+            var user =await _userManager.FindByIdAsync(Convert.ToString( model.Id));
+
+            if (user != null)
+            {
+               user.Email = model.Email;
+               var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new
+                    {
+                        userId = user.Id,
+                        Token = code,
+                    });
+
+                    //Burası email gönderme kısmı(send Email)
+
+                    //Kullanıcı oluştuldu mesajı eklenecek tempdate ile 
+                    return RedirectToAction("Index", "Account");
+                }
+            }
             return View(model);
         }
 

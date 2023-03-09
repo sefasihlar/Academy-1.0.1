@@ -1,12 +1,15 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    public class LevelController : Controller
+	[Authorize(Roles = "Öğretmen")]
+	public class LevelController : Controller
     {
         LevelManager _levelManager = new LevelManager(new EfCoreLevelRepository());
         public IActionResult Index()

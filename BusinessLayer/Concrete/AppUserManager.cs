@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
 
 		public AppUser GetById(int id)
 		{
-			throw new NotImplementedException();
+			return _userDal.GetById(id);
 		}
 
 		public List<AppUser> ListTogether()

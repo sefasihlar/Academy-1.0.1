@@ -48,9 +48,11 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
+    
     options.LoginPath = "/Account/Login";
     options.SlidingExpiration = true;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    options.AccessDeniedPath = new PathString("/Error/AccessDenied");
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
 
     options.Cookie = new CookieBuilder()
     {

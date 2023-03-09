@@ -1,11 +1,14 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EfCoreRepository;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
+    [Authorize(Roles = "Öğretmen,Müdür Yardımcısı")]
     public class BranchController : Controller
     {
         BranchManager _branchManager = new BranchManager(new EfCoreBranchRepository());
@@ -28,19 +31,27 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(BranchModel model)
         {
-            var values = new Branch
+            if (ModelState.IsValid)
             {
+                var values = new Branch
+                {
 
-                Name = model.Name,
-                Condition = model.Condition,
-                CreatedDate = model.CreatedDate,
-            };
-            if (values == null)
-            {
-                return NotFound(model);
+                    Name = model.Name,
+                    Condition = model.Condition,
+                    CreatedDate = model.CreatedDate,
+                };
+                if (values == null)
+                {
+                    return NotFound(model);
+                }
+                _branchManager.Create(values);
+                return RedirectToAction("Index", "Branch");
             }
-            _branchManager.Create(values);
-            return RedirectToAction("Index", "Branch");
+
+
+            return RedirectToAction("Index", "Branch",model);
+
+
 
         }
 
@@ -52,9 +63,9 @@ namespace WebUI.Controllers
             {
 
                 _branchManager.Delete(values);
-                return RedirectToAction("Index","Branch");
+                return RedirectToAction("Index", "Branch");
             }
-            return View("Index","Branch");
+            return View("Index", "Branch");
         }
 
         [HttpGet]
@@ -72,7 +83,7 @@ namespace WebUI.Controllers
             {
                 Id = values.Id,
                 Name = values.Name,
-                Condition=values.Condition,
+                Condition = values.Condition,
 
             });
         }
@@ -90,7 +101,7 @@ namespace WebUI.Controllers
             values.UpdatedDate = model.UpdatedDate;
             _branchManager.Update(values);
 
-            return RedirectToAction("Index","Branch");
+            return RedirectToAction("Index", "Branch");
         }
 
 

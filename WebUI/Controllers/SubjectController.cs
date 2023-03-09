@@ -1,14 +1,17 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Rewrite;
+using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    public class SubjectController : Controller
+	[Authorize(Roles = "Öğretmen")]
+	public class SubjectController : Controller
     {
         LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
         SubjectManager _subjectManager = new SubjectManager(new EfCoreSubjectRepository());

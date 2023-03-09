@@ -63,7 +63,7 @@
                     <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
                        data-bs-toggle="dropdown">
                         <img src="/Template/assets/meta_logo_2.png" class="avatar img-fluid rounded me-1"
-                             alt="profil resmi" /> <span class="text-dark">Yetkili ismi</span>
+                             alt="profil resmi" /> <span class="text-dark"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a class="dropdown-item" href="yetkili_profil_edit.html">
@@ -86,10 +86,34 @@
                 <img src="/Template/assets/images/logo-usr.svg" alt="" class="w-100">
             </div>
             <div class="personel-info-container">
+           
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <div class="personel-status">Admin</div>
-                    <div class="personel-name">@User.Identity.Name </div>
+                    if (User.IsInRole("Müdür")==true)
+                    {
+                        <div class="personel-status">Müdür</div>
+                    }
+                    else if (User.IsInRole("Öğretmen") == true)
+                    {
+                        <div class="personel-status">Öğretmen</div>
+                    }
+
+                    else if (User.IsInRole("Müdür Yardımcısı") == true)
+                    {
+                        <div class="personel-status">Müdür Yardımcısı</div>
+                    }
+
+                    else if (User.IsInRole("Çalışan") == true)
+                    {
+                        <div class="personel-status">Çalışan</div>
+                    }
+
+                    else
+                    {
+                        <div class="personel-status">Öğrenci</div>
+                    }
+
+                    <div>@await Component.InvokeAsync("GetUser")</div>
                 }
        
             </div>

@@ -1,14 +1,17 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Data;
 using System.Security.Principal;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    public class LessonController : Controller
+	[Authorize(Roles = "Öğretmen")]
+	public class LessonController : Controller
 	{
 		LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
 		ClassManager _classManager = new ClassManager(new EfCoreClassRepository());

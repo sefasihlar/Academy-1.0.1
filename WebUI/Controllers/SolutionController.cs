@@ -2,13 +2,16 @@
 using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    public class SolutionController : Controller
+	[Authorize(Roles = "Öğretmen")]
+	public class SolutionController : Controller
 	{
 		SolutionManager _solutionManager = new SolutionManager(new EfCoreSolutionRepository());
 		OptionManager _optionManager = new OptionManager(new EfCoreOptionRepository());

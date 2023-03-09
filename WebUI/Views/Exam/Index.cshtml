@@ -5,6 +5,9 @@
 }
 
 <main class="content">
+    <div id="loading">
+        <img src="/Template/assets/images/loader.gif" alt="Yükleniyor..." />
+    </div>
     <div class="container-fluid p-0">
 
         <h1 class="h3 mb-3"><strong>Yetkili</strong> Sınavlar Sayfası</h1>
@@ -39,8 +42,12 @@
                                         <th>Ders</th>
                                         <th>Sınıf</th>
                                         <th>Sorular</th>
-                                        <th>Ekleyen ve tarihi</th>
-                                        <th>Değiştiren ve tarihi</th>
+                                        @if (User.IsInRole("Müdür"))
+                                        {
+                                            <th>Ekleyen ve tarihi</th>
+                                            <th>Değiştiren ve tarihi</th>
+                                        }
+                                     
                                         <th>Aktiflik durumu</th>
                                         <th>Düzenle veya sil</th>
                                     </tr>
@@ -64,8 +71,12 @@
                                                     <input type="hidden" name="classId" value="@item.ClassId" />
                                                 </form>
                                             </td>
-                                            <td>İsim-@item.CreatedDate</td>
-                                            <td>İsim-@item.UpdatedDate</td>
+                                            @if (User.IsInRole("Müdür"))
+                                            {
+                                                <td>İsim-@item.CreatedDate</td>
+                                                <td>İsim-@item.UpdatedDate</td>
+                                            }
+                                     
                                             <td><span class="badge bg-success">Aktif</span></td>
                                             <td>
                                                 <a href="/Exam/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
