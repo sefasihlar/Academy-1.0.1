@@ -1,15 +1,31 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EfCoreRepository;
+using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 
 namespace WebUI.Controllers
 {
 	public class ExamAnswerController : Controller
 	{
+
         ExamAnswerManager _examAnswerManager = new ExamAnswerManager(new EfCoreExamAswerRepository());
         ExamQuestionManager _examQuestionManager = new ExamQuestionManager(new EfCoreExamQuestionRepository());
-		public IActionResult Index()
+        CartManager _cartManager = new CartManager(new EfCoreCartRepository());
+        AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
+        private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<AppRole> _roleManager;
+
+
+        public ExamAnswerController(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
+        {
+            _userManager = userManager;
+            _roleManager = roleManager;
+        }
+
+        public IActionResult Index()
 		{
 			return View();
 		}
@@ -27,7 +43,10 @@ namespace WebUI.Controllers
         {
             if (model != null && questionIds != null && optionIds != null)
             {
-                model.UserId = 1;
+                var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
+                var getId = _appUserManager.GetById(Convert.ToInt32(userId));
+                model.UserId = getId.Id;
+
                 foreach (var item in questionIds)
                 {
                     //TryGetValue değeri kontrol edip varsa atama yapar yoksa değeri null yaparak geçer
@@ -40,6 +59,8 @@ namespace WebUI.Controllers
                         _examAnswerManager.Create(model, item, null);
                     }
                 }
+
+                _cartManager.AddToCart(Convert.ToString( getId.Id), model.ExamId);
 
                 return RedirectToAction("Index", "Exam");
             }

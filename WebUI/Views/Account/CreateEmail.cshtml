@@ -1,9 +1,8 @@
-﻿
+﻿@model LoginModel 
 @{
-    ViewData["Title"] = "CreateEmail";
+	Layout = null;
 }
 
-<h1>CreateEmail</h1>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,18 +46,14 @@
 									{
 
 									}
-									<form method="post">
+									<form asp-asp-controller="Account" asp-action="CreateEmail" method="post">
 										<strong>
 											<div class="mb-4">
-												<label class="form-label">Yeni Şifre:</label>
-												<input class="form-control form-control-lg" name="UserEmail"
-													   placeholder="Şifrenizi Giriniz..." />
+												<label class="form-label">Lütfen E-Posta Adresinizi Giriniz:</label>
+												<input class="form-control form-control-lg" name="Email"
+													   placeholder="Email Adresinizi Giriniz..." />
 											</div>
-											<div class="mb-4">
-												<label class="form-label">Yeni Şifre Doğrulama:</label>
-												<input class="form-control form-control-lg" name="UserEmail"
-													   placeholder="Şifrenizi Giriniz..." />
-											</div>
+											<input asp-for="@Model.UserName" type="hidden" value="@Model.UserName"/>
 										</strong>
 										<div class="text-center mb-4">
 											<button href="Home/Index" class="btn btn-lg btn-primary  w-100"

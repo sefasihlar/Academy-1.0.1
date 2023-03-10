@@ -84,6 +84,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVF1ZXN0aW9uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/ExamResult/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVJlc3VsdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/ExamResult/ResultQuestions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVJlc3VsdFxSZXN1bHRRdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/ExamResult/ResultVideo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVJlc3VsdFxSZXN1bHRWaWRlby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Exam/Exam.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVxFeGFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

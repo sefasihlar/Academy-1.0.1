@@ -196,7 +196,7 @@ namespace WebUI.Controllers
             //Kullanıcınin hesabi başarıyla onlaylandı ise giriş yapabilecek 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home",userValues);
+                return RedirectToAction("Index", "Home");
             }
             //diğer durumda hesap onaylanmadan giriş yapamacak
             ModelState.AddModelError("", "Tc yada Parola yanlış");
@@ -331,15 +331,15 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateEmail()
+        public IActionResult CreateEmail(LoginModel model)
         {
-            return View();
+            return View(model);
         }
 
         [HttpPost]
         public async Task< IActionResult> CreateEmail(AppUserModel model)
         {
-            var user =await _userManager.FindByIdAsync(Convert.ToString( model.Id));
+            var user = await _userManager.FindByNameAsync(model.UserName);
 
             if (user != null)
             {
