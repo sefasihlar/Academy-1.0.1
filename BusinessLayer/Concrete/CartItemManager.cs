@@ -25,7 +25,7 @@ namespace BusinessLayer.Concrete
 
         public List<CartItem> GetAll()
         {
-            return _cartItemDal.GetAll(x=>x.Cart.Condition==true).ToList();
+            return _cartItemDal.GetAll(x => x.Cart.Condition == true).ToList();
         }
 
         public CartItem GetById(int id)

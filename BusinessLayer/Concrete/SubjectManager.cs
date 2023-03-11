@@ -1,7 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using NuGet.Protocol.Core.Types;
 
 namespace BusinessLayer.Concrete
 {

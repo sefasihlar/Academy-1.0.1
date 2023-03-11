@@ -6,7 +6,7 @@ using WebUI.Models;
 
 namespace WebUI.ViewComponents
 {
-    public class LessonListViewComponent:ViewComponent
+    public class LessonListViewComponent : ViewComponent
     {
         LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
 

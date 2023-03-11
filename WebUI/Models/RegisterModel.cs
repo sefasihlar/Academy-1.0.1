@@ -7,7 +7,7 @@ namespace WebUI.Models
     public class RegisterModel
     {
         public int Id { get; set; }
-  
+
         [Required(ErrorMessage = "Bu alan boş geçilemez")]
         [StringLength(12, MinimumLength = 11, ErrorMessage = "Tc Numarası 11 karakter olmalıdır")]
         public string TcNumber { get; set; }
@@ -15,7 +15,7 @@ namespace WebUI.Models
         [Required(ErrorMessage = "Bu alan boş geçilemez")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage ="Bu alan boş geçilemez")]
+        [Required(ErrorMessage = "Bu alan boş geçilemez")]
         public string SurName { get; set; }
 
         [Required(ErrorMessage = "Bu alan boş geçilemez")]
@@ -32,7 +32,7 @@ namespace WebUI.Models
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Bu alan boş geçilemez")]
-        [Compare("Password",ErrorMessage ="Şifreler uyuşmuyor")]
+        [Compare("Password", ErrorMessage = "Şifreler uyuşmuyor")]
         [DataType(DataType.Password)]
         public string RePassword { get; set; }
 
@@ -41,7 +41,7 @@ namespace WebUI.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Bu alan boş geçilemez")]
-        [StringLength(11,MinimumLength =10,ErrorMessage ="Lütfen Bir Geçerli bir Numara giriniz")]
+        [StringLength(11, MinimumLength = 10, ErrorMessage = "Lütfen Bir Geçerli bir Numara giriniz")]
         public string Phone { get; set; }
 
     }

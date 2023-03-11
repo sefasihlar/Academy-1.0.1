@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EntityLayer.Concrete
+﻿namespace EntityLayer.Concrete
 {
     public class ExamAnswers
     {
@@ -16,7 +10,7 @@ namespace EntityLayer.Concrete
         public AppUser User { get; set; }
 
         public int QuestionId { get; set; }
-        public Question Question{ get; set; }
+        public Question Question { get; set; }
 
         public int? OptionId { get; set; }
         public Option Option { get; set; }

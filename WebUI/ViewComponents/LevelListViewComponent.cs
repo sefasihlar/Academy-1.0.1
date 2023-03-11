@@ -1,7 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFreamwork;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using WebUI.Models;
 
 namespace WebUI.ViewComponents

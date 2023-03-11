@@ -17,7 +17,7 @@
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
 
-		public List<ExamAnswers> ExamAnswers { get; set; }
+        public List<ExamAnswers> ExamAnswers { get; set; }
         public List<ExamQuestions> ExamQuestions { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;

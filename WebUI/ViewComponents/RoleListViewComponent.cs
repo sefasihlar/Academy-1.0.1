@@ -1,14 +1,11 @@
-﻿using BusinessLayer.Concrete;
-using DataAccessLayer.EntityFreamwork;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebUI.Models;
-using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Identity;
 
 namespace WebUI.ViewComponents
 {
-    public class RoleListViewComponent:ViewComponent
+    public class RoleListViewComponent : ViewComponent
     {
         private readonly RoleManager<AppRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;

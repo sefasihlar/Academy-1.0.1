@@ -1,8 +1,6 @@
 ﻿using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Xml;
 
 namespace DataAccessLayer.Concrete
 {
@@ -13,28 +11,28 @@ namespace DataAccessLayer.Concrete
         {
             optionsBuilder.UseSqlServer("server=CODER;database=DbAcademy;integrated security=true");
         }
-		public DbSet<Cart> Carts { get; set; }
-		public DbSet<Subject> Subjects { get; set; }
-		public DbSet<Class> Classes { get; set; }
-		public DbSet<Level> Levels { get; set; }
-		public DbSet<Solution> Solutions { get; set; }
-		public DbSet<Question> Questions { get; set; }
-		public DbSet<Output> Outputs { get; set; }
-		public DbSet<Lesson> Lessons { get; set; }
-		public DbSet<Message> Messages { get; set; }
-		public DbSet<Exam> Exams { get; set; }
-		public DbSet<Option> Options { get; set; }
-		public DbSet<ClassBranch> ClassBranches { get; set; }
-		public DbSet<Branch> Branches { get; set; }
-		public DbSet<ExamAnswers> ExamAnswers { get; set; }
-		public DbSet<ExamQuestions> ExamQuestions { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Class> Classes { get; set; }
+        public DbSet<Level> Levels { get; set; }
+        public DbSet<Solution> Solutions { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Output> Outputs { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Exam> Exams { get; set; }
+        public DbSet<Option> Options { get; set; }
+        public DbSet<ClassBranch> ClassBranches { get; set; }
+        public DbSet<Branch> Branches { get; set; }
+        public DbSet<ExamAnswers> ExamAnswers { get; set; }
+        public DbSet<ExamQuestions> ExamQuestions { get; set; }
         public DbSet<Guardian> Guardians { get; set; }
 
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //fluenAPI
 
-			modelBuilder.Entity<ExamAnswers>()
+            modelBuilder.Entity<ExamAnswers>()
                 .HasKey(e => new { e.ExamId, e.UserId, e.QuestionId });
             base.OnModelCreating(modelBuilder);
 
@@ -45,17 +43,17 @@ namespace DataAccessLayer.Concrete
             base.OnModelCreating(modelBuilder);
 
             // Relationships
-            modelBuilder.Entity<ExamAnswers>()                
+            modelBuilder.Entity<ExamAnswers>()
                 .HasOne(e => e.Exam)
-				.WithMany(e => e.ExamAnswers)
-				.HasForeignKey(e => e.ExamId)
-				.OnDelete(DeleteBehavior.Restrict);
+                .WithMany(e => e.ExamAnswers)
+                .HasForeignKey(e => e.ExamId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-			modelBuilder.Entity<ExamAnswers>()
-				.HasOne(e => e.Question)
-				.WithMany(q => q.ExamAnswers)
-				.HasForeignKey(e => e.QuestionId)
-				.OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<ExamAnswers>()
+                .HasOne(e => e.Question)
+                .WithMany(q => q.ExamAnswers)
+                .HasForeignKey(e => e.QuestionId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<ExamAnswers>()
                 .HasOne(e => e.Option)
@@ -68,18 +66,18 @@ namespace DataAccessLayer.Concrete
 
 
             modelBuilder.Entity<ClassBranch>()
-			   .HasKey(c => new { c.ClassId, c.BranchId });
-			base.OnModelCreating(modelBuilder);
+               .HasKey(c => new { c.ClassId, c.BranchId });
+            base.OnModelCreating(modelBuilder);
 
-			modelBuilder.Entity<ExamQuestions>()
-		        .HasKey(c => new { c.ExamId, c.QuestionId });
-			base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ExamQuestions>()
+                .HasKey(c => new { c.ExamId, c.QuestionId });
+            base.OnModelCreating(modelBuilder);
 
-			modelBuilder.Entity<ExamAnswers>()
-		        .HasKey(c => new { c.ExamId, c.QuestionId ,c.UserId});
-			base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ExamAnswers>()
+                .HasKey(c => new { c.ExamId, c.QuestionId, c.UserId });
+            base.OnModelCreating(modelBuilder);
 
-			modelBuilder.Entity<Question>()
+            modelBuilder.Entity<Question>()
                 .HasOne(q => q.Level)
                 .WithMany()
                 .HasForeignKey(q => q.LevelId)
@@ -147,7 +145,7 @@ namespace DataAccessLayer.Concrete
             base.OnModelCreating(modelBuilder);
         }
 
-        
+
 
     }
 }

@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
         public List<Question> GetQuestionsByExam(int id)
         {
-           return _questionDal.GetQuestionsByExamList(id).ToList();
+            return _questionDal.GetQuestionsByExamList(id).ToList();
         }
 
         public List<Question> GetWithList()

@@ -2,13 +2,12 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	[Authorize(Roles = "Müdür")]
-	public class RoleController : Controller
+    [Authorize(Roles = "Müdür")]
+    public class RoleController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager;
 
@@ -126,7 +125,7 @@ namespace WebUI.Controllers
 
         public IActionResult Officer()
         {
-            
+
             return View();
         }
 

@@ -1,5 +1,4 @@
 ﻿using BusinessLayer.GenericService;
-using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 
 namespace BusinessLayer.Abstract
@@ -11,5 +10,5 @@ namespace BusinessLayer.Abstract
         void DeleteFromSubject(int subjectId, int lessonId);
     }
 
-  
+
 }

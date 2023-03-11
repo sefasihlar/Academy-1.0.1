@@ -3,7 +3,7 @@ using WebUI.Models;
 
 namespace WebUI.ViewComponents
 {
-    public class ClassFormViewComponent:ViewComponent
+    public class ClassFormViewComponent : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

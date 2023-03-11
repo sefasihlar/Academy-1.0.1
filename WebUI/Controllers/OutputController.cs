@@ -3,13 +3,12 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	[Authorize(Roles = "Öğretmen")]
-	public class OutputController : Controller
+    [Authorize(Roles = "Öğretmen")]
+    public class OutputController : Controller
     {
         OutputManager _outputManager = new OutputManager(new EfCoreOutputRepository());
         public IActionResult Index()
@@ -31,7 +30,8 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(OutputModel model)
         {
-            if (ModelState.IsValid) { 
+            if (ModelState.IsValid)
+            {
 
                 var values = new Output()
                 {
@@ -85,7 +85,9 @@ namespace WebUI.Controllers
 
         [HttpPost]
         public IActionResult Update(OutputModel model)
-        {   if(ModelState.IsValid) {
+        {
+            if (ModelState.IsValid)
+            {
                 var values = _outputManager.GetById(model.Id);
                 if (values != null)
                 {

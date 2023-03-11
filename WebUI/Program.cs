@@ -1,6 +1,5 @@
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using System.Reflection;
 
@@ -22,15 +21,20 @@ builder.Services.AddAuthentication(
 
     });
 
+builder.Services.Configure<IISServerOptions>(options =>
+{
+    options.MaxRequestBodySize = 21343447483648;
+});
+
 builder.Services.Configure<IdentityOptions>(options =>
 {
     options.Lockout.AllowedForNewUsers = true;
     options.User.RequireUniqueEmail = false;
     options.SignIn.RequireConfirmedEmail = true;
 
-	//Aþaðýdaki alanlar isteðe göre aktifleþtirlebilir
+    //Aþaðýdaki alanlar isteðe göre aktifleþtirlebilir
 
-	options.Password.RequireDigit = true;
+    options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;
     options.Password.RequiredLength = 6;
     options.Password.RequireUppercase = true;
@@ -48,7 +52,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    
+
     options.LoginPath = "/Account/Login";
     options.SlidingExpiration = true;
     options.AccessDeniedPath = new PathString("/Error/AccessDenied");

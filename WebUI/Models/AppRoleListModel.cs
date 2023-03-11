@@ -1,7 +1,4 @@
 ﻿using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections;
 
 namespace WebUI.Models
 {
@@ -12,6 +9,6 @@ namespace WebUI.Models
 
         public List<UserRole> UserRoles { get; set; }
 
-  
+
     }
 }

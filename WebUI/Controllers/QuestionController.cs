@@ -3,17 +3,14 @@ using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Options;
-using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	[Authorize(Roles = "Öğretmen")]
-	public class QuestionController : Controller
+    [Authorize(Roles = "Öğretmen")]
+    public class QuestionController : Controller
     {
         QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
         LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
@@ -77,7 +74,7 @@ namespace WebUI.Controllers
             };
 
             // Question nesnesini veritabanına ekle
-            if (file!=null)
+            if (file != null)
             {
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Template\\questions", file.FileName);
                 using (var stream = new FileStream(path, FileMode.Create))
@@ -85,7 +82,7 @@ namespace WebUI.Controllers
                     await file.CopyToAsync(stream);
                 }
             }
-           
+
 
             if (values != null)
             {
@@ -110,7 +107,7 @@ namespace WebUI.Controllers
             //};
 
 
-            
+
 
             ////Soru çözümü ekleme alanı
             //var solution = new Solution()
@@ -128,7 +125,7 @@ namespace WebUI.Controllers
             //{
             //    _solutionManager.Create(solution);
             //}
- 
+
             //eger bir validation ile karsilasirsa dropdownlarin tekara dolmasi icin tekrar ediyoruz
 
             var lesson = _lessonManager.GetAll();
@@ -169,7 +166,7 @@ namespace WebUI.Controllers
             {
                 Id = values.Id,
                 Text = values.Text,
-                QuestionText= values.QuestionText,
+                QuestionText = values.QuestionText,
                 ImageUrl = values.ImageUrl,
                 LessonId = values.LessonId,
                 LevelId = values.LevelId,
@@ -183,14 +180,14 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(QuestionModel model,IFormFile file)
+        public async Task<IActionResult> Update(QuestionModel model, IFormFile file)
         {
-      
-                var values = _questionManager.GetById(model.Id);
-                if (values != null)
-                {
-                    values.Text = model.Text;
-                    values.QuestionText = model.QuestionText;
+
+            var values = _questionManager.GetById(model.Id);
+            if (values != null)
+            {
+                values.Text = model.Text;
+                values.QuestionText = model.QuestionText;
                 if (file != null)
                 {
                     values.ImageUrl = file.FileName;
@@ -202,18 +199,18 @@ namespace WebUI.Controllers
                     };
 
                 }
-                    values.LessonId = model.LessonId;
-                    values.LevelId = model.LevelId;
-                    values.SubjectId = model.SubjectId;
-                    values.Options = model.Options;
-                    values.OutputId = model.OutputId;
-                    values.UpdatedDate = model.UpdatedDate;
-                    values.Condition = model.Condition;
+                values.LessonId = model.LessonId;
+                values.LevelId = model.LevelId;
+                values.SubjectId = model.SubjectId;
+                values.Options = model.Options;
+                values.OutputId = model.OutputId;
+                values.UpdatedDate = model.UpdatedDate;
+                values.Condition = model.Condition;
 
 
-                    _questionManager.Update(values);
-                    return RedirectToAction("Index", "Question");
-                }
+                _questionManager.Update(values);
+                return RedirectToAction("Index", "Question");
+            }
 
             return View(model);
 

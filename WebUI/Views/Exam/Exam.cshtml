@@ -63,8 +63,11 @@
                                                 <input type="hidden" name="questionIds" value="@item.Id" />
                                                 <strong>Soru-@counter</strong>
                                             </div>
-                                            <div class="container"><img src="~/Template/questions/@item.ImageUrl" style="width:30%" /></div>
-
+                                            @if (item.ImageUrl!=null)
+                                            {
+                                                <div class="container"><img src="~/Template/questions/@item.ImageUrl" style="width:30%" /></div>
+                                            }
+                                           
                                             <div class="student-exam-page-question-content">
                                                 @item.QuestionText
                                             </div>

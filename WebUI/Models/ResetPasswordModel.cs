@@ -12,7 +12,7 @@ namespace WebUI.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required]
-        [DataType (DataType.Password)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
     }
 }

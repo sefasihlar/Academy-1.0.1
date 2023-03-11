@@ -1,5 +1,4 @@
-﻿using EntityLayer.Concrete;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WebUI.Models
 {
@@ -7,8 +6,8 @@ namespace WebUI.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="En az 1 karakter içermelidir ")]
-        [StringLength(1,MinimumLength =1,ErrorMessage ="En az 1 karakter içermelidir ")]
+        [Required(ErrorMessage = "En az 1 karakter içermelidir ")]
+        [StringLength(1, MinimumLength = 1, ErrorMessage = "En az 1 karakter içermelidir ")]
         public string? Name { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;

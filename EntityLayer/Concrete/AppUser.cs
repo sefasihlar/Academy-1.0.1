@@ -11,14 +11,14 @@ namespace EntityLayer.Concrete
         //Yetkili ayrımının yapılması için
         public bool Authority { get; set; }
 
-		public Nullable<int> ClassId { get; set; }
-		public Class? Class { get; set; }
+        public Nullable<int> ClassId { get; set; }
+        public Class? Class { get; set; }
 
-		public Nullable<int> BranchId { get; set; }
-		public Branch? Branch { get; set; }
+        public Nullable<int> BranchId { get; set; }
+        public Branch? Branch { get; set; }
 
 
-		public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
         public Boolean Condition { get; set; }

@@ -7,6 +7,6 @@ namespace BusinessLayer.Abstract
     {
         List<Question> GetWithList();
         List<Question> GetQuestionsByExam(int id);
-        void DeleteFromQuestion(int questionId,int outputId,int optionId,int subjectId, int lessonId);
+        void DeleteFromQuestion(int questionId, int outputId, int optionId, int subjectId, int lessonId);
     }
 }

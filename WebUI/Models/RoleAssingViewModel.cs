@@ -1,6 +1,4 @@
-﻿using EntityLayer.Concrete;
-
-namespace WebUI.Models
+﻿namespace WebUI.Models
 {
     public class RoleAssingViewModel
     {

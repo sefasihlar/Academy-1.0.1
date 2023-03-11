@@ -3,7 +3,6 @@ using DataAccessLayer.EfCoreRepository;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -49,7 +48,7 @@ namespace WebUI.Controllers
             }
 
 
-            return RedirectToAction("Index", "Branch",model);
+            return RedirectToAction("Index", "Branch", model);
 
 
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EntityLayer.Concrete
+﻿namespace EntityLayer.Concrete
 {
     public class Option
     {
@@ -16,9 +10,9 @@ namespace EntityLayer.Concrete
         public int QuestionId { get; set; }
         public Question Question { get; set; }
 
-		public List<ExamAnswers> ExamAnswers { get; set; }
+        public List<ExamAnswers> ExamAnswers { get; set; }
 
-		public Boolean Condition { get; set; }
+        public Boolean Condition { get; set; }
 
     }
 }

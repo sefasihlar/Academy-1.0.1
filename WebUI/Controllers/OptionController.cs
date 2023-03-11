@@ -3,13 +3,12 @@ using DataAccessLayer.EfCoreRepository;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	[Authorize(Roles = "Öğretmen")]
-	public class OptionController : Controller
+    [Authorize(Roles = "Öğretmen")]
+    public class OptionController : Controller
     {
         OptionManager _optionManager = new OptionManager(new EfCoreOptionRepository());
         public IActionResult Index()
@@ -73,7 +72,7 @@ namespace WebUI.Controllers
         {
             var values = _optionManager.GetById(id);
 
-            if (values==null)
+            if (values == null)
             {
                 return NotFound();
             }

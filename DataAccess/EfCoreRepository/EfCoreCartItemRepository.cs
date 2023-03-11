@@ -7,5 +7,6 @@ namespace DataAccessLayer.EntityFreamwork
 {
     public class EfCoreCartItemRepository : EfCoreGenericRepository<CartItem, AcademyContext>, ICartItemDal
     {
+        
     }
 }

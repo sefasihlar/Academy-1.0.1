@@ -12,22 +12,22 @@ namespace WebUI.Controllers
         private readonly UserManager<AppUser> _userManager;
         CartManager _cartManager = new CartManager(new EfCoreCartRepository());
 
-		public CartController(UserManager<AppUser> userManager)
-		{
-			_userManager = userManager;
-		}
+        public CartController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
 
-		public IActionResult Index()
+        public IActionResult Index()
         {
             var cart = _cartManager.GetCartByUserId(_userManager.GetUserId(User));
             return View(new CartModel()
             {
-                CartId= cart.Id,
-                CartItems = cart.CartItems.Select(x=> new CartItemModel()
+                CartId = cart.Id,
+                CartItems = cart.CartItems.Select(x => new CartItemModel()
                 {
                     CartItemId = x.Id,
-                    ExamId= x.ExamId,
-                    Name = x.Exam.Title,       
+                    ExamId = x.ExamId,
+                    Name = x.Exam.Title,
                 }).ToList(),
             });
         }

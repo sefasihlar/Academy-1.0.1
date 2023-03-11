@@ -1,15 +1,11 @@
 ﻿using BusinessLayer.GenericService;
 using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-	public interface IExamAnswerService:IGenericService<ExamAnswers>
-	{
+    public interface IExamAnswerService : IGenericService<ExamAnswers>
+    {
+        List<ExamAnswers> GetListTogether();
         void Create(ExamAnswers entity, int questionId, int? optionId);
     }
 }

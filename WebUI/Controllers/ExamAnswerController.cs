@@ -4,12 +4,11 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis;
 
 namespace WebUI.Controllers
 {
-	public class ExamAnswerController : Controller
-	{
+    public class ExamAnswerController : Controller
+    {
 
         ExamAnswerManager _examAnswerManager = new ExamAnswerManager(new EfCoreExamAswerRepository());
         ExamQuestionManager _examQuestionManager = new ExamQuestionManager(new EfCoreExamQuestionRepository());
@@ -26,9 +25,9 @@ namespace WebUI.Controllers
         }
 
         public IActionResult Index()
-		{
-			return View();
-		}
+        {
+            return View();
+        }
 
 
         [HttpGet]
@@ -60,9 +59,9 @@ namespace WebUI.Controllers
                     }
                 }
 
-                _cartManager.AddToCart(Convert.ToString( getId.Id), model.ExamId);
+                _cartManager.AddToCart(Convert.ToString(getId.Id), model.ExamId);
 
-                return RedirectToAction("Index", "Exam");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(model);

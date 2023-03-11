@@ -3,7 +3,6 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Options;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -139,7 +138,7 @@ namespace WebUI.Controllers
             var values = new QuestionListModel()
             {
                 Questions = _questionManager.GetQuestionsByExam(id)
-                
+
             };
 
             ViewBag.ExamId = id;

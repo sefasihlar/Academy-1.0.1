@@ -2,8 +2,8 @@
 
 namespace WebUI.Models
 {
-	public class GuardianModel
-	{
+    public class GuardianModel
+    {
         public int Id { get; set; }
         public string GuardianName { get; set; }
         public string? GuardianName2 { get; set; }

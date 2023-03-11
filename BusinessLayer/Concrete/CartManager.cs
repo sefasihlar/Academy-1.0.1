@@ -26,11 +26,11 @@ namespace BusinessLayer.Concrete
                     {
                         ExamId = examId,
                         CartId = cart.Id,
-                        Condition=true,
+                        Condition = true,
                     });
                 }
 
-          
+
                 _cartDal.Update(cart);
             }
         }

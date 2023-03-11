@@ -197,8 +197,48 @@
       "PackagePath": "staticwebassets\\Template\\ogrenci\\ogrenci_sonuclarim.html"
     },
     {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\eptzzehu4i3.png",
+      "PackagePath": "staticwebassets\\Template\\questions\\eptzzehu4i3.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\fnq2jqswu1n.png",
+      "PackagePath": "staticwebassets\\Template\\questions\\fnq2jqswu1n.png"
+    },
+    {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\images (5).jpeg",
       "PackagePath": "staticwebassets\\Template\\questions\\images (5).jpeg"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\o5kfzzzpax0.png",
+      "PackagePath": "staticwebassets\\Template\\questions\\o5kfzzzpax0.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\q3qv3kwnft5.png",
+      "PackagePath": "staticwebassets\\Template\\questions\\q3qv3kwnft5.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\rrdx3twvcbr.png",
+      "PackagePath": "staticwebassets\\Template\\questions\\rrdx3twvcbr.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\questions\\uxqzv5e21oo.png",
+      "PackagePath": "staticwebassets\\Template\\questions\\uxqzv5e21oo.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\video\\images (1).png",
+      "PackagePath": "staticwebassets\\Template\\video\\images (1).png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\video\\images (3).jpeg",
+      "PackagePath": "staticwebassets\\Template\\video\\images (3).jpeg"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\video\\images.png",
+      "PackagePath": "staticwebassets\\Template\\video\\images.png"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\video\\videoplayback.mp4",
+      "PackagePath": "staticwebassets\\Template\\video\\videoplayback.mp4"
     },
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlar_duzenlemeler\\Rol_düzenleme.html",

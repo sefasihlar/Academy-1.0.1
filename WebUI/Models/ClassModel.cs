@@ -7,7 +7,7 @@ namespace WebUI.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage="Bu alan boş geçilemez")]
+        [Required(ErrorMessage = "Bu alan boş geçilemez")]
         public string? Name { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;

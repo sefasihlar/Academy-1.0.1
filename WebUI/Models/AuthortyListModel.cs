@@ -2,8 +2,8 @@
 
 namespace WebUI.Models
 {
-	public class AuthortyListModel
-	{
+    public class AuthortyListModel
+    {
         public List<AppUser> Users { get; set; }
     }
 }

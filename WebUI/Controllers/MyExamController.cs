@@ -5,9 +5,9 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	public class MyExamController : Controller
-	{
-		ExamManager _examManager = new ExamManager(new EfCoreExamRepository());
+    public class MyExamController : Controller
+    {
+        ExamManager _examManager = new ExamManager(new EfCoreExamRepository());
         public IActionResult Index()
         {
             //burada sisteme giriş yapan kullanıcının sınıf bilgisine göre sınvalar görüntülenmesi lazım 

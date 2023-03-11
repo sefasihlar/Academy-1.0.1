@@ -3,13 +3,12 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	[Authorize(Roles = "Öğretmen")]
-	public class LevelController : Controller
+    [Authorize(Roles = "Öğretmen")]
+    public class LevelController : Controller
     {
         LevelManager _levelManager = new LevelManager(new EfCoreLevelRepository());
         public IActionResult Index()
@@ -35,7 +34,7 @@ namespace WebUI.Controllers
                 var values = new Level()
                 {
                     Name = model.Name,
-                    Condition= model.Condition,
+                    Condition = model.Condition,
                     CreatedDate = model.CreatedDate,
                 };
 
@@ -82,22 +81,23 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Update(LevelModel model)
         {
-            if (ModelState.IsValid) {
-
-            var values = _levelManager.GetById(model.Id);
-
-            if (values == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
-            }
 
-            values.Name = model.Name;
-            values.Condition = model.Condition;
-            values.UpdatedDate = model.UpdatedDate;
-            _levelManager.Update(values);
+                var values = _levelManager.GetById(model.Id);
+
+                if (values == null)
+                {
+                    return NotFound();
+                }
+
+                values.Name = model.Name;
+                values.Condition = model.Condition;
+                values.UpdatedDate = model.UpdatedDate;
+                _levelManager.Update(values);
 
             }
-            return RedirectToAction("Index","Level");
+            return RedirectToAction("Index", "Level");
         }
 
     }

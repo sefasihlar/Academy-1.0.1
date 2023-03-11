@@ -1,17 +1,12 @@
 ﻿using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-	public interface IExamQuestionDal:IGenericDal<ExamQuestions>
-	{
-		void Create(ExamQuestions entity, int questionId);
+    public interface IExamQuestionDal : IGenericDal<ExamQuestions>
+    {
+        void Create(ExamQuestions entity, int questionId);
 
-		List<ExamQuestions> GetQuestionsList();
-		void DeleteFromExamQuestion(ExamQuestions entity, int questionId);
-	}
+        List<ExamQuestions> GetQuestionsList();
+        void DeleteFromExamQuestion(ExamQuestions entity, int questionId);
+    }
 }

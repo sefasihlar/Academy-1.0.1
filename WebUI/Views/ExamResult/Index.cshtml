@@ -16,14 +16,20 @@
                             <div class="student-exam-result-content-title ">
                                 <h4><strong>@item.Name</strong></h4>
                             </div>
+                            <div class="student-exam-result-content-title ">
+                                <h4><strong>Tarih: </strong>@item.ExamDate</h4>
+                            </div>
                             <div class="student-exam-result-content-info ">
-                                <strong>Konu:</strong>@item.Description
+                                <strong>Ders:</strong>@item.LessonName
+                            </div>
+                            <div class="student-exam-result-content-info ">
+                                <strong>Konu:</strong>@item.SubjectName
                             </div>
                             <div class="student-exam-result-content-score ">
-                                <strong>Puan:</strong>@item.ClassName@item.LessonName@item.SubjectName
+                                <strong>Puan:</strong>@item.
                             </div>
                             <div class="student-exam-result-content-question-link-container">
-                                <a class="student-exam-result-content-question-link" asp-controller="Result" asp-action="ResultQuestions">
+                                <a class="student-exam-result-content-question-link" href="/ExamResult/ResultQuestions/@item.ExamId">
                                     <strong>Sorular</strong>
                                 </a>
                             </div>

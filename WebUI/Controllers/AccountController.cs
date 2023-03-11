@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using NuGet.Common;
 using System.Data;
 using WebUI.Models;
 
@@ -30,7 +29,7 @@ namespace WebUI.Controllers
             _signInManager = signInManager;
 
         }
-        [Authorize(Roles ="Müdür")]
+        [Authorize(Roles = "Müdür")]
         public IActionResult Index()
         {
             return View(new AppUserListModel()
@@ -39,8 +38,8 @@ namespace WebUI.Controllers
                 Users = _appUserManager.ListTogether().Where(x => x.Authority == false).ToList(),
             });
         }
-		[Authorize(Roles = "Öğretmen")]
-		[HttpGet]
+        [Authorize(Roles = "Öğretmen")]
+        [HttpGet]
         public IActionResult Register()
         {
             var classes = _classManager.GetAll();
@@ -51,7 +50,7 @@ namespace WebUI.Controllers
 
             if (classes == null || brances == null)
             {
-                return RedirectToAction("404","Error");
+                return RedirectToAction("404", "Error");
             }
 
 
@@ -63,9 +62,9 @@ namespace WebUI.Controllers
             return View(values);
         }
 
-		//Kullanıcı verli bilgileride burada ekleniyor aynı anda kayıt işlemi için
-		[Authorize(Roles = "Öğretmen")]
-		[HttpPost]
+        //Kullanıcı verli bilgileride burada ekleniyor aynı anda kayıt işlemi için
+        [Authorize(Roles = "Öğretmen")]
+        [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model, GuardianModel guardian)
         {
             if (ModelState.IsValid)
@@ -80,7 +79,7 @@ namespace WebUI.Controllers
                     BranchId = model.BranchId,
                     PasswordHash = model.Password,
                     Condition = true,
-                    UserName =Convert.ToString( model.TcNumber),
+                    UserName = Convert.ToString(model.TcNumber),
                     NormalizedEmail = "",
                     PhoneNumber = model.Phone,
 
@@ -145,7 +144,7 @@ namespace WebUI.Controllers
 
 
 
-            return RedirectToAction("Index","Account",model);
+            return RedirectToAction("Index", "Account", model);
         }
 
         [HttpGet]
@@ -168,7 +167,7 @@ namespace WebUI.Controllers
 
             var userValues = new AppUserModel()
             {
-                Name= user.Name,
+                Name = user.Name,
                 SurName = user.SurName,
             };
 
@@ -181,13 +180,13 @@ namespace WebUI.Controllers
                 return View(model);
             }
 
-            
+
 
             if (!await _userManager.IsEmailConfirmedAsync(user))
             {
 
                 // Email eklenmediği zaman Email oluşturma sayfasına yönlendirilecek
-                return RedirectToAction("CreateEmail", "Account",model);
+                return RedirectToAction("CreateEmail", "Account", model);
             }
 
             var result = await _signInManager.PasswordSignInAsync(user, model.Password, true, false);
@@ -337,14 +336,14 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task< IActionResult> CreateEmail(AppUserModel model)
+        public async Task<IActionResult> CreateEmail(AppUserModel model)
         {
             var user = await _userManager.FindByNameAsync(model.UserName);
 
             if (user != null)
             {
-               user.Email = model.Email;
-               var result = await _userManager.UpdateAsync(user);
+                user.Email = model.Email;
+                var result = await _userManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

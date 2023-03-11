@@ -2,11 +2,7 @@
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.EfCoreRepository
 {
@@ -21,6 +17,20 @@ namespace DataAccessLayer.EfCoreRepository
                 // "questionId" değeri "entity" nesnesinin "QuestionId" özelliğine atanır.
                 _context.ExamAnswers.Add(entity);
                 _context.SaveChanges();
+            }
+        }
+
+        public List<ExamAnswers> GetListTogether()
+        {
+            using(var _context = new AcademyContext())
+            {
+                return _context.ExamAnswers
+                    .Include(x=>x.User)
+                    .Include(x=>x.Exam)
+                    .Include(x=>x.Option)
+                    .Include(x=>x.Question)
+                    .ThenInclude(x=>x.Options)
+                    .ToList();
             }
         }
     }

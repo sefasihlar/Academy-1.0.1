@@ -1,6 +1,4 @@
 ﻿using EntityLayer.Concrete;
-using NuGet.Protocol.Core.Types;
-using System.Reflection.Metadata.Ecma335;
 
 namespace WebUI.Models
 {

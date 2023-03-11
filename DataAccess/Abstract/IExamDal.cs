@@ -6,7 +6,7 @@ namespace DataAccessLayer.Abstract
     {
         List<Exam> GetWithList();
 
-        void DeleteFromExam(int examId,int classId,int lessonId,int subjectId);
+        void DeleteFromExam(int examId, int classId, int lessonId, int subjectId);
 
     }
 }

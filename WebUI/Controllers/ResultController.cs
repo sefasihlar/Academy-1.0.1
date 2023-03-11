@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace WebUI.Controllers
 {
-	[Authorize(Roles = "Öğretmen")]
-	public class ResultController : Controller
+    [Authorize(Roles = "Öğretmen")]
+    public class ResultController : Controller
     {
         public IActionResult Index()
         {
@@ -17,9 +16,9 @@ namespace WebUI.Controllers
             return View();
         }
 
-		public IActionResult ResultVideo()
-		{
-			return View();
-		}
-	}
+        public IActionResult ResultVideo()
+        {
+            return View();
+        }
+    }
 }

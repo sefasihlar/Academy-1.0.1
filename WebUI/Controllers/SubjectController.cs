@@ -4,14 +4,12 @@ using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Rewrite;
-using System.Data;
 using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-	[Authorize(Roles = "Öğretmen")]
-	public class SubjectController : Controller
+    [Authorize(Roles = "Öğretmen")]
+    public class SubjectController : Controller
     {
         LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
         SubjectManager _subjectManager = new SubjectManager(new EfCoreSubjectRepository());
@@ -95,7 +93,7 @@ namespace WebUI.Controllers
                 Id = values.Id,
                 Name = values.Name,
                 LessonId = values.LessonId,
-                Condition= values.Condition,
+                Condition = values.Condition,
             });
         }
 
@@ -115,7 +113,7 @@ namespace WebUI.Controllers
             values.UpdatedDate = model.UpdatedDate;
 
             _subjectManager.Update(values);
-            return RedirectToAction("Index","Subject");
+            return RedirectToAction("Index", "Subject");
         }
     }
 }
