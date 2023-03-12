@@ -26,10 +26,9 @@ namespace WebUI.Controllers
         }
 
         public IActionResult Index()
-        
-        
-        
         {
+
+
             var cart = _cartManager.GetCartByUserId(_userManager.GetUserId(User));
 
             if (cart != null)
@@ -54,38 +53,66 @@ namespace WebUI.Controllers
             }
             //eğer kullanıcıya tanımlı bir sınav yoksa mesaj bildirilsin
             return View();
-        
+
         }
         [HttpGet]
         public IActionResult ResultQuestions(int id)
         {
+            var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
+            var getId = _appUserManager.GetById(Convert.ToInt32(userId));
+
+            ViewBag.userId = getId.Id;
+
+            var nullQuestion = 0;
             var score = 0;
             var questionFalse = 0;
             var questionTrue = 0;
             var trueOption = "";
             var correctAnswers = new List<string>();
 
-            var examAnswers = _examAnswerManager.GetListTogether().Where(x => x.ExamId == id).ToList();
+            var examAnswers = _examAnswerManager.GetListTogether().Where(x => x.ExamId == id & x.UserId == getId.Id).ToList();
+
+            if (examAnswers==null)
+            {
+                return NotFound();
+            }
+
             var solutions = _solutionManager.GetWithQuestionList();
 
-          
+
             foreach (var examAnswer in examAnswers)
             {
-                var solution = solutions.FirstOrDefault(s => s.Question.Id == examAnswer.Question.Id && s.OptionId == examAnswer.Option.Id);
-
-                var TrueOption = solutions.FirstOrDefault(s => s.Question.Id == examAnswer.QuestionId).Option.Name;
-                correctAnswers.Add(TrueOption);
-
-                if (solution != null)
+                if (examAnswer.OptionId != null)
                 {
-                    score += 5;
-                    questionTrue += 1;
+                    var solution = solutions.FirstOrDefault(s => s.Question.Id == examAnswer.Question.Id && s.OptionId == examAnswer.Option.Id);
+
+                    var TrueOption = solutions.FirstOrDefault(s => s.Question.Id == examAnswer.QuestionId).Option.Name;
+                    correctAnswers.Add(TrueOption);
+
+                    if (solution != null)
+                    {
+                        score += 5;
+                        questionTrue += 1;
+                    }
+
+                    else if (solution == null)
+                    {
+                        questionFalse += 1;
+                    }
+
+                    else
+                    {
+                        nullQuestion += 1;
+                    }
+
+                }
+                else
+                {
+                    var TrueOption = solutions.FirstOrDefault(s => s.Question.Id == examAnswer.QuestionId).Option.Name;
+                    correctAnswers.Add(TrueOption);
+                    nullQuestion += 1;
                 }
 
-                else if(solution==null)
-                {
-                    questionFalse += 1;
-                }
             }
 
             var model = new ExamAnswerListModel()
@@ -93,11 +120,14 @@ namespace WebUI.Controllers
                 ExamAnswers = examAnswers,
                 QuestionFalse = questionFalse,
                 QuestionTrue = questionTrue,
+                QuestionNull = nullQuestion,
                 Score = score,
-                CorrectAnswers = correctAnswers
+                CorrectAnswers = correctAnswers,
+
             };
 
             return View(model);
+
         }
 
         public IActionResult ResultVideo(int id)

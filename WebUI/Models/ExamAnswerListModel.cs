@@ -10,6 +10,8 @@ namespace WebUI.Models
         public int QuestionFalse { get; set; }
         public  int QuestionTrue { get; set; }
 
+        public int QuestionNull { get; set; }
+
         public List<String> CorrectAnswers { get; set; }
     }
 

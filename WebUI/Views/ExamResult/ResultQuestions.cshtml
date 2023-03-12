@@ -13,11 +13,61 @@
 
                     <div class="student-questions-container">
                         <div class="row">
-                            <strong>Punanınız:@Model.Score </strong>   <strong>Toplam Doğru:@Model.QuestionTrue</strong>   <strong>Toplam Yanlış:@Model.QuestionFalse</strong>
+                            <strong>Punanınız:@Model.Score </strong>
+                            <strong>Toplam Doğru:@Model.QuestionTrue</strong>
+                            <strong>Toplam Yanlış:@Model.QuestionFalse</strong>
+                            <strong>Toplam Boş:@Model.QuestionNull</strong>
                             <div class="d-flex justify-content-between flex-wrap">
-                                @foreach (var item in Model.ExamAnswers)
+                                @foreach (var item in Model.ExamAnswers.Where(x=>x.UserId==ViewBag.userId))
                                 {
-                                    if (@item.Option.Name == @Model.CorrectAnswers[TrueOption])
+                                    if (@item.Option == null)
+                                    {
+                                        <div class="student-question-content-error">
+                                            <div class="row">
+                                                <div class="col-md-11">
+                                                    <h4><strong>Soru-@item.Question.Id</strong></h4>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <a href="/ExamResult/ResultVideo/@item.Question.Id">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
+                                                        </svg>
+                                                    </a>
+
+                                                </div>
+                                                @if (item.Question.ImageUrl != null)
+                                                {
+                                                    <img style="width:70%;height:50%" src="/Template/questions/@item.Question.ImageUrl" />
+                                                }
+                                                <span class="question-info">
+                                                    @item.Question.Text
+                                                </span>
+                                                <span class="question-info">
+                                                    <strong>
+                                                        @item.Question.QuestionText
+                                                    </strong>
+                                                </span>
+
+                                                <div class="question-answer-list">
+                                                    @foreach (var option in item.Question.Options.OrderBy(x => x.Id))
+                                                    {
+                                                        <span><strong>@option.Name)</strong> @option.Text</span>
+                                                        <br />
+                                                    }
+
+                                                </div>
+                                                <div class="student-true-answers ">
+                                                    <strong>Sizin Cevabınız:</strong>Boş
+                                                    <strong>Doğru Cevap:</strong> @Model.CorrectAnswers[TrueOption]
+                                                    @{
+                                                        TrueOption++;
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    else if (@item.Option.Name == @Model.CorrectAnswers[TrueOption])
                                     {
                                         <div class="student-question-content-true">
                                             <div class="row">
@@ -26,11 +76,9 @@
                                                 </div>
                                                 <div class="col-md-1">
                                                     <a href="/ExamResult/ResultVideo/@item.Question.Id">
-                                                        <i class="bi bi-camera-video-fill">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
-                                                                <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
-                                                            </svg>
-                                                        </i>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
+                                                        </svg>
                                                     </a>
 
                                                 </div>
@@ -74,15 +122,17 @@
                                                     <h4><strong>Soru-@item.Question.Id</strong></h4>
                                                 </div>
                                                 <div class="col-md-1">
-                                                         <a href="/ExamResult/ResultVideo/@item.Question.Id">
-                                                        <i class="bi bi-camera-video-fill">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
-                                                                <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
-                                                            </svg>
-                                                        </i>
+                                                    <a href="/ExamResult/ResultVideo/@item.Question.Id">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
+                                                        </svg>
                                                     </a>
 
                                                 </div>
+                                                @if (item.Question.ImageUrl != null)
+                                                {
+                                                    <img style="width:70%;height:50%" src="/Template/questions/@item.Question.ImageUrl" />
+                                                }
                                                 <span class="question-info">
                                                     @item.Question.Text
                                                 </span>

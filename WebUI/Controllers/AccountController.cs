@@ -63,71 +63,72 @@ namespace WebUI.Controllers
         }
 
         //Kullanıcı verli bilgileride burada ekleniyor aynı anda kayıt işlemi için
+
         [Authorize(Roles = "Öğretmen")]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model, GuardianModel guardian)
         {
-            if (ModelState.IsValid)
+
+            AppUser user = new AppUser()
             {
-                AppUser user = new AppUser()
+
+                Tc = model.TcNumber,
+                Name = model.Name,
+                SurName = model.SurName,
+                ClassId = model.ClassId,
+                BranchId = model.BranchId,
+                PasswordHash = model.Password,
+                Condition = true,
+                UserName = Convert.ToString(model.TcNumber),
+                NormalizedEmail = "",
+                PhoneNumber = model.Phone,
+
+            };
+
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                // kullanıcı başarıyla kaydedildi
+                Guardian _guardian = new Guardian()
                 {
-
-                    Tc = model.TcNumber,
-                    Name = model.Name,
-                    SurName = model.SurName,
-                    ClassId = model.ClassId,
-                    BranchId = model.BranchId,
-                    PasswordHash = model.Password,
-                    Condition = true,
-                    UserName = Convert.ToString(model.TcNumber),
-                    NormalizedEmail = "",
-                    PhoneNumber = model.Phone,
-
+                    Id = guardian.Id,
+                    GuardianName = guardian.GuardianName,
+                    GuardianName2 = guardian.GuardianName2,
+                    GuardianSurName = guardian.GuardianSurName,
+                    GuardianSurName2 = guardian.GuardianSurName2,
+                    GuardianPhone = guardian.GuardianPhone,
+                    GuardianPhone2 = guardian.GuardianPhone2,
+                    UserId = user.Id,
+                    GuardianCondition = guardian.GuardianCondition,
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
                 };
 
-
-                var result = await _userManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
+                if (_guardian != null)
                 {
-                    // kullanıcı başarıyla kaydedildi
-                    Guardian _guardian = new Guardian()
-                    {
-                        Id = guardian.Id,
-                        GuardianName = guardian.GuardianName,
-                        GuardianName2 = guardian.GuardianName2,
-                        GuardianSurName = guardian.GuardianSurName,
-                        GuardianSurName2 = guardian.GuardianSurName2,
-                        GuardianPhone = guardian.GuardianPhone,
-                        GuardianPhone2 = guardian.GuardianPhone2,
-                        UserId = user.Id,
-                        GuardianCondition = guardian.GuardianCondition,
-                        CreatedDate = DateTime.Now,
-                        UpdatedDate = DateTime.Now,
-                    };
-
-                    if (_guardian != null)
-                    {
-                        _guardianManager.Create(_guardian);
-                    }
-
+                    _guardianManager.Create(_guardian);
                 }
-                if (result.Succeeded)
-                {
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new
-                    {
-                        userId = user.Id,
-                        Token = code,
-                    });
-
-                    //Burası email gönderme kısmı(send Email)
-
-                    //Kullanıcı oluştuldu mesajı eklenecek tempdate ile 
-                    return RedirectToAction("Index", "Account");
-                }
             }
+            if (result.Succeeded)
+            {
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+                var callbackUrl = Url.Action("ConfirmEmail", "Account", new
+                {
+                    userId = user.Id,
+                    Token = code,
+                });
+
+                //Burası email gönderme kısmı(send Email)
+
+                //Kullanıcı oluştuldu mesajı eklenecek tempdate ile 
+                return RedirectToAction("Index", "Account");
+            }
+
+
 
             //ModelState.AddModelError("", "Kullanıcı oluşturlamadı! Lütfen bilgileri tekrar gözden geçiriniz");
 

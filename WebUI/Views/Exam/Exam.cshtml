@@ -6,6 +6,41 @@
     var id = ViewData["Id"];
 }
 
+@section Scripts{
+
+    <script>
+        // Süre değerini al (örneğin ViewBag'den veya modelden)
+        var sureDegeri = @Model.SureDegeri;
+
+        // Süre sayacı başlat
+        var countDownDate = new Date().getTime() + (sureDegeri * 1000);
+
+        // Süre sayacını güncelle
+        var x = setInterval(function () {
+
+            // Şu anki zamanı al
+            var now = new Date().getTime();
+
+            // Süre farkını hesapla
+            var distance = countDownDate - now;
+
+            // Dakika ve saniye değerlerini hesapla
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Süre sayacını ekranda göster
+            document.getElementById("timer").innerHTML = minutes + " dakika " + seconds + " saniye ";
+
+            // Süre dolunca farklı bir sayfaya yönlendir
+            if (distance < 0) {
+                clearInterval(x);
+                document.forms[0].submit();
+            }
+        }, 1000);
+    </script>
+}
+
+
 <div class="wrapper">
     <div class="main" style="background-color: #E9F2FF;">
         <main class="content" style="background-color: #E9F2FF;">
@@ -14,7 +49,7 @@
                     <h3><strong>Meta Akdeniz Ölçme Ve Değerlendirme Sınavı</strong></h3>
                 </div>
                 <div class="question-time col-2">
-                    <h4><strong>Kalan Zaman:</strong>02:22 </h4>
+                    <div id="timer" style="text-align: center;"></div>
                 </div>
             </div>
             <form asp-action="Create" asp-controller="ExamAnswer" method="post">

@@ -33,8 +33,14 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Create(ExamAnswers model)
         {
-            ViewBag.ExamModel = model.ExamId;
-            return View(model);
+            if (model!=null)
+            {
+                ViewBag.ExamModel = model.ExamId;
+                return View(model);
+            }
+
+            return NotFound();
+           
         }
 
         [HttpPost]

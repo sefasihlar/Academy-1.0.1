@@ -132,15 +132,20 @@ namespace WebUI.Controllers
 
 
 
-
+        [HttpGet]
         public IActionResult Exam(int id)
         {
+            var süre = 60;
+
             var values = new QuestionListModel()
             {
-                Questions = _questionManager.GetQuestionsByExam(id)
+                
+                Questions = _questionManager.GetQuestionsByExam(id),
+                
+                SureDegeri = süre
 
             };
-
+            
             ViewBag.ExamId = id;
 
             return View(values);

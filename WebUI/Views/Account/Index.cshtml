@@ -14,77 +14,79 @@
 <main class="content d-flex flex-wrap justify-content-between">
 
     <div class="custom-cards-container flex-2  container-sm ">
-    <div class="container-fluid p-0">
+        <div class="container-fluid p-0">
 
-        <h1 class="h3 mb-3"><strong>Öğrenci</strong> Ekleme Sayfası</h1>
+            <h1 class="h3 mb-3"><strong>Öğrenci</strong> Ekleme Sayfası</h1>
 
-        <div class="row">
-            <div class="d-flex">
-                <div class="w-100">
-                    <div class="row">
+            <div class="row">
+                <div class="d-flex">
+                    <div class="w-100">
+                        <div class="row">
 
-                        <div class="card flex-fill col-12 " style="border-radius: 25px;
+                            <div class="card flex-fill col-12 " style="border-radius: 25px;
 																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
-                            <div class="row">
-                                <div class="card-header col-10">
-                                    <h5 class="card-title mb-0">Konular</h5>
+                                <div class="row">
+                                    <div class="card-header col-10">
+                                        <h5 class="card-title mb-0">Konular</h5>
+                                    </div>
+                                    <div class="yetkili_btn col-2">
+
+                                        <a style="color:white" id="myBtn">
+                                            <strong>Yeni Öğrenci Ekle </strong>
+
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="yetkili_btn col-2">
 
-                                    <a style="color:white" id="myBtn">
-                                        <strong>Yeni Öğrenci Ekle </strong>
+                                <table class="table my-0 text-center">
+                                    <thead>
 
-                                    </a>
-                                </div>
-                            </div>
-
-                            <table class="table my-0 text-center">
-                                <thead>
-
-                                    <tr>
-                                        <th class="d-none d-md-table-cell">ID</th>
-                                        <th class="d-none d-md-table-cell">TC Kimlik</th>
-                                        <th>İsmi</th>
-                                        <th>Sınıf</th>
-                                        <th>Şube</th>
-                                        <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
-                                        <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
-                                        <th>Aktiflik durumu</th>
-                                        <th>Düzenle veya sil</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model.Users)
-                                    {
                                         <tr>
-                                            <td class="d-none d-md-table-cell">@item.Id</td>
-                                            <td class="d-none d-md-table-cell">@item.Tc</td>
-                                            <td class="d-none d-md-table-cell">@item.Name</td>
-                                            <td class="d-none d-md-table-cell">@item.Class.Name</td>
-                                            <td class="d-none d-md-table-cell">@item.Branch.Name</td>
-                                            <td class="d-none d-md-table-cell">@item.CreatedDate</td>
-                                            <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
-                                            <td><span class="badge bg-success">@item.Condition</span></td>
-                                            <td>
-                                                <a href="../kullanici_ayarlar_duzenlemeler/ögrenci_düzenleme.html"><i class="align-middle" data-feather="edit"></i></a>
-                                                <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
-                                            </td>
+                                            <th class="d-none d-md-table-cell">ID</th>
+                                            <th class="d-none d-md-table-cell">TC Kimlik</th>
+                                            <th>Ad</th>
+                                            <th>Soyad</th>
+                                            <th>Sınıf</th>
+                                            <th>Şube</th>
+                                            <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
+                                            <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
+                                            <th>Aktiflik durumu</th>
+                                            <th>Düzenle veya sil</th>
                                         </tr>
-                                    }
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Users)
+                                        {
+                                            <tr>
+                                                <td class="d-none d-md-table-cell">@item.Id</td>
+                                                <td class="d-none d-md-table-cell">@item.Tc</td>
+                                                <td class="d-none d-md-table-cell">@item.Name</td>
+                                                <td class="d-none d-md-table-cell">@item.SurName</td>
+                                                <td class="d-none d-md-table-cell">@item.Class.Name</td>
+                                                <td class="d-none d-md-table-cell">@item.Branch.Name</td>
+                                                <td class="d-none d-md-table-cell">@item.CreatedDate</td>
+                                                <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
+                                                <td><span class="badge bg-success">@item.Condition</span></td>
+                                                <td>
+                                                    <a href="../kullanici_ayarlar_duzenlemeler/ögrenci_düzenleme.html"><i class="align-middle" data-feather="edit"></i></a>
+                                                    <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
 
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    @await Component.InvokeAsync("RegisterForm")
-   
+        @await Component.InvokeAsync("RegisterForm")
+
 </main>
 
