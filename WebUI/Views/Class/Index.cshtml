@@ -60,13 +60,13 @@
                                         <tr>
                                             <td class="d-none d-md-table-cell">@item.Id</td>
                                             <td>@item.Name</td>
-                                     
+
                                             @if (User.IsInRole("Müdür"))
                                             {
                                                 <td class="d-none d-md-table-cell">Ayşe-@item.CreatedDate</td>
                                                 <td class="d-none d-md-table-cell">Sefa-@item.UpdatedDate</td>
                                             }
-                                     
+
                                             @if (item.Condition == true)
                                             {
                                                 <td><span class="badge bg-success">Aktif</span></td>
@@ -79,9 +79,9 @@
                                             <td>
                                                 <a href="/Class/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
 
-                                                <form asp-controller="Class" asp-action="Delete" method="post" style="display:inline" id="myForm" onsubmit="sendForm(event)">
-                                                    <input type="hidden" name="Id" value="@item.Id" />
-                                                    <button class="btn" type="submit" style="" onclick="DisplayAlert()">
+                                                <form asp-controller="Class" asp-action="Delete" method="post" style="display:inline" id="myForm_@item.Id">
+                                                    <input type="hidden" name="id" value="@item.Id" />
+                                                    <button class="btn" style="" onclick="myFunction(event, @item.Id)">
                                                         <i data-feather="trash-2" style="color: red;"></i>
                                                     </button>
                                                 </form>

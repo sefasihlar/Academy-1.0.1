@@ -3,6 +3,7 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebUI.Extensions;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -39,6 +40,13 @@ namespace WebUI.Controllers
 
             _classManager.Create(values);
 
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Basarili",
+                Message = "isleminiz basariyla gerceklesti",
+                Css = "success"
+            });
+
             return RedirectToAction("Index", "Class");
 
         }
@@ -51,8 +59,21 @@ namespace WebUI.Controllers
             if (values != null)
             {
                 _classManager.Delete(values);
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarlı",
+                    Message = "Silme işlemi başarıyla gerçekleşti",
+                    Css = "success"
+                });
                 return RedirectToAction("Index", "Class");
             }
+
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Opps!!!",
+                Message = "Silme islemi gerceklestirlemedi",
+                Css = "error"
+            });
 
             return View();
         }

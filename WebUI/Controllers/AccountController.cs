@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data;
+using WebUI.Extensions;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -125,6 +126,12 @@ namespace WebUI.Controllers
                 //Burası email gönderme kısmı(send Email)
 
                 //Kullanıcı oluştuldu mesajı eklenecek tempdate ile 
+                TempData.Put("message",new ResultMessage()
+                {
+                    Title="Hesap Onayı",
+                    Message="Eposta adresinize Onay linki gönderilmiştir",
+                    Css="warning"
+                });
                 return RedirectToAction("Index", "Account");
             }
 
@@ -208,7 +215,12 @@ namespace WebUI.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            //Buraya çıkış yaptına dair mesaj gelicek
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Oturum",
+                Message = "Hesabınınzdan güvenli bir şekilde çıkış yapıldı",
+                Css = "warning"
+            });
 
 
             return RedirectToAction("Login", "Account");
@@ -220,7 +232,12 @@ namespace WebUI.Controllers
             if (userId == null || token == null)
             {
                 //tempdata "Hesap onayi icin bilgileriniz yanlis"
-                TempData["message"] = "Geçersiz token";
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Hesap Onayı",
+                    Message = "Hesap Onaylanamadı",
+                    Css = "danger"
+                });
                 return View();
             }
 
@@ -228,7 +245,12 @@ namespace WebUI.Controllers
 
             if (user == null)
             {
-                TempData["message"] = "böyle bir kullanıcı yok";
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Hesap Onayı",
+                    Message = "Kullanıcı Bulunamadı",
+                    Css = "danger"
+                });
                 return View();
             }
 
@@ -239,12 +261,22 @@ namespace WebUI.Controllers
                 {
                     //onaylama islemi basarili ise kullaniciya kart tanimlansin
                     _cartManager.InitializeCart(Convert.ToString(user.Id));
-                    TempData["message"] = "Hesabının onaylandı";
+                    TempData.Put("message", new ResultMessage()
+                    {
+                        Title = "Hesap Onayı",
+                        Message = "Hesabınız onaylandı :))",
+                        Css = "success"
+                    });
                     return RedirectToAction("ConfirmEmail", "Account");
                 }
             }
 
-            TempData["message"] = "Hesabının Onaylanmadı";
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hesap Onayı",
+                Message = "Hesabınızı Onaylanamadı",
+                Css = "danger"
+            });
             return View();
 
             //tempdata ile hata mesaji goster
@@ -263,7 +295,12 @@ namespace WebUI.Controllers
         {
             if (string.IsNullOrEmpty(Email))
             {
-                //hata mesaji 
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Şifreyi Unuttum",
+                    Message = "Bilgileriniz hatalı !!!",
+                    Css = "danger"
+                });
                 return View();
             }
 
@@ -271,7 +308,12 @@ namespace WebUI.Controllers
 
             if (user == null)
             {
-                //kullanici bulunamadi hatasi
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Şıfreyi Unuttum",
+                    Message = "Kullanıcı Bulunamadı!!!:((",
+                    Css = "danger"
+                });
                 return View();
 
             }
@@ -286,7 +328,12 @@ namespace WebUI.Controllers
             });
 
             //Send Email ResetPassword
-            //tempdata ile uyari mesaji gonder
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Şifre Yenileme",
+                Message = "Hesabınıza gelen link üzerinde şifreyi yenileyebilirsiniz :))",
+                Css = "warning"
+            });
 
             return RedirectToAction("ResetPassword", "Account");
         }
