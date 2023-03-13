@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using WebUI.Extensions;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -37,8 +38,13 @@ namespace WebUI.Controllers
 
             if (classes == null)
             {
-                return NotFound();
-            }
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Hata",
+					Message = "Bişeyler ters gitti.",
+					Css = "error"
+				});
+			}
 
             var values = new LessonListModel()
             {
@@ -47,8 +53,13 @@ namespace WebUI.Controllers
 
             if (values == null)
             {
-                return NotFound();
-            }
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Hata",
+					Message = "Ders Bulunamadı",
+					Css = "error"
+				});
+			}
 
             return View(values);
         }
@@ -70,13 +81,24 @@ namespace WebUI.Controllers
             if (values != null)
             {
                 _lessonManager.Create(values);
-                return RedirectToAction("Index", "Lesson");
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Başarılı",
+					Message = "Ders başarıyla eklendi",
+					Css = "success"
+				});
+				return RedirectToAction("Index", "Lesson");
             }
 
             var classes = _classManager.GetAll();
             ViewBag.classes = new SelectList(classes, "Id", "Name");
-
-            return View(model);
+			TempData.Put("message", new ResultMessage()
+			{
+				Title = "Hata",
+				Message = "Ders ekleme işlemi başarısız.Bilgilerinizi gözden geçiriniz",
+				Css = "error"
+			});
+			return View(model);
         }
 
         [HttpPost]
@@ -89,9 +111,13 @@ namespace WebUI.Controllers
             }
 
             _lessonManager.DeleteFromLesson(lessonId, classId);
-
-
-            return RedirectToAction("Index", "Lesson");
+			TempData.Put("message", new ResultMessage()
+			{
+				Title = "Başarılı",
+				Message = "Ders silme işlemi başarılı",
+				Css = "success"
+			});
+			return RedirectToAction("Index", "Lesson");
 
         }
 
@@ -133,8 +159,13 @@ namespace WebUI.Controllers
             values.Condition = model.Condition;
 
             _lessonManager.Update(values);
-
-            return RedirectToAction("Index", "Lesson");
+			TempData.Put("message", new ResultMessage()
+			{
+				Title = "Başarılı",
+				Message = "Ders güncelleme işlemi başarılı",
+				Css = "error"
+			});
+			return RedirectToAction("Index", "Lesson");
         }
     }
 }

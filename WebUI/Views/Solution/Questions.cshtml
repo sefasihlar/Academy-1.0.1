@@ -51,9 +51,12 @@
                                                     </a>
                                                 </div>
                                             </div>
-
-                                            <img src="/Template/questions/@item.ImageUrl"
-                                                 class="question-image">
+                                            @if (item.ImageUrl!=null)
+                                            {
+                                                <img src="/Template/questions/@item.ImageUrl" class="question-image">
+                                                   
+                                            }
+                                          
                                             <span class="question-info"><strong>@item.QuestionText</strong></span><br>
                                             <span class="question-info"><strong>@item.Text</strong></span>
                                             <div class="question-answer-list">
@@ -78,8 +81,12 @@
                                             <div class="col-md-6">
                                             </div>
                                         </div>
-                                        <img src="/Template/questions/@item.ImageUrl"
-                                             class="question-image">
+                                        @if (item.ImageUrl!=null)
+                                        {
+                                            <img src="/Template/questions/@item.ImageUrl" class="question-image">
+                                            
+                                        }
+                        
                                         <span class="question-info"><strong>@item.QuestionText</strong></span><br>
                                         <span class="question-info"><strong>@item.Text</strong></span>
                                         

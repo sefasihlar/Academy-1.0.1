@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WebUI.Extensions;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -53,7 +54,13 @@ namespace WebUI.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Role");
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Başarılı",
+					Message = "Role başarıyla eklendi",
+					Css = "success"
+				});
+				return RedirectToAction("Index", "Role");
 
             }
 
@@ -97,8 +104,13 @@ namespace WebUI.Controllers
 
                 else
                 {
-                    return NotFound();
-                }
+					TempData.Put("message", new ResultMessage()
+					{
+						Title = "Hata",
+						Message = "Role güncelleme işlemi başarısız.Lütfen bigileri gözden geçiriniz",
+						Css = "error"
+					});
+				}
             }
 
             return View(model);
@@ -115,11 +127,22 @@ namespace WebUI.Controllers
                 var result = await _roleManager.DeleteAsync(values);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Role");
+					TempData.Put("message", new ResultMessage()
+					{
+						Title = "Başarılı",
+						Message = "Role silme işlemi başarılı",
+						Css = "success"
+					});
+					return RedirectToAction("Index", "Role");
                 }
             }
-
-            return View();
+			TempData.Put("message", new ResultMessage()
+			{
+				Title = "Hata",
+				Message = "Role silme işlemi başarısız.Lütefen daha sonra tekarar deneyiniz",
+				Css = "error"
+			});
+			return View();
 
         }
 

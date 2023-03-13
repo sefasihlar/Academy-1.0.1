@@ -3,6 +3,7 @@ using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using WebUI.Extensions;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -51,8 +52,13 @@ namespace WebUI.Controllers
                     _examQuestionManager.Create(model, item);
 
                 };
-
-                return RedirectToAction("Index", "Exam");
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Basariyla Eklendi",
+					Message = "Sinav soruları basariyla eklendi",
+					Css = "error"
+				});
+				return RedirectToAction("Index", "Exam");
 
             }
 

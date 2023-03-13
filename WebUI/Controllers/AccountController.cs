@@ -1,4 +1,5 @@
 ﻿
+using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
@@ -28,8 +29,8 @@ namespace WebUI.Controllers
         {
             _userManager = userManager;
             _signInManager = signInManager;
-
         }
+
         [Authorize(Roles = "Müdür")]
         public IActionResult Index()
         {
@@ -37,6 +38,7 @@ namespace WebUI.Controllers
             {
                 //async metod oldugu icin hata alabiriz ! 
                 Users = _appUserManager.ListTogether().Where(x => x.Authority == false).ToList(),
+                
             });
         }
         [Authorize(Roles = "Öğretmen")]
@@ -54,7 +56,7 @@ namespace WebUI.Controllers
                 return RedirectToAction("404", "Error");
             }
 
-
+            
             var values = new AppUserListModel()
             {
                 Users = _appUserManager.ListTogether()
@@ -184,7 +186,12 @@ namespace WebUI.Controllers
 
             if (user == null)
             {
-                ModelState.AddModelError("", "Bu Tc ile bir hesap oluşturlmamış");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Hata",
+                    Message = "Giris basarisiz Lütfen bilgilerinizi gozden geciriniz",
+                    Css = "error"
+                });
                 return View(model);
             }
 
@@ -203,10 +210,21 @@ namespace WebUI.Controllers
             //Kullanıcınin hesabi başarıyla onlaylandı ise giriş yapabilecek 
             if (result.Succeeded)
             {
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Basarili",
+                    Message = "Giris Basarili",
+                    Css = "success"
+                });
                 return RedirectToAction("Index", "Home");
             }
             //diğer durumda hesap onaylanmadan giriş yapamacak
-            ModelState.AddModelError("", "Tc yada Parola yanlış");
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Giriş başarısız !!!",
+                Message = "Tc kimlik numarası yada Sifre yanlis",
+                Css = "error"
+            });
 
 
             return View(model);
@@ -218,7 +236,7 @@ namespace WebUI.Controllers
             TempData.Put("message", new ResultMessage()
             {
                 Title = "Oturum",
-                Message = "Hesabınınzdan güvenli bir şekilde çıkış yapıldı",
+                Message = "Hesabınınzdan güvenli bir sekilde cikis yapıldı",
                 Css = "warning"
             });
 
@@ -236,7 +254,7 @@ namespace WebUI.Controllers
                 {
                     Title = "Hesap Onayı",
                     Message = "Hesap Onaylanamadı",
-                    Css = "danger"
+                    Css = "error"
                 });
                 return View();
             }
@@ -249,7 +267,7 @@ namespace WebUI.Controllers
                 {
                     Title = "Hesap Onayı",
                     Message = "Kullanıcı Bulunamadı",
-                    Css = "danger"
+                    Css = "error"
                 });
                 return View();
             }
@@ -275,7 +293,7 @@ namespace WebUI.Controllers
             {
                 Title = "Hesap Onayı",
                 Message = "Hesabınızı Onaylanamadı",
-                Css = "danger"
+                Css = "error"
             });
             return View();
 
@@ -297,9 +315,9 @@ namespace WebUI.Controllers
             {
                 TempData.Put("message", new ResultMessage()
                 {
-                    Title = "Şifreyi Unuttum",
+                    Title = "Sifreyi Unuttum",
                     Message = "Bilgileriniz hatalı !!!",
-                    Css = "danger"
+                    Css = "error"
                 });
                 return View();
             }
@@ -310,9 +328,9 @@ namespace WebUI.Controllers
             {
                 TempData.Put("message", new ResultMessage()
                 {
-                    Title = "Şıfreyi Unuttum",
+                    Title = "Sifreyi Unuttum",
                     Message = "Kullanıcı Bulunamadı!!!:((",
-                    Css = "danger"
+                    Css = "error"
                 });
                 return View();
 
@@ -331,7 +349,7 @@ namespace WebUI.Controllers
             TempData.Put("message", new ResultMessage()
             {
                 Title = "Şifre Yenileme",
-                Message = "Hesabınıza gelen link üzerinde şifreyi yenileyebilirsiniz :))",
+                Message = "Hesabiniza gelen link üzerinde sifreyi yenileyebilirsiniz :))",
                 Css = "warning"
             });
 
@@ -404,7 +422,12 @@ namespace WebUI.Controllers
 
                     //Burası email gönderme kısmı(send Email)
 
-                    //Kullanıcı oluştuldu mesajı eklenecek tempdate ile 
+                    TempData.Put("message", new ResultMessage()
+                    {
+                        Title = "Basarili",
+                        Message = "Email Adresiniz olusturldu",
+                        Css = "success"
+                    });
                     return RedirectToAction("Index", "Account");
                 }
             }

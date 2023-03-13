@@ -4,6 +4,8 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WebUI.Extensions;
+using WebUI.Models;
 
 namespace WebUI.Controllers
 {
@@ -66,11 +68,21 @@ namespace WebUI.Controllers
                 }
 
                 _cartManager.AddToCart(Convert.ToString(getId.Id), model.ExamId);
-
-                return RedirectToAction("Index", "Home");
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Sinav Bitti",
+					Message = "Sinaviniz bitti.Sinav sonucunuza Sinav sonuclarım kismindan ulasabilirsiniz :)",
+					Css = "warning"
+				});
+				return RedirectToAction("Index", "Home");
             }
-
-            return View(model);
+			TempData.Put("message", new ResultMessage()
+			{
+				Title = "Hata",
+				Message = "Sinavinizda hata ile karsilastik lütfen yetkili birimler iletisime geciniz",
+				Css = "error"
+			});
+			return View(model);
         }
 
 

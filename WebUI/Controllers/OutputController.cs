@@ -3,6 +3,7 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebUI.Extensions;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -44,11 +45,22 @@ namespace WebUI.Controllers
                 if (values != null)
                 {
                     _outputManager.Create(values);
-                    return RedirectToAction("Index", "Output");
+					TempData.Put("message", new ResultMessage()
+					{
+						Title = "Başarılı",
+						Message = "Öğrenme çıktısı eklendi",
+						Css = "success"
+					});
+					return RedirectToAction("Index", "Output");
                 }
             }
-
-            return View(model);
+			TempData.Put("message", new ResultMessage()
+			{
+				Title = "Hata",
+				Message = "Öğrenme çıktısı ekleme işlemşi başarısız. Lütfen bilgileri gözden geçiriniz",
+				Css = "error"
+			});
+			return View(model);
         }
 
         [HttpPost]
@@ -97,10 +109,22 @@ namespace WebUI.Controllers
                     values.UpdatedDate = model.UpdatedDate;
 
                     _outputManager.Update(values);
-                    return RedirectToAction("Index", "Output");
+					TempData.Put("message", new ResultMessage()
+					{
+						Title = "Başarılı",
+						Message = "Öğrenme çıktısı başarıyla güncellendi",
+						Css = "success"
+					});
+					return RedirectToAction("Index", "Output");
                 }
             }
-            return NotFound(model);
+			TempData.Put("message", new ResultMessage()
+			{
+				Title = "Hata",
+				Message = "Öğrenme çıktısı güncellenemedi lütfen bilgileri gözden geçiriniz",
+				Css = "error"
+			});
+			return NotFound(model);
         }
     }
 }

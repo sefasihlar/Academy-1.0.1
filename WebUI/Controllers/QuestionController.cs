@@ -5,6 +5,7 @@ using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using WebUI.Extensions;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -44,87 +45,70 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(QuestionModel model, IFormFile? file)
         {
-
-            var questionOptions = new List<Option>(); // yeni bir liste oluştur
-
-            foreach (var item in model.Options)
+            if (ModelState.IsValid)
             {
-                var optionValue = new Option()
+                var questionOptions = new List<Option>(); // yeni bir liste oluştur
+
+                foreach (var item in model.Options)
                 {
-                    Name = item.Name,
-                    Text = item.Text,
-                    Condition = item.Condition,
+                    var optionValue = new Option()
+                    {
+                        Name = item.Name,
+                        Text = item.Text,
+                        Condition = item.Condition,
+                    };
+                    questionOptions.Add(optionValue); // Option nesnelerini yeni liste olarak ekle
+                }
+
+                // Question nesnesini oluştur
+                var values = new Question()
+                {
+                    Text = model.Text,
+                    QuestionText = model.QuestionText,
+                    ImageUrl = file != null ? file.FileName : null,
+                    LessonId = model.LessonId,
+                    LevelId = model.LevelId,
+                    SubjectId = model.SubjectId,
+                    Options = questionOptions, // yeni liste olarak ekle
+                    OutputId = model.OutputId,
+                    CreatedDate = model.CreatedDate,
+                    UpdatedDate = model.UpdatedDate,
                 };
-                questionOptions.Add(optionValue); // Option nesnelerini yeni liste olarak ekle
-            }
 
-            // Question nesnesini oluştur
-            var values = new Question()
-            {
-                Text = model.Text,
-                QuestionText = model.QuestionText,
-                ImageUrl = file != null ? file.FileName : null,
-                LessonId = model.LessonId,
-                LevelId = model.LevelId,
-                SubjectId = model.SubjectId,
-                Options = questionOptions, // yeni liste olarak ekle
-                OutputId = model.OutputId,
-                CreatedDate = model.CreatedDate,
-                UpdatedDate = model.UpdatedDate,
-            };
-
-            // Question nesnesini veritabanına ekle
-            if (file != null)
-            {
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Template\\questions", file.FileName);
-                using (var stream = new FileStream(path, FileMode.Create))
+                // Question nesnesini veritabanına ekle
+                //soru resmini wwwroot altındaki question dosyasına kaydet
+                if (file != null)
                 {
-                    await file.CopyToAsync(stream);
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Template\\questions", file.FileName);
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                }
+
+
+                if (values != null)
+                {
+                    _questionManager.Create(values);
+                    TempData.Put("message", new ResultMessage()
+                    {
+                        Title = "Başarılı",
+                        Message = "Soru başarıyla eklendi",
+                        Css = "success"
+                    });
+                    return RedirectToAction("Questions", "Solution");
+                }
+
+                // Question nesnesinin Id özelliğini al
+                var questionId = values.Id;
+
+                // Option nesnelerinin QuestionId özelliğini güncelle
+                foreach (var item in questionOptions)
+                {
+                    item.QuestionId = questionId;
+                    _optionManager.Create(item);
                 }
             }
-
-
-            if (values != null)
-            {
-                _questionManager.Create(values);
-                return RedirectToAction("Questions", "Solution");
-            }
-
-            // Question nesnesinin Id özelliğini al
-            var questionId = values.Id;
-
-            // Option nesnelerinin QuestionId özelliğini güncelle
-            foreach (var item in questionOptions)
-            {
-                item.QuestionId = questionId;
-                _optionManager.Create(item);
-            }
-
-            //optionIds bulma alanı
-            //var optionIds = new Option()
-            //{
-            //    Id = solutionModel.OptionId
-            //};
-
-
-
-
-            ////Soru çözümü ekleme alanı
-            //var solution = new Solution()
-            //{
-            //    Text = solutionModel.Text,
-            //    VideoUrl = solutionModel.VideoUrl,
-            //    QuestionId = values.Id,
-            //    OptionId = solutionModel.OptionId,
-            //    CreatedDate = solutionModel.CreatedDate,
-            //    UpdatedDate = solutionModel.UpdatedDate,
-            //    Condition = solutionModel.Condition,
-            //};
-
-            //if (solution!=null)
-            //{
-            //    _solutionManager.Create(solution);
-            //}
 
             //eger bir validation ile karsilasirsa dropdownlarin tekara dolmasi icin tekrar ediyoruz
 
@@ -143,7 +127,14 @@ namespace WebUI.Controllers
             var option = _optionManager.GetAll();
             ViewBag.options = new SelectList(option, "Id", "Name");
 
-            return View(model);
+			TempData.Put("message", new ResultMessage()
+			{
+				Title = "Hata",
+				Message = "Soru ekleme işlemi başarısız.Lütfen bilgileri gözden geçiriniz",
+				Css = "error"
+			});
+
+			return RedirectToAction("Index","Question",model);
         }
 
         [HttpPost]
@@ -159,8 +150,13 @@ namespace WebUI.Controllers
             var values = _questionManager.GetById(id);
             if (values == null)
             {
-                return NotFound();
-            }
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Hata",
+					Message = "Soru bulunamadı.",
+					Css = "error"
+				});
+			}
 
             return View(new QuestionModel()
             {
@@ -209,10 +205,21 @@ namespace WebUI.Controllers
 
 
                 _questionManager.Update(values);
-                return RedirectToAction("Index", "Question");
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Başarılı",
+					Message = "Soru güncelleme işlemi başarılı",
+					Css = "success"
+				});
+				return RedirectToAction("Index", "Question");
             }
-
-            return View(model);
+			TempData.Put("message", new ResultMessage()
+			{
+				Title = "Hata",
+				Message = "Soru güncelleme işlemi başarısız",
+				Css = "error"
+			});
+			return View(model);
 
         }
     }

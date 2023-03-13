@@ -3,6 +3,7 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using WebUI.Extensions;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -35,29 +36,38 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(ExamModel model)
         {
-
-            var values = new Exam()
+            if (ModelState.IsValid)
             {
-                Id = model.Id,
-                Title = model.Title,
-                Description = model.Description,
-                ExamDate = model.ExamDate,
-                ClassId = model.ClassId,
-                LessonId = model.LessonId,
-                SubjectId = model.SubjectId,
-                CreatedDate = model.CreatedDate,
-                UpdatedDate = model.UpdatedDate,
-                Condition = model.Condition,
-            };
+                var values = new Exam()
+                {
+                    Id = model.Id,
+                    Title = model.Title,
+                    Description = model.Description,
+                    ExamDate = model.ExamDate,
+                    ClassId = model.ClassId,
+                    LessonId = model.LessonId,
+                    SubjectId = model.SubjectId,
+                    CreatedDate = model.CreatedDate,
+                    UpdatedDate = model.UpdatedDate,
+                    Condition = model.Condition,
+                };
 
 
-            if (values != null)
-            {
-                _examManager.Create(values);
-                return RedirectToAction("Index", "Exam");
+                if (values != null)
+                {
+                    _examManager.Create(values);
+                    TempData.Put("message", new ResultMessage()
+                    {
+                        Title = "Basariyla Eklendi",
+                        Message = "Sinav basariyla eklendi Sinavlarim kismindan eklemis oldugunuz sinavlari goruntuleyebilirsiniz",
+                        Css = "success"
+                    });
+                    return RedirectToAction("Index", "Exam");
 
+                }
             }
 
+           
             var lesson = _lessonManager.GetAll();
             ViewBag.lessons = new SelectList(lesson, "Id", "Name");
 
@@ -67,7 +77,14 @@ namespace WebUI.Controllers
             var subject = _subjectManager.GetAll();
             ViewBag.subjects = new SelectList(subject, "Id", "Name");
 
-            return View(model);
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Sinav ekleme işlemi başarısız.Lütfen bilgileri gözden geçiriniz",
+                Css = "error"
+            });
+
+            return RedirectToAction("Index","Exam",model);
         }
 
 
@@ -78,7 +95,13 @@ namespace WebUI.Controllers
             if (examId != null || classId != null || lessonId != null || subjectId != null)
             {
                 _examManager.DeleteFromExam(examId, classId, lessonId, subjectId);
-                return RedirectToAction("Index", "Exam");
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Silme basarili",
+					Message = "Sinaviniz basariyla silindi",
+					Css = "success"
+				});
+				return RedirectToAction("Index", "Exam");
             }
 
             return NotFound();
@@ -124,10 +147,21 @@ namespace WebUI.Controllers
                 values.Condition = model.Condition;
 
                 _examManager.Update(values);
-                return RedirectToAction("Index", "Exam");
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Guncelleme basarili",
+					Message = "Sinav guncelleme islemi basariyla gerceklesti",
+					Css = "success"
+				});
+				return RedirectToAction("Index", "Exam");
             }
-
-            return View(model);
+			TempData.Put("message", new ResultMessage()
+			{
+				Title = "Guncelleme basarisiz",
+				Message = "Sinav guncelleme islemi basarisiz lütfen bilgileri gozden geciriniz",
+				Css = "error"
+			});
+			return View(model);
         }
 
 
