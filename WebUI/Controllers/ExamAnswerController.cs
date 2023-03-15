@@ -35,14 +35,14 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Create(ExamAnswers model)
         {
-            if (model!=null)
+            if (model != null)
             {
                 ViewBag.ExamModel = model.ExamId;
                 return View(model);
             }
 
             return NotFound();
-           
+
         }
 
         [HttpPost]
@@ -68,21 +68,21 @@ namespace WebUI.Controllers
                 }
 
                 _cartManager.AddToCart(Convert.ToString(getId.Id), model.ExamId);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Sinav Bitti",
-					Message = "Sinaviniz bitti.Sinav sonucunuza Sinav sonuclarım kismindan ulasabilirsiniz :)",
-					Css = "warning"
-				});
-				return RedirectToAction("Index", "Home");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Sinav Bitti",
+                    Message = "Sinaviniz bitti.Sinav sonucunuza Sinav sonuclarım kismindan ulasabilirsiniz :)",
+                    Css = "warning"
+                });
+                return RedirectToAction("Index", "Home");
             }
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Sinavinizda hata ile karsilastik lütfen yetkili birimler iletisime geciniz",
-				Css = "error"
-			});
-			return View(model);
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Sinavinizda hata ile karsilastik lütfen yetkili birimler iletisime geciniz",
+                Css = "error"
+            });
+            return View(model);
         }
 
 

@@ -52,13 +52,13 @@ namespace WebUI.Controllers
                     _examQuestionManager.Create(model, item);
 
                 };
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Basariyla Eklendi",
-					Message = "Sinav soruları basariyla eklendi",
-					Css = "error"
-				});
-				return RedirectToAction("Index", "Exam");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Basariyla Eklendi",
+                    Message = "Sinav soruları basariyla eklendi",
+                    Css = "error"
+                });
+                return RedirectToAction("Index", "Exam");
 
             }
 

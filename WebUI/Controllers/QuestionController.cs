@@ -127,14 +127,14 @@ namespace WebUI.Controllers
             var option = _optionManager.GetAll();
             ViewBag.options = new SelectList(option, "Id", "Name");
 
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Soru ekleme işlemi başarısız.Lütfen bilgileri gözden geçiriniz",
-				Css = "error"
-			});
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Soru ekleme işlemi başarısız.Lütfen bilgileri gözden geçiriniz",
+                Css = "error"
+            });
 
-			return RedirectToAction("Index","Question",model);
+            return RedirectToAction("Index", "Question", model);
         }
 
         [HttpPost]
@@ -150,13 +150,13 @@ namespace WebUI.Controllers
             var values = _questionManager.GetById(id);
             if (values == null)
             {
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Hata",
-					Message = "Soru bulunamadı.",
-					Css = "error"
-				});
-			}
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Hata",
+                    Message = "Soru bulunamadı.",
+                    Css = "error"
+                });
+            }
 
             return View(new QuestionModel()
             {
@@ -205,21 +205,21 @@ namespace WebUI.Controllers
 
 
                 _questionManager.Update(values);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Başarılı",
-					Message = "Soru güncelleme işlemi başarılı",
-					Css = "success"
-				});
-				return RedirectToAction("Index", "Question");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarılı",
+                    Message = "Soru güncelleme işlemi başarılı",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Question");
             }
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Soru güncelleme işlemi başarısız",
-				Css = "error"
-			});
-			return View(model);
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Soru güncelleme işlemi başarısız",
+                Css = "error"
+            });
+            return View(model);
 
         }
     }

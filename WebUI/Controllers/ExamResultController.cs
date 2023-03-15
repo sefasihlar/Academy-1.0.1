@@ -4,7 +4,6 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -72,7 +71,7 @@ namespace WebUI.Controllers
 
             var examAnswers = _examAnswerManager.GetListTogether().Where(x => x.ExamId == id & x.UserId == getId.Id).ToList();
 
-            if (examAnswers==null)
+            if (examAnswers == null)
             {
                 return NotFound();
             }

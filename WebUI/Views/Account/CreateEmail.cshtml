@@ -16,7 +16,9 @@
 	<link rel="shortcut icon" href="/Template/assets/meta_logo_2.png" />
 
 	<link rel="canonical" href="" />
-
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
 	<title>EKYS - Giriş yap</title>
 
 	<link href="/Template/assets/app.css" rel="stylesheet">
@@ -34,17 +36,17 @@
 							<span class="login-page-logo-title">MetaAkdeniz</span>
 
 						</div>
-
+						
 						<div class="card" style="border-radius: 40px;">
 							<div class="card-body">
 								<div class="text-center mt-4 w-100">
 									<img src="/Template/assets/images/text-logo.png" class="w-100">
 								</div>
-
+								<div class="text-center"><h1><strong>Eposta Oluştur </strong></h1></div>
 								<div class="m-sm-4">
-									@if (ViewBag.ErrorMessage != null)
+									@if (TempData["message"] != null)
 									{
-
+										<partial name="_resultMessage" model="@(TempData.Get<ResultMessage>("Message"))" />
 									}
 									<form asp-asp-controller="Account" asp-action="CreateEmail" method="post">
 										<strong>
@@ -77,7 +79,9 @@
 	</main>
 
 	<script src="/Template/assets/app.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
 </body>
 
 </html>

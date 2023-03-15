@@ -61,7 +61,11 @@
                                                     </i>
                                                 </a>
                                             </div>
-                                            <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
+                                            @if (item.ImageUrl!=null)
+                                            {
+                                                <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
+                                            }
+                                       
                                             <input type="hidden" name="Condition" value="True" />
                                             <span>@item.Text</span>
                                             <span class="question-info"><strong>@item.QuestionText?</strong></span>

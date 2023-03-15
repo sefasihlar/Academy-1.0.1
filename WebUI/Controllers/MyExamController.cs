@@ -26,7 +26,7 @@ namespace WebUI.Controllers
             //sisteme giriş yapan kullanıcıyı bulup sınıf bilgisiyle filtelecek
             var values = new ExamListModel()
             {
-                Exams = _examManager.GetWithList().Where(x=>x.ClassId==getId.ClassId).ToList(),
+                Exams = _examManager.GetWithList().Where(x => x.ClassId == getId.ClassId).ToList(),
             };
 
             return View(values);

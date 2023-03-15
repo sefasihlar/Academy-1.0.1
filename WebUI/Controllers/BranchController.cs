@@ -45,22 +45,22 @@ namespace WebUI.Controllers
                     return NotFound(model);
                 }
                 _branchManager.Create(values);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Basarili",
-					Message = "Sube basariyla eklendi",
-					Css = "success"
-				});
-				return RedirectToAction("Index", "Branch");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Basarili",
+                    Message = "Sube basariyla eklendi",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Branch");
             }
 
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Opps ! Biseyler ters gitti",
-				Message = "Lutfen Şube bilgilerini tekrar gozden gecirinizi.",
-				Css = "error"
-			});
-			return RedirectToAction("Index", "Branch", model);
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Opps ! Biseyler ters gitti",
+                Message = "Lutfen Şube bilgilerini tekrar gozden gecirinizi.",
+                Css = "error"
+            });
+            return RedirectToAction("Index", "Branch", model);
 
 
 
@@ -74,21 +74,21 @@ namespace WebUI.Controllers
             {
 
                 _branchManager.Delete(values);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Basarili",
-					Message = "Sube basariyla silindi",
-					Css = "success"
-				});
-				return RedirectToAction("Index", "Branch");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Basarili",
+                    Message = "Sube basariyla silindi",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Branch");
             }
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Opps!Biseyler ters gitti daha sonra tekrar deneyiniz.",
-				Css = "error"
-			});
-			return View("Index", "Branch");
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Opps!Biseyler ters gitti daha sonra tekrar deneyiniz.",
+                Css = "error"
+            });
+            return View("Index", "Branch");
         }
 
         [HttpGet]
@@ -123,19 +123,19 @@ namespace WebUI.Controllers
             values.Condition = model.Condition;
             values.UpdatedDate = model.UpdatedDate;
             _branchManager.Update(values);
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Guncelleme basarili",
-				Message = "Sube guncelleme islemi bariyla gerceklesti",
-				Css = "success"
-			});
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Sube guncellenemedi bilgileri tekrar gozden geciriniz.",
-				Css = "error"
-			});
-			return RedirectToAction("Index", "Branch");
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Guncelleme basarili",
+                Message = "Sube guncelleme islemi bariyla gerceklesti",
+                Css = "success"
+            });
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Sube guncellenemedi bilgileri tekrar gozden geciriniz.",
+                Css = "error"
+            });
+            return RedirectToAction("Index", "Branch");
         }
 
 

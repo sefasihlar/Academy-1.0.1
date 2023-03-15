@@ -3,7 +3,6 @@ using DataAccessLayer.Concrete;
 using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 
 namespace DataAccessLayer.EntityFreamwork
 {
@@ -24,9 +23,9 @@ namespace DataAccessLayer.EntityFreamwork
                 return context.Carts
                                     .Include(x => x.CartItems)
                                     .ThenInclude(x => x.Exam)
-                                    .ThenInclude(x=>x.Subject)
-                                    .ThenInclude(x=>x.Lesson)
-                                    .ThenInclude(x=>x.Class)
+                                    .ThenInclude(x => x.Subject)
+                                    .ThenInclude(x => x.Lesson)
+                                    .ThenInclude(x => x.Class)
                                     .FirstOrDefault(x => x.UserId == userId);
             };
         }

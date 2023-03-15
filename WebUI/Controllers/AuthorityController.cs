@@ -69,26 +69,26 @@ namespace WebUI.Controllers
                     Token = code,
                 });
 
-				//Burası email gönderme kısmı(send Email)
+                //Burası email gönderme kısmı(send Email)
 
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Başarılı",
-					Message = "Gorevli basariyla olsuturldu :)",
-					Css = "success"
-				});
-				return RedirectToAction("Index", "Authority");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarılı",
+                    Message = "Gorevli basariyla olsuturldu :)",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Authority");
             }
             else
             {
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Hata",
-					Message = "Görevli olusturulamadı lütfen tekrar deneyiniz",
-					Css = "error"
-				});
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Hata",
+                    Message = "Görevli olusturulamadı lütfen tekrar deneyiniz",
+                    Css = "error"
+                });
 
-				return RedirectToAction("Index", "Authority");
+                return RedirectToAction("Index", "Authority");
             }
 
 
@@ -161,14 +161,14 @@ namespace WebUI.Controllers
                 }
             }
 
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Başarılı",
-				Message = "Role atama islemleriniz basariyla gerceklesti",
-				Css = "success"
-			});
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Başarılı",
+                Message = "Role atama islemleriniz basariyla gerceklesti",
+                Css = "success"
+            });
 
-			return RedirectToAction("Index", "Authority");
+            return RedirectToAction("Index", "Authority");
 
         }
 

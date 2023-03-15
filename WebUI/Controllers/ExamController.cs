@@ -67,7 +67,7 @@ namespace WebUI.Controllers
                 }
             }
 
-           
+
             var lesson = _lessonManager.GetAll();
             ViewBag.lessons = new SelectList(lesson, "Id", "Name");
 
@@ -84,7 +84,7 @@ namespace WebUI.Controllers
                 Css = "error"
             });
 
-            return RedirectToAction("Index","Exam",model);
+            return RedirectToAction("Index", "Exam", model);
         }
 
 
@@ -95,16 +95,22 @@ namespace WebUI.Controllers
             if (examId != null || classId != null || lessonId != null || subjectId != null)
             {
                 _examManager.DeleteFromExam(examId, classId, lessonId, subjectId);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Silme basarili",
-					Message = "Sinaviniz basariyla silindi",
-					Css = "success"
-				});
-				return RedirectToAction("Index", "Exam");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Silme basarili",
+                    Message = "Sinaviniz basariyla silindi",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Exam");
             }
 
-            return NotFound();
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Silme işlemli başarısız",
+                Message = "Sınav silmek işlemi başarısız.Lütfen daha sonra tekrar deneyiniz.",
+                Css = "erorr"
+            });
+            return RedirectToAction("Index", "Exam");
         }
 
         [HttpGet]
@@ -147,21 +153,21 @@ namespace WebUI.Controllers
                 values.Condition = model.Condition;
 
                 _examManager.Update(values);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Guncelleme basarili",
-					Message = "Sinav guncelleme islemi basariyla gerceklesti",
-					Css = "success"
-				});
-				return RedirectToAction("Index", "Exam");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Guncelleme basarili",
+                    Message = "Sinav guncelleme islemi basariyla gerceklesti",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Exam");
             }
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Guncelleme basarisiz",
-				Message = "Sinav guncelleme islemi basarisiz lütfen bilgileri gozden geciriniz",
-				Css = "error"
-			});
-			return View(model);
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Guncelleme basarisiz",
+                Message = "Sinav guncelleme islemi basarisiz lütfen bilgileri gozden geciriniz",
+                Css = "error"
+            });
+            return View(model);
         }
 
 
@@ -173,13 +179,13 @@ namespace WebUI.Controllers
 
             var values = new QuestionListModel()
             {
-                
+
                 Questions = _questionManager.GetQuestionsByExam(id),
-                
+
                 SureDegeri = süre
 
             };
-            
+
             ViewBag.ExamId = id;
 
             return View(values);

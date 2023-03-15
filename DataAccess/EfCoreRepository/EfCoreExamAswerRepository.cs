@@ -22,14 +22,14 @@ namespace DataAccessLayer.EfCoreRepository
 
         public List<ExamAnswers> GetListTogether()
         {
-            using(var _context = new AcademyContext())
+            using (var _context = new AcademyContext())
             {
                 return _context.ExamAnswers
-                    .Include(x=>x.User)
-                    .Include(x=>x.Exam)
-                    .Include(x=>x.Option)
-                    .Include(x=>x.Question)
-                    .ThenInclude(x=>x.Options)
+                    .Include(x => x.User)
+                    .Include(x => x.Exam)
+                    .Include(x => x.Option)
+                    .Include(x => x.Question)
+                    .ThenInclude(x => x.Options)
                     .ToList();
             }
         }

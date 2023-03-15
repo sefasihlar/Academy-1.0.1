@@ -47,23 +47,23 @@ namespace WebUI.Controllers
                 if (values != null)
                 {
                     _optionManager.Create(values);
-					TempData.Put("message", new ResultMessage()
-					{
-						Title = "Başarılı",
-						Message = "Şık ekleme işlemi başarılı",
-						Css = "success"
-					});
-					return RedirectToAction("Index", "Option");
+                    TempData.Put("message", new ResultMessage()
+                    {
+                        Title = "Başarılı",
+                        Message = "Şık ekleme işlemi başarılı",
+                        Css = "success"
+                    });
+                    return RedirectToAction("Index", "Option");
                 }
 
             }
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Şık eklemek işlemi başarısız.Lütfen bilgilerinizi gözden geçiriniz",
-				Css = "error"
-			});
-			return View(model);
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Şık eklemek işlemi başarısız.Lütfen bilgilerinizi gözden geçiriniz",
+                Css = "error"
+            });
+            return View(model);
         }
 
         [HttpPost]

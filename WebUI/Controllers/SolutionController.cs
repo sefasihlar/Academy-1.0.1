@@ -88,25 +88,25 @@ namespace WebUI.Controllers
             {
                 _solutionManager.Create(values);
                 _quesitonManager.Update(questionId);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Başarılı",
-					Message = "Soru çözümü başarıyla eklendi",
-					Css = "success"
-				});
-				return RedirectToAction("Questions", "Solution");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarılı",
+                    Message = "Soru çözümü başarıyla eklendi",
+                    Css = "success"
+                });
+                return RedirectToAction("Questions", "Solution");
 
             }
 
             var options = _optionManager.GetAll();
             ViewBag.options = new SelectList(options, "Id", "Name");
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Soru çözümü eklenemedi.Lütfen daha sonra tekrar deneyiniz.",
-				Css = "error"
-			});
-			return View(model);
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Soru çözümü eklenemedi.Lütfen daha sonra tekrar deneyiniz.",
+                Css = "error"
+            });
+            return View(model);
         }
 
         [HttpGet]
@@ -139,31 +139,31 @@ namespace WebUI.Controllers
             {
                 return NotFound();
             }
-            if (values!=null)
+            if (values != null)
             {
-				model.Text = values.Text;
-				model.VideoUrl = values.VideoUrl;
-				model.QuestionId = values.QuestionId;
-				model.OptionId = values.OptionId;
-				model.Condition = values.Condition;
+                model.Text = values.Text;
+                model.VideoUrl = values.VideoUrl;
+                model.QuestionId = values.QuestionId;
+                model.OptionId = values.OptionId;
+                model.Condition = values.Condition;
 
-				_solutionManager.Update(values);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Başarılı",
-					Message = "Soru çözümü başarıyla güncellendi",
-					Css = "success"
-				});
-				return RedirectToAction("Index", "Solution");
-			}
-       
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Soru çözümü güncellenemedi.Lütfen bilgileri gözden geçiriniz",
-				Css = "error"
-			});
-			return RedirectToAction("Index", "Solution");
+                _solutionManager.Update(values);
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarılı",
+                    Message = "Soru çözümü başarıyla güncellendi",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Solution");
+            }
+
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Soru çözümü güncellenemedi.Lütfen bilgileri gözden geçiriniz",
+                Css = "error"
+            });
+            return RedirectToAction("Index", "Solution");
         }
 
         public IActionResult Questions()

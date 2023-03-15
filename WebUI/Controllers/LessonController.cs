@@ -38,13 +38,13 @@ namespace WebUI.Controllers
 
             if (classes == null)
             {
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Hata",
-					Message = "Bişeyler ters gitti.",
-					Css = "error"
-				});
-			}
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Hata",
+                    Message = "Bişeyler ters gitti.",
+                    Css = "error"
+                });
+            }
 
             var values = new LessonListModel()
             {
@@ -53,13 +53,13 @@ namespace WebUI.Controllers
 
             if (values == null)
             {
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Hata",
-					Message = "Ders Bulunamadı",
-					Css = "error"
-				});
-			}
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Hata",
+                    Message = "Ders Bulunamadı",
+                    Css = "error"
+                });
+            }
 
             return View(values);
         }
@@ -81,24 +81,24 @@ namespace WebUI.Controllers
             if (values != null)
             {
                 _lessonManager.Create(values);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Başarılı",
-					Message = "Ders başarıyla eklendi",
-					Css = "success"
-				});
-				return RedirectToAction("Index", "Lesson");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarılı",
+                    Message = "Ders başarıyla eklendi",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Lesson");
             }
 
             var classes = _classManager.GetAll();
             ViewBag.classes = new SelectList(classes, "Id", "Name");
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Ders ekleme işlemi başarısız.Bilgilerinizi gözden geçiriniz",
-				Css = "error"
-			});
-			return View(model);
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Ders ekleme işlemi başarısız.Bilgilerinizi gözden geçiriniz",
+                Css = "error"
+            });
+            return View(model);
         }
 
         [HttpPost]
@@ -111,13 +111,13 @@ namespace WebUI.Controllers
             }
 
             _lessonManager.DeleteFromLesson(lessonId, classId);
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Başarılı",
-				Message = "Ders silme işlemi başarılı",
-				Css = "success"
-			});
-			return RedirectToAction("Index", "Lesson");
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Başarılı",
+                Message = "Ders silme işlemi başarılı",
+                Css = "success"
+            });
+            return RedirectToAction("Index", "Lesson");
 
         }
 
@@ -159,13 +159,13 @@ namespace WebUI.Controllers
             values.Condition = model.Condition;
 
             _lessonManager.Update(values);
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Başarılı",
-				Message = "Ders güncelleme işlemi başarılı",
-				Css = "error"
-			});
-			return RedirectToAction("Index", "Lesson");
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Başarılı",
+                Message = "Ders güncelleme işlemi başarılı",
+                Css = "error"
+            });
+            return RedirectToAction("Index", "Lesson");
         }
     }
 }

@@ -24,6 +24,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDcmVhdGVFbWFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Account/ExampleMailTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFeGFtcGxlTWFpbFRlc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Account/SendEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTZW5kRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Authority/AssignRole.cshtml]
@@ -94,6 +102,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/ExamResult/ResultVideo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVJlc3VsdFxSZXN1bHRWaWRlby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Exam/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Exam/Exam.cshtml]

@@ -8,7 +8,7 @@ namespace WebUI.Models
 
         public int Score { get; set; }
         public int QuestionFalse { get; set; }
-        public  int QuestionTrue { get; set; }
+        public int QuestionTrue { get; set; }
 
         public int QuestionNull { get; set; }
 

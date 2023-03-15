@@ -40,22 +40,22 @@ namespace WebUI.Controllers
                 };
 
                 _levelManager.Create(values);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Başarılı",
-					Message = "Derece ekleme işlemi başarılı",
-					Css = "success"
-				});
-				return RedirectToAction("Index", "Level");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarılı",
+                    Message = "Derece ekleme işlemi başarılı",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Level");
             }
 
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Derece ekleme işlemi başarısız",
-				Css = "error"
-			});
-			return View(model);
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Derece ekleme işlemi başarısız",
+                Css = "error"
+            });
+            return View(model);
         }
 
         public IActionResult Delete(LevelModel model)
@@ -65,22 +65,22 @@ namespace WebUI.Controllers
             if (values != null)
             {
                 _levelManager.Delete(values);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Başarılı",
-					Message = "Derece silme işlemi başarılı",
-					Css = "success"
-				});
-				return RedirectToAction("Index", "Level");
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarılı",
+                    Message = "Derece silme işlemi başarılı",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Level");
             }
 
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Derece silmek işlemi başarısız",
-				Css = "error"
-			});
-			return View();
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Derece silmek işlemi başarısız",
+                Css = "error"
+            });
+            return View();
         }
 
         [HttpGet]
@@ -111,25 +111,25 @@ namespace WebUI.Controllers
 
                 if (values == null)
                 {
-					TempData.Put("message", new ResultMessage()
-					{
-						Title = "Hata",
-						Message = "Derece bulunamadı.Bilgilerinizi gözden geçiriniz",
-						Css = "error"
-					});
-				}
+                    TempData.Put("message", new ResultMessage()
+                    {
+                        Title = "Hata",
+                        Message = "Derece bulunamadı.Bilgilerinizi gözden geçiriniz",
+                        Css = "error"
+                    });
+                }
 
                 values.Name = model.Name;
                 values.Condition = model.Condition;
                 values.UpdatedDate = model.UpdatedDate;
                 _levelManager.Update(values);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Başarılı",
-					Message = "Derece güncelleme işlemi başarılı",
-					Css = "success"
-				});
-			}
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarılı",
+                    Message = "Derece güncelleme işlemi başarılı",
+                    Css = "success"
+                });
+            }
             return RedirectToAction("Index", "Level");
         }
 

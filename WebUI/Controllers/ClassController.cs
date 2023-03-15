@@ -38,27 +38,27 @@ namespace WebUI.Controllers
                 Condition = model.Condition,
             };
 
-            if (values!=null)
+            if (values != null)
             {
-				_classManager.Create(values);
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Basarili",
-					Message = "Ekleme islemi basariyla gerceklesti",
-					Css = "success"
-				});
-			}
+                _classManager.Create(values);
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Basarili",
+                    Message = "Ekleme islemi basariyla gerceklesti",
+                    Css = "success"
+                });
+            }
 
 
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Bişeyler ters gitti.Lütfen sınıf bilgilerini gözden geçirinizi",
-				Css = "error"
-			});
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Bişeyler ters gitti.Lütfen sınıf bilgilerini gözden geçirinizi",
+                Css = "error"
+            });
 
 
-			return RedirectToAction("Index", "Class");
+            return RedirectToAction("Index", "Class");
 
         }
 
@@ -119,32 +119,32 @@ namespace WebUI.Controllers
 
                 if (values == null)
                 {
-					TempData.Put("message", new ResultMessage()
-					{
-						Title = "Hata",
-						Message = "Guncelleme islemi basarisiz sinifi bulamadik lütefen sonra tekrar deneyiniz",
-						Css = "error"
-					});
-				}
+                    TempData.Put("message", new ResultMessage()
+                    {
+                        Title = "Hata",
+                        Message = "Guncelleme islemi basarisiz sinifi bulamadik lütefen sonra tekrar deneyiniz",
+                        Css = "error"
+                    });
+                }
 
                 values.Name = model.Name;
                 values.Condition = model.Condition;
                 values.UpdatedDate = model.UpdatedDate;
-				TempData.Put("message", new ResultMessage()
-				{
-					Title = "Basarili",
-					Message = "Sinif basariyla guncellendi",
-					Css = "success"
-				});
-				_classManager.Update(values);
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Basarili",
+                    Message = "Sinif basariyla guncellendi",
+                    Css = "success"
+                });
+                _classManager.Update(values);
             }
-			TempData.Put("message", new ResultMessage()
-			{
-				Title = "Hata",
-				Message = "Sinif guncelleme islemi basarisiz lütfen bilgileri gozden geciriniz var eksik olmadıgına dikkat ediniz",
-				Css = "error"
-			});
-			return RedirectToAction("Index", "Class");
+            TempData.Put("message", new ResultMessage()
+            {
+                Title = "Hata",
+                Message = "Sinif guncelleme islemi basarisiz lütfen bilgileri gozden geciriniz var eksik olmadıgına dikkat ediniz",
+                Css = "error"
+            });
+            return RedirectToAction("Index", "Class");
         }
 
     }

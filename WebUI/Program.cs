@@ -1,3 +1,5 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
@@ -66,7 +68,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 Assembly.GetExecutingAssembly();
-
+builder.Services.AddTransient<IEmailSender, EmailSenderManager>();
 builder.Services.AddDbContext<AcademyContext>();
 builder.Services.AddIdentity<AppUser, AppRole>()
     .AddEntityFrameworkStores<AcademyContext>()
