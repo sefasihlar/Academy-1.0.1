@@ -27,6 +27,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<ExamAnswers> ExamAnswers { get; set; }
         public DbSet<ExamQuestions> ExamQuestions { get; set; }
         public DbSet<Guardian> Guardians { get; set; }
+        public DbSet<Scors> Scors { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
