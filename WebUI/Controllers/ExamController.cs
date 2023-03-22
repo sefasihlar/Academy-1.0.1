@@ -36,36 +36,35 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(ExamModel model)
         {
-            if (ModelState.IsValid)
+
+            var values = new Exam()
             {
-                var values = new Exam()
+                Id = model.Id,
+                Title = model.Title,
+                Description = model.Description,
+                ExamDate = model.ExamDate,
+                ClassId = model.ClassId,
+                LessonId = model.LessonId,
+                SubjectId = model.SubjectId,
+                CreatedDate = model.CreatedDate,
+                UpdatedDate = model.UpdatedDate,
+                Condition = model.Condition,
+            };
+
+
+            if (values != null)
+            {
+                _examManager.Create(values);
+                TempData.Put("message", new ResultMessage()
                 {
-                    Id = model.Id,
-                    Title = model.Title,
-                    Description = model.Description,
-                    ExamDate = model.ExamDate,
-                    ClassId = model.ClassId,
-                    LessonId = model.LessonId,
-                    SubjectId = model.SubjectId,
-                    CreatedDate = model.CreatedDate,
-                    UpdatedDate = model.UpdatedDate,
-                    Condition = model.Condition,
-                };
+                    Title = "Basariyla Eklendi",
+                    Message = "Sinav basariyla eklendi Sinavlarim kismindan eklemis oldugunuz sinavlari goruntuleyebilirsiniz",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Exam");
 
-
-                if (values != null)
-                {
-                    _examManager.Create(values);
-                    TempData.Put("message", new ResultMessage()
-                    {
-                        Title = "Basariyla Eklendi",
-                        Message = "Sinav basariyla eklendi Sinavlarim kismindan eklemis oldugunuz sinavlari goruntuleyebilirsiniz",
-                        Css = "success"
-                    });
-                    return RedirectToAction("Index", "Exam");
-
-                }
             }
+
 
 
             var lesson = _lessonManager.GetAll();
