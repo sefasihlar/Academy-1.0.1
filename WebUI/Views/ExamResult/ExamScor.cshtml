@@ -1,4 +1,5 @@
-﻿@model WebUI.Models.ScorListModel
+﻿
+@model WebUI.Models.ScorListModel
 @{
     ViewData["Title"] = "ExamScor";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,7 +16,7 @@
         <div class="row">
             <div class=" analyc col-md-5">
 
-                <h4><strong>Sınav Adı: Buraya başlık gelecek</strong></h4>
+                <h4><strong>Sınav Adı:@item.Exam.Title</strong></h4>
                 <h4><strong>Puan: </strong>@item.Scor</h4>
                 <h4><strong>Netiniz: </strong>@item.Average</h4>
                 <h4><strong>Sıralamanız: </strong>@item.Id</h4>
@@ -69,7 +70,7 @@
                     <th>Başarı Oranı</th>
                 </tr>
                 <tr>
-                    <td>Buradya ders adı gelecek</td>
+                    <td>@item.Exam.Lesson.Name</td>
                     <td>@item.True</td>
                     <td>@item.False</td>
                     <td>@item.Null</td>
@@ -82,87 +83,23 @@
     <hr />
     <h4 class="modal-title text-center"><strong> Ders Bazlı Sonuç Ekranı</strong></h4>
     <div class="row">
-        <form>
-        <div class="col-5">
-            <span><strong> Ders</strong></span>
-            @await Component.InvokeAsync("LessonList")
-            <button class="btn btn-primary" type="submit">Filtrele</button>
-        </div>
+        @if (Model.LessonId==0)
+        {
+            <input type="hidden" value="4" name="LessonId"/>
+        }
+        <form asp-asp-controller="ExamResult" asp-action="ExamScor" method="post">
+            <div class="col-5">
+                <span><strong> Ders</strong></span>
+                @await Component.InvokeAsync("LessonList")
+                <button class="btn btn-primary" type="submit">Filtrele</button>
+            </div>
         </form>
-        <div class="col-7">
-            <table class="col-12">
-            
-                <tr>
-                    <th>Doğru Sayısı</th>
-                    <th>Yanlış Sayısı</th>
-                    <th>Boş Sayısı</th>
-                    <th>Başarı Oranı</th>
-                </tr>
-                <tr>
-                    <td>18</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>%90</td>
-                </tr>
 
+        @{
+            var lessonId = ViewBag.LessonId;
+        }
 
-            </table>
-        </div>
-        <div class="row">
-            <div class="title">
-                <h4><strong>Konu Bazlı Analiz</strong> </h4>
-            </div>
-            <div class="subject-Analyc ">
-                <table class=col-12>
-                    <tr>
-                        <th scope="col">Konu Adı</th>
-                        <th scope="col">Soru Sayısı</th>
-                        <th scope="col">Doğru Sayısı</th>
-                        <th scope="col">Yanlış Sayısı</th>
-                        <th scope="col">Boş Sayısı</th>
-                        <th scope="col">Başarı Oranı</th>
-
-                    </tr>
-                    <tr>
-                        <td scope="col">Üslü Sayılar</td>
-                        <td scope="col">6</td>
-                        <td scope="col">4</td>
-                        <td scope="col">2</td>
-                        <td scope="col">0</td>
-                        <td scope="col">75%</td>
-
-                    </tr>
-                    <tr>
-                        <td>Köklü Sayılar</td>
-                        <td>6</td>
-                        <td>4</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>75%</td>
-
-                    </tr>
-                    <tr>
-                        <td>Geometrik Şekillerde</td>
-                        <td>6</td>
-                        <td>4</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>75%</td>
-
-                    </tr>
-                    <tr>
-                        <td>Trigonometri</td>
-                        <td>6</td>
-                        <td>4</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>75%</td>
-
-                    </tr>
-                </table>
-            </div>
-
-        </div>
+        @await Component.InvokeAsync("AllExamResults", new { LessonId = lessonId })
     </div>
 
 </div>

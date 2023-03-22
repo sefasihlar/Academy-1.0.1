@@ -38,7 +38,12 @@ namespace BusinessLayer.Concrete
 			return _scorsDal.GetById(id);
 		}
 
-		public void Update(Scors entity)
+        public List<Scors> GetTogetherList()
+        {
+            return _scorsDal.GetTogetherList().ToList();
+        }
+
+        public void Update(Scors entity)
 		{
 			_scorsDal.Update(entity);
 		}

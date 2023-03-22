@@ -143,21 +143,28 @@ namespace WebUI.Controllers
 
 
 
-        public IActionResult ExamScor(int id)
+        public IActionResult ExamScor(int id,int LessonId)
         {
+            if (LessonId == 0)
+            {
+                LessonId = 4;
+            }
 
             var values = new ScorListModel()
             {
-                 scors = _scorsManager.GetAll().Where(x=>x.ExamId == id).ToList(),
+                 scors = _scorsManager.GetTogetherList().Where(x=>x.ExamId==id).ToList(),
+                
+                 LessonId = LessonId,
 		    };
+
+            ViewBag.LessonId = LessonId;
+
 
 
             if (values!=null)
             {
 				return View(values);
 			}
-
-
             //hata mesajı verilecek
             return View();
 
