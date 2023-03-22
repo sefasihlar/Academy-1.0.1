@@ -1,0 +1,170 @@
+﻿@model WebUI.Models.ScorListModel
+@{
+    ViewData["Title"] = "ExamScor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div class="text-center">
+    <h1><strong class="text-center">Sınav Sonuçlarım</strong></h1>
+</div>
+<br />
+<div class="container">
+    <h4 class="modal-title text-center"><strong> Sınav Sonucu Detayı</strong></h4>
+    @foreach (var item in Model.scors)
+    {
+        <div class="row">
+            <div class=" analyc col-md-5">
+
+                <h4><strong>Sınav Adı: Buraya başlık gelecek</strong></h4>
+                <h4><strong>Puan: </strong>@item.Scor</h4>
+                <h4><strong>Netiniz: </strong>@item.Average</h4>
+                <h4><strong>Sıralamanız: </strong>@item.Id</h4>
+
+
+            </div>
+            <div class="col-md-7">
+                <canvas height="100px" id="myChart"></canvas>
+            </div>
+            @section Scripts{
+
+            <script>
+                const ctx = document.getElementById('myChart');
+
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Doğru Sayısı', 'Yanlış Sayısı', 'Boş Sayısı'],
+                        datasets: [{
+                            label: '',
+                            data: [@item.True, @item.False, @item.Null],
+                            backgroundColor: [
+                                'blue', // doğru
+                                'red', // yanlış
+                                'orange', // boş
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {}
+                });
+            </script>
+            }
+         </div>
+    }
+
+    <div class="row">
+        <div class="title">
+            <h3><strong> Ders Bazlı Başarı Tablosu</strong></h3>
+
+        </div>
+        <table class="col-12 container">
+            @foreach (var item in Model.scors)
+            {
+                
+                <tr>
+                    <th>Ders Adı</th>
+                    <th>Doğru Sayısı</th>
+                    <th>Yanlış Sayısı</th>
+                    <th>Boş Sayısı</th>
+                    <th>Başarı Oranı</th>
+                </tr>
+                <tr>
+                    <td>Buradya ders adı gelecek</td>
+                    <td>@item.True</td>
+                    <td>@item.False</td>
+                    <td>@item.Null</td>
+                    <td>%@item.Scor</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <br />
+    <hr />
+    <h4 class="modal-title text-center"><strong> Ders Bazlı Sonuç Ekranı</strong></h4>
+    <div class="row">
+        <form>
+        <div class="col-5">
+            <span><strong> Ders</strong></span>
+            @await Component.InvokeAsync("LessonList")
+            <button class="btn btn-primary" type="submit">Filtrele</button>
+        </div>
+        </form>
+        <div class="col-7">
+            <table class="col-12">
+            
+                <tr>
+                    <th>Doğru Sayısı</th>
+                    <th>Yanlış Sayısı</th>
+                    <th>Boş Sayısı</th>
+                    <th>Başarı Oranı</th>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>%90</td>
+                </tr>
+
+
+            </table>
+        </div>
+        <div class="row">
+            <div class="title">
+                <h4><strong>Konu Bazlı Analiz</strong> </h4>
+            </div>
+            <div class="subject-Analyc ">
+                <table class=col-12>
+                    <tr>
+                        <th scope="col">Konu Adı</th>
+                        <th scope="col">Soru Sayısı</th>
+                        <th scope="col">Doğru Sayısı</th>
+                        <th scope="col">Yanlış Sayısı</th>
+                        <th scope="col">Boş Sayısı</th>
+                        <th scope="col">Başarı Oranı</th>
+
+                    </tr>
+                    <tr>
+                        <td scope="col">Üslü Sayılar</td>
+                        <td scope="col">6</td>
+                        <td scope="col">4</td>
+                        <td scope="col">2</td>
+                        <td scope="col">0</td>
+                        <td scope="col">75%</td>
+
+                    </tr>
+                    <tr>
+                        <td>Köklü Sayılar</td>
+                        <td>6</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>75%</td>
+
+                    </tr>
+                    <tr>
+                        <td>Geometrik Şekillerde</td>
+                        <td>6</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>75%</td>
+
+                    </tr>
+                    <tr>
+                        <td>Trigonometri</td>
+                        <td>6</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>75%</td>
+
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<br />
+<br />

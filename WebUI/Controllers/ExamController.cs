@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebUI.Extensions;
@@ -11,11 +13,20 @@ namespace WebUI.Controllers
     public class ExamController : Controller
     {
         ClassManager _classManager = new ClassManager(new EfCoreClassRepository());
-        LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
+		AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
+		LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
         SubjectManager _subjectManager = new SubjectManager(new EfCoreSubjectRepository());
         ExamManager _examManager = new ExamManager(new EfCoreExamRepository());
         QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
-        public IActionResult Index()
+
+		private readonly UserManager<AppUser> _userManager;
+
+		public ExamController(UserManager<AppUser> userManager)
+		{
+			_userManager = userManager;
+		}
+
+		public IActionResult Index()
         {
 
             var values = new ExamListModel()
@@ -36,10 +47,15 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(ExamModel model)
         {
+			var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
 
-            var values = new Exam()
+			var user = _appUserManager.GetById(Convert.ToInt32(userId));
+
+			var values = new Exam()
             {
                 Id = model.Id,
+                UserId = user.Id,
+                Timer = model.Timer,
                 Title = model.Title,
                 Description = model.Description,
                 ExamDate = model.ExamDate,

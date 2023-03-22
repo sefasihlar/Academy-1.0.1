@@ -37,7 +37,6 @@ namespace WebUI.Controllers
         {
             // Sınava katılan tüm öğrencilerin listesini al
             var users = _userManager.Users.Where(x=>x.Authority==false).ToList();
-
             // Her kullanıcının sınav sonucunu hesapla ve veritabanına kaydet
             foreach (var user in users)
             {
@@ -96,37 +95,41 @@ namespace WebUI.Controllers
 				decimal net = questionTrue - totalNegative;
 				decimal totalScore = net * 100m; // 'm' ekleyerek decimal tipinde bir sabit belirtiyoruz
 				int totalQuestion = userExamAnswers.Count;
-				decimal ExamScor = Math.Round(totalScore / totalQuestion, 2); // sonucu iki ondalık basamakla yuvarlıyoruz
-
-				var model = new ExamAnswerListModel()
+                if (totalScore!=0)
                 {
-                    ExamAnswers = userExamAnswers,
-                    QuestionFalse = questionFalse,
-                    QuestionTrue = questionTrue,
-                    QuestionNull = nullQuestion,
-                    Score = score,
-                    CorrectAnswers = correctAnswers,
-                    UserId = user.Id, // Kullanıcının Id'sini de modelde kaydet
-                    ExamId = id // Sınavın Id'sini de modelde kaydet
-                };
+					decimal ExamScor = Math.Round(totalScore / totalQuestion, 2);
+					var model = new ExamAnswerListModel()
+					{
+						ExamAnswers = userExamAnswers,
+						QuestionFalse = questionFalse,
+						QuestionTrue = questionTrue,
+						QuestionNull = nullQuestion,
+						Score = score,
+						CorrectAnswers = correctAnswers,
+						UserId = user.Id, // Kullanıcının Id'sini de modelde kaydet
+						ExamId = id // Sınavın Id'sini de modelde kaydet
+					};
 
 
-                var values = new Scors()
-                {
-                    UserId = model.UserId,
-                    ExamId = model.ExamId,
-                    True = model.QuestionTrue,
-                    False = model.QuestionFalse,
-                    Null = model.QuestionNull,
-                    Average = net,
-                    Scor = ExamScor,
-                    Condition = true,
-                };
+					var values = new Scors()
+					{
+						UserId = model.UserId,
+						ExamId = model.ExamId,
+						True = model.QuestionTrue,
+						False = model.QuestionFalse,
+						Null = model.QuestionNull,
+						Average = net,
+						Scor = ExamScor,
+						Condition = true,
+					};
 
-           
+					// Modeli veritabanına kaydet
+					_scoresManager.Create(values);
 
-                // Modeli veritabanına kaydet
-                _scoresManager.Create(values);
+				}
+				 // sonucu iki ondalık basamakla yuvarlıyoruz
+
+				
             }
 
             return RedirectToAction("Index", "Exam");

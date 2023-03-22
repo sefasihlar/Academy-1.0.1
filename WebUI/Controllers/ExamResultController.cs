@@ -13,6 +13,7 @@ namespace WebUI.Controllers
     {
         ExamAnswerManager _examAnswerManager = new ExamAnswerManager(new EfCoreExamAswerRepository());
         SolutionManager _solutionManager = new SolutionManager(new EfCoreSolutionRepository());
+        ScorsManager _scorsManager = new ScorsManager(new EfCoreScorsRepository());
         CartManager _cartManager = new CartManager(new EfCoreCartRepository());
         AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
         private readonly UserManager<AppUser> _userManager;
@@ -26,8 +27,6 @@ namespace WebUI.Controllers
 
         public IActionResult Index()
         {
-
-
             var cart = _cartManager.GetCartByUserId(_userManager.GetUserId(User));
 
             if (cart != null)
@@ -46,7 +45,7 @@ namespace WebUI.Controllers
                         LessonName = x.Exam.Lesson.Name,
                         SubjectName = x.Exam.Subject.Name,
 
-                    }).ToList()
+                    }).ToList() 
                 };
                 return View(values);
             }
@@ -140,6 +139,29 @@ namespace WebUI.Controllers
                 VideoUrl = questionId.VideoUrl,
             };
             return View(values);
+        }
+
+
+
+        public IActionResult ExamScor(int id)
+        {
+
+            var values = new ScorListModel()
+            {
+                 scors = _scorsManager.GetAll().Where(x=>x.ExamId == id).ToList(),
+		    };
+
+
+            if (values!=null)
+            {
+				return View(values);
+			}
+
+
+            //hata mesajı verilecek
+            return View();
+
+        
         }
 
      

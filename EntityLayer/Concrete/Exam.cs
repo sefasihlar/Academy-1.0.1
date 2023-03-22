@@ -1,4 +1,6 @@
-﻿namespace EntityLayer.Concrete
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+
+namespace EntityLayer.Concrete
 {
     public class Exam
     {
@@ -16,6 +18,11 @@
 
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
+
+        public int UserId { get; set; }
+        public AppUser User { get; set; }
+
+        public int Timer { get; set; }
 
         public List<ExamAnswers> ExamAnswers { get; set; }
         public List<ExamQuestions> ExamQuestions { get; set; }

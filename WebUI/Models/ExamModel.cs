@@ -11,7 +11,9 @@ namespace WebUI.Models
         public string Description { get; set; }
         public string ExamDate { get; set; }
 
-        public int ClassId { get; set; }
+		public int Timer { get; set; }
+
+		public int ClassId { get; set; }
         public Class Class { get; set; }
 
         public int LessonId { get; set; }
