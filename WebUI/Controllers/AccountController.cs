@@ -24,16 +24,18 @@ namespace WebUI.Controllers
         CartManager _cartManager = new CartManager(new EfCoreCartRepository());
         GuardianManager _guardianManager = new GuardianManager(new EfCoreGuardianRepository());
         private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<AppRole> _roleManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IEmailSender _emailSender;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailSender emailSender, IWebHostEnvironment webHostEnvironment)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailSender emailSender, IWebHostEnvironment webHostEnvironment,RoleManager<AppRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _webHostEnvironment = webHostEnvironment;
+            _roleManager = roleManager;
         }
 
         [Authorize(Roles = "Müdür")]
@@ -121,6 +123,7 @@ namespace WebUI.Controllers
                     _guardianManager.Create(_guardian);
                 }
 
+                await _userManager.AddToRoleAsync(user, "Öğrenci");
             }
             if (result.Succeeded)
             {

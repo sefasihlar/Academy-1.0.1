@@ -6,5 +6,11 @@ namespace WebUI.Models
     {
         public List<Scors> scors { get; set; }
         public int LessonId { get; set; }
+
+        public string? ExamTitle { get; set; }
+        public string? ExamDescription { get; set; }
+        public string? ExamClass { get; set; }
+        public int  ExamDate { get; set; }
+        public int ExamTimer { get; set; }
     }
 }

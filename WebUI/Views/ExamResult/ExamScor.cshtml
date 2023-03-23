@@ -1,5 +1,4 @@
-﻿
-@model WebUI.Models.ScorListModel
+﻿@model WebUI.Models.ScorListModel
 @{
     ViewData["Title"] = "ExamScor";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,7 +18,7 @@
                 <h4><strong>Sınav Adı:@item.Exam.Title</strong></h4>
                 <h4><strong>Puan: </strong>@item.Scor</h4>
                 <h4><strong>Netiniz: </strong>@item.Average</h4>
-                <h4><strong>Sıralamanız: </strong>@item.Id</h4>
+                <h4><strong>Sıralamanız: </strong></h4>
 
 
             </div>
@@ -49,8 +48,8 @@
                     options: {}
                 });
             </script>
-            }
-         </div>
+        }
+        </div>
     }
 
     <div class="row">
@@ -61,7 +60,7 @@
         <table class="col-12 container">
             @foreach (var item in Model.scors)
             {
-                
+
                 <tr>
                     <th>Ders Adı</th>
                     <th>Doğru Sayısı</th>
@@ -83,17 +82,18 @@
     <hr />
     <h4 class="modal-title text-center"><strong> Ders Bazlı Sonuç Ekranı</strong></h4>
     <div class="row">
-        @if (Model.LessonId==0)
+        @if (Model.LessonId == 0)
         {
-            <input type="hidden" value="4" name="LessonId"/>
+            <input type="hidden" value="4" name="LessonId" />
         }
-        <form asp-asp-controller="ExamResult" asp-action="ExamScor" method="post">
-            <div class="col-5">
+        <div class="col-5">
+            <form asp-asp-controller="ExamResult" asp-action="ExamScor" method="post">
                 <span><strong> Ders</strong></span>
                 @await Component.InvokeAsync("LessonList")
                 <button class="btn btn-primary" type="submit">Filtrele</button>
-            </div>
-        </form>
+
+            </form>
+        </div>
 
         @{
             var lessonId = ViewBag.LessonId;

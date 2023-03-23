@@ -4,6 +4,7 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WebUI.Extensions;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -120,19 +121,25 @@ namespace WebUI.Controllers
 						Null = model.QuestionNull,
 						Average = net,
 						Scor = ExamScor,
-						Condition = true,
+						Condition = false,
 					};
 
 					// Modeli veritabanına kaydet
 					_scoresManager.Create(values);
+                    TempData.Put("message", new ResultMessage()
+                    {
+                        Title = "Başarılı",
+                        Message = "Hesaplama işlemi başarılı",
+                        Css = "success"
+                    });
 
-				}
+                }
 				 // sonucu iki ondalık basamakla yuvarlıyoruz
 
 				
             }
 
-            return RedirectToAction("Index", "Exam");
+            return RedirectToAction("TeacherExams", "MyExam");
         }
     }
 }

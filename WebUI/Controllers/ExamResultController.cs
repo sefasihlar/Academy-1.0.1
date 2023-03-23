@@ -45,7 +45,7 @@ namespace WebUI.Controllers
                         LessonName = x.Exam.Lesson.Name,
                         SubjectName = x.Exam.Subject.Name,
 
-                    }).ToList() 
+                    }).ToList()
                 };
                 return View(values);
             }
@@ -143,35 +143,51 @@ namespace WebUI.Controllers
 
 
 
-        public IActionResult ExamScor(int id,int LessonId)
+        public IActionResult ExamScor(int id, int LessonId,int UserId)
         {
             if (LessonId == 0)
             {
                 LessonId = 4;
             }
 
+            ViewBag.lessonId = LessonId;
+
+            ViewBag.examId = id;
+
             var values = new ScorListModel()
             {
-                 scors = _scorsManager.GetTogetherList().Where(x=>x.ExamId==id).ToList(),
-                
-                 LessonId = LessonId,
-		    };
+                scors = _scorsManager.GetTogetherList().Where(x => x.ExamId == id & x.UserId== UserId).ToList(),
+                LessonId = LessonId,
+            };
 
-            ViewBag.LessonId = LessonId;
-
-
-
-            if (values!=null)
+            if (values != null)
             {
-				return View(values);
-			}
+                return View(values);
+            }
             //hata mesajı verilecek
             return View();
 
-        
         }
 
-     
+
+        public IActionResult AllStudentExamResult(int id)
+        {
+            ViewBag.examId = id;
+
+            var values = new ScorListModel()
+            {
+                scors = _scorsManager.GetTogetherList().Where(x => x.ExamId == id).ToList(),
+            };
+
+            if (values != null)
+            {
+                return View(values);
+            }
+            //hata mesajı verilecek
+            return View();
+        }
+
+
 
 
 

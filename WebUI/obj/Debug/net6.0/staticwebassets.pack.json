@@ -177,6 +177,10 @@
       "PackagePath": "staticwebassets\\Template\\meta_logo.png"
     },
     {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\ogrenci\\analiz.html",
+      "PackagePath": "staticwebassets\\Template\\ogrenci\\analiz.html"
+    },
+    {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\ogrenci\\ogrenci_cözüm_video_sayfasi.html",
       "PackagePath": "staticwebassets\\Template\\ogrenci\\ogrenci_cözüm_video_sayfasi.html"
     },
@@ -279,6 +283,10 @@
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlari\\ögrenci.html",
       "PackagePath": "staticwebassets\\Template\\yetkili\\Ayarlar\\kullanici_ayarlari\\ögrenci.html"
+    },
+    {
+      "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\ogt_analiz.html",
+      "PackagePath": "staticwebassets\\Template\\yetkili\\ogt_analiz.html"
     },
     {
       "Id": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_index.html",

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "07RwJhm1OcwI0058eOPlCUU+eTZhFtNWmDQm6L0PRMI=",
+  "Hash": "/ht1vWINRjN1uhvNeWRWZzwlumG2l1767gJ/qVmVrhk=",
   "Source": "WebUI",
   "BasePath": "_content/WebUI",
   "Mode": "Default",
@@ -4131,6 +4131,23 @@
       "OriginalItemSpec": "wwwroot\\Template\\meta_logo.png"
     },
     {
+      "Identity": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\ogrenci\\analiz.html",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "Template/ogrenci/analiz.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Template\\ogrenci\\analiz.html"
+    },
+    {
       "Identity": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\ogrenci\\ogrenci_cözüm_video_sayfasi.html",
       "SourceId": "WebUI",
       "SourceType": "Discovered",
@@ -4588,6 +4605,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Template\\yetkili\\Ayarlar\\kullanici_ayarlari\\Roller.html"
+    },
+    {
+      "Identity": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\ogt_analiz.html",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "Template/yetkili/ogt_analiz.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Template\\yetkili\\ogt_analiz.html"
     },
     {
       "Identity": "C:\\Users\\sihla\\Masaüstü\\MetaAkdeniz\\SampleAcademy\\Academy\\WebUI\\wwwroot\\Template\\yetkili\\yetkili_index.html",
