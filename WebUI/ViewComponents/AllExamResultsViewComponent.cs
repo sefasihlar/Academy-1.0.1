@@ -11,7 +11,7 @@ namespace WebUI.ViewComponents
         ScorsManager _scorsManager = new ScorsManager(new EfCoreScorsRepository());
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IViewComponentResult Invoke(int LessonId)
+        public IViewComponentResult Invoke(int LessonId,int UserId)
         {
             if (LessonId == 0)
             {
@@ -19,7 +19,7 @@ namespace WebUI.ViewComponents
             }
             var values = new ScorListModel()
             {
-                scors = _scorsManager.GetTogetherList().Where(x => x.Exam.Lesson.Id == ViewBag.LessonId).ToList()
+                scors = _scorsManager.GetTogetherList().Where(x => x.Exam.Lesson.Id == ViewBag.LessonId & x.UserId == ViewBag.userId).ToList()
             };
 
             if (values!=null)

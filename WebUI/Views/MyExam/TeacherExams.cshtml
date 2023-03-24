@@ -31,9 +31,20 @@
                                     <a href="/MyExam/Exam/@item.Id" class="custom-card-button linear-background mr-5">
                                         İ <i class="bi bi-eye custom-card-icons"></i>
                                     </a>
-                                    <a href="/CalculateExamScors/AllUsersResultQuestions/@item.Id" class="custom-card-button linear-background" id="myButton">
-                                        H <i class="bi bi-calculator-fill"></i>
-                                    </a>
+
+                                    @if (ViewBag.HasExamScores==true)
+                                    {
+                                        <a  class="custom-card-button linear-background" style="color:wheat">
+                                            H <i class="bi bi-x-octagon-fill" style="color:red"></i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/CalculateExamScors/AllUsersResultQuestions/@item.Id" class="custom-card-button linear-background" id="myButton">
+                                            H <i class="bi bi-calculator-fill"></i>
+                                        </a>
+                                    }
+                               
                                     @section Scripts{
                                     <script>
                                         document.getElementById('myButton').addEventListener('click', function (e) {

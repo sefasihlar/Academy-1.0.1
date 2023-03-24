@@ -5,6 +5,7 @@ using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebUI.Models;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace WebUI.Controllers
 {
@@ -42,12 +43,27 @@ namespace WebUI.Controllers
                         Name = x.Exam.Title,
                         Description = x.Exam.Description,
                         ExamDate = x.Exam.ExamDate,
+                        LessonId = x.Exam.LessonId,
                         LessonName = x.Exam.Lesson.Name,
                         SubjectName = x.Exam.Subject.Name,
 
                     }).ToList()
+
+
+                    
                 };
-                return View(values);
+
+                ViewBag.userId = cart.UserId;
+                
+
+                var examId = values.CartItems.Select(x=>x.ExamId).FirstOrDefault();
+
+                var scorsCondition = _scorsManager.GetAll().Where(x => x.ExamId == examId).ToList();
+
+                if (scorsCondition.Any(x=>x.Condition==true))
+                {
+                    return View(values);
+                }
             }
             //eğer kullanıcıya tanımlı bir sınav yoksa mesaj bildirilsin
             return View();
@@ -154,6 +170,8 @@ namespace WebUI.Controllers
 
             ViewBag.examId = id;
 
+            ViewBag.userId = UserId;
+
             var values = new ScorListModel()
             {
                 scors = _scorsManager.GetTogetherList().Where(x => x.ExamId == id & x.UserId== UserId).ToList(),
@@ -179,6 +197,17 @@ namespace WebUI.Controllers
                 scors = _scorsManager.GetTogetherList().Where(x => x.ExamId == id).ToList(),
             };
 
+            if (values.scors.Any(x => x.Condition == false))
+            {
+                ViewBag.condition = false;
+            }
+
+            if (values.scors.Any(x => x.Condition == true))
+            {
+                ViewBag.condition = true;
+            }
+
+
             if (values != null)
             {
                 return View(values);
@@ -186,12 +215,5 @@ namespace WebUI.Controllers
             //hata mesajı verilecek
             return View();
         }
-
-
-
-
-
-
-
     }
 }

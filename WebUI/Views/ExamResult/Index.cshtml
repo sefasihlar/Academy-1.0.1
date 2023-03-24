@@ -5,47 +5,57 @@
 <br />
 <div class="text-center"><h1><strong>Sınav Sonuçlarım</strong></h1></div>
 <main class="content d-flex justify-content-between flex-wrap">
-    @if (Model!=null)
+    @if (Model != null)
     {
         @foreach (var item in Model.CartItems)
         {
-			<div class="student-exam-result-content">
-				<div class="row">
-					<div class="col-8">
-						<div class="student-exam-result-content-title col-12 ">
-							<h4><strong>@item.Name</strong></h4>
-						</div>
-						<div class="student-exam-result-content-info  col-12">
-							<strong>Ders:</strong>@item.LessonName
-						</div>
-						<div class="student-exam-result-content-info  col-12">
-							<strong>Konu:</strong>@item.SubjectName
-						</div>
-						<div class="student-exam-result-content-score col-12 ">
-							<strong>Puan:</strong>95
-						</div>
+            <div class="student-exam-result-content">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="student-exam-result-content-title col-12 ">
+                            <h4><strong>@item.Name</strong></h4>
+                        </div>
+                        <div class="student-exam-result-content-info  col-12">
+                            <strong>Ders:</strong>@item.LessonName
+                        </div>
+                        <div class="student-exam-result-content-info  col-12">
+                            <strong>Konu:</strong>@item.SubjectName
+                        </div>
+                        <div class="student-exam-result-content-score col-12 ">
+                            <strong>Puan:</strong>95
+                        </div>
 
-					</div>
-					<div class="col-4">
-						<a id="myBtn" class="custom-card-icon-container">
-							<i class="bi bi-eye-fill"></i>
-						</a>
-						<div class="student-exam-result-content-question-link-container col-8">
-							<a class="student-exam-result-content-question-link" href="/ExamResult/ResultQuestions/@item.ExamId">
-								<strong>Sorular</strong>
-							</a>
-							<a class="student-exam-result-content-question-link" href="/CalculateExamScors/AllUsersResultQuestions/@item.ExamId">
-								<strong>Tüm sonuçlar</strong>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6 mt-3">
+                            <a href="/ExamResult/ResultQuestions/@item.ExamId" class="custom-card-button linear-background">
+                                Sorular <i class="bi bi-eye custom-card-icons"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <form action="/ExamResult/ExamScor/@item.ExamId" method="post">
+                                <input type="hidden" name="lessonId" value="@item.LessonId" />
+                                <input type="hidden" name="userId" value="@ViewBag.userId" />
+                                <button type="submit" class="custom-card-button linear-background" style="border:none">
+                                    Analiz <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
         }
     }
 
 
-	
+
 
 </main>
 

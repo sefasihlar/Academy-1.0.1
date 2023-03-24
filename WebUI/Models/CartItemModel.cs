@@ -8,6 +8,7 @@
         public string Description { get; set; }
         public string ExamDate { get; set; }
         public string ClassName { get; set; }
+        public int LessonId { get; set; }
         public string LessonName { get; set; }
         public string SubjectName { get; set; }
 

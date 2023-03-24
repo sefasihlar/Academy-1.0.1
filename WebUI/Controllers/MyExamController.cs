@@ -11,6 +11,7 @@ namespace WebUI.Controllers
     public class MyExamController : Controller
     {
         ExamManager _examManager = new ExamManager(new EfCoreExamRepository());
+        ScorsManager _scorsManager = new ScorsManager(new EfCoreScorsRepository());
         AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
         QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
         private readonly UserManager<AppUser> _userManager;
@@ -40,8 +41,12 @@ namespace WebUI.Controllers
 
             var values = new ExamListModel()
             {
-                Exams = _examManager.GetWithList().Where(x=>x.UserId==getId.Id).ToList(),
+                Exams = _examManager.GetWithList().Where(x => x.UserId == getId.Id).ToList(),
             };
+
+            bool scors = _scorsManager.GetAll().Any(x => values.Exams.Any(e => e.Id == x.ExamId));
+
+            ViewBag.HasExamScores = scors;
 
             return View(values);
         }

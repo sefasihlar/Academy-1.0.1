@@ -50,7 +50,7 @@ namespace WebUI.Controllers
 
             });
         }
-        [Authorize(Roles = "Öğretmen")]
+        [Authorize(Roles = "Öğretmen,Müdür")]
         [HttpGet]
         public IActionResult Register()
         {
@@ -76,7 +76,7 @@ namespace WebUI.Controllers
 
         //Kullanıcı verli bilgileride burada ekleniyor aynı anda kayıt işlemi için
 
-        [Authorize(Roles = "Öğretmen")]
+        [Authorize(Roles = "Öğretmen,Müdür")]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model, GuardianModel guardian)
         {
