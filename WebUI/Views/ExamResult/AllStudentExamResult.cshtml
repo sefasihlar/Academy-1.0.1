@@ -53,27 +53,7 @@
 
                             <div class="row d-flex">
                                 @await Component.InvokeAsync("ExamInfo")
-                                <div class="col-lg-5 ">
-                                    <table class="table">
-                                        <tr>
-                                            <th>Doğru Oranı:</th>
-                                            <td>55%</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Yanlış Oranı:</th>
-                                            <td>25%</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Boş Oranı:</th>
-                                            <td>15%</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Başarı Oranı:</th>
-                                            <td>%60</td>
-                                        </tr>
-
-                                    </table>
-                                </div>
+                                @await Component.InvokeAsync("ExamResultPercentile")
                                 <div class="col-lg-2">
                                     <canvas width="150px" height="150px" id="myChart"></canvas>
                                 </div>

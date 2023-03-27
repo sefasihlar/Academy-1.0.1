@@ -12,5 +12,11 @@ namespace WebUI.Models
         public string? ExamClass { get; set; }
         public int  ExamDate { get; set; }
         public int ExamTimer { get; set; }
+
+        public decimal TotalNullPercentile { get; set; }
+        public decimal TotalFalsePercentile { get; set; }
+        public decimal TotalTruePercentile { get; set; }
+        public decimal TotalScorPercentile { get; set; }
+
     }
 }
