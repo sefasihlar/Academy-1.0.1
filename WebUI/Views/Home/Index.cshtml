@@ -1,4 +1,5 @@
-﻿@{
+﻿@model TotalCountsModel
+@{
     ViewData["Title"] = "Home Page";
 }
 <div id="loading">
@@ -22,8 +23,7 @@
                                     <div class="col-auto">
                                     </div>
                                 </div>
-                                <h1 class="mt-1 mb-3">2.382</h1>
-
+                                @await Component.InvokeAsync("TotalStudent")
                             </div>
                         </div>
                         <div class="card">
@@ -36,7 +36,7 @@
                                     <div class="col-auto">
                                     </div>
                                 </div>
-                                <h1 class="mt-1 mb-3">250</h1>
+                               @await Component.InvokeAsync("TotalExam")
 
                             </div>
                         </div>
@@ -65,7 +65,7 @@
 
 
                                 </div>
-                                <h1 class="mt-1 mb-3">64</h1>
+                                @await Component.InvokeAsync("TotalTeacher")
 
                             </div>
                         </div>
@@ -78,12 +78,43 @@
             <div class="card flex-fill w-100">
                 <div class="card-header">
 
-                    <h5 class="card-title mb-0">Aylık Katılım</h5>
+                    <h5 class="card-title mb-0">SINAV ORANI</h5>
                 </div>
                 <div class="card-body py-3">
                     <div class="chart chart-sm">
-                        <canvas id="chartjs-dashboard-line"></canvas>
+                        <canvas id="analize" style="width:100%;max-width:600px"></canvas>
                     </div>
+                    @section Scripts{
+                        @await Component.InvokeAsync("TotalLessonExam")
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                // Pie chart
+                                new Chart(document.getElementById("chartjs-dashboard-pie"), {
+                                    type: "pie",
+                                    data: {
+                                        labels: ["Soru", "Çözüm"],
+                                        datasets: [{
+                                            data: [@Model.TotalQuestion, @Model.TotalSolution],
+                                            backgroundColor: [
+                                                window.theme.primary,
+                                                window.theme.danger
+                                            ],
+                                            borderWidth: 5
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: !window.MSInputMethodContext,
+                                        maintainAspectRatio: false,
+                                        legend: {
+                                            display: false
+                                        },
+                                        cutoutPercentage: 75
+                                    }
+                                });
+                            });
+                        </script>
+                    }
                 </div>
             </div>
         </div>
@@ -106,13 +137,14 @@
                         <table class="table mb-0">
                             <tbody>
                                 <tr>
-                                    <td>Kız</td>
-                                    <td class="text-end">4306</td>
+                                    <td>Soru</td>
+                                    <td class="text-end">@await Component.InvokeAsync("TotalQuestion")</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Erkek</td>
-                                    <td class="text-end">1689</td>
+                                    <td>Çözüm</td>
+                                    <td class="text-end">@await Component.InvokeAsync("TotalSolution")</td>
+                          
                                 </tr>
                             </tbody>
                         </table>
@@ -149,109 +181,6 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-12 col-lg-8 col-xxl-9 d-flex">
-            <div class="card flex-fill">
-                <div class="card-header">
 
-                    <h5 class="card-title mb-0"> Başarı Sıralama</h5>
-                </div>
-                <table class="table table-hover my-0">
-                    <thead>
-                        <tr>
-                            <th>Sıra</th>
-                            <th class="d-none d-xl-table-cell">İsim</th>
-                            <th class="d-none d-xl-table-cell">Soyisim</th>
-                            <th class="d-none d-xl-table-cell">Sınıf</th>
-                            <th class="d-none d-md-table-cell">Şube</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="badge bg-warning">1</span></td>
-                            <td class="d-none d-xl-table-cell">Ahmet </td>
-                            <td class="d-none d-xl-table-cell">Çıtak</td>
-                            <td><span>9</td>
-                            <td class="d-none d-md-table-cell">A</td>
-                        </tr>
-                        <tr>
-                            <td><span class="badge bg-warning">2</span></td>
-                            <td class="d-none d-xl-table-cell">Ece</td>
-                            <td class="d-none d-xl-table-cell">Sah</td>
-                            <td><span>11</td>
-                            <td class="d-none d-md-table-cell">D</td>
-                        </tr>
-                        <tr>
-                            <td><span class="badge bg-warning">3</span></td>
-                            <td class="d-none d-xl-table-cell">Mehmet</td>
-                            <td class="d-none d-xl-table-cell">Haşim</td>
-                            <td><span>10</td>
-                            <td class="d-none d-md-table-cell">C</td>
-                        </tr>
-                        <tr>
-                            <td><span class="">4</span></td>
-                            <td class="d-none d-xl-table-cell">Aysel</td>
-                            <td class="d-none d-xl-table-cell">Cantürk</td>
-                            <td>12</span></td>
-                            <td class="d-none d-md-table-cell">E</td>
-                        </tr>
-                        <tr>
-                            <td><span class="">5</span></td>
-                            <td class="d-none d-xl-table-cell">Can</td>
-                            <td class="d-none d-xl-table-cell">Marangozoğlu</td>
-                            <td>9</span></td>
-                            <td class="d-none d-md-table-cell">B</td>
-                        </tr>
-                        <tr>
-                            <td><span class="">6</span></td>
-                            <td class="d-none d-xl-table-cell">Mustafa</td>
-                            <td class="d-none d-xl-table-cell">Yılmaz</td>
-                            <td>11</span></td>
-                            <td class="d-none d-md-table-cell">A</td>
-                        </tr>
-                        <tr>
-                            <td><span class="">7</span></td>
-                            <td class="d-none d-xl-table-cell">Mehmet</td>
-                            <td class="d-none d-xl-table-cell">Hançerli</td>
-                            <td>12</span></td>
-                            <td class="d-none d-md-table-cell">C</td>
-                        </tr>
-                        <tr>
-                            <td><span class="badge bg-danger">8</span></td>
-                            <td class="d-none d-xl-table-cell">Zeynep</td>
-                            <td class="d-none d-xl-table-cell">Döken</td>
-                            <td>10</span></td>
-                            <td class="d-none d-md-table-cell">A</td>
-                        </tr>
-                        <tr>
-                            <td><span class="badge bg-danger">9</span></td>
-                            <td class="d-none d-xl-table-cell">Elif</td>
-                            <td class="d-none d-xl-table-cell">Yalçın</td>
-                            <td>9</span></td>
-                            <td class="d-none d-md-table-cell">C</td>
-                        </tr>
-                        <tr>
-                            <td><span class="badge bg-danger">10</span></td>
-                            <td class="d-none d-xl-table-cell">İsmail</td>
-                            <td class="d-none d-xl-table-cell">Kordiken</td>
-                            <td>12</span></td>
-                            <td class="d-none d-md-table-cell">E</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="col-12 col-lg-4 col-xxl-3 d-flex">
-            <div class="card flex-fill w-100">
-                <div class="card-header">
 
-                    <h5 class="card-title mb-0">Monthly Sales</h5>
-                </div>
-                <div class="card-body d-flex w-100">
-                    <div class="align-self-center chart chart-lg">
-                        <canvas id="chartjs-dashboard-bar"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @await Component.InvokeAsync("LastExamResult")

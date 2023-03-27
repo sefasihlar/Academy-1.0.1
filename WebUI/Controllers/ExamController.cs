@@ -190,14 +190,14 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Exam(int id)
         {
-            var süre = 60;
-
+            var exam = _examManager.GetById(id);
+            
             var values = new QuestionListModel()
             {
 
                 Questions = _questionManager.GetQuestionsByExam(id),
 
-                SureDegeri = süre
+                SureDegeri = exam.Timer
 
             };
 

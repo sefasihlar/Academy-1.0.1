@@ -1,4 +1,7 @@
-﻿using EntityLayer.Concrete;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EfCoreRepository;
+using DataAccessLayer.EntityFreamwork;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +14,9 @@ namespace WebUI.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly ILogger<HomeController> _logger;
-
+        SolutionManager _solutinManager = new SolutionManager(new EfCoreSolutionRepository());
+        QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
+     
         public HomeController(UserManager<AppUser> userManager, ILogger<HomeController> logger)
         {
             _userManager = userManager;
@@ -21,8 +26,13 @@ namespace WebUI.Controllers
         [Authorize]
         public IActionResult Index()
         {
-
-            return View();
+            var values = new TotalCountsModel()
+            {
+                TotalQuestion = _questionManager.GetAll().Count(),
+                TotalSolution = _solutinManager.GetAll().Count()
+            };
+            
+            return View(values);
         }
 
         public IActionResult Privacy()
@@ -35,6 +45,8 @@ namespace WebUI.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
 
     }
 }

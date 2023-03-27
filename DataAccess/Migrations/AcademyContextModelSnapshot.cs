@@ -643,6 +643,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("Null")
                         .HasColumnType("int");
 
+                    b.Property<int>("Rank")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Scor")
                         .HasColumnType("decimal(18,2)");
 

@@ -2,6 +2,10 @@
 @{
     ViewData["Title"] = "AllStudentExamResult";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+    int count = Model.scors.Count(); // Toplam öğrenci sayısı
+    int firstThree = 3; // İlk üç öğrenci sayısı
+    int lastThree = count - firstThree; // Son üç öğrenci sayısı
 }
 
 <main class="content">
@@ -103,10 +107,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var item in Model.scors)
+                                            @foreach (var item in Model.scors.OrderByDescending(s => s.Scor))
                                             {
-                                                <tr>
-                                                    <td><span class="badge bg-warning">1</span></td>
+                                                <tr >
+                                                    <td><span class="badge" style="@(counter <= firstThree ? "background-color: orange;" : (counter > lastThree ? "background-color: red;" : ""))">@counter</span></td>
                                                     <td class="">@item.User.Name </td>
                                                     <td class="">@item.User.SurName</td>
                                                     <td class="">@item.True</td>
@@ -121,8 +125,8 @@
                                                         </form>
                                                     </td>
                                                 </tr>
+                                                counter++;
                                             }
-
                                         </tbody>
                                     </table>
                                 </div>

@@ -22,6 +22,8 @@
     <link href="/Template/assets/app.css" rel="stylesheet">
     <link href="/Template/assets/css/custom.css" rel="stylesheet">
 
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
@@ -217,33 +219,7 @@
         });
     </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Pie chart
-            new Chart(document.getElementById("chartjs-dashboard-pie"), {
-                type: "pie",
-                data: {
-                    labels: ["Kız", "Erkek"],
-                    datasets: [{
-                        data: [4306, 1689],
-                        backgroundColor: [
-                            window.theme.primary,
-                            window.theme.danger
-                        ],
-                        borderWidth: 5
-                    }]
-                },
-                options: {
-                    responsive: !window.MSInputMethodContext,
-                    maintainAspectRatio: false,
-                    legend: {
-                        display: false
-                    },
-                    cutoutPercentage: 75
-                }
-            });
-        });
-    </script>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Bar chart
