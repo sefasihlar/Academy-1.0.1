@@ -3,6 +3,7 @@ using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using WebUI.Extensions;
 using WebUI.Models;
 
@@ -12,11 +13,14 @@ namespace WebUI.Controllers
     {
 
         QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
+        ExamManager _examManager = new ExamManager(new EfCoreExamRepository());
         ExamQuestionManager _examQuestionManager = new ExamQuestionManager(new EfCoreExamQuestionRepository());
 
 
         public IActionResult Index(ExamModel model)
         {
+            List<int> SelectedQuestionIds = new List<int>();
+            var questions = _examQuestionManager.GetQuestionsList().Where(x => x.ExamId == model.Id).ToList();
 
             var values = new QuestionListModel()
             {
@@ -24,7 +28,26 @@ namespace WebUI.Controllers
                 .Where(x => x.LessonId == model.LessonId)
                 .Where(x => x.SubjectId == model.SubjectId)
                 .ToList(),
+                SelectedQuestions = SelectedQuestionIds
             };
+
+            foreach (var item in questions)
+            {
+                if (values.Questions.Any(x => x.Id == item.QuestionId))
+                {
+                    SelectedQuestionIds.Add(item.QuestionId);
+                }
+            }
+
+            if (SelectedQuestionIds.Count == 0)
+            {
+                ViewBag.btnCondition = false;
+            }
+
+            else
+            {
+                ViewBag.btnCondition = true;
+            }
 
             ViewBag.ExamId = model.Id;
 
@@ -41,7 +64,6 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(ExamQuestions model, int[] questionIds)
         {
-
             if (model != null & questionIds != null)
             {
 
@@ -54,9 +76,9 @@ namespace WebUI.Controllers
                 };
                 TempData.Put("message", new ResultMessage()
                 {
-                    Title = "Basariyla Eklendi",
+                    Title = "Başarılı",
                     Message = "Sinav soruları basariyla eklendi",
-                    Css = "error"
+                    Css = "success"
                 });
                 return RedirectToAction("Index", "Exam");
 
@@ -101,17 +123,27 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Update(ExamQuestions model, int[] questionIds)
         {
-            var values = _examQuestionManager.GetById(model.ExamId);
-
+            var questions = _examQuestionManager.GetAll().Where(x => x.ExamId == model.ExamId).ToList();
 
             if (model != null & questionIds != null)
             {
-                foreach (var item in questionIds)
+               
+                foreach (var item in questions)
                 {
-                    values.QuestionId = item;
+                    _examQuestionManager.Delete(item);
                 }
 
-                _examQuestionManager.Update(values);
+                foreach (var item in questionIds)
+                {
+                    _examQuestionManager.Create(model,item);
+                }
+
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Basarılı",
+                    Message = "Sinav soruları basariyla Güncellendi",
+                    Css = "success"
+                });
                 return RedirectToAction("Index", "Exam");
             }
 

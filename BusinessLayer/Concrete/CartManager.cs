@@ -26,7 +26,6 @@ namespace BusinessLayer.Concrete
                     {
                         ExamId = examId,
                         CartId = cart.Id,
-                        Condition = true,
                     });
                 }
 

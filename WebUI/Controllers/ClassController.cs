@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
@@ -12,13 +13,14 @@ namespace WebUI.Controllers
     public class ClassController : Controller
     {
         ClassManager _classManager = new ClassManager(new EfCoreClassRepository());
+        BranchManager _branchManager = new BranchManager(new EfCoreBranchRepository());
 
         public IActionResult Index()
         {
             return View(new ClassListModel()
             {
                 //where(x=> x.solution).ToList() Expression oldugu icin filtreleme yapabiliriz
-                Classes = _classManager.GetAll().ToList()
+                Classes = _classManager.GetWithBranchList().ToList()
             });
         }
 
@@ -92,25 +94,31 @@ namespace WebUI.Controllers
         [HttpGet]
         public IActionResult Detail(int id)
         {
-            var values = _classManager.GetById(id);
+            var values = _classManager.GetByIdWithBrances(id);
 
             if (values == null)
             {
                 return NotFound();
             }
 
-            return View(new ClassModel()
+            ViewBag.Brances = _branchManager.GetAll().ToList();
+
+            var model = new ClassModel()
             {
                 Id = values.Id,
                 Name = values.Name,
                 Condition = values.Condition,
-            });
+                SelectedBranch = values.ClassBranches.Select(x => x.Branch).ToList(),
+            };
+
+            return View(model);
+            
         }
 
 
 
         [HttpPost]
-        public IActionResult Update(ClassModel model)
+        public IActionResult Update(ClassModel model, int[] branchIds)
         {
             if (ModelState.IsValid)
             {
@@ -136,7 +144,14 @@ namespace WebUI.Controllers
                     Message = "Sinif basariyla guncellendi",
                     Css = "success"
                 });
-                _classManager.Update(values);
+                _classManager.Update(values, branchIds);
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarılı",
+                    Message = "Sinif guncelleme islemi başarıyla gerçeklerşti",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Class");
             }
             TempData.Put("message", new ResultMessage()
             {

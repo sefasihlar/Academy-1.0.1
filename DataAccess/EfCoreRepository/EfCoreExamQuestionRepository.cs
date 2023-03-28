@@ -37,5 +37,24 @@ namespace DataAccessLayer.EfCoreRepository
                     .ToList();
             }
         }
+
+        public void Update(ExamQuestions entity, int[] questionIds)
+        {
+            using(var _context = new AcademyContext())
+            {
+                var questiton = _context.ExamQuestions
+                    .Where(x => x.ExamId == entity.ExamId);
+                if (questiton != null)
+                {
+                    questiton.Select(x => new ExamQuestions()
+                    {
+                        ExamId = entity.ExamId,
+                        QuestionId = x.QuestionId
+                    });
+                }
+
+                _context.SaveChanges();
+            }
+        }
     }
 }

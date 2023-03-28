@@ -11,6 +11,7 @@ namespace WebUI.Controllers
     public class MyExamController : Controller
     {
         ExamManager _examManager = new ExamManager(new EfCoreExamRepository());
+        ExamAnswerManager _examAnswerManager = new ExamAnswerManager(new EfCoreExamAswerRepository());
         ScorsManager _scorsManager = new ScorsManager(new EfCoreScorsRepository());
         AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
         QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
@@ -25,12 +26,15 @@ namespace WebUI.Controllers
         {
             var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
             var getId = _appUserManager.GetById(Convert.ToInt32(userId));
-            //sisteme giriş yapan kullanıcıyı bulup sınıf bilgisiyle filtelecek
+
+            var answeredExamIds = _examAnswerManager.GetAll().Select(a => a.ExamId).ToList();
+
             var values = new ExamListModel()
             {
-                Exams = _examManager.GetWithList().Where(x => x.ClassId == getId.ClassId).ToList(),
+                Exams = _examManager.GetWithList()
+                .Where(x => x.ClassId == getId.ClassId && !answeredExamIds.Contains(x.Id))
+                .ToList()
             };
-
             return View(values);
         }
 
@@ -64,7 +68,7 @@ namespace WebUI.Controllers
             ViewBag.ExamId = id;
 
             return View(values);
-        } 
+        }
 
 
 

@@ -33,9 +33,29 @@ namespace BusinessLayer.Concrete
             return _classDal.GetById(id);
         }
 
+        public Class GetByIdWithBrances(int id)
+        {
+            return _classDal.GetByIdWithBrances(id);
+        }
+
+        public List<Class> GetWithBranchList()
+        {
+            return _classDal.GetWithBranchList().ToList();
+        }
+
         public void Update(Class entity)
         {
             _classDal.Update(entity);
+        }
+
+        public void Update(Class entity, int[] branchIds)
+        {
+            _classDal.Update(entity, branchIds);
+        }
+
+        ClassBranch IClassService.GetByIdWithBrances(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

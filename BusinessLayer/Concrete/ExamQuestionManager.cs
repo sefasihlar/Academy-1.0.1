@@ -53,5 +53,10 @@ namespace BusinessLayer.Concrete
         {
             _examQuestionDal.Update(entity);
         }
+
+        public void Update(ExamQuestions entity, int[] questionIds)
+        {
+            _examQuestionDal.Update(entity, questionIds);
+        }
     }
 }

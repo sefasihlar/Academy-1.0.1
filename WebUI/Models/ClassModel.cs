@@ -1,4 +1,5 @@
 ﻿
+using EntityLayer.Concrete;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebUI.Models
@@ -9,6 +10,8 @@ namespace WebUI.Models
 
         [Required(ErrorMessage = "Bu alan boş geçilemez")]
         public string? Name { get; set; }
+
+        public List<Branch>? SelectedBranch { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime UpdatedDate { get; set; } = DateTime.Now;

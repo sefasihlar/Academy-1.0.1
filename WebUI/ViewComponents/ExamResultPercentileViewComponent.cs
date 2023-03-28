@@ -1,18 +1,20 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EfCoreRepository;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using System.Security.Cryptography.Xml;
 using WebUI.Models;
 
 namespace WebUI.ViewComponents
 {
-    public class ExamResultPercentileViewComponent:ViewComponent
+    public class ExamResultPercentileViewComponent : ViewComponent
     {
         ScorsManager _scorsManager = new ScorsManager(new EfCoreScorsRepository());
 
         public IViewComponentResult Invoke()
         {
-            var TotalPercent = _scorsManager.GetAll().Where(x=>x.ExamId==ViewBag.examId).ToList();
+            var TotalPercent = _scorsManager.GetAll().Where(x => x.ExamId == ViewBag.examId).ToList();
+
 
             var TotalScorCount = TotalPercent.Count();
 
@@ -25,15 +27,16 @@ namespace WebUI.ViewComponents
 
             var values = new ScorListModel()
             {
-                  //decimal ExamScor = Math.Round(totalScore / totalQuestion, 2);
+                //decimal ExamScor = Math.Round(totalScore / totalQuestion, 2);
 
-                TotalFalsePercentile = Math.Round((TotalFalse/TotalQuestion)*(100),2),
-                TotalTruePercentile = Math.Round((TotalTrue / TotalQuestion)*(100),2),
-                TotalNullPercentile = Math.Round((TotalNull / TotalQuestion)*(100),2),
-                TotalScorPercentile = Math.Round((TotalScor/ TotalScorCount),2),
+                TotalFalsePercentile = Math.Round((TotalFalse / TotalQuestion) * (100), 2),
+                TotalTruePercentile = Math.Round((TotalTrue / TotalQuestion) * (100), 2),
+                TotalNullPercentile = Math.Round((TotalNull / TotalQuestion) * (100), 2),
+                TotalScorPercentile = Math.Round((TotalScor / TotalScorCount), 2),
             };
 
             return View(values);
+
         }
     }
 }
