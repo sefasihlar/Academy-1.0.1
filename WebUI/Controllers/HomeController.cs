@@ -1,5 +1,4 @@
 ﻿using BusinessLayer.Concrete;
-using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
@@ -16,7 +15,7 @@ namespace WebUI.Controllers
         private readonly ILogger<HomeController> _logger;
         SolutionManager _solutinManager = new SolutionManager(new EfCoreSolutionRepository());
         QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
-     
+
         public HomeController(UserManager<AppUser> userManager, ILogger<HomeController> logger)
         {
             _userManager = userManager;
@@ -31,7 +30,7 @@ namespace WebUI.Controllers
                 TotalQuestion = _questionManager.GetAll().Count(),
                 TotalSolution = _solutinManager.GetAll().Count()
             };
-            
+
             return View(values);
         }
 

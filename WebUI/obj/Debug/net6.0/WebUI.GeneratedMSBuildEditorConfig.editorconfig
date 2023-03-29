@@ -112,6 +112,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVJlc3VsdFxSZXN1bHRWaWRlby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Exam/AllExamList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVxBbGxFeGFtTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Exam/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -252,6 +256,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTGV2ZWxMaXN0XERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Shared/Components/ManyExamWhichClass/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWFueUV4YW1XaGljaENsYXNzXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Shared/Components/Option/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcT3B0aW9uXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -270,6 +278,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Shared/Components/SubjectList/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU3ViamVjdExpc3RcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Shared/Components/TotalClass/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVG90YWxDbGFzc1xEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sihla/Masaüstü/MetaAkdeniz/SampleAcademy/Academy/WebUI/Views/Shared/Components/TotalExam/Default.cshtml]

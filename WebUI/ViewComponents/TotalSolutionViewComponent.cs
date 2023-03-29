@@ -5,7 +5,7 @@ using WebUI.Models;
 
 namespace WebUI.ViewComponents
 {
-    public class TotalSolutionViewComponent:ViewComponent
+    public class TotalSolutionViewComponent : ViewComponent
     {
         SolutionManager _solutionManager = new SolutionManager(new EfCoreSolutionRepository());
         public IViewComponentResult Invoke()

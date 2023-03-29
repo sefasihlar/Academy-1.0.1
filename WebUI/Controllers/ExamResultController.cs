@@ -5,7 +5,6 @@ using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebUI.Models;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace WebUI.Controllers
 {
@@ -50,17 +49,17 @@ namespace WebUI.Controllers
                     }).ToList()
 
 
-                    
+
                 };
 
                 ViewBag.userId = cart.UserId;
-                
 
-                var examId = values.CartItems.Select(x=>x.ExamId).FirstOrDefault();
+
+                var examId = values.CartItems.Select(x => x.ExamId).FirstOrDefault();
 
                 var scorsCondition = _scorsManager.GetAll().Where(x => x.ExamId == examId).ToList();
 
-                if (scorsCondition.Any(x=>x.Condition==true))
+                if (scorsCondition.Any(x => x.Condition == true))
                 {
                     return View(values);
                 }
@@ -159,7 +158,7 @@ namespace WebUI.Controllers
 
 
 
-        public IActionResult ExamScor(int id, int LessonId,int UserId)
+        public IActionResult ExamScor(int id, int LessonId, int UserId)
         {
             if (LessonId == 0)
             {
@@ -174,7 +173,7 @@ namespace WebUI.Controllers
 
             var values = new ScorListModel()
             {
-                scors = _scorsManager.GetTogetherList().Where(x => x.ExamId == id & x.UserId== UserId).ToList(),
+                scors = _scorsManager.GetTogetherList().Where(x => x.ExamId == id & x.UserId == UserId).ToList(),
                 LessonId = LessonId,
             };
 

@@ -13,26 +13,45 @@ namespace WebUI.Controllers
     public class ExamController : Controller
     {
         ClassManager _classManager = new ClassManager(new EfCoreClassRepository());
-		AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
-		LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
+        AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
+        LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());
         SubjectManager _subjectManager = new SubjectManager(new EfCoreSubjectRepository());
         ExamManager _examManager = new ExamManager(new EfCoreExamRepository());
+        ScorsManager _scorsManager = new ScorsManager(new EfCoreScorsRepository());
         QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
 
-		private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<AppUser> _userManager;
 
-		public ExamController(UserManager<AppUser> userManager)
-		{
-			_userManager = userManager;
-		}
+        public ExamController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
 
-		public IActionResult Index()
+        public IActionResult Index()
         {
 
             var values = new ExamListModel()
             {
                 Exams = _examManager.GetWithList().ToList(),
             };
+
+            return View(values);
+        }
+
+        public IActionResult AllExamList()
+        {
+            var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
+            var getId = _appUserManager.GetById(Convert.ToInt32(userId));
+
+            var values = new ExamListModel()
+            {
+                Exams = _examManager.GetWithList().ToList(),
+            };
+
+            bool scors = _scorsManager.GetAll().Any(x => values.Exams.Any(e => e.Id == x.ExamId));
+
+            ViewBag.HasExamScores = scors;
+
 
             return View(values);
         }
@@ -47,11 +66,11 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(ExamModel model)
         {
-			var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
+            var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
 
-			var user = _appUserManager.GetById(Convert.ToInt32(userId));
+            var user = _appUserManager.GetById(Convert.ToInt32(userId));
 
-			var values = new Exam()
+            var values = new Exam()
             {
                 Id = model.Id,
                 UserId = user.Id,
@@ -191,7 +210,7 @@ namespace WebUI.Controllers
         public IActionResult Exam(int id)
         {
             var exam = _examManager.GetById(id);
-            
+
             var values = new QuestionListModel()
             {
 

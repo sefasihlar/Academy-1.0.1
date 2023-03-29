@@ -1,8 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EfCoreRepository;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
-using System.Security.Cryptography.Xml;
 using WebUI.Models;
 
 namespace WebUI.ViewComponents

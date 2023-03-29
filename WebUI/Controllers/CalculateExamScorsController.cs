@@ -4,7 +4,6 @@ using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using WebUI.Extensions;
 using WebUI.Models;
 
@@ -149,7 +148,7 @@ namespace WebUI.Controllers
             var scors = _scoresManager.GetAll().Where(x => x.ExamId == id).ToList();
             if (scors != null)
             {
-                if (condition==true)
+                if (condition == true)
                 {
                     foreach (var item in scors)
                     {

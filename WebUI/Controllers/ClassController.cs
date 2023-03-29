@@ -20,7 +20,7 @@ namespace WebUI.Controllers
             return View(new ClassListModel()
             {
                 //where(x=> x.solution).ToList() Expression oldugu icin filtreleme yapabiliriz
-                Classes = _classManager.GetWithBranchList().ToList()
+                Classes = _classManager.GetAll().ToList()
             });
         }
 
@@ -112,7 +112,7 @@ namespace WebUI.Controllers
             };
 
             return View(model);
-            
+
         }
 
 

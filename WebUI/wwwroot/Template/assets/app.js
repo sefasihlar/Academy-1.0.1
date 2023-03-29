@@ -43321,6 +43321,8 @@ const sidebarItems = document.querySelectorAll(".sidebar-item");
 sidebarItems.forEach((item) => {
   item.addEventListener("click", function () {
     this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling
+      dropdownContent.style.display == 'block' ? dropdownContent.style.display == 'none' : dropdownContent.style.display=='block'
   });
 });
 

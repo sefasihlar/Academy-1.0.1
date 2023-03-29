@@ -5,7 +5,7 @@ using WebUI.Models;
 
 namespace WebUI.ViewComponents
 {
-    public class TotalQuestionViewComponent:ViewComponent
+    public class TotalQuestionViewComponent : ViewComponent
     {
         QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
         public IViewComponentResult Invoke()

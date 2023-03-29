@@ -225,7 +225,6 @@ display: none;
 }
 .sidebar-item.active .sidebar-dropdown{
   animation: sidebar-open 300ms ease-out ;
-  display: block;
 
 }
 /*SideBar Finish*/

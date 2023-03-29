@@ -48,9 +48,9 @@ namespace WebUI.Controllers
                 Exams = _examManager.GetWithList().Where(x => x.UserId == getId.Id).ToList(),
             };
 
-            bool scors = _scorsManager.GetAll().Any(x => values.Exams.Any(e => e.Id == x.ExamId));
+            var scors = _scorsManager.GetAll().ToList();
 
-            ViewBag.HasExamScores = scors;
+            ViewBag.Scors = scors;
 
             return View(values);
         }

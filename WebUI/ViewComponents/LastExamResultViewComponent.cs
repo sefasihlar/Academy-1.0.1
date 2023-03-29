@@ -29,7 +29,7 @@ namespace WebUI.ViewComponents
             if (await _userManager.IsInRoleAsync(user, "Öğrenci"))
             {
                 values.scors = _scorsManager.GetTogetherList().Where(s => s.User.ClassId == user.ClassId
-                && s.ExamId == latestScore.ExamId 
+                && s.ExamId == latestScore.ExamId
                 && s.Condition == true).ToList();
             }
             else if (await _userManager.IsInRoleAsync(user, "Öğretmen") ||

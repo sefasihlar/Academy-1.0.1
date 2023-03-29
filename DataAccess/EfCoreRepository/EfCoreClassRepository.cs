@@ -10,7 +10,7 @@ namespace DataAccessLayer.EntityFreamwork
     {
         public Class GetByIdWithBrances(int id)
         {
-            using(var _context  = new AcademyContext())
+            using (var _context = new AcademyContext())
             {
                 return _context.Classes
                     .Where(x => x.Id == id)
@@ -20,26 +20,23 @@ namespace DataAccessLayer.EntityFreamwork
             }
         }
 
-        public List<Class> GetWithBranchList()
+        public List<ClassBranch> GetClassBranchList()
         {
             using(var _context = new AcademyContext())
             {
-                return _context.Classes
-                    .Include(x=>x.ClassBranches)
-                    .ThenInclude(x=>x.Branch)
-                    .ToList();
+                return _context.ClassBranches.ToList();
             }
         }
 
         public void Update(Class entity, int[] branchIds)
         {
-            using(var _context = new AcademyContext())
+            using (var _context = new AcademyContext())
             {
                 var _class = _context.Classes
                     .Include(x => x.ClassBranches)
                     .FirstOrDefault(x => x.Id == entity.Id);
 
-                if (_class!=null)
+                if (_class != null)
                 {
                     _class.Name = entity.Name;
                     _class.UpdatedDate = entity.UpdatedDate;

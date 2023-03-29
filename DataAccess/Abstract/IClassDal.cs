@@ -5,7 +5,7 @@ namespace DataAccessLayer.Abstract
     public interface IClassDal : IGenericDal<Class>
     {
         Class GetByIdWithBrances(int id);
-        List<Class> GetWithBranchList();
+        List<ClassBranch> GetClassBranchList();
         void Update(Class entity, int[] branchIds);
     }
 }

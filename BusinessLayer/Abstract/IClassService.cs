@@ -5,10 +5,9 @@ namespace BusinessLayer.Abstract
 {
     public interface IClassService : IGenericService<Class>
     {
-        List<Class> GetWithBranchList();
-
         ClassBranch GetByIdWithBrances(int id);
 
+        List<ClassBranch> GetClassBranchList();
         void Update(Class entity, int[] branchIds);
     }
 }

@@ -52,7 +52,7 @@
                                     <div class="col-auto">
                                     </div>
                                 </div>
-                                <h1 class="mt-1 mb-3">100</h1>
+                                @await Component.InvokeAsync("TotalClass")
 
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                     </div>
                     @section Scripts{
                         @await Component.InvokeAsync("TotalLessonExam")
-
+                        @await Component.InvokeAsync("ManyExamWhichClass")
                         <script>
                             document.addEventListener("DOMContentLoaded", function () {
                                 // Pie chart
@@ -124,7 +124,7 @@
             <div class="card flex-fill w-100">
                 <div class="card-header">
 
-                    <h5 class="card-title mb-0">Cinsiyet Oranı</h5>
+                    <h5 class="card-title mb-0">Soru Çözüm Oranı</h5>
                 </div>
                 <div class="card-body d-flex">
                     <div class="align-self-center w-100">

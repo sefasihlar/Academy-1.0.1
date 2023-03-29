@@ -3,7 +3,6 @@ using DataAccessLayer.EfCoreRepository;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using WebUI.Extensions;
 using WebUI.Models;
 
@@ -127,7 +126,7 @@ namespace WebUI.Controllers
 
             if (model != null & questionIds != null)
             {
-               
+
                 foreach (var item in questions)
                 {
                     _examQuestionManager.Delete(item);
@@ -135,7 +134,7 @@ namespace WebUI.Controllers
 
                 foreach (var item in questionIds)
                 {
-                    _examQuestionManager.Create(model,item);
+                    _examQuestionManager.Create(model, item);
                 }
 
                 TempData.Put("message", new ResultMessage()

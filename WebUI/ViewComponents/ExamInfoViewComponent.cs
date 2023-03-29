@@ -1,7 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFreamwork;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using WebUI.Models;
 
 namespace WebUI.ViewComponents
@@ -11,7 +10,7 @@ namespace WebUI.ViewComponents
         ExamManager _examManager = new ExamManager(new EfCoreExamRepository());
         public IViewComponentResult Invoke()
         {
-            if (ViewBag.examId!=null)
+            if (ViewBag.examId != null)
             {
                 var values = _examManager.GetById(ViewBag.examId);
 
@@ -30,7 +29,7 @@ namespace WebUI.ViewComponents
 
 
             return View(new ExamModel());
-          
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model ExamListModel
+﻿@using EntityLayer.Concrete;
+@model ExamListModel
 @{
     ViewData["Title"] = "TeacherExams";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,6 +11,36 @@
     <div class="custom-cards-container flex-2  container-sm ">
         <div class="custom-cards-container-title">Raporlar</div>
         <div class="custom-cards d-flex justify-content-between flex-wrap">
+            @*@section Scripts{
+            <script>
+            document.getElementById('myButton').addEventListener('click', function (e) {
+            e.preventDefault();
+            let timerInterval
+            Swal.fire({
+            title: 'Sınav Hesapla!',
+            html: 'Sınav hesaplanıyor <b></b> neredeyse bitti.',
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: () => {
+            Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft()
+            }, 100)
+            },
+            willClose: () => {
+            clearInterval(timerInterval)
+            }
+            }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+            // Burada istediğiniz URL'ye yönlendirebilirsiniz
+            window.location.href = "/CalculateExamScors/AllUsersResultQuestions/";
+            }
+            })
+            });
+            </script>
+            }*@
+
             @foreach (var item in Model.Exams)
             {
                 <div class="custom-cards d-flex justify-content-between flex-wrap">
@@ -28,63 +59,64 @@
                         <div class="custom-card-bottom">
                             <div class="custom-card-buttons d-flex justify-content-between">
                                 <div>
-                                    <a href="/MyExam/Exam/@item.Id" class="custom-card-button linear-background mr-5">
-                                        İ <i class="bi bi-eye custom-card-icons"></i>
-                                    </a>
 
-                                    @if (ViewBag.HasExamScores==true)
+
+                                    @if (ViewBag.Scors.Count > 0)
                                     {
-                                        <a  class="custom-card-button linear-background" style="color:wheat">
-                                            H <i class="bi bi-x-octagon-fill" style="color:red"></i>
-                                        </a>
+                                        @foreach (var value in (List<Scors>)ViewBag.Scors)
+                                        {
+                                            if (item.Id == value.ExamId)
+                                            {
+                                                <a href="/MyExam/Exam/@item.Id" class="custom-card-button linear-background mr-4">
+                                                    İ <i class="bi bi-eye custom-card-icons"></i>
+                                                </a>
+                                                <a class="custom-card-button linear-background mr-4" style="color:wheat">
+                                                    H <i class="bi bi-x-octagon-fill" style="color:red"></i>
+                                                </a>
+                                                <a href="/ExamResult/AllStudentExamResult/@item.Id" class="custom-card-button linear-background">
+                                                    D <i class="bi bi-chevron-right custom-card-icons"></i>
+                                                </a>
+                                            }
+
+                                            else if (item.Id != value.ExamId)
+                                            {
+                                                <a href="/MyExam/Exam/@item.Id" class="custom-card-button linear-background mr-4">
+                                                    İ <i class="bi bi-eye custom-card-icons"></i>
+                                                </a>
+                                                <a href="/CalculateExamScors/AllUsersResultQuestions/@item.Id" class="custom-card-button linear-background mr-4" @*id="myButton"*@>
+                                                    H <i class="bi bi-calculator-fill"></i>
+                                                </a>
+
+                                                <a href="/ExamResult/AllStudentExamResult/@item.Id" class="custom-card-button linear-background">
+                                                    D <i class="bi bi-chevron-right custom-card-icons"></i>
+                                                </a>
+                                            }
+                                        }
                                     }
+
                                     else
                                     {
-                                        <a href="/CalculateExamScors/AllUsersResultQuestions/@item.Id" class="custom-card-button linear-background" id="myButton">
+                                        <a href="/MyExam/Exam/@item.Id" class="custom-card-button linear-background mr-4">
+                                            İ <i class="bi bi-eye custom-card-icons"></i>
+                                        </a>
+                                        <a href="/CalculateExamScors/AllUsersResultQuestions/@item.Id" class="custom-card-button linear-background mr-4" @*id="myButton"*@>
                                             H <i class="bi bi-calculator-fill"></i>
                                         </a>
+
+                                        <a href="/ExamResult/AllStudentExamResult/@item.Id" class="custom-card-button linear-background">
+                                            D <i class="bi bi-chevron-right custom-card-icons"></i>
+                                        </a>
                                     }
-                               
-                                    @section Scripts{
-                                    <script>
-                                        document.getElementById('myButton').addEventListener('click', function (e) {
-                                            e.preventDefault();
-                                            let timerInterval
-                                            Swal.fire({
-                                                title: 'Sınav Hesapla!',
-                                                html: 'Sınav hesaplanıyor <b></b> neredeyse bitti.',
-                                                timer: 5000,
-                                                timerProgressBar: true,
-                                                didOpen: () => {
-                                                    Swal.showLoading()
-                                                    const b = Swal.getHtmlContainer().querySelector('b')
-                                                    timerInterval = setInterval(() => {
-                                                        b.textContent = Swal.getTimerLeft()
-                                                    }, 100)
-                                                },
-                                                willClose: () => {
-                                                    clearInterval(timerInterval)
-                                                }
-                                            }).then((result) => {
-                                                if (result.dismiss === Swal.DismissReason.timer) {
-                                                    // Burada istediğiniz URL'ye yönlendirebilirsiniz
-                                                    window.location.href = "/CalculateExamScors/AllUsersResultQuestions/@item.Id";
-                                                }
-                                            })
-                                        });
-                                    </script>
-                                }
-                                </div>
-                                <div>
-                                    <a href="/ExamResult/AllStudentExamResult/@item.Id" class="custom-card-button linear-background">
-                                        D <i class="bi bi-chevron-right custom-card-icons"></i>
-                                    </a>
+
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             }
+
 
         </div>
 

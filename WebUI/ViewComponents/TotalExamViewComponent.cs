@@ -5,7 +5,7 @@ using WebUI.Models;
 
 namespace WebUI.ViewComponents
 {
-    public class TotalExamViewComponent:ViewComponent
+    public class TotalExamViewComponent : ViewComponent
     {
 
         ExamManager _examManager = new ExamManager(new EfCoreExamRepository());
@@ -17,7 +17,7 @@ namespace WebUI.ViewComponents
                 TotalExam = _examManager.GetAll().Count()
 
             };
-               
+
             return View(values);
         }
     }

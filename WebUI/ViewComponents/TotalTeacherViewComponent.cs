@@ -1,12 +1,11 @@
 ﻿using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using WebUI.Models;
 
 namespace WebUI.ViewComponents
 {
-    public class TotalTeacherViewComponent:ViewComponent
+    public class TotalTeacherViewComponent : ViewComponent
     {
         private readonly UserManager<AppUser> _userManager;
 
@@ -19,7 +18,7 @@ namespace WebUI.ViewComponents
         {
             var values = new TotalCountsModel()
             {
-                TotalTeacher = _userManager.Users.Where(x=>x.Authority==true).Count()
+                TotalTeacher = _userManager.Users.Where(x => x.Authority == true).Count()
             };
             return View(values);
         }

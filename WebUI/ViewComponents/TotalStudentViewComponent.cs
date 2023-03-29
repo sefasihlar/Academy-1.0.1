@@ -1,7 +1,6 @@
 ﻿using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using WebUI.Models;
 
 namespace WebUI.ViewComponents
@@ -18,7 +17,7 @@ namespace WebUI.ViewComponents
         public IViewComponentResult Invoke()
         {
             var users = new TotalCountsModel()
-            { 
+            {
                 TotalStudent = _userManager.Users.Where(x => x.Authority == false).Count()
             };
 

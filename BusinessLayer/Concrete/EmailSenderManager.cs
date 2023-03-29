@@ -1,10 +1,8 @@
 ﻿using BusinessLayer.Abstract;
-using Microsoft.Extensions.Configuration;
-using System.Net;
-using System.Net.Mail;
-using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.Extensions.Configuration;
 using MimeKit;
+using System.Net.Mail;
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;
 
 namespace BusinessLayer.Concrete
@@ -36,7 +34,7 @@ namespace BusinessLayer.Concrete
 
             using var smpt = new SmtpClient();
 
-            smpt.Connect(_configuration["Mail:Host"],465, SecureSocketOptions.SslOnConnect);
+            smpt.Connect(_configuration["Mail:Host"], 465, SecureSocketOptions.SslOnConnect);
 
             // Kullanıcı adınızı ve şifrenizi girin.
             smpt.Authenticate("destek@metaakdeniz.com", "KaraKaya1509");

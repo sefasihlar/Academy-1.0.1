@@ -10,7 +10,7 @@ namespace WebUI.Models
         public string? ExamTitle { get; set; }
         public string? ExamDescription { get; set; }
         public string? ExamClass { get; set; }
-        public int  ExamDate { get; set; }
+        public int ExamDate { get; set; }
         public int ExamTimer { get; set; }
 
         public decimal TotalNullPercentile { get; set; }

@@ -5,7 +5,7 @@ using WebUI.Models;
 
 namespace WebUI.ViewComponents
 {
-    public class TotalLessonExamViewComponent:ViewComponent
+    public class TotalLessonExamViewComponent : ViewComponent
     {
         ExamManager _examManager = new ExamManager(new EfCoreExamRepository());
 

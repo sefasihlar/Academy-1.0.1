@@ -40,7 +40,7 @@ namespace DataAccessLayer.EfCoreRepository
 
         public void Update(ExamQuestions entity, int[] questionIds)
         {
-            using(var _context = new AcademyContext())
+            using (var _context = new AcademyContext())
             {
                 var questiton = _context.ExamQuestions
                     .Where(x => x.ExamId == entity.ExamId);
