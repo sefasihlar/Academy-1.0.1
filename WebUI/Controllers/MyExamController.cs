@@ -46,11 +46,28 @@ namespace WebUI.Controllers
             var values = new ExamListModel()
             {
                 Exams = _examManager.GetWithList().Where(x => x.UserId == getId.Id).ToList(),
+                Scors = _scorsManager.GetAll().Where(x => x.UserId == getId.Id).ToList(),
             };
+
+
+            List<int> examIds = new List<int>();
+
+
+            foreach (var item in values.Exams)
+            {
+                foreach (var value in  values.Scors)
+                {
+                    if (item.Id == value.ExamId)
+                    {
+                        examIds.Add(value.Id);
+                    }
+                }
+            }
+
 
             var scors = _scorsManager.GetAll().ToList();
 
-            ViewBag.Scors = scors;
+            ViewBag.Scors = examIds;
 
             return View(values);
         }

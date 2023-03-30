@@ -61,36 +61,37 @@
                                 <div>
 
 
+
                                     @if (ViewBag.Scors.Count > 0)
                                     {
-                                        @foreach (var value in (List<Scors>)ViewBag.Scors)
+                                        <a href="/MyExam/Exam/@item.Id" class="custom-card-button linear-background mr-4">
+                                            İ <i class="bi bi-eye custom-card-icons"></i>
+                                        </a>
+                                
+                                        bool examFound = false;
+
+                                        foreach (var value in ViewBag.Scors)
                                         {
                                             if (item.Id == value.ExamId)
                                             {
-                                                <a href="/MyExam/Exam/@item.Id" class="custom-card-button linear-background mr-4">
-                                                    İ <i class="bi bi-eye custom-card-icons"></i>
-                                                </a>
                                                 <a class="custom-card-button linear-background mr-4" style="color:wheat">
                                                     H <i class="bi bi-x-octagon-fill" style="color:red"></i>
                                                 </a>
                                                 <a href="/ExamResult/AllStudentExamResult/@item.Id" class="custom-card-button linear-background">
                                                     D <i class="bi bi-chevron-right custom-card-icons"></i>
                                                 </a>
+                                                examFound = true;
+                                                break;
                                             }
-
-                                            else if (item.Id != value.ExamId)
-                                            {
-                                                <a href="/MyExam/Exam/@item.Id" class="custom-card-button linear-background mr-4">
-                                                    İ <i class="bi bi-eye custom-card-icons"></i>
-                                                </a>
-                                                <a href="/CalculateExamScors/AllUsersResultQuestions/@item.Id" class="custom-card-button linear-background mr-4" @*id="myButton"*@>
-                                                    H <i class="bi bi-calculator-fill"></i>
-                                                </a>
-
-                                                <a href="/ExamResult/AllStudentExamResult/@item.Id" class="custom-card-button linear-background">
-                                                    D <i class="bi bi-chevron-right custom-card-icons"></i>
-                                                </a>
-                                            }
+                                        }
+                                        if (!examFound)
+                                        {
+                                            <a href="/CalculateExamScors/AllUsersResultQuestions/@item.Id" class="custom-card-button linear-background mr-4" @*id="myButton"*@>
+                                                H <i class="bi bi-calculator-fill"></i>
+                                            </a>
+                                            <a class="custom-card-button linear-background">
+                                                D <i class="bi bi-chevron-right custom-card-icons"></i>
+                                            </a>
                                         }
                                     }
 
