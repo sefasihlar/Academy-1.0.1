@@ -3,7 +3,61 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Scripts{
+    <script src="~/jquery/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            GetClass();
+            $('#Class').change(function () {
+                var id = $(this).val();
+                $('#Lesson').empty();
+                $('#Lesson').append('<option>--Ders seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Lesson?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Lesson').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
 
+            $('#Lesson').change(function () {
+                var id = $(this).val();
+                $('#Subject').empty();
+                $('#Subject').append('<option>--Konu seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Subject?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Subject').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+
+        function GetClass() {
+            $.ajax({
+                url: '/Question/Class',
+                success: function (result) {
+                    if (result) {
+                        $.each(result, function (i, data) {
+                            $('#Class').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+
+                    } else {
+
+                        alert('Sınıf bilgisi alınamadı.');
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu, sınıflar yüklenemedi.');
+                }
+            });
+        }
+    </script>
+}
 <main class="content">
     <div class="container-fluid p-0">
 
@@ -29,6 +83,7 @@
                                     <tr>
                                         <th class="d-none d-md-table-cell">ID</th>
                                         <th>Öğrenme Çıktısı</th>
+                                        <th>Konusu</th>
                                         <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
                                         <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
                                         <th>Aktiflik durumu</th>
@@ -41,6 +96,7 @@
                                         <tr>
                                             <td class="d-none d-md-table-cell">@item.Id</td>
                                             <td>@item.Name</td>
+                                            <td>@item.Subject.Name</td>
                                             <td class="d-none d-md-table-cell">@item.CreatedDate</td>
                                             <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
                                             @if (item.Condition == true)
@@ -56,6 +112,7 @@
                                                 <a href="/Output/Detail/@item.Id"><button class="btn"><i data-feather="edit" style="color:royalblue"></i></button></a>
                                                 <form asp-controller="Output" asp-action="Delete" method="post" style="display:inline">
                                                     <input type="hidden" name="id" value="@item.Id" />
+                                                    <input type="hidden" name="subjectId" value="@item.SubjectId" />
                                                     <button class="btn" type="submit" style=""><i data-feather="trash-2" style="color: red;"></i></button>
                                                 </form>
                                             </td>
@@ -74,16 +131,27 @@
         <div id="myModal" class="modal">
             <div id="small-modal" class="modal-content">
                 <span class="close">&times;</span>
-                <h2 class="modal-title text-center"><strong> Seviye Ekle</strong></h2>
+                <h2 class="modal-title text-center"><strong>Kazanım Ekle</strong></h2>
                 <form asp-controller="Output" asp-action="Create" method="post">
 
                     <div class="row text-center mt-5 ">
                         <div class="col-12 text-center ">
                             <div class="form-group row d-flex">
                                 <label for="Ders" class="col-sm-2 col-form-label">Seviye Adı</label>
-
                                 <div class="col-sm-10">
                                     <input placeholder="Örneğin:Stresi yapıcı şekilde yönetebilir." name="Name" class="form-dropdown" />
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Sınıf Adı</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("ClassList")
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Ders Adı</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("LessonList")
+                                </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Konu Adı</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("SubjectList")
                                 </div>
                                 <label for="Ders" class="col-sm-2 col-form-label">Durum</label>
                                 <div class="col-sm-10">

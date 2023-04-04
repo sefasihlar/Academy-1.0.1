@@ -43319,11 +43319,20 @@
 const sidebarItems = document.querySelectorAll(".sidebar-item");
 
 sidebarItems.forEach((item) => {
-  item.addEventListener("click", function () {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling
-      dropdownContent.style.display == 'block' ? dropdownContent.style.display == 'none' : dropdownContent.style.display=='block'
-  });
+    item.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const submenu = item.querySelector(".sidebar-dropdown");
+        if (submenu) {
+            item.classList.toggle("active");
+        }
+    });
+});
+
+const sinif = document.getElementById("sinif");
+const inItems = document.querySelector(".sidebar-in-item");
+
+sinif.addEventListener("click", function () {
+    inItems.classList.toggle("active");
 });
 
 //Custom jS

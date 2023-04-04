@@ -23,8 +23,8 @@
                 <div class="w-100">
                     <div class="row">
 
-                        <div class="card flex-fill col-12 " style="border-radius: 25px;
-																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+                        <div class="card flex-fill col-12 " style="border-radius: 25px;box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+																				
                             <div class="row">
                                 <div class="card-header col-10">
                                     <h5 class="card-title mb-0">Sınıflar</h5>
@@ -44,7 +44,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Sınıf</th>
-                                        <th>Şube</th>
+                                  
                                         @if (User.IsInRole("Müdür"))
                                         {
                                             <th>Ekleyen ve tarihi</th>
@@ -61,7 +61,7 @@
                                         <tr>
                                             <td class="d-none d-md-table-cell">@item.Id</td>
                                             <td>@item.Name</td>
-                                            <td>barnch</td>
+                                    
 
                                             @if (User.IsInRole("Müdür"))
                                             {

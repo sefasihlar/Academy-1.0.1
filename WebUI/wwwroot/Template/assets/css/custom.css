@@ -225,8 +225,18 @@ display: none;
 }
 .sidebar-item.active .sidebar-dropdown{
   animation: sidebar-open 300ms ease-out ;
+  display: block;
 
 }
+.sidebar-in-item {
+    animation: reverse sidebar-open 300ms ease;
+    display: none;
+}
+
+    .sidebar-in-item.active {
+        animation: sidebar-open 300ms ease-out;
+        display: block;
+    }
 /*SideBar Finish*/
 /* NavBar Begining */
 .navbar-searchbar-container{
@@ -981,8 +991,6 @@ display: none;
   width: 45%;
   border-color: #FF000D;
 }
-
-
 .student-questions-container
 {
   border-radius: 15px;
@@ -1003,6 +1011,110 @@ display: none;
   background-color: white;
 }
 /* student-exam-page finish */
+
+
+/* teacher-exam-page-begin */
+.teacher-exam-content
+{
+
+  padding-bottom: 1.4%;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  float:left;
+  margin-top: 1.5%;
+  margin-bottom: 1.7%;
+  margin-right: 4%;
+  padding: 0.5%;
+  padding-top: 1%;
+  width:300px;
+  height:200px;
+  background-color: white;
+  font-size: medium;
+  overflow-y: scroll;
+  border-left: #B5A8F0 20px solid;
+  -webkit-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  -moz-box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+  box-shadow: 6px 6px 25px -4px rgba(0,0,0,0.45);
+}
+.teacher-exam-content-info 
+{
+  margin-top: 3%;
+  font-size: medium;
+}
+.teacher-exam-content-score
+{
+  margin-top: 3%;
+  font-size: small;
+}
+.teacher-exam-content-eye
+{
+  margin-top: 15px;
+  color: black;
+  font-size: larger;
+} 
+.teacher-exam-analyc
+{
+  margin-top: 18%;
+  color: white;
+  background-image: linear-gradient(#A26BBD, #4C8BCD);
+  border-style: none;
+  border-radius: 0.2cm;
+  position:relative;
+  overflow: hidden;
+  padding: 2%;
+  width: max-content;
+  height: 30px;
+}
+.teacher-exam-analyc-link
+{
+  color: white;
+  border-style: none;
+  border-radius: 0.2cm;
+  position:relative;
+  overflow: hidden;
+}
+.teacher-exam-content-question-link-container
+{
+  position: relative;
+  text-decoration: none;
+  margin-top: 180%;
+  width: max-content;
+  height: 30px;
+
+}
+.teacher-exam-content-question-link
+{
+  color: white;
+  background-image: linear-gradient(#A26BBD, #4C8BCD);
+  border-style: none;
+  border-radius: 0.2cm;
+  position:relative;
+  padding: 7%;
+  overflow: hidden;
+
+}
+.teacher-exam-question-content
+{
+  border: solid;
+  border-radius:20px ;
+  padding: 2%;
+  margin-right: 2%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  width: 45%;
+
+}
+
+.teacher-exam-questions-container
+{
+  border-radius: 15px;
+  overflow: scroll;
+  padding: 1.5%;
+  background-color: white;
+
+}
+/* Teacher exam page finish */
 
 .yetkili_btn
 {
@@ -1028,7 +1140,7 @@ tr:nth-child(even){
   justify-content:center;
   background-color: #fff;
   z-index: 999
-} 
+}
 @media  screen and (max-width:430px) {  
   #small-modal
 {

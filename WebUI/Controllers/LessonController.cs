@@ -9,7 +9,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    [Authorize(Roles = "Öğretmen")]
+
     public class LessonController : Controller
     {
         LessonManager _lessonManager = new LessonManager(new EfCoreLessonRepository());

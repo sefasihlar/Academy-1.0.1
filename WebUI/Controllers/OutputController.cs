@@ -8,7 +8,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    [Authorize(Roles = "Öğretmen")]
+
     public class OutputController : Controller
     {
         OutputManager _outputManager = new OutputManager(new EfCoreOutputRepository());
@@ -16,7 +16,7 @@ namespace WebUI.Controllers
         {
             var values = new OutputListModel()
             {
-                Outputs = _outputManager.GetAll()
+                Outputs = _outputManager.GetWithSubjectList().ToList(),
             };
 
             return View(values);
@@ -31,29 +31,30 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Create(OutputModel model)
         {
-            if (ModelState.IsValid)
+
+
+            var values = new Output()
             {
+                Name = model.Name,
+                SubjectId = model.SubjectId,
+                Condition = model.Condition,
+                CreatedDate = model.CreatedDate,
+                UpdatedDate = model.UpdatedDate,
 
-                var values = new Output()
-                {
-                    Name = model.Name,
-                    Condition = model.Condition,
-                    CreatedDate = model.CreatedDate,
-                    UpdatedDate = model.UpdatedDate,
-                };
+            };
 
-                if (values != null)
+            if (values != null)
+            {
+                _outputManager.Create(values);
+                TempData.Put("message", new ResultMessage()
                 {
-                    _outputManager.Create(values);
-                    TempData.Put("message", new ResultMessage()
-                    {
-                        Title = "Başarılı",
-                        Message = "Öğrenme çıktısı eklendi",
-                        Css = "success"
-                    });
-                    return RedirectToAction("Index", "Output");
-                }
+                    Title = "Başarılı",
+                    Message = "Öğrenme çıktısı eklendi",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Output");
             }
+
             TempData.Put("message", new ResultMessage()
             {
                 Title = "Hata",
@@ -64,12 +65,12 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id, int subjectId)
         {
             var values = _outputManager.GetById(id);
             if (values != null)
             {
-                _outputManager.Delete(values);
+                _outputManager.Delete(values.Id, subjectId);
                 return RedirectToAction("Index", "Output");
             }
 
@@ -88,6 +89,7 @@ namespace WebUI.Controllers
             return View(new OutputModel()
             {
                 Id = values.Id,
+                SubjectId = values.SubjectId,
                 Name = values.Name,
                 Condition = values.Condition,
                 CreatedDate = values.CreatedDate,
@@ -103,6 +105,7 @@ namespace WebUI.Controllers
                 var values = _outputManager.GetById(model.Id);
                 if (values != null)
                 {
+                    values.SubjectId = model.SubjectId;
                     values.Name = model.Name;
                     values.Condition = model.Condition;
                     values.CreatedDate = model.CreatedDate;

@@ -8,7 +8,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    [Authorize(Roles = "Öğretmen")]
+
     public class LevelController : Controller
     {
         LevelManager _levelManager = new LevelManager(new EfCoreLevelRepository());

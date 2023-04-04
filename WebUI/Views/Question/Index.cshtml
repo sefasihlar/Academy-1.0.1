@@ -2,6 +2,64 @@
 @{
     ViewData["Title"] = "Index";
 }
+
+@section Scripts{
+    <script src="~/jquery/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            alert('ok');
+            GetClass();
+            $('#Class').change(function () {
+                var id = $(this).val();
+                $('#Lesson').empty();
+                $('#Lesson').append('<option>--Ders seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Lesson?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Lesson').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+            $('#Lesson').change(function () {
+                var id = $(this).val();
+                $('#Subject').empty();
+                $('#Subject').append('<option>--Konu seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Subject?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Subject').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+
+        function GetClass() {
+            $.ajax({
+                url: '/Question/Class',
+                success: function (result) {
+                    if (result) {
+                        $.each(result, function (i, data) {
+                            $('#Class').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+
+                    } else {
+
+                        alert('Sınıf bilgisi alınamadı.');
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu, sınıflar yüklenemedi.');
+                }
+            });
+        }
+    </script>
+}
+
 <main class="content">
     <div class="container-fluid p-0">
 
@@ -59,11 +117,11 @@
                                         </a>
                                     </div>
                                 </div>
-                                @if (item.ImageUrl!=null)
+                                @if (item.ImageUrl != null)
                                 {
                                     <img style="width:95%;height:50%" src="/Template/questions/@item.ImageUrl" />
                                 }
-                            
+
                                 <input type="hidden" name="Condition" value="True" />
                                 <span>@item.Text</span><br>
                                 <span class="question-info"><strong>@item.QuestionText?</strong></span>
@@ -101,7 +159,10 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group row d-flex">
-
+                                <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("ClassList")
+                                </div>
                                 <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
                                 <div class="col-sm-10">
                                     @await Component.InvokeAsync("LessonList")
@@ -139,117 +200,60 @@
                 </div>
                 @await Component.InvokeAsync("Option")
             </form>
+            @* <div class="popup">
+            <form asp-controller="Question" asp-action="Create" method="post" enctype="multipart/form-data">
+            <div id="myModal" class="modal">
+            <div class="modal-content" id="modal-content1">
+            <span class="close">&times;</span>
+            <h3 class="modal-title text-center"><strong> Soru Ekle</strong></h3>
+
+            <div class="row">
+            <div class="col-6">
+            <div class="form-group row d-flex">
+            <label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
+            <div class="col-sm-10">
+            <textarea class="small-text" name="Text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
+            </div>
+            <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
+            <div class="col-sm-10">
+            @await Component.InvokeAsync("LessonList")
+            </div>
+            <label for="Ders" class="col-sm-2 col-form-label">Konular</label>
+            <div class="col-sm-10">
+            @await Component.InvokeAsync("SubjectList")
+            </div>
+            <label for="Ders" class="col-sm-2 col-form-label">Seviye</label>
+            <div class="col-sm-10">
+            @await Component.InvokeAsync("LevelList")
+            </div>
+            <label for="Ders" class="col-sm-2 col-form-label">Çıktı</label>
+            <div class="col-sm-10">
+            @await Component.InvokeAsync("OutputList")
+            </div>
+            </div>
+            </div>
+            <div class="col-6">
+            <div class="big-text d-flex ">
+            <h4>
+            <strong>Soru Metini:</strong>
+            </h4><br>
+
+            <textarea id="big-text" class="input" name="QuestionText"></textarea>
+            </div>
+            <input type="file" name="file" id="answerfileUpload">
+            </div>
+            </div>
+
+            <a id="upper" class="upper_btn">
+            <strong>İlerle </strong>
+            </a>
+            </div>
+            @await Component.InvokeAsync("Option")
+            </div>
+            </form>
 
 
-
-            <!-- </div>
-            <div class="modal-content3" id="modal-content3">
-                <span class="close">&times;</span>
-                <h2><strong> Soru Çözüm Ekleme Alanı</strong></h2>
-
-                    <thead>
-
-                    </thead>
-                    <tbody>
-                        <div class="modal-form-container">
-                            <div class="question-text">
-                                Tukididis, Klasik Yunan döneminde milattan önce beşinci
-                                    yüzyılda yaşamış bir tarihçi ve aynı
-                                   zamanda bir askerdir. Atina’da doğmuştur.
-                                   Tukididis, Atina ve Sparta arasındaki Peloponnes
-                                   Savaşı boyunca (M.Ö. 431 – 404)
-                                   Trakya’daki Amfipolis şehrini korumakla görevlendirilen
-                                   donanmanın komutanıydı.
-                                   Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
-                                   general Brasidas’ın eline
-                                   geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
-                                   zorunda kaldı. Bu sürgün,
-                                    Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
-                                   Peloponnes Savaşı’nın
-                                   Tarihi adlı çalışması için araştırma yapma imkânı verdi.
-                                                                               Ancak şehre zamanında ulaşmayı başaramadı. Şehir, Spartalı
-                                   general Brasidas’ın eline
-                                   geçti ve bundan dolayı Tukididis yirmi yıllık bir sürgüne gitmek
-                                   zorunda kaldı. Bu sürgün,
-                                    Tukididis’e savaşan iki taraf hakkında ayrıntılı bilgi toplama ve
-                                   Peloponnes Savaşı’nın
-                                   Tarihi adlı çalışması için araştırma yapma imkânı verdi.
-                            </div>
-                            <div class="big-text d-flex">
-                                <h5><strong>Çözüm Metini:</strong> </h4><br>
-                                <input class="big-text"type="text" placeholder="Soru İçeriğini giriniz">
-                            </div>
-
-
-                        </div>
-                        <td>
-                            <button id="" class="upper_btn" >
-                                <strong >İlerle </strong>
-                            </button><br>
-                        </td>
-
-
-                    </tbody>
-
-
-
-            </div> -->
-        </div>
-    </div>
-    @* <div class="popup">
-    <form asp-controller="Question" asp-action="Create" method="post" enctype="multipart/form-data">
-    <div id="myModal" class="modal">
-    <div class="modal-content" id="modal-content1">
-    <span class="close">&times;</span>
-    <h3 class="modal-title text-center"><strong> Soru Ekle</strong></h3>
-
-    <div class="row">
-    <div class="col-6">
-    <div class="form-group row d-flex">
-    <label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
-    <div class="col-sm-10">
-    <textarea class="small-text" name="Text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
-    </div>
-    <label for="Ders" class="col-sm-2 col-form-label">Dersler</label>
-    <div class="col-sm-10">
-    @await Component.InvokeAsync("LessonList")
-    </div>
-    <label for="Ders" class="col-sm-2 col-form-label">Konular</label>
-    <div class="col-sm-10">
-    @await Component.InvokeAsync("SubjectList")
-    </div>
-    <label for="Ders" class="col-sm-2 col-form-label">Seviye</label>
-    <div class="col-sm-10">
-    @await Component.InvokeAsync("LevelList")
-    </div>
-    <label for="Ders" class="col-sm-2 col-form-label">Çıktı</label>
-    <div class="col-sm-10">
-    @await Component.InvokeAsync("OutputList")
-    </div>
-    </div>
-    </div>
-    <div class="col-6">
-    <div class="big-text d-flex ">
-    <h4>
-    <strong>Soru Metini:</strong>
-    </h4><br>
-
-    <textarea id="big-text" class="input" name="QuestionText"></textarea>
-    </div>
-    <input type="file" name="file" id="answerfileUpload">
-    </div>
-    </div>
-
-    <a id="upper" class="upper_btn">
-    <strong>İlerle </strong>
-    </a>
-    </div>
-    @await Component.InvokeAsync("Option")
-    </div>
-    </form>
-
-
-    </div>*@
+            </div>*@
 
 </main>
 

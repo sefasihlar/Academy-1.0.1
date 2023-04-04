@@ -11,7 +11,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    [Authorize(Roles = "Öğretmen")]
+
     public class SolutionController : Controller
     {
         SolutionManager _solutionManager = new SolutionManager(new EfCoreSolutionRepository());

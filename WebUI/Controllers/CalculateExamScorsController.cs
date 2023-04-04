@@ -16,7 +16,6 @@ namespace WebUI.Controllers
         SolutionManager _solutionManager = new SolutionManager(new EfCoreSolutionRepository());
         ScorsManager _scoresManager = new ScorsManager(new EfCoreScorsRepository());
         CartManager _cartManager = new CartManager(new EfCoreCartRepository());
-
         AppUserManager _appUserManager = new AppUserManager(new EfCoreAppUserRepostory());
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;

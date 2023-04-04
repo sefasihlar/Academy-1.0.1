@@ -10,7 +10,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    [Authorize(Roles = "Öğretmen")]
+
     public class QuestionController : Controller
     {
         QuestionManager _questionManager = new QuestionManager(new EfCoreQuestionRepository());
@@ -20,16 +20,66 @@ namespace WebUI.Controllers
         OutputManager _outputManager = new OutputManager(new EfCoreOutputRepository());
         OptionManager _optionManager = new OptionManager(new EfCoreOptionRepository());
         SolutionManager _solutionManager = new SolutionManager(new EfCoreSolutionRepository());
+        ClassManager _classManager = new ClassManager(new EfCoreClassRepository());
         public IActionResult Index()
         {
 
-            return View(new QuestionListModel()
+
+            var values = new QuestionListModel()
             {
-                //where(x=> x.solution).ToList() Expression oldugu icin filtreleme yapabiliriz
-                Questions = _questionManager.GetWithList().ToList()
-            });
+                Questions = _questionManager.GetWithList().ToList(),
+
+            };
+
+            var clases = _classManager.GetAll().ToList();
+            ViewBag.clases = new SelectList(clases, "Id", "Name");
+
+            var lessons = _lessonManager.GetAll();
+            ViewBag.lessons = new SelectList(lessons, "Id", "Name");
+
+            var level = _levelManager.GetAll();
+            ViewBag.levels = new SelectList(level, "Id", "Name");
+
+            var subject = _subjectManager.GetAll();
+            ViewBag.subjects = new SelectList(subject, "Id", "Name");
+
+            var output = _outputManager.GetAll();
+            ViewBag.outputs = new SelectList(output, "Id", "Name");
+
+            var option = _optionManager.GetAll();
+            ViewBag.options = new SelectList(option, "Id", "Name");
+
+            return View(values);
         }
 
+        public JsonResult Class()
+        {
+            var values = _classManager.GetAll().ToList();
+            return Json(values);
+        }
+
+        public JsonResult Lesson(int id)
+        {
+            var values = _lessonManager.GetWithClassList().Where(x => x.ClassId == id).ToList();
+            return Json(values);
+        }
+        public JsonResult Subject(int id)
+        {
+            var values = _subjectManager.GetWithLessonList().Where(x => x.LessonId == id).ToList();
+            return Json(values);
+        }
+
+        //Öğrenme çıktısı yada konu altındaki kazanım olarak ta adalandırılabilir
+        //public JsonResult Output(int id)
+        //{
+        //    var values = _outputManager.GetAll().Where(x => x.subject == id).ToList();
+        //    return Json(values);
+        //}
+
+        public IActionResult CashCading()
+        {
+            return View();
+        }
 
         [HttpGet]
 
@@ -45,70 +95,69 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(QuestionModel model, IFormFile? file)
         {
-            if (ModelState.IsValid)
+
+            var questionOptions = new List<Option>(); // yeni bir liste oluştur
+
+            foreach (var item in model.Options)
             {
-                var questionOptions = new List<Option>(); // yeni bir liste oluştur
-
-                foreach (var item in model.Options)
+                var optionValue = new Option()
                 {
-                    var optionValue = new Option()
-                    {
-                        Name = item.Name,
-                        Text = item.Text,
-                        Condition = item.Condition,
-                    };
-                    questionOptions.Add(optionValue); // Option nesnelerini yeni liste olarak ekle
-                }
-
-                // Question nesnesini oluştur
-                var values = new Question()
-                {
-                    Text = model.Text,
-                    QuestionText = model.QuestionText,
-                    ImageUrl = file != null ? file.FileName : null,
-                    LessonId = model.LessonId,
-                    LevelId = model.LevelId,
-                    SubjectId = model.SubjectId,
-                    Options = questionOptions, // yeni liste olarak ekle
-                    OutputId = model.OutputId,
-                    CreatedDate = model.CreatedDate,
-                    UpdatedDate = model.UpdatedDate,
+                    Name = item.Name,
+                    Text = item.Text,
+                    Condition = item.Condition,
                 };
+                questionOptions.Add(optionValue); // Option nesnelerini yeni liste olarak ekle
+            }
 
-                // Question nesnesini veritabanına ekle
-                //soru resmini wwwroot altındaki question dosyasına kaydet
-                if (file != null)
+            // Question nesnesini oluştur
+            var values = new Question()
+            {
+                Text = model.Text,
+                QuestionText = model.QuestionText,
+                ImageUrl = file != null ? file.FileName : null,
+                LessonId = model.LessonId,
+                LevelId = model.LevelId,
+                SubjectId = model.SubjectId,
+                Options = questionOptions, // yeni liste olarak ekle
+                OutputId = model.OutputId,
+                CreatedDate = model.CreatedDate,
+                UpdatedDate = model.UpdatedDate,
+            };
+
+            // Question nesnesini veritabanına ekle
+            //soru resmini wwwroot altındaki question dosyasına kaydet
+            if (file != null)
+            {
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Template\\questions", file.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))
                 {
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Template\\questions", file.FileName);
-                    using (var stream = new FileStream(path, FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-                }
-
-
-                if (values != null)
-                {
-                    _questionManager.Create(values);
-                    TempData.Put("message", new ResultMessage()
-                    {
-                        Title = "Başarılı",
-                        Message = "Soru başarıyla eklendi",
-                        Css = "success"
-                    });
-                    return RedirectToAction("Questions", "Solution");
-                }
-
-                // Question nesnesinin Id özelliğini al
-                var questionId = values.Id;
-
-                // Option nesnelerinin QuestionId özelliğini güncelle
-                foreach (var item in questionOptions)
-                {
-                    item.QuestionId = questionId;
-                    _optionManager.Create(item);
+                    await file.CopyToAsync(stream);
                 }
             }
+
+
+            if (values != null)
+            {
+                _questionManager.Create(values);
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarılı",
+                    Message = "Soru başarıyla eklendi",
+                    Css = "success"
+                });
+                return RedirectToAction("Questions", "Solution");
+            }
+
+            // Question nesnesinin Id özelliğini al
+            var questionId = values.Id;
+
+            // Option nesnelerinin QuestionId özelliğini güncelle
+            foreach (var item in questionOptions)
+            {
+                item.QuestionId = questionId;
+                _optionManager.Create(item);
+            }
+
 
             //eger bir validation ile karsilasirsa dropdownlarin tekara dolmasi icin tekrar ediyoruz
 

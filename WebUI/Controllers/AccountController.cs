@@ -75,7 +75,6 @@ namespace WebUI.Controllers
 
         //Kullanıcı verli bilgileride burada ekleniyor aynı anda kayıt işlemi için
 
-        [Authorize(Roles = "Öğretmen,Müdür")]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model, GuardianModel guardian)
         {
@@ -167,6 +166,32 @@ namespace WebUI.Controllers
             });
 
             return RedirectToAction("Index", "Account", model);
+        }
+
+
+        public async Task<IActionResult> UserDetail()
+        {
+            var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
+            var getId = _appUserManager.GetById(Convert.ToInt32(userId));
+
+            var values = _appUserManager.ListTogether().FirstOrDefault(x => x.Id == getId.Id);
+
+            var user = new AppUserModel()
+            {
+                Tc = values.Tc,
+                Name = values.Name,
+                SurName = values.SurName,
+                UserName = values.UserName,
+                Email = values.Email,   
+                Class = values.Class,
+                Branch = values.Branch,
+                PasswordHash = values.PasswordHash,
+                PhoneNumber = values.PhoneNumber,
+
+            };
+
+
+            return View(user);
         }
 
         [HttpGet]

@@ -558,10 +558,15 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Outputs");
                 });
@@ -641,9 +646,6 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Null")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Rank")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Scor")
@@ -1028,6 +1030,17 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Output", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Question", b =>

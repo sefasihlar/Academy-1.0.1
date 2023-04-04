@@ -5,7 +5,24 @@
 }
 
 <main class="content d-flex flex-wrap justify-content-between">
+    @section Scripts{
+        <script>
+            function startExam(examId) {
+                Swal.fire({
+                    title: 'Sınava başlamak istediğinize emin misiniz?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Evet, başla!',
+                    cancelButtonText: 'Hayır, iptal',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'Exam/Exam/' + examId;
+                    }
+                })
+            }
+        </script>
 
+    }
 
     <div class="custom-cards-container flex-2  container-sm ">
         <div class="custom-cards-container-title">Raporlar</div>
@@ -32,24 +49,7 @@
                                         Başla <i class="bi bi-chevron-right custom-card-icons"></i>
                                     </button>
                                 </div>
-                                @section Scripts{
-                                <script>
-                                    function startExam(examId) {
-                                        Swal.fire({
-                                            title: 'Sınava başlamak istediğinize emin misiniz?',
-                                            icon: 'question',
-                                            showCancelButton: true,
-                                            confirmButtonText: 'Evet, başla!',
-                                            cancelButtonText: 'Hayır, iptal',
-                                        }).then((result) => {
-                                            if (result.isConfirmed) {
-                                                window.location.href = 'Exam/Exam/' + examId;
-                                            }
-                                        })
-                                    }
-                                </script>
-                                
-                                }
+                               
                                 <div>
                                     <a href="#" class="custom-card-icon-container">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">

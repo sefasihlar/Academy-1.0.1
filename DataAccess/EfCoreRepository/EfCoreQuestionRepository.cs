@@ -34,7 +34,6 @@ namespace DataAccessLayer.EntityFreamwork
                     .Include(x => x.Lesson)
                     .Include(x => x.Level)
                     .Include(x => x.Subject)
-                    .Include(x => x.Output)
                     .Include(x => x.Options).ToList();
             }
         }

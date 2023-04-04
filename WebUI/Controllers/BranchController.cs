@@ -8,7 +8,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    [Authorize(Roles = "Öğretmen,Müdür Yardımcısı")]
+    
     public class BranchController : Controller
     {
         BranchManager _branchManager = new BranchManager(new EfCoreBranchRepository());

@@ -67,7 +67,7 @@ namespace WebUI.Controllers
 
             var scors = _scorsManager.GetAll().ToList();
 
-            ViewBag.Scors = examIds;
+            ViewBag.Scors = scors;
 
             return View(values);
         }
