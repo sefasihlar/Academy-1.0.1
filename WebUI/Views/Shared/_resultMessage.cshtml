@@ -1,13 +1,5 @@
 ﻿@model ResultMessage
 
-
-
-@*    <div class="alert alert-@Model.Css">
-        <h4 class="alert alert-titile">@Model.Title</h4>
-        <p>@Model.Message</p>
-    </div>*@
-
-
 <script>
     Swal.fire(
         '@Model.Title',
@@ -15,16 +7,6 @@
         '@Model.Css'
     )
 </script>
-
-@*<script>
-    Swal.fire({
-        title: '@Model.Title',
-        text: '@Model.Message',
-        icon: '@Model.Css',
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'Tamam'
-    });
-</script>*@
 
 <script>
     function myFunction(event, itemId) {

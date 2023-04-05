@@ -37,9 +37,10 @@
             </tr>
             @foreach (var item in Model.scors)
             {
-                <tr>şlklk   
+                var total = (item.False + item.True + item.Null);
+                <tr>
                     <td scope="col">@item.Exam.Subject.Name</td>
-                    <td scope="col">Buraya soru sayısı </td>
+                    <td scope="col">@total</td>
                     <td scope="col">@item.True</td>
                     <td scope="col">@item.False</td>
                     <td scope="col">@item.Null</td>

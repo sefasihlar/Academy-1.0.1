@@ -23,12 +23,11 @@
                                     <div class="col-auto">
                                     </div>
                                 </div>
-                                @if (Model.TotalStudent!=null)
-                                {
-                                    @await Component.InvokeAsync("TotalStudent")
-                                }
-                          
-                             
+
+                                @await Component.InvokeAsync("TotalStudent")
+
+
+
                             </div>
                         </div>
                         <div class="card">
@@ -41,11 +40,10 @@
                                     <div class="col-auto">
                                     </div>
                                 </div>
-                                @if (Model.TotalExam != null)
-                                {
-                                    @await Component.InvokeAsync("TotalExam")
-                                }
-                          
+
+                                @await Component.InvokeAsync("TotalExam")
+
+
 
                             </div>
                         </div>
@@ -61,11 +59,10 @@
                                     <div class="col-auto">
                                     </div>
                                 </div>
-                                @if (Model.TotalClass!=null)
-                                {
-                                    @await Component.InvokeAsync("TotalClass")
-                                }
-                            
+
+                                @await Component.InvokeAsync("TotalClass")
+
+
 
                             </div>
                         </div>
@@ -78,11 +75,10 @@
 
 
                                 </div>
-                                @if (Model.TotalTeacher!=null)
-                                {
-                                    @await Component.InvokeAsync("TotalTeacher")
-                                }
-                          
+
+                                @await Component.InvokeAsync("TotalTeacher")
+
+
 
                             </div>
                         </div>
@@ -161,7 +157,7 @@
                                 <tr>
                                     <td>Çözüm</td>
                                     <td class="text-end">@await Component.InvokeAsync("TotalSolution")</td>
-                          
+
                                 </tr>
                             </tbody>
                         </table>
@@ -200,4 +196,4 @@
 
 
 
-@*    @await Component.InvokeAsync("LastExamResult")*@
+    @*    @await Component.InvokeAsync("LastExamResult")*@

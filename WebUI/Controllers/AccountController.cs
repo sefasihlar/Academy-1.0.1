@@ -37,7 +37,7 @@ namespace WebUI.Controllers
             _roleManager = roleManager;
         }
 
-        [Authorize(Roles = "Müdür")]
+        [Authorize(Roles = "Müdür,Müdür Yardımcısı,Öğretmen,")]
         public async Task<IActionResult> Index()
         {
 
@@ -49,7 +49,7 @@ namespace WebUI.Controllers
 
             });
         }
-        [Authorize(Roles = "Öğretmen,Müdür")]
+        [Authorize(Roles = "Öğretmen,Müdür,Müdür Yardımcısı")]
         [HttpGet]
         public IActionResult Register()
         {
@@ -168,7 +168,6 @@ namespace WebUI.Controllers
             return RedirectToAction("Index", "Account", model);
         }
 
-
         public async Task<IActionResult> UserDetail()
         {
             var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
@@ -183,6 +182,29 @@ namespace WebUI.Controllers
                 SurName = values.SurName,
                 UserName = values.UserName,
                 Email = values.Email,   
+                Class = values.Class,
+                Branch = values.Branch,
+                PasswordHash = values.PasswordHash,
+                PhoneNumber = values.PhoneNumber,
+
+            };
+
+
+            return View(user);
+        }
+
+        public async Task<IActionResult> StudentDetail(int id)
+        {
+
+            var values = _appUserManager.ListTogether().FirstOrDefault(x => x.Id == id);
+
+            var user = new AppUserModel()
+            {
+                Tc = values.Tc,
+                Name = values.Name,
+                SurName = values.SurName,
+                UserName = values.UserName,
+                Email = values.Email,
                 Class = values.Class,
                 Branch = values.Branch,
                 PasswordHash = values.PasswordHash,
@@ -212,15 +234,6 @@ namespace WebUI.Controllers
             //email e göre değil tc ye göre giriş yapılacak
             var user = await _userManager.FindByNameAsync(model.UserName);
 
-            var userValues = new AppUserModel()
-            {
-                Name = user.Name,
-                SurName = user.SurName,
-            };
-
-
-            ViewBag.userValues = userValues;
-
             if (user == null)
             {
                 TempData.Put("message", new ResultMessage()
@@ -232,6 +245,14 @@ namespace WebUI.Controllers
                 return View(model);
             }
 
+            var userValues = new AppUserModel()
+            {
+                Name = user.Name,
+                SurName = user.SurName,
+            };
+
+
+            ViewBag.userValues = userValues;
 
 
             if (!await _userManager.IsEmailConfirmedAsync(user))

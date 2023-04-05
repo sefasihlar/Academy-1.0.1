@@ -10,6 +10,31 @@
 
     <script src="~/jquery/jquery-validate/jquery.validate.min.js"></script>
     <script src="~/jquery/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            GetClass();
+        });
+
+        function GetClass() {
+            $.ajax({
+                url: '/Question/Class',
+                success: function (result) {
+                    if (result) {
+                        $.each(result, function (i, data) {
+                            $('#Class').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+
+                    } else {
+
+                        alert('Sınıf bilgisi alınamadı.');
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu, sınıflar yüklenemedi.');
+                }
+            });
+        }
+    </script>
 }
 <main class="content d-flex flex-wrap justify-content-between">
 
@@ -68,7 +93,7 @@
                                                 <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
                                                 <td><span class="badge bg-success">@item.Condition</span></td>
                                                 <td>
-                                                    <a href="../kullanici_ayarlar_duzenlemeler/ögrenci_düzenleme.html"><i class="align-middle" data-feather="edit"></i></a>
+                                                    <a href="/Account/StudentDetail/@item.Id"><i class="align-middle" data-feather="edit"></i></a>
                                                     <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>
                                                 </td>
                                             </tr>
