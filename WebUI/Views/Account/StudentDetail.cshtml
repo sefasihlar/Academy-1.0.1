@@ -13,7 +13,15 @@
             <div class="mb-3">
                 <h1 class="h3 d-inline align-middle">Profil</h1>
             </div>
-   
+            <form asp-controller="Account" asp-action="UpdateUser" method="post">
+                <input type="hidden" asp-for="@Model.Id" value="@Model.Id"/>
+                <input type="hidden" asp-for="@Model.ClassId" value="@Model.Class.Id"/>
+                <input type="hidden" asp-for="@Model.BranchId" value="@Model.Branch.Id"/>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                </div>
+                <br />
+
                 <div class="row">
                     <div class="col-md-4 col-xl-4">
                         <div class="card mb-3">
@@ -43,82 +51,43 @@
                             </div>
                             <div class="card-body">
                                 <div style="margin: 10px;">
+                                    <strong>Kullanıcı Adı:</strong>
+                                    <input type="text" class="form-control" asp-for="@Model.UserName" value="@Model.UserName">
+                                </div>
+                                <div style="margin: 10px;">
                                     <strong>Tc:</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.Tc">
+                                    <input type="text" class="form-control" asp-for="@Model.Tc"  value="@Model.Tc">
                                 </div>
                                 <div style="margin: 10px;">
                                     <strong>Ad:</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.Name">
+                                    <input type="text" class="form-control" asp-for="@Model.Name"  value="@Model.Name">
                                 </div>
                                 <div style="margin: 10px;">
                                     <strong>Soyad:</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.SurName">
+                                    <input type="text" class="form-control" asp-for="@Model.SurName"  value="@Model.SurName">
                                 </div>
                                 <div style="margin: 10px;">
                                     <strong>Sınıf</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.Class.Name">
+                                    <input type="text" class="form-control" asp-for="@Model.Class.Name"  value="@Model.Class.Name">
                                 </div>
                                 <div style="margin: 10px;">
-                                    <strong>Şube</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.Branch.Name">
+                                    <strong>Şube</strong> 
+                                    <input type="text" class="form-control" asp-for="@Model.Branch.Name"  value="@Model.Branch.Name">
                                 </div>
                                 <div style="margin: 10px;">
                                     <strong>Telefon</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.PhoneNumber">
+                                    <input type="text" class="form-control" asp-for="@Model.PhoneNumber" value="@Model.PhoneNumber">
                                 </div>
                                 <div style="margin: 10px;">
                                     <strong>E-posta</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.Email">
+                                    <input type="text" class="form-control" asp-for="@Model.Email"  value="@Model.Email">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8 col-xl-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Veli Bilgileri</h5>
-                            </div>
-                            <div class="card-body">
-
-                                <div style="margin: 10px;">
-                                    <strong>İsim:</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.Name">
-                                </div>
-                                <div style="margin: 10px;">
-                                    <strong>Soyisim:</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.SurName">
-                                </div>
-                                <div style="margin: 10px;">
-                                    <strong>Telefon</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.PhoneNumber">
-                                </div>
-                                <div style="margin: 10px;">
-                                    <strong>E-posta</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.Email">
-                                </div>
-                                <hr />
-                                <label>Veli 2</label>
-                                <div style="margin: 10px;">
-                                    <strong>E-posta</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.Email">
-                                </div>
-                                <div style="margin: 10px;">
-                                    <strong>Telefon</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.PhoneNumber">
-                                </div>
-                                <div style="margin: 10px;">
-                                    <strong>E-posta</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.Email">
-                                </div>
-                                <div style="margin: 10px;">
-                                    <strong>E-posta</strong>
-                                    <input type="text" class="form-control" placeholder="@Model.Email">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @await Component.InvokeAsync("GuardianForm")
                 </div>
-            
+            </form>
         </div>
     </main>
 </div>

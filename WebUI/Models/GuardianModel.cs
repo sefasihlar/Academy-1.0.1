@@ -12,6 +12,9 @@ namespace WebUI.Models
         public string GuardianPhone { get; set; }
         public string? GuardianPhone2 { get; set; }
 
+        public string? Email { get; set; }
+        public string? Email2 { get; set; }
+
         public int UserId { get; set; }
         public AppUser User { get; set; }
 

@@ -75,7 +75,7 @@
                                             <th>Şube</th>
                                             <th class="d-none d-md-table-cell">Ekleyen ve tarihi</th>
                                             <th class="d-none d-md-table-cell">Değiştiren ve tarihi</th>
-                                            <th>Aktiflik durumu</th>
+                                            <th>Durum</th>
                                             <th>Düzenle veya sil</th>
                                         </tr>
                                     </thead>
@@ -91,7 +91,14 @@
                                                 <td class="d-none d-md-table-cell">@item.Branch.Name</td>
                                                 <td class="d-none d-md-table-cell">@item.CreatedDate</td>
                                                 <td class="d-none d-md-table-cell">@item.UpdatedDate</td>
-                                                <td><span class="badge bg-success">@item.Condition</span></td>
+                                                @if (item.Condition == true)
+                                                {
+                                                    <td><span class="badge bg-success">Aktif</span></td>
+                                                }
+                                                else
+                                                {
+                                                    <td><span class="badge bg-danger">Pasif</span></td>
+                                                }
                                                 <td>
                                                     <a href="/Account/StudentDetail/@item.Id"><i class="align-middle" data-feather="edit"></i></a>
                                                     <a><i class="align-middle m-2" data-feather="trash-2" style="color: red;"></i></a>

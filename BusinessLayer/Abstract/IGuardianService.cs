@@ -5,5 +5,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IGuardianService : IGenericService<Guardian>
     {
+        List<Guardian> GetWithStudentList();
     }
 }

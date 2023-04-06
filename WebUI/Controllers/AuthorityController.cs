@@ -95,7 +95,41 @@ namespace WebUI.Controllers
         }
 
 
-        public async Task<IActionResult> Detail(string id)
+		public async Task<IActionResult> Delete(string id)
+		{
+			var user = await _userManager.FindByIdAsync(id);
+			if (user != null)
+			{
+				var result = await _userManager.DeleteAsync(user);
+				if (result.Succeeded)
+				{
+					return RedirectToAction("Index");
+				}
+				else
+				{
+					TempData.Put("message", new ResultMessage()
+					{
+						Title = "Hata",
+						Message = "Kullanıcı Silinemedi",
+						Css = "error"
+					});
+				}
+			}
+			else
+			{
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Hata",
+					Message = "Kullanıcı bulunamadı",
+					Css = "error"
+				});
+			}
+
+            return RedirectToAction("Index", user);
+		}
+
+
+		public async Task<IActionResult> Detail(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
 
@@ -113,6 +147,46 @@ namespace WebUI.Controllers
             return View(values);
         }
 
+
+        public async Task<IActionResult> Update(AppUserModel model)
+        {
+            var user = await _userManager.FindByIdAsync(Convert.ToString( model.Id));
+
+            if (user!=null)
+            {
+                user.Name = model.Name;
+                user.SurName = model.SurName;
+                user.Tc = model.Tc;
+                user.Email = model.Email;
+                user.Condition = model.Condition;
+            }
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Başarılı",
+					Message = "Kullanıcı güncellme işlemi başarılı",
+					Css = "success"
+				});
+
+                return RedirectToAction("Index");
+			}
+
+            else
+            {
+				TempData.Put("message", new ResultMessage()
+				{
+					Title = "Hata",
+					Message = "Kullanıcı güncellenemedi.Bilgilerinizi gözden geçiriniz",
+					Css = "error"
+				});
+			}
+
+			return RedirectToAction("Index");
+		}
 
         [HttpGet]
         public async Task<IActionResult> AssignRole(int id)

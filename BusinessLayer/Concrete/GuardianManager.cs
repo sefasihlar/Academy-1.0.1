@@ -33,6 +33,11 @@ namespace BusinessLayer.Concrete
             return _guardianDal.GetById(id);
         }
 
+        public List<Guardian> GetWithStudentList()
+        {
+            return _guardianDal.GetWithStudentList().ToList();
+        }
+
         public void Update(Guardian entity)
         {
             _guardianDal.Update(entity);

@@ -22,6 +22,7 @@ namespace WebUI.Controllers
         BranchManager _branchManager = new BranchManager(new EfCoreBranchRepository());
         CartManager _cartManager = new CartManager(new EfCoreCartRepository());
         GuardianManager _guardianManager = new GuardianManager(new EfCoreGuardianRepository());
+
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;
         private readonly SignInManager<AppUser> _signInManager;
@@ -81,7 +82,7 @@ namespace WebUI.Controllers
 
             AppUser user = new AppUser()
             {
-
+                Id = model.Id,
                 Tc = model.TcNumber,
                 Name = model.Name,
                 SurName = model.SurName,
@@ -168,12 +169,55 @@ namespace WebUI.Controllers
             return RedirectToAction("Index", "Account", model);
         }
 
-        public async Task<IActionResult> UserDetail()
+        public async Task<IActionResult> UpdateUser(AppUserModel model,GuardianModel guardianModel)
         {
-            var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
-            var getId = _appUserManager.GetById(Convert.ToInt32(userId));
+            var user = await _userManager.FindByIdAsync(Convert.ToString(model.Id));
+            if (user!=null)
+            {
+                user.Tc = model.Tc;
+                user.Name = model.Name;
+                user.SurName = model.SurName;
+                user.ClassId = model.ClassId;
+                user.BranchId = model.BranchId;
+                user.PhoneNumber = model.PhoneNumber;
+                user.UserName = model.UserName;
+                user.Email = model.Email;
+            }
 
-            var values = _appUserManager.ListTogether().FirstOrDefault(x => x.Id == getId.Id);
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                var guardian = _guardianManager.GetWithStudentList().FirstOrDefault(x => x.UserId == model.Id);
+                var guardianId = _guardianManager.GetById(guardian.Id);
+                if (guardianId != null)
+                {
+                    guardianId.GuardianName = guardianModel.GuardianName;
+                    guardianId.GuardianSurName = guardianModel.GuardianSurName;
+                    guardianId.GuardianPhone = guardianModel.GuardianPhone;
+                    guardianId.GuardianName2 = guardianModel.GuardianName2;
+                    guardianId.GuardianSurName2 = guardianModel.GuardianSurName2;
+                    guardianId.GuardianPhone2 = guardianModel.GuardianPhone2;
+                }
+
+                _guardianManager.Update(guardianId);
+                TempData.Put("message", new ResultMessage()
+                {
+                    Title = "Başarılı",
+                    Message = "Kullanıcı güncelleme işlemi başarılı",
+                    Css = "success"
+                });
+                return RedirectToAction("Index", "Account");
+            }
+
+
+            return View(model);
+        }
+
+
+        public async Task<IActionResult> UserDetail(int id)
+        {
+
+            var values = _appUserManager.ListTogether().FirstOrDefault(x => x.Id == id);
 
             var user = new AppUserModel()
             {
@@ -198,8 +242,13 @@ namespace WebUI.Controllers
 
             var values = _appUserManager.ListTogether().FirstOrDefault(x => x.Id == id);
 
+            var userguardian = _guardianManager.GetWithStudentList().FirstOrDefault(x => x.UserId == id);
+
+            ViewBag.GuardianId = userguardian.Id;
+
             var user = new AppUserModel()
             {
+                Id = id,
                 Tc = values.Tc,
                 Name = values.Name,
                 SurName = values.SurName,
