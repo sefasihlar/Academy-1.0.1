@@ -42,7 +42,6 @@ namespace WebUI.Controllers
         public async Task<IActionResult> Index()
         {
 
-
             return View(new AppUserListModel()
             {
                 //async metod oldugu icin hata alabiriz ! 
@@ -214,10 +213,12 @@ namespace WebUI.Controllers
         }
 
 
-        public async Task<IActionResult> UserDetail(int id)
+        public async Task<IActionResult> UserDetail()
         {
+            var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
+            var getId = _appUserManager.GetById(Convert.ToInt32(userId));
 
-            var values = _appUserManager.ListTogether().FirstOrDefault(x => x.Id == id);
+            var values = _appUserManager.ListTogether().FirstOrDefault(x => x.Id == getId.Id);
 
             var user = new AppUserModel()
             {
@@ -446,7 +447,7 @@ namespace WebUI.Controllers
                 TempData.Put("message", new ResultMessage()
                 {
                     Title = "Sifreyi Unuttum",
-                    Message = "Kullanıcı Bulunamadı!!!:((",
+                    Message = "Kullanıcı Bulunamadı!",
                     Css = "error"
                 });
                 return View();

@@ -8,7 +8,8 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-   
+    [AutoValidateAntiforgeryToken]
+
     public class OptionController : Controller
     {
         OptionManager _optionManager = new OptionManager(new EfCoreOptionRepository());

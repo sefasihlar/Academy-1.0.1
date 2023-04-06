@@ -3,7 +3,12 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Scripts{
+	<script src="~/jquery/jquery/jquery.min.js"></script>
 
+	<script src="~/jquery/jquery-validate/jquery.validate.min.js"></script>
+	<script src="~/jquery/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
 <main class="content d-flex flex-wrap justify-content-between">
 	<div class="container-fluid p-0">
 
@@ -14,8 +19,8 @@
 				<div class="w-100">
 					<div class="row">
 
-						<div class="card flex-fill col-12 " style="border-radius: 25px;
-																				box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+						<div class="card flex-fill col-12 " style="border-radius: 25px;	box-shadow: 0 0 0 4px white, 0 4px 4px black;overflow-y:hidden;">
+																			
 							<div class="row">
 								<div class="card-header col-10">
 									<h5 class="card-title mb-0">Görevliler</h5>
@@ -83,54 +88,6 @@
 			</div>
 		</div>
 	</div>
-	<form asp-controller="Authority" asp-action="Register" method="post">
-	<div class="popup">
-		<div id="myModal" class="modal">
-			<div class="modal-content" id="small-modal">
-				<span class="close">&times;</span>
-				<h2 class="modal-title text-center"><strong> Görevli Ekle</strong></h2>
-				
-					<div class="row">
-						<div class="col-12">
-							<div class="form-group row d-flex">
-								<label for="name" class="col-sm-3 col-form-label">Ad</label>
-								<div class="col-sm-9">
-									<input class="answer-place text-center" name="Name" type="text" placeholder="Örneğin:Ahmet">
-								</div>
-								<label for="name" class="col-sm-3 col-form-label">Soyad</label>
-								<div class="col-sm-9">
-									<input class="answer-place text-center" type="text" name="SurName" placeholder="Örneğin:Yılmaz">
-								</div>
-								<label for="name" class="col-sm-3 col-form-label">Tc</label>
-								<div class="col-sm-9">
-									<input class="answer-place text-center" name="TcNumber" type="text" placeholder="Örneğin:31025836914">
-								</div>
-								<label for="name" class="col-sm-3 col-form-label">Telefon</label>
-								<div class="col-sm-9">
-									<input class="answer-place text-center" type="text" name="Phone" placeholder="Örneğin:055252525">
-								</div>
-								<label for="name" class="col-sm-3 col-form-label">Şifre</label>
-								<div class="col-sm-9">
-									<input class="answer-place text-center" type="text" name="Password" placeholder="Şifre">
-								</div>
-								<label for="name" class="col-sm-3 col-form-label">Şifre Tekrar</label>
-								<div class="col-sm-9">
-									<input class="answer-place text-center" type="text" name="RePassword" placeholder="Şifre Tekrar">
-								</div>
-								<input type="hidden" name="Authority" value="True"/>
-								<input type="hidden" name="Condition" value="True"/>
-							</div>
-						</div>
-
-
-					</div>
-					<button id="cls_btn" class="upper_btn" type="submit">
-						<strong>Kaydet </strong>
-					</button>
-			</div>
-		</div>
-
-	</div>
-	</form>
+    @await Component.InvokeAsync("AuthorityForm")
 </main>
 

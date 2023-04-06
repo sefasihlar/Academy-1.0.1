@@ -9,7 +9,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-   
+    [AutoValidateAntiforgeryToken]
     public class ClassController : Controller
     {
         ClassManager _classManager = new ClassManager(new EfCoreClassRepository());

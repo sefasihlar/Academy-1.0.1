@@ -159,6 +159,7 @@ namespace WebUI.Controllers
 
 
         public IActionResult ExamScor(int id, int LessonId, int UserId)
+        
         {
             if (LessonId == 0)
             {
@@ -182,7 +183,7 @@ namespace WebUI.Controllers
                 return View(values);
             }
             //hata mesajı verilecek
-            return View();
+            return View(values);
 
         }
 

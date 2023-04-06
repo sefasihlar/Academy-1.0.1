@@ -11,6 +11,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
+    [AutoValidateAntiforgeryToken]
 
     public class SolutionController : Controller
     {

@@ -8,7 +8,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-
+    [AutoValidateAntiforgeryToken]
     public class LevelController : Controller
     {
         LevelManager _levelManager = new LevelManager(new EfCoreLevelRepository());

@@ -10,6 +10,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class ExamController : Controller
     {
         ClassManager _classManager = new ClassManager(new EfCoreClassRepository());

@@ -9,6 +9,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class CalculateExamScorsController : Controller
     {
 
@@ -67,7 +68,7 @@ namespace WebUI.Controllers
 
                         if (solution != null)
                         {
-                            score += 1; // Doğru cevap 1 puan
+                            score += 1;
                             questionTrue += 1;
                         }
 

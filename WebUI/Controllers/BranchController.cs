@@ -8,7 +8,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    
+    [AutoValidateAntiforgeryToken]
     public class BranchController : Controller
     {
         BranchManager _branchManager = new BranchManager(new EfCoreBranchRepository());

@@ -22,6 +22,7 @@ namespace WebUI.ViewComponents
             var userId = _userManager.GetUserId((System.Security.Claims.ClaimsPrincipal)User);
 
             var values = _appUserManager.GetById(Convert.ToInt32(userId));
+
             return View(new AppUserModel()
             {
                 Id = values.Id,

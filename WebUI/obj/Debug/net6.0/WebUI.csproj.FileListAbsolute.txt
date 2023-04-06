@@ -2020,6 +2020,12 @@ C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\MailKit.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\MessagePack.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\MessagePack.Annotations.dll
+C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.WebPages.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\Microsoft.AspNetCore.Authorization.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -2076,6 +2082,7 @@ C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\MimeKit.dll
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\Newtonsoft.Json.dll
@@ -2301,10 +2308,3 @@ C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\obj\Debug\net6
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\obj\Debug\net6.0\WebUI.pdb
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\obj\Debug\net6.0\WebUI.genruntimeconfig.cache
 C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\obj\Debug\net6.0\ref\WebUI.dll
-C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.Mvc.dll
-C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.Razor.dll
-C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.Helpers.dll
-C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
-C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
-C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\System.Web.WebPages.dll
-C:\Users\sihla\Masaüstü\MetaAkdeniz\SampleAcademy\Academy\WebUI\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

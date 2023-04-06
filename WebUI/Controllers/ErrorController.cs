@@ -2,6 +2,7 @@
 
 namespace WebUI.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class ErrorController : Controller
     {
         public IActionResult AccessDenied()

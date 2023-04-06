@@ -10,6 +10,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
+    [AutoValidateAntiforgeryToken]
 
     public class QuestionController : Controller
     {
@@ -69,12 +70,12 @@ namespace WebUI.Controllers
             return Json(values);
         }
 
-        //Öğrenme çıktısı yada konu altındaki kazanım olarak ta adalandırılabilir
-        //public JsonResult Output(int id)
-        //{
-        //    var values = _outputManager.GetAll().Where(x => x.subject == id).ToList();
-        //    return Json(values);
-        //}
+
+        public JsonResult Output(int id)
+        {
+            var values = _outputManager.GetAll().Where(x => x.SubjectId == id).ToList();
+            return Json(values);
+        }
 
         public IActionResult CashCading()
         {

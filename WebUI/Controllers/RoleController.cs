@@ -7,7 +7,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    
+    [AutoValidateAntiforgeryToken]
     public class RoleController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager;

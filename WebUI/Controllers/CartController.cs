@@ -7,6 +7,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class CartController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

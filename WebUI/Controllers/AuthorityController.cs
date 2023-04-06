@@ -7,7 +7,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-
+    [AutoValidateAntiforgeryToken]
     public class AuthorityController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -245,20 +245,6 @@ namespace WebUI.Controllers
             return RedirectToAction("Index", "Authority");
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         //[HttpGet]

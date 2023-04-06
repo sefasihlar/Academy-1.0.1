@@ -3,7 +3,75 @@
     ViewData["Title"] = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Scripts{
+    <script src="~/jquery/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            GetClass();
+            $('#Class').change(function () {
+                var id = $(this).val();
+                $('#Lesson').empty();
+                $('#Lesson').append('<option>--Ders seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Lesson?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Lesson').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
 
+            $('#Lesson').change(function () {
+                var id = $(this).val();
+                $('#Subject').empty();
+                $('#Subject').append('<option>--Konu seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Subject?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Subject').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+            $('#Subject').change(function () {
+                var id = $(this).val();
+                $('#Output').empty();
+                $('#Output').append('<option>--Kazanım seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Output?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Output').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+
+        function GetClass() {
+            $.ajax({
+                url: '/Question/Class',
+                success: function (result) {
+                    if (result) {
+                        $.each(result, function (i, data) {
+                            $('#Class').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+
+                    } else {
+
+                        alert('Sınıf bilgisi alınamadı.');
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu, sınıflar yüklenemedi.');
+                }
+            });
+        }
+    </script>
+}
 <main class="content">
     <div class="container-fluid p-0">
         <h1 class="h3 mb-3"><strong>Soru</strong> Düzenleme Sayfası</h1>
@@ -27,6 +95,10 @@
                         <div class="col-sm-6" style="margin-left:42%">
                             <textarea type="input" asp-for="@Model.QuestionText" class="big-text">@Model.QuestionText</textarea>
                         </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Sınıf</label>
+                        <div class="col-sm-8">
+                            @await Component.InvokeAsync("ClassList")
+                        </div>
                         <label for="Ders" class="col-sm-4 col-form-label">Ders</label>
                         <div class="col-sm-8">
                             @await Component.InvokeAsync("LessonList")
@@ -35,14 +107,15 @@
                         <div class="col-sm-8">
                             @await Component.InvokeAsync("SubjectList")
                         </div>
+                        <label for="Ders" class="col-sm-4 col-form-label">Kazanım</label>
+                        <div class="col-sm-8">
+                            @await Component.InvokeAsync("OutputList")
+                        </div>
                         <label for="Ders" class="col-sm-4 col-form-label">Seviye</label>
                         <div class="col-sm-8">
                             @await Component.InvokeAsync("LevelList")
                         </div>
-                        <label for="Ders" class="col-sm-4 col-form-label">Çıktı</label>
-                        <div class="col-sm-8">
-                            @await Component.InvokeAsync("OutputList")
-                        </div>
+       
                         <label for="Ders" class="col-sm-4 col-form-label">Durum</label>
                         <div class="col-sm-8">
                             <select class="form-dropdown">

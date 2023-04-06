@@ -6,7 +6,7 @@ using WebUI.Models;
 
 namespace WebUI.ViewComponents
 {
-    public class GuardianFormViewComponent:ViewComponent
+    public class GuardianUpdateViewComponent:ViewComponent
     {
         GuardianManager _guardianManager = new GuardianManager(new EfCoreGuardianRepository());
         public IViewComponentResult Invoke()

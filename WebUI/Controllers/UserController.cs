@@ -6,7 +6,7 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-   
+    [AutoValidateAntiforgeryToken]
     public class UserController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

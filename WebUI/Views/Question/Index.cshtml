@@ -35,6 +35,20 @@
                     }
                 });
             });
+
+            $('#Subject').change(function () {
+                var id = $(this).val();
+                $('#Output').empty();
+                $('#Output').append('<option>--Kazanım seciniz--</option>');
+                $.ajax({
+                    url: '/Question/Output?id=' + id,
+                    success: function (result) {
+                        $.each(result, function (i, data) {
+                            $('#Output').append('<option value=' + data.id + '>' + data.name + '</option>');
+                        });
+                    }
+                });
+            });
         });
 
         function GetClass() {
@@ -170,14 +184,15 @@
                                 <div class="col-sm-10">
                                     @await Component.InvokeAsync("SubjectList")
                                 </div>
+                                <label for="Ders" class="col-sm-2 col-form-label">Kazanım</label>
+                                <div class="col-sm-10">
+                                    @await Component.InvokeAsync("OutputList")
+                                </div>
                                 <label for="Ders" class="col-sm-2 col-form-label">Seviye</label>
                                 <div class="col-sm-10">
                                     @await Component.InvokeAsync("LevelList")
                                 </div>
-                                <label for="Ders" class="col-sm-2 col-form-label">Çıktı</label>
-                                <div class="col-sm-10">
-                                    @await Component.InvokeAsync("OutputList")
-                                </div>
+              
                                 <label for="Ders" class="col-sm-2 col-form-label ">Soru</label>
                                 <div class="col-sm-10">
                                     <textarea class="small-text" name="Text" cols="30" rows="1" placeholder="Örneğin:Aşağıdakilerden Hangisi Doğrudur?"></textarea>
